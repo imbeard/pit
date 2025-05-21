@@ -1,0 +1,13 @@
+@theme {
+    // override the defaults with custom values
+    --font-*: initial;
+    --color-*: initial;
+    --text-*: initial;
+
+    // fonts
+    --font-sans: "Helvetica Neue", sans-serif;
+     // color
+    --color-white: #fff;
+    // typography
+    --text-sm: 10px;
+}
