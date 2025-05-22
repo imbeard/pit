@@ -1,35 +1,57 @@
 // documents
-import {project} from './documents/project'
-import {category} from './documents/category'
 import {page} from './documents/page'
+import {people} from './documents/people'
+import {partner} from './documents/partner'
+import {event} from './documents/event'
+import {performance} from './documents/performance'
+import {category} from './documents/category'
+
 // objects
 import {hero} from './objects/hero'
 import {blockContent} from './objects/blockContent'
 import {blockquote} from './objects/blockquote'
 import {gallery} from './objects/gallery'
-
 import {elementImage} from './objects/elementImage'
 import {elementVideo} from './objects/elementVideo'
 import {link} from './objects/link'
+import {linkInternal} from './objects/link/linkInternal'
+import {linkExternal} from './objects/link/linkExternal'
+import {linkEmail} from './objects/link/linkEmail'
 import {seo} from './objects/seo'
 import {cta} from './objects/cta'
 import {infoSection} from './objects/infoSection'
+import {info} from './objects/info'
+
 // singletons
+import {homepage} from './singletons/homepage'
 import {settings} from './singletons/settings'
 
 export const schemaTypes = [
-  project,
-  category,
+  // links
+  link,
+  linkInternal,
+  linkExternal,
+  linkEmail,
+
+  // documents
   page,
+  people,
+  event,
+  performance,
+  partner,
+  category,
+  // objects
   hero,
   blockContent,
   blockquote,
   gallery,
   elementImage,
   elementVideo,
-  link,
   seo,
   cta,
   infoSection,
+  info,
+  // singletons
+  homepage,
   settings,
 ]

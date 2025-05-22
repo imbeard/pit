@@ -8,32 +8,21 @@ export const cta = defineType({
   icon: BulbOutlineIcon,
   validation: (Rule) =>
     Rule.custom((fields) => {
-      const {buttonText, link} = fields || {}
-      if ((buttonText && link) || (!buttonText && !link)) {
+      const {link} = fields || {}
+      if (link) {
         return true
       }
-      return 'Both Button text and Button link must be set, or both must be empty'
+      return 'Link must be set'
     }),
   fields: [
     defineField({
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'text',
       title: 'Text',
-      type: 'text',
-    }),
-    defineField({
-      name: 'buttonText',
-      title: 'Button text',
+      name: 'text',
       type: 'string',
     }),
     defineField({
       name: 'link',
-      title: 'Button link',
+      title: 'Link',
       type: 'link',
     }),
   ],

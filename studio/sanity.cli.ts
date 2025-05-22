@@ -6,5 +6,5 @@ export default defineCliConfig({
     projectId,
     dataset,
   },
-  studioHost: 'rice-collective'
+  studioHost: 'pit'
 })

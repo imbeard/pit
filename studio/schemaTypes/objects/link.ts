@@ -8,72 +8,70 @@ export const link = defineType({
   icon: LinkIcon,
   fields: [
     defineField({
-      name: 'linkType',
-      title: 'Link Type',
+      name: 'source',
+      title: 'Source',
       type: 'string',
       initialValue: 'url',
       options: {
         list: [
-          {title: 'URL', value: 'href'},
-          {title: 'Page', value: 'page'},
-          {title: 'Project', value: 'project'},
+          {title: 'Internal', value: 'linkInternal'},
+          {title: 'URL', value: 'linkExternal'},
+          {title: 'Email', value: 'linkEmail'},
+          {title: 'Download', value: 'download'},
         ],
         layout: 'radio',
+        direction: 'horizontal',
       },
     }),
     defineField({
-      name: 'label',
-      title: 'Label',
-      type: 'string'
-    }),
-    defineField({
-      name: 'href',
+      name: 'linkExternal',
       title: 'URL',
-      type: 'url',
-      hidden: ({parent}) => parent?.linkType !== 'href',
+      type: 'linkExternal',
+      hidden: ({parent}) => parent?.source !== 'linkExternal',
       validation: (Rule) =>
         // Custom validation to ensure URL is provided if the link type is 'href'
         Rule.custom((value, context: any) => {
-          if (context.parent?.linkType === 'href' && !value) {
-            return 'URL is required when Link Type is URL'
+          if (context.parent?.source === 'linkExternal' && !value) {
+            return 'URL is required'
           }
           return true
         }),
     }),
+
     defineField({
-      name: 'page',
-      title: 'Page',
-      type: 'reference',
-      to: [{type: 'page'}],
-      hidden: ({parent}) => parent?.linkType !== 'page',
+      name: 'linkInternal',
+      type: 'linkInternal',
+      hidden: ({parent}) => parent?.source !== 'linkInternal',
       validation: (Rule) =>
-        // Custom validation to ensure page reference is provided if the link type is 'page'
+        // Custom validation to ensure URL is provided if the link type is 'href'
         Rule.custom((value, context: any) => {
-          if (context.parent?.linkType === 'page' && !value) {
-            return 'Page reference is required when Link Type is Page'
+          if (context.parent?.source === 'linkInternal' && !value) {
+            return 'An internal link is required'
           }
           return true
         }),
     }),
+
     defineField({
-      name: 'project',
-      title: 'Project',
-      type: 'reference',
-      to: [{type: 'project'}],
-      hidden: ({parent}) => parent?.linkType !== 'project',
+      title: 'Email',
+      name: 'linkEmail',
+      type: 'linkEmail',
+      hidden: ({parent}) => parent?.source !== 'linkEmail',
       validation: (Rule) =>
+        // Custom validation to ensure URL is provided if the link type is 'href'
         Rule.custom((value, context: any) => {
-          if (context.parent?.linkType === 'project' && !value) {
-            return 'Project reference is required when Link Type is Project'
+          if (context.parent?.source === 'linkEmail' && !value) {
+            return 'An email is required'
           }
           return true
         }),
     }),
+
     defineField({
-      name: 'openInNewTab',
-      title: 'Open in new tab',
-      type: 'boolean',
-      initialValue: false,
+      name: 'download',
+      title: 'Download',
+      type: 'file',
+      hidden: ({parent}) => parent?.source !== 'download',
     }),
   ],
 })

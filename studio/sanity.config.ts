@@ -5,7 +5,7 @@ import {structureTool} from 'sanity/structure'
 import {presentationTool} from 'sanity/presentation' 
 // plugins
 import {singletonTools} from 'sanity-plugin-singleton-tools'
-import {documentInternationalization} from '@sanity/document-internationalization'
+// import {documentInternationalization} from '@sanity/document-internationalization'
 // studio
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
@@ -16,8 +16,8 @@ export const projectId = process.env.SANITY_STUDIO_PROJECT_ID!
 export const dataset = process.env.SANITY_STUDIO_DATASET!
 
 export default defineConfig({
-  name: 'rice-collective',
-  title: 'RICE Collective',
+  name: 'pit',
+  title: 'Pit',
   projectId,
   dataset,
   icon: Logo,
@@ -27,13 +27,13 @@ export default defineConfig({
       structure
     }),
 
-    documentInternationalization({
-      supportedLanguages: [
-        {id: 'it', title: 'Italian'},
-        {id: 'en', title: 'English'}
-      ],
-      schemaTypes: ['page', 'project', 'category']
-    }),
+    // documentInternationalization({
+    //   supportedLanguages: [
+    //     {id: 'it', title: 'Italian'},
+    //     {id: 'en', title: 'English'}
+    //   ],
+    //   schemaTypes: ['page', 'project']
+    // }),
 
     presentationTool({
       previewUrl: {

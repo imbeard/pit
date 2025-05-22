@@ -8,16 +8,10 @@ export const category = defineType({
   icon: EditIcon,
   fields: [
     defineField({
-      name: 'language',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-    }),
-    {
       name: 'title',
       title: 'Title',
       type: 'string',
-    },
+    }),
     defineField({
       name: 'slug',
       title: 'Slug',
@@ -27,6 +21,11 @@ export const category = defineType({
         source: 'title',
         maxLength: 96,
       },
+    }),
+    defineField({
+      name: 'intro',
+      title: 'Intro',
+      type: 'text',
     }),
   ],
 })
