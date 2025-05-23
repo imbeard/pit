@@ -12,6 +12,7 @@ import {hero} from './objects/hero'
 import {blockContent} from './objects/blockContent'
 import {blockquote} from './objects/blockquote'
 import {gallery} from './objects/gallery'
+import {twoImages} from './objects/twoImages'
 import {elementImage} from './objects/elementImage'
 import {elementVideo} from './objects/elementVideo'
 import {link} from './objects/link'
@@ -48,6 +49,7 @@ export const schemaTypes = [
   blockContent,
   blockquote,
   gallery,
+  twoImages,
   elementImage,
   elementVideo,
   seo,

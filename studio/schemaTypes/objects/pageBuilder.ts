@@ -16,6 +16,7 @@ export const pageBuilder = defineType({
         {type: 'infoSection'},
         {type: 'hero'},
         {type: 'gallery'},
+        {type: 'twoImages'},
         {type: 'blockquote'},
       ],
       options: {
