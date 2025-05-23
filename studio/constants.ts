@@ -5,5 +5,6 @@ export const PAGE_REFERENCES = [
   {type: 'partner'},
   {type: 'people'},
   {type: 'performance'},
-  //   {type: 'resource'},
+  {type: 'resource'},
+  {type: 'homepage'},
 ]

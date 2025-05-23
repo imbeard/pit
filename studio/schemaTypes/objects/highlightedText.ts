@@ -1,10 +1,10 @@
 import {defineField} from 'sanity'
-import {BlockquoteIcon} from '@sanity/icons'
+import {HighlightIcon} from '@sanity/icons'
 
-export const blockquote = defineField({
-  name: 'blockquote',
-  title: 'Blockquote',
-  icon: BlockquoteIcon,
+export const highlightedText = defineField({
+  name: 'highlightedText',
+  title: 'Highlighted Text',
+  icon: HighlightIcon,
   type: 'object',
   fields: [
     defineField({

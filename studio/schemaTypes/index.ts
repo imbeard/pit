@@ -24,6 +24,7 @@ import {cta} from './objects/cta'
 import {infoSection} from './objects/infoSection'
 import {info} from './objects/info'
 import {pageBuilder} from './objects/pageBuilder'
+import {highlightedText} from './objects/highlightedText'
 
 // singletons
 import {homepage} from './singletons/homepage'
@@ -44,12 +45,14 @@ export const schemaTypes = [
   partner,
   category,
   resource,
+
   // objects
   hero,
   blockContent,
   blockquote,
   gallery,
   twoImages,
+  highlightedText,
   elementImage,
   elementVideo,
   seo,
@@ -57,6 +60,7 @@ export const schemaTypes = [
   infoSection,
   info,
   pageBuilder,
+  
   // singletons
   homepage,
   settings,

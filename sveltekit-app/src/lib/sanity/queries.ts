@@ -1,17 +1,14 @@
-import type { PortableTextBlock } from '@portabletext/types';
-import type { ImageAsset, Slug } from '@sanity/types';
 import groq from 'groq';
 
-export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]`;
+// singletons
+export const homepageQuery = groq`*[_type == "homepage"][0]`;
+export const settingsQuery = groq`*[_type == "settings"][0]`;
 
-export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`;
-
-export interface Post {
-	_type: 'post';
-	_createdAt: string;
-	title?: string;
-	slug: Slug;
-	excerpt?: string;
-	mainImage?: ImageAsset;
-	body: PortableTextBlock[];
-}
+// documents
+export const eventsQuery = groq`*[_type == "event" && defined(slug.current)]| order(_createdAt desc)`;
+export const partnersQuery = groq`*[_type == "partner" && defined(slug.current)]| order(_createdAt desc)`;
+export const peopleQuery = groq`*[_type == "people" && defined(slug.current)]| order(_createdAt desc)`;
+export const resourceQuery = groq`*[_type == "resource" && defined(slug.current)]| order(_createdAt desc)`;
+export const performanceQuery = groq`*[_type == "performance" && defined(slug.current)]| order(_createdAt desc)`;
+export const pageQuery = groq`*[_type == "page" && defined(slug.current)]| order(_createdAt desc)`;
+export const categoryQuery = groq`*[_type == "category" && defined(slug.current)]| order(_createdAt desc)`;

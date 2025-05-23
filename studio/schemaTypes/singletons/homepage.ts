@@ -1,33 +1,22 @@
 import {defineField, defineType} from 'sanity'
-import {DocumentIcon} from '@sanity/icons'
+import {HomeIcon} from '@sanity/icons'
 
 export const homepage = defineType({
   name: 'homepage',
   title: 'Homepage',
   type: 'document',
-  icon: DocumentIcon,
+  icon: HomeIcon,
+  fieldsets: [
+    {name: 'intro', title: 'Intro', options: {collapsed: true, collapsible: true}},
+    {name: 'hero', title: 'Hero', options: {collapsed: true, collapsible: true}},
+    {name: 'main', title: 'Main', options: {collapsed: true, collapsible: true}},
+  ],
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      readOnly: true,
-      initialValue: '/',
-    }),
-    defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      readOnly: true,
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    }),
-    defineField({
-      name: 'hero',
-      title: 'Hero',
-      type: 'hero',
+      name: 'image',
+      title: 'Image',
+      type: 'elementImage',
+      fieldset: 'hero',
     }),
     defineField({
       name: 'clouds',
@@ -39,20 +28,68 @@ export const homepage = defineType({
           type: 'link',
         }),
       ],
+      fieldset: 'hero',
     }),
+
     defineField({
       name: 'intro',
       title: 'Intro',
-      type: 'text',
+      type: 'blockContent',
+      fieldset: 'intro',
     }),
     defineField({
       name: 'subtitle',
       title: 'Subtitle',
       type: 'string',
+      fieldset: 'intro',
     }),
     defineField({
       name: 'cta',
-      type: 'cta'
+      type: 'cta',
+      fieldset: 'intro',
+    }),
+
+    defineField({
+      name: 'performanceSlider',
+      type: 'gallery',
+      fieldset: 'main',
+    }),
+    defineField({
+      name: 'featuredEvent',
+      type: 'reference',
+      to: [{type: 'event'}],
+      fieldset: 'main',
+    }),
+    defineField({
+      name: 'partners',
+      title: 'Partners',
+      type: 'infoSection',
+      fieldset: 'main',
+    }),
+    defineField({
+      name: 'manifesto',
+      title: 'Manifesto',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+        }),
+        defineField({
+          name: 'content',
+          title: 'Content',
+          type: 'blockContent',
+        }),
+      ],
+      fieldset: 'main',
     }),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Homepage',
+      }
+    },
+  },
 })

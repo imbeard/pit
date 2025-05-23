@@ -13,11 +13,6 @@ export const infoSection = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'subheading',
-      title: 'Subheading',
-      type: 'string',
-    }),
-    defineField({
       name: 'content',
       title: 'Content',
       type: 'blockContent',
@@ -26,12 +21,18 @@ export const infoSection = defineType({
   preview: {
     select: {
       title: 'heading',
-      subtitle: 'subheading',
+      content: 'content',
     },
-    prepare({title}) {
+    prepare({title, content}) {
+      const firstBlockText =
+        content &&
+        content[0] &&
+        content[0].children &&
+        content[0].children[0] &&
+        content[0].children[0].text
       return {
         title: title || 'Untitled Info Section',
-        subtitle: 'Info Section',
+        subtitle: firstBlockText || 'No content',
       }
     },
   },

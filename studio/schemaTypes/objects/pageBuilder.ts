@@ -12,12 +12,12 @@ export const pageBuilder = defineType({
       title: 'Sections',
       type: 'array',
       of: [
-        {type: 'cta'},
         {type: 'infoSection'},
         {type: 'hero'},
         {type: 'gallery'},
         {type: 'twoImages'},
         {type: 'blockquote'},
+        {type: 'highlightedText'},
       ],
       options: {
         insertMenu: {

@@ -66,4 +66,10 @@ export const elementImage = defineType({
       fieldset: 'mobileImage',
     },
   ],
+  preview: {
+    select: {
+      title: 'alt',
+      media: 'asset',
+    },
+  },
 })

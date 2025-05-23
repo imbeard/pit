@@ -27,16 +27,10 @@ export const hero = defineType({
   ],
   fields: [
     defineField({
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
-      description: 'Optional heading',
-    }),
-    defineField({
       name: 'video',
       title: 'Video',
       type: 'elementVideo',
-      fieldset: 'video'
+      fieldset: 'video',
     }),
     defineField({
       name: 'image',
@@ -46,15 +40,9 @@ export const hero = defineType({
     }),
   ],
   preview: {
-    select: {
-      title: 'heading',
-    },
-    prepare(selection) {
-      const {title} = selection
-
+    prepare() {
       return {
-        title: title,
-        subtitle: 'Hero',
+        title: 'title',
       }
     },
   },

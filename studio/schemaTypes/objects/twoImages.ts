@@ -2,7 +2,7 @@ import {defineType, defineField} from 'sanity'
 
 export const twoImages = defineType({
   name: 'twoImages',
-  title: 'Two Images',
+  title: 'One / Two Images',
   type: 'object',
   fields: [
     defineField({

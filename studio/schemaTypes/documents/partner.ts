@@ -28,9 +28,16 @@ export const partner = defineType({
       },
     }),
     defineField({
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      group: 'content',
+    }),
+    defineField({
       name: 'extendedTitle',
       title: 'Extended Title',
       type: 'string',
+      description: 'i.e. "Centre for Fine Arts"',
       group: 'content',
     }),
     defineField({
@@ -49,6 +56,7 @@ export const partner = defineType({
       name: 'informations',
       title: 'Informations',
       type: 'array',
+      description: 'Location, addresses, contacts, ...',
       of: [
         defineArrayMember({
           type: 'info',
