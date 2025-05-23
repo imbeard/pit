@@ -12,3 +12,6 @@ export const resourceQuery = groq`*[_type == "resource" && defined(slug.current)
 export const performanceQuery = groq`*[_type == "performance" && defined(slug.current)]| order(_createdAt desc)`;
 export const pageQuery = groq`*[_type == "page" && defined(slug.current)]| order(_createdAt desc)`;
 export const categoryQuery = groq`*[_type == "category" && defined(slug.current)]| order(_createdAt desc)`;
+
+
+// document thumbs

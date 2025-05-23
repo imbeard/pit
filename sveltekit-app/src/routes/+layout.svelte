@@ -2,6 +2,7 @@
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import { page } from '$app/stores';
 	import LiveMode from '../components/LiveMode.svelte';
+	import "../app.css";
 </script>
 
 {#if $isPreviewing}
@@ -12,7 +13,7 @@
 {/if}
 
 <div class="container">
-	<div></div>
+	<slot />
 </div>
 
 {#if $isPreviewing}
