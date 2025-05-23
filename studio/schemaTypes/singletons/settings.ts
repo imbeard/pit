@@ -76,8 +76,19 @@ export const settings = defineType({
     }),
     defineField({
       name: 'footer',
-      type: 'array',
-      of: [{type: 'link'}],
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'text',
+          title: 'Text',
+          type: 'text'
+        }),
+        defineField({
+          name: 'contact',
+          title: 'Contact',
+          type: 'link'
+        })
+      ],
       group: 'navigation'
     }),
     defineField({

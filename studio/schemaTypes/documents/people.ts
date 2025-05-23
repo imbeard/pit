@@ -68,26 +68,7 @@ export const people = defineType({
     }),
     defineField({
       name: 'pageBuilder',
-      title: 'Page builder',
-      type: 'array',
-      of: [
-        {type: 'cta'},
-        {type: 'infoSection'},
-        {type: 'hero'},
-        {type: 'gallery'},
-        {type: 'blockquote'},
-      ],
-      options: {
-        insertMenu: {
-          views: [
-            {
-              name: 'grid',
-              previewImageUrl: (schemaTypeName) =>
-                `/static/page-builder-thumbnails/${schemaTypeName}.png`,
-            },
-          ],
-        },
-      },
+      type: 'pageBuilder',
       group: 'content',
     }),
     defineField({

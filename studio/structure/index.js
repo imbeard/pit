@@ -24,6 +24,7 @@ export const structure = (S, context) =>
       S.documentTypeListItem('performance').title('Performances'),
       S.documentTypeListItem('people').title('People'),
       S.documentTypeListItem('partner').title('Partners'),
+      S.documentTypeListItem('resource').title('Resources'),
 
       S.divider(),
 

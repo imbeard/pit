@@ -22,7 +22,7 @@ export const linkExternal = defineField({
   },
   fields: [
     defineField({
-      name: 'title',
+      name: 'label',
       type: 'string',
     }),
     defineField({

@@ -19,29 +19,32 @@ export const resource = defineType({
         maxLength: 96,
       },
     }),
-    // defineField({
-    //   name: 'downloads',
-    //   title: 'Downloads',
-    //   type: 'array',
-    //   group: 'content',
-    //   of: [
-    //     {
-    //       name: 'download',
-    //       type: 'object',
-    //       fields: [
-    //         defineField({
-    //           name: 'title',
-    //           title: 'Title',
-    //           type: 'string',
-    //         }),
-    //         defineField({
-    //           name: 'url',
-    //           title: 'Url',
-    //           type: 'file',
-    //         }),
-    //       ],
-    //     },
-    //   ],
-    // }),
+    defineField({
+      name: 'pageBuilder',
+      type: 'pageBuilder',
+    }),
+    defineField({
+      name: 'downloads',
+      title: 'Downloads',
+      type: 'array',
+      of: [
+        {
+          name: 'download',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'url',
+              title: 'Url',
+              type: 'file',
+            }),
+          ],
+        },
+      ],
+    }),
   ],
 })

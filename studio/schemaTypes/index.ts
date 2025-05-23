@@ -5,6 +5,7 @@ import {partner} from './documents/partner'
 import {event} from './documents/event'
 import {performance} from './documents/performance'
 import {category} from './documents/category'
+import {resource} from './documents/resource'
 
 // objects
 import {hero} from './objects/hero'
@@ -21,6 +22,7 @@ import {seo} from './objects/seo'
 import {cta} from './objects/cta'
 import {infoSection} from './objects/infoSection'
 import {info} from './objects/info'
+import {pageBuilder} from './objects/pageBuilder'
 
 // singletons
 import {homepage} from './singletons/homepage'
@@ -40,6 +42,7 @@ export const schemaTypes = [
   performance,
   partner,
   category,
+  resource,
   // objects
   hero,
   blockContent,
@@ -51,6 +54,7 @@ export const schemaTypes = [
   cta,
   infoSection,
   info,
+  pageBuilder,
   // singletons
   homepage,
   settings,
