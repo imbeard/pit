@@ -1,60 +1,8 @@
-@import 'tailwindcss';
-@font-face {
-	font-family: 'ABC Monument Grotesk';
-	src: url('/fonts/ABCMonumentGrotesk-Medium-Trial.woff') format('woff');
-	font-weight: 500;
-	font-display: swap;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'ABC Monument Grotesk';
-	src: url('/fonts/ABCMonumentGrotesk-MediumItalic-Trial.woff') format('woff');
-	font-weight: 500;
-	font-display: swap;
-	font-style: italic;
-}
-
-html {
-	font-size: 10px;
-}
-
-@theme {
-	--font-sans: 'ABC Monument Grotesk', 'Helvetica Neue', sans-serif;
-
-	--text-*: initial;
-	--text-s: 1.2rem;
-	--text-s--line-height: 1.3rem;
-	--text-base: 1.8rem;
-	--text-base--line-height: 2.2rem;
-	--text-lg: 3rem;
-	--text-lg--line-height: 2.8rem;
-	--text-xl: 4.2rem;
-	--text-xl--line-height: 3.6rem;
-	--text-2xl: 7.2rem;
-	--text-2xl--line-height: 5.8rem;
-
-	--color-*: initial;
-	--color-pink: #ffd7f3;
-	--color-red: #ff3748;
-	--color-brown: #9f785f;
-	--color-blue: #097cff;
-	--color-black: #000000;
-	--color-white: #ffffff;
-	--color-gray: #efefef;
-
-    --spacing: 0.5rem;
-    --spacing-grid: 8px;
-
-    --default-transition-duration: 300ms;
-    --duration-fast: 150ms;
-}
-
-@layer components {
-    .button {
-        transition: all var(--duration-fast) ease-in;
-        cursor: pointer;
-    }
+/* @layer components {
+	.button {
+		transition: all var(--duration-fast) ease-in;
+		cursor: pointer;
+	}
 	.theme-pink-red {
 		background-color: var(--color-pink);
 		color: var(--color-red);
@@ -163,4 +111,4 @@ html {
 			color: var(--color-blue);
 		}
 	}
-}
+} */

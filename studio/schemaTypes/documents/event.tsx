@@ -1,4 +1,4 @@
-import {defineField, defineType, defineArrayMember} from 'sanity'
+import {defineField, defineType} from 'sanity'
 import {SearchIcon} from '@sanity/icons'
 
 export const event = defineType({
@@ -40,9 +40,40 @@ export const event = defineType({
       group: 'content',
     }),
     defineField({
+      title: 'Theme',
+      name: 'theme',
+      type: 'string',
+      group: 'content',
+      options: {
+        list: [
+          {title: 'Pink / Red', value: 'pink-red'},
+          {title: 'Pink / Blue', value: 'pink-blue'},
+          {title: 'Pink / Brown', value: 'pink-brown'},
+          {title: 'Pink / Black', value: 'pink-black'},
+          {title: 'Red / Pink', value: 'red-pink'},
+          {title: 'Red / Black', value: 'red-black'},
+          {title: 'Brown / Pink', value: 'brown-pink'},
+          {title: 'Brown / Black', value: 'brown-black'},
+          {title: 'Gray / Blue', value: 'gray-blue'},
+          {title: 'Gray / Red', value: 'gray-red'},
+          {title: 'Blue / Pink', value: 'blue-pink'},
+          {title: 'Blue / Gray', value: 'blue-gray'},
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'elementImage',
+      group: 'content',
+    }),
+    defineField({
+      name: 'summary',
+      title: 'Summary',
+      description: 'A short summary of the event, for thumbnails',
+      type: 'text',
       group: 'content',
     }),
     defineField({

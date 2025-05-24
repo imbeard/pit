@@ -1,0 +1,176 @@
+@utility grid-12 {
+	@apply grid;
+	@apply grid-cols-12;
+	@apply gap-xs;
+}
+
+@utility grid-4 {
+	@apply grid;
+	@apply grid-cols-4;
+	@apply gap-xs;
+}
+
+@utility typo-s {
+	@apply text-s;
+	@apply tracking-tight;
+}
+
+@utility typo-base {
+	@apply text-base;
+	@apply tracking-tight;
+}
+
+@utility typo-lg {
+	@apply text-lg;
+	@apply tracking-tighter;
+}
+
+@utility typo-xl {
+	@apply text-xl;
+	@apply tracking-tighter;
+}
+
+@utility typo-2xl {
+	@apply text-2xl;
+	@apply tracking-tighter;
+}
+
+@utility theme-pink-red {
+	@apply bg-pink;
+	@apply text-red;
+
+	&.button:hover {
+		@apply bg-red;
+		@apply text-pink;
+	}
+}
+
+@utility theme-pink-blue {
+	@apply bg-pink;
+	@apply text-blue;
+
+	&.button:hover {
+		@apply bg-blue;
+		@apply text-pink;
+	}
+}
+
+@utility theme-pink-brown {
+	@apply bg-pink;
+	@apply text-brown;
+
+	&.button:hover {
+		@apply bg-brown;
+		@apply text-pink;
+	}
+}
+
+@utility theme-pink-black {
+	@apply bg-pink;
+	@apply text-black;
+
+	&.button:hover {
+		@apply bg-black;
+		@apply text-pink;
+	}
+}
+
+@utility theme-black-pink {
+	@apply bg-black;
+	@apply text-pink;
+
+	&.button:hover {
+		@apply bg-pink;
+		@apply text-black;
+	}
+}
+
+@utility theme-red-pink {
+	@apply bg-red;
+	@apply text-pink;
+
+	&.button:hover {
+		@apply bg-pink;
+		@apply text-red;
+	}
+}
+
+@utility theme-red-black {
+	@apply bg-red;
+	@apply text-black;
+
+	&.button:hover {
+		@apply bg-black;
+		@apply text-red;
+	}
+}
+
+@utility theme-brown-pink {
+	@apply bg-brown;
+	@apply text-pink;
+
+	&.button:hover {
+		@apply bg-pink;
+		@apply text-brown;
+	}
+}
+
+@utility theme-brown-gray {
+	@apply bg-brown;
+	@apply text-gray;
+
+	&.button:hover {
+		@apply bg-gray;
+		@apply text-brown;
+	}
+}
+
+@utility theme-brown-black {
+	@apply bg-brown;
+	@apply text-black;
+
+	&.button:hover {
+		@apply bg-black;
+		@apply text-brown;
+	}
+}
+
+@utility theme-gray-blue {
+	@apply bg-gray;
+	@apply text-blue;
+
+	&.button:hover {
+		@apply bg-blue;
+		@apply text-gray;
+	}
+}
+
+@utility theme-gray-red {
+	@apply bg-gray;
+	@apply text-red;
+
+	&.button:hover {
+		@apply bg-red;
+		@apply text-gray;
+	}
+}
+
+@utility theme-blue-pink {
+	@apply bg-blue;
+	@apply text-pink;
+
+	&.button:hover {
+		@apply bg-pink;
+		@apply text-blue;
+	}
+}
+
+@utility theme-blue-gray {
+	@apply bg-blue;
+	@apply text-gray;
+
+	&.button:hover {
+		@apply bg-gray;
+		@apply text-blue;
+	}
+}
