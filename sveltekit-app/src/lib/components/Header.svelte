@@ -1,4 +1,10 @@
-<nav class="w-full p-xs fixed top-0 left-0 z-99 nav">
+<script>
+	import { headerHeight } from '$lib/stores/header';
+	$: navHeight = 0;
+	$: headerHeight.set(navHeight);
+</script>
+
+<nav class="w-full p-xs fixed top-0 left-0 z-99 nav" bind:clientHeight={navHeight}>
 	<div class="logo mt-1">
 		<img src="/images/logo.svg" alt="logo" />
 	</div>

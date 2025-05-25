@@ -120,10 +120,10 @@ export const event = defineType({
       fieldset: 'details',
     }),
     defineField({
-      name: 'institutions',
-      title: 'Institutions',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'partner'}]}],
+      name: 'institution',
+      title: 'Institution',
+      type: 'reference',
+      to: [{type: 'partner'}],
       group: 'content',
     }),
     defineField({

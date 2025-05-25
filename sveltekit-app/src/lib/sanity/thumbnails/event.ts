@@ -8,5 +8,9 @@ export const eventThumb = /* groq */ `
     summary,
     start,
     end,
-    location
+    location,
+    "institution": institution-> {
+        "slug": slug.current,
+        title,
+    },
 `;
