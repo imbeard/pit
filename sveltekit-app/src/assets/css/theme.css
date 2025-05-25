@@ -42,8 +42,8 @@
 	--spacing-xs: 0.8rem;
 	--spacing-s: 1.6rem;
 
-	--tracking-tighter: -0.05rem;
-	--tracking-tight: -0.04rem;
+	--tracking-tighter: -0.05em;
+	--tracking-tight: -0.04em;
 
 	--default-transition-duration: 300ms;
 	--duration-fast: 150ms;

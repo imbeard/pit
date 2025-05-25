@@ -3,7 +3,7 @@
 	import Image from '$lib/components/element/Image.svelte';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import Link from '$lib/components/element/Link.svelte';
-	import Slider from '$lib/components/Slider.svelte';
+	import PerformanceSlider from '$lib/components/PerformanceSlider.svelte';
 
 	export let data;
 
@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		</div>
-		<Slider slides={document?.performanceSlider?.items} />
+		<PerformanceSlider slides={document?.performanceSlider} />
 	</div>
 </main>
 

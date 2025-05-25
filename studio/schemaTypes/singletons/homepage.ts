@@ -7,9 +7,9 @@ export const homepage = defineType({
   type: 'document',
   icon: HomeIcon,
   fieldsets: [
-    {name: 'intro', title: 'Intro', options: {collapsed: true, collapsible: true}},
-    {name: 'hero', title: 'Hero', options: {collapsed: true, collapsible: true}},
-    {name: 'main', title: 'Main', options: {collapsed: true, collapsible: true}},
+    {name: 'intro', title: 'Intro', options: {collapsed: false, collapsible: true}},
+    {name: 'hero', title: 'Hero', options: {collapsed: false, collapsible: true}},
+    {name: 'main', title: 'Main', options: {collapsed: false, collapsible: true}},
   ],
   fields: [
     defineField({
@@ -51,7 +51,14 @@ export const homepage = defineType({
 
     defineField({
       name: 'performanceSlider',
-      type: 'gallery',
+      type: 'array',
+      of: [
+        {
+          name: 'performance',
+          type: 'reference',
+          to: [{type: 'performance'}],
+        },
+      ],
       fieldset: 'main',
     }),
     defineField({
