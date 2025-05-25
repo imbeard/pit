@@ -1,8 +1,21 @@
 @import 'tailwindcss';
 @import './theme.css';
 @import './utilities.css';
+@source inline("grid-cols-{0..12}");
 
 html {
 	font-size: 10px;
 }
 
+.button {
+	@apply p-1 cursor-pointer;
+}
+
+@keyframes sliderDotProgress {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 100%;
+	}
+}

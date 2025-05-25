@@ -27,7 +27,7 @@ export const linkInternal = defineField({
       type: 'string',
     }),
     defineField({
-      name: 'reference',
+      name: 'url',
       type: 'reference',
       validation: (Rule) => Rule.required(),
       to: PAGE_REFERENCES,

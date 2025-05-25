@@ -12,7 +12,7 @@
 	</a>
 {/if}
 
-<div class="typo-base p-xs">
+<div class="typo-base">
 	<Header />
 	<slot />
 </div>

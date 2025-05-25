@@ -1,7 +1,34 @@
 import groq from 'groq';
 
+// fragments
+
 // singletons
-export const homepageQuery = groq`*[_type == "homepage"][0]`;
+export const homepageQuery = groq`*[_type == "homepage"][0] {
+    ...,
+    cta {
+        "link": {
+            ...,
+            source == 'linkInternal' => {
+                "category": linkInternal.url->_type,
+                "url": linkInternal.url->slug.current,
+                "typology": linkInternal.url->typology,
+                "label": linkInternal.label,
+            },
+            source == 'linkExternal' => {
+                "url": linkExternal.url,
+                "label": linkExternal.label
+            },
+            source == 'linkEmail' => {
+                "url": linkEmail.url,
+                "label": linkEmail.label
+            },
+            source == 'download' => {
+                "url": linkExternal.url,
+                "label": linkExternal.label
+            },
+        }
+    }
+}`;
 export const settingsQuery = groq`*[_type == "settings"][0]`;
 
 // documents

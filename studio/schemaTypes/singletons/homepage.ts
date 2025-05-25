@@ -45,7 +45,7 @@ export const homepage = defineType({
     }),
     defineField({
       name: 'cta',
-      type: 'cta',
+      type: 'link',
       fieldset: 'intro',
     }),
 

@@ -26,7 +26,7 @@ export const linkEmail = defineField({
       type: 'string',
     }),
     defineField({
-      name: 'email',
+      name: 'url',
       type: 'email',
     }),
   ],

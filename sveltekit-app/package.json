@@ -10,14 +10,20 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
+		"@portabletext/to-html": "^2.0.14",
 		"@sanity/asset-utils": "^2.2.1",
 		"@sanity/client": "^6.15.4",
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/svelte-loader": "^1.11.1",
 		"@sanity/visual-editing": "^2.0.0",
 		"@tailwindcss/vite": "^4.1.6",
+		"embla-carousel-autoplay": "^8.6.0",
+		"embla-carousel-fade": "^8.6.0",
+		"embla-carousel-svelte": "^8.6.0",
 		"groq": "^3.33.0",
-		"tailwindcss": "^4.1.6"
+		"htm": "^3.1.1",
+		"tailwindcss": "^4.1.6",
+		"vhtml": "^2.2.0"
 	},
 	"devDependencies": {
 		"@portabletext/svelte": "^2.1.11",

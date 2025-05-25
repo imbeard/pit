@@ -1,13 +1,13 @@
-<script lang="ts">
+<script>
 	import { getImageDimensions } from '@sanity/asset-utils';
 
 	import { urlFor } from '$lib/sanity/image';
 
 	export let image;
-	export let fit: string = 'cover';
-	export let alt: string = 'Image';
-	export let lazy: boolean = false;
-	export let preload: boolean = false;
+	export let fit = 'cover';
+	export let alt = 'Image';
+	export let lazy = false;
+	export let preload = false;
 
 	let innerWidth = 1280;
 	let src = innerWidth < 768 && image.mobileImage ? image.mobileImage.asset : image.asset;
@@ -28,7 +28,7 @@
 </svelte:head>
 
 <img
-	class="max-h-full max-w-full w-full h-auto {fit === 'contain'
+	class="max-h-full max-w-full w-full h-full {fit === 'contain'
 		? 'object-contain'
 		: 'object-cover'}"
 	loading={lazy ? 'lazy' : 'eager'}
