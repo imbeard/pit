@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import { page } from '$app/state';
+	import '../assets/css/main.css';
 	import LiveMode from '$lib/components/LiveMode.svelte';
 	import Header from '$lib/components/Header.svelte';
 </script>
