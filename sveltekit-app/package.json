@@ -12,10 +12,10 @@
 	"dependencies": {
 		"@portabletext/to-html": "^2.0.14",
 		"@sanity/asset-utils": "^2.2.1",
-		"@sanity/client": "^6.15.4",
+		"@sanity/client": "^7.3.0",
 		"@sanity/image-url": "^1.0.2",
-		"@sanity/svelte-loader": "^1.11.1",
-		"@sanity/visual-editing": "^2.0.0",
+		"@sanity/svelte-loader": "^1.13.39",
+		"@sanity/visual-editing": "^2.13.22",
 		"@sveltejs/adapter-node": "^5.2.12",
 		"@tailwindcss/vite": "^4.1.6",
 		"embla-carousel-autoplay": "^8.6.0",

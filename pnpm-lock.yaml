@@ -82,17 +82,17 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       '@sanity/client':
-        specifier: ^6.15.4
-        version: 6.29.1(debug@4.4.1)
+        specifier: ^7.3.0
+        version: 7.3.0(debug@4.4.1)
       '@sanity/image-url':
         specifier: ^1.0.2
         version: 1.1.0
       '@sanity/svelte-loader':
-        specifier: ^1.11.1
-        version: 1.13.39(@sanity/types@3.89.0(@types/react@19.1.5))(@sanity/visual-editing@2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(typescript@5.8.3)
+        specifier: ^1.13.39
+        version: 1.13.39(@sanity/types@3.89.0(@types/react@19.1.5))(@sanity/visual-editing@2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.3.0)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(typescript@5.8.3)
       '@sanity/visual-editing':
-        specifier: ^2.0.0
-        version: 2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3)
+        specifier: ^2.13.22
+        version: 2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.3.0)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3)
       '@sveltejs/adapter-node':
         specifier: ^5.2.12
         version: 5.2.12(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))
@@ -8061,14 +8061,6 @@ snapshots:
       - react-is
       - rxjs
 
-  '@sanity/presentation-comlink@1.0.20(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))':
-    dependencies:
-      '@sanity/client': 6.29.1(debug@4.4.1)
-      '@sanity/comlink': 3.0.4
-      '@sanity/visual-editing-types': 1.0.18(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))
-    transitivePeerDependencies:
-      - '@sanity/types'
-
   '@sanity/presentation-comlink@1.0.20(@sanity/client@7.3.0(debug@4.4.1))(@sanity/types@3.89.0(@types/react@19.1.5)(debug@4.4.1))':
     dependencies:
       '@sanity/client': 7.3.0(debug@4.4.1)
@@ -8076,11 +8068,6 @@ snapshots:
       '@sanity/visual-editing-types': 1.0.18(@sanity/client@7.3.0(debug@4.4.1))(@sanity/types@3.89.0(@types/react@19.1.5)(debug@4.4.1))
     transitivePeerDependencies:
       - '@sanity/types'
-
-  '@sanity/preview-url-secret@2.1.11(@sanity/client@6.29.1)':
-    dependencies:
-      '@sanity/client': 6.29.1(debug@4.4.1)
-      '@sanity/uuid': 3.0.2
 
   '@sanity/preview-url-secret@2.1.11(@sanity/client@7.3.0(debug@4.4.1))':
     dependencies:
@@ -8156,11 +8143,11 @@ snapshots:
       - react
       - use-sync-external-store
 
-  '@sanity/svelte-loader@1.13.39(@sanity/types@3.89.0(@types/react@19.1.5))(@sanity/visual-editing@2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(typescript@5.8.3)':
+  '@sanity/svelte-loader@1.13.39(@sanity/types@3.89.0(@types/react@19.1.5))(@sanity/visual-editing@2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.3.0)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(typescript@5.8.3)':
     dependencies:
       '@sanity/client': 7.3.0(debug@4.4.1)
       '@sanity/core-loader': 1.8.9(@sanity/types@3.89.0(@types/react@19.1.5))(typescript@5.8.3)
-      '@sanity/visual-editing': 2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3)
+      '@sanity/visual-editing': 2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.3.0)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3)
       '@sveltejs/kit': 2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1))
       fast-deep-equal: 3.1.3
       svelte: 4.2.20
@@ -8295,15 +8282,6 @@ snapshots:
       - react-dom
       - react-is
 
-  '@sanity/visual-editing-csm@2.0.17(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))(typescript@5.8.3)':
-    dependencies:
-      '@sanity/client': 6.29.1(debug@4.4.1)
-      '@sanity/visual-editing-types': 1.0.18(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))
-      valibot: 1.1.0(typescript@5.8.3)
-    transitivePeerDependencies:
-      - '@sanity/types'
-      - typescript
-
   '@sanity/visual-editing-csm@2.0.17(@sanity/client@7.3.0)(@sanity/types@3.89.0(@types/react@19.1.5))(typescript@5.8.3)':
     dependencies:
       '@sanity/client': 7.3.0(debug@4.4.1)
@@ -8313,28 +8291,22 @@ snapshots:
       - '@sanity/types'
       - typescript
 
-  '@sanity/visual-editing-types@1.0.18(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))':
-    dependencies:
-      '@sanity/client': 6.29.1(debug@4.4.1)
-    optionalDependencies:
-      '@sanity/types': 3.89.0(@types/react@19.1.5)(debug@4.4.1)
-
   '@sanity/visual-editing-types@1.0.18(@sanity/client@7.3.0(debug@4.4.1))(@sanity/types@3.89.0(@types/react@19.1.5)(debug@4.4.1))':
     dependencies:
       '@sanity/client': 7.3.0(debug@4.4.1)
     optionalDependencies:
       '@sanity/types': 3.89.0(@types/react@19.1.5)(debug@4.4.1)
 
-  '@sanity/visual-editing@2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3)':
+  '@sanity/visual-editing@2.13.22(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.3.0)(@sanity/types@3.89.0(@types/react@19.1.5))(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(svelte@4.2.20)(typescript@5.8.3)':
     dependencies:
       '@sanity/comlink': 3.0.4
       '@sanity/icons': 3.7.0(react@19.1.0)
       '@sanity/insert-menu': 1.1.11(@emotion/is-prop-valid@1.2.2)(@sanity/types@3.89.0(@types/react@19.1.5))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
       '@sanity/mutate': 0.11.0-canary.4(xstate@5.19.3)
-      '@sanity/presentation-comlink': 1.0.20(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))
-      '@sanity/preview-url-secret': 2.1.11(@sanity/client@6.29.1)
+      '@sanity/presentation-comlink': 1.0.20(@sanity/client@7.3.0(debug@4.4.1))(@sanity/types@3.89.0(@types/react@19.1.5)(debug@4.4.1))
+      '@sanity/preview-url-secret': 2.1.11(@sanity/client@7.3.0(debug@4.4.1))
       '@sanity/ui': 2.15.18(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.18(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
-      '@sanity/visual-editing-csm': 2.0.17(@sanity/client@6.29.1)(@sanity/types@3.89.0(@types/react@19.1.5))(typescript@5.8.3)
+      '@sanity/visual-editing-csm': 2.0.17(@sanity/client@7.3.0)(@sanity/types@3.89.0(@types/react@19.1.5))(typescript@5.8.3)
       '@vercel/stega': 0.1.2
       get-random-values-esm: 1.0.2
       react: 19.1.0
@@ -8347,7 +8319,7 @@ snapshots:
       use-effect-event: 1.0.2(react@19.1.0)
       xstate: 5.19.3
     optionalDependencies:
-      '@sanity/client': 6.29.1(debug@4.4.1)
+      '@sanity/client': 7.3.0(debug@4.4.1)
       '@sveltejs/kit': 2.21.1(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1)))(svelte@4.2.20)(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1))
       svelte: 4.2.20
     transitivePeerDependencies:
