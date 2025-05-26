@@ -1,0 +1,14 @@
+[phases.setup]
+nixPkgs = ['nodejs_20', 'pnpm']
+
+[phases.install]
+cmds = [
+  'ln -sf ../pnpm-lock.yaml ./pnpm-lock.yaml',
+  'pnpm install --ignore-scripts'
+]
+
+[phases.build]
+cmds = ['pnpm run build']
+
+[start]
+cmd = 'node build'
