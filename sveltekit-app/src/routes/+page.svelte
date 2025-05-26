@@ -33,7 +33,7 @@
 		{#if events}
 			<div class="events grid-2">
 				<div class="featured-event sticky top-1"></div>
-				<div class="grid-2">
+				<div class="grid-2 gap-y-6">
 					{#each events as event}
 						{#if event !== document?.featuredEvent}
 							<EventCard thumbnail={event} />

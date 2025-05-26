@@ -20,7 +20,7 @@
   "devDependencies": {
     "concurrently": "^9.1.2",
     "prettier": "3.5.3",
-    "prettier-plugin-packagejson": "2.5.12"
+    "prettier-plugin-packagejson": "2.5.14"
   },
-  "packageManager": "pnpm@10.10.0"
+  "packageManager": "pnpm@10.11.0"
 }
