@@ -16,6 +16,11 @@ export const homepageQuery = groq`*[_type == "homepage"][0] {
     },
     performanceSlider[]-> {
         ${performanceThumb}
+    },
+    featuredEvent->{
+        ...,
+        "institution": institution->,
+        
     }
 }`;
 export const settingsQuery = groq`*[_type == "settings"][0]`;
@@ -55,19 +60,19 @@ export const categoryQuery = groq`*[
 
 
 // document entries
-export const eventsQuery = groq`*[_type == "event"]| order(_createdAt desc){
+export const eventsQuery = groq`*[_type == "event"] | order(_createdAt desc) [0...$end] {
     ${eventThumb}
 }`;
-export const partnersQuery = groq`*[_type == "partner"]| order(_createdAt desc){
+export const partnersQuery = groq`*[_type == "partner"]| order(_createdAt desc) [0...$end]{
     ${partnerThumb}
 }`;
-export const allPeopleQuery = groq`*[_type == "people"]| order(_createdAt desc){
+export const allPeopleQuery = groq`*[_type == "people"]| order(_createdAt desc) [0...$end]{
     ${peopleThumb}
 }`;
-export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc){
+export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc) [0...$end]{
     ${resourceThumb}
 }`;
-export const performancesQuery = groq`*[_type == "performance"]| order(_createdAt desc){
+export const performancesQuery = groq`*[_type == "performance"]| order(_createdAt desc) [0...$end]{
     ${performanceThumb}
 }`;
-export const categoriesQuery = groq`*[_type == "category"]| order(_createdAt desc)`;
+export const categoriesQuery = groq`*[_type == "category"]| order(_createdAt desc) [0...$end]`;

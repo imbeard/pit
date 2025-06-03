@@ -1,188 +1,147 @@
 @utility grid-12 {
-	@apply grid;
-	@apply grid-cols-12;
-	@apply gap-xs;
+	@apply grid grid-cols-12 gap-xs;
 }
 
 @utility grid-4 {
-	@apply grid;
-	@apply grid-cols-4;
-	@apply gap-xs;
+	@apply grid grid-cols-4 gap-xs;
 }
 
 @utility grid-3 {
-	@apply grid;
-	@apply grid-cols-3;
-	@apply gap-xs;
+	@apply grid grid-cols-3 gap-xs;
 }
 
 @utility grid-2 {
-	@apply grid;
-	@apply grid-cols-2;
-	@apply gap-xs;
+	@apply grid grid-cols-2 gap-xs;
 }
 
 @utility typo-s {
-	@apply text-s;
-	@apply tracking-tight;
+	@apply text-s tracking-tight;
 }
 
 @utility typo-base {
-	@apply text-base;
-	@apply tracking-tight;
+	@apply text-base tracking-tight;
 }
 
 @utility typo-lg {
-	@apply text-lg;
-	@apply tracking-tighter;
+	@apply text-lg tracking-tighter;
 }
 
 @utility typo-xl {
-	@apply text-xl;
-	@apply tracking-tighter;
+	@apply text-xl tracking-tighter;
 }
 
 @utility typo-2xl {
-	@apply text-2xl;
-	@apply tracking-tighter;
+	@apply text-2xl tracking-tighter;
 }
 
 @utility theme-pink-red {
-	@apply bg-pink;
-	@apply text-red;
+	@apply bg-pink text-red;
 
 	&.button:hover {
-		@apply bg-red;
-		@apply text-pink;
+		@apply bg-red text-pink;
 	}
 }
 
 @utility theme-pink-blue {
-	@apply bg-pink;
-	@apply text-blue;
+	@apply bg-pink text-blue;
 
 	&.button:hover {
-		@apply bg-blue;
-		@apply text-pink;
+		@apply bg-blue text-pink;
 	}
 }
 
 @utility theme-pink-brown {
-	@apply bg-pink;
-	@apply text-brown;
+	@apply bg-pink text-brown;
 
 	&.button:hover {
-		@apply bg-brown;
-		@apply text-pink;
+		@apply bg-brown text-pink;
 	}
 }
 
 @utility theme-pink-black {
-	@apply bg-pink;
-	@apply text-black;
+	@apply bg-pink text-black;
 
 	&.button:hover {
-		@apply bg-black;
-		@apply text-pink;
+		@apply bg-black text-pink;
 	}
 }
 
 @utility theme-black-pink {
-	@apply bg-black;
-	@apply text-pink;
+	@apply bg-black text-pink;
 
 	&.button:hover {
-		@apply bg-pink;
-		@apply text-black;
+		@apply bg-pink text-black;
 	}
 }
 
 @utility theme-red-pink {
-	@apply bg-red;
-	@apply text-pink;
+	@apply bg-red text-pink;
 
 	&.button:hover {
-		@apply bg-pink;
-		@apply text-red;
+		@apply bg-pink text-red;
 	}
 }
 
 @utility theme-red-black {
-	@apply bg-red;
-	@apply text-black;
+	@apply bg-red text-black;
 
 	&.button:hover {
-		@apply bg-black;
-		@apply text-red;
+		@apply bg-black text-red;
 	}
 }
 
 @utility theme-brown-pink {
-	@apply bg-brown;
-	@apply text-pink;
+	@apply bg-brown text-pink;
 
 	&.button:hover {
-		@apply bg-pink;
-		@apply text-brown;
+		@apply bg-pink text-brown;
 	}
 }
 
 @utility theme-brown-gray {
-	@apply bg-brown;
-	@apply text-gray;
+	@apply bg-brown text-gray;
 
 	&.button:hover {
-		@apply bg-gray;
-		@apply text-brown;
+		@apply bg-gray text-brown;
 	}
 }
 
 @utility theme-brown-black {
-	@apply bg-brown;
-	@apply text-black;
+	@apply bg-brown text-black;
 
 	&.button:hover {
-		@apply bg-black;
-		@apply text-brown;
+		@apply bg-black text-brown;
 	}
 }
 
 @utility theme-gray-blue {
-	@apply bg-gray;
-	@apply text-blue;
+	@apply bg-gray text-blue;
 
 	&.button:hover {
-		@apply bg-blue;
-		@apply text-gray;
+		@apply bg-blue text-gray;
 	}
 }
 
 @utility theme-gray-red {
-	@apply bg-gray;
-	@apply text-red;
+	@apply bg-gray text-red;
 
 	&.button:hover {
-		@apply bg-red;
-		@apply text-gray;
+		@apply bg-red text-gray;
 	}
 }
 
 @utility theme-blue-pink {
-	@apply bg-blue;
-	@apply text-pink;
+	@apply bg-blue text-pink;
 
 	&.button:hover {
-		@apply bg-pink;
-		@apply text-blue;
+		@apply bg-pink text-blue;
 	}
 }
 
 @utility theme-blue-gray {
-	@apply bg-blue;
-	@apply text-gray;
+	@apply bg-blue text-gray;
 
 	&.button:hover {
-		@apply bg-gray;
-		@apply text-blue;
+		@apply bg-gray text-blue;
 	}
 }

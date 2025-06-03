@@ -27,5 +27,12 @@ export const category = defineType({
       title: 'Intro',
       type: 'text',
     }),
+    defineField({
+      name: 'featuredEvents',
+      title: 'Featured Events',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'event'}]}],
+      hidden: ({document}) => document?.title?.toLowerCase() !== 'events',
+    }),
   ],
 })

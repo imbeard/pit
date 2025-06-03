@@ -1,16 +1,20 @@
 <script>
 	// @ts-nocheck
+	import { headerHeight } from '$lib/stores/header';
 	import Image from '$lib/components/element/Image.svelte';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import Link from '$lib/components/element/Link.svelte';
 	import PerformanceSlider from '$lib/components/PerformanceSlider.svelte';
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
+	import FeaturedEvent from '$lib/components/thumbnails/FeaturedEvent.svelte';
+	import Marquee from '$lib/components/element/Marquee.svelte';
 
 	export let data;
 
 	$: document = data?.page?.data;
 	$: events = data?.events?.data;
-	$: console.log(events);
+	$: partners = data?.partners?.data;
+	$: console.log(data);
 </script>
 
 <main>
@@ -32,7 +36,9 @@
 		<PerformanceSlider slides={document?.performanceSlider} />
 		{#if events}
 			<div class="events grid-2">
-				<div class="featured-event sticky top-1"></div>
+				<div class="featured-event sticky">
+					<FeaturedEvent thumbnail={document?.featuredEvent} />
+				</div>
 				<div class="grid-2 gap-y-6">
 					{#each events as event}
 						{#if event !== document?.featuredEvent}
@@ -45,6 +51,11 @@
 				</div>
 			</div>
 		{/if}
+		<div class="flex flex-col gap-1">
+			<h3 class="typo-lg">{document?.partners.heading}</h3>
+			<PortableText data={document?.partners.content} />
+			<Marquee data={partners} />
+		</div>
 	</div>
 </main>
 
@@ -54,9 +65,9 @@
 		background: linear-gradient(rgba(185, 185, 185, 0) 15%, rgba(185, 185, 185, 1) 70%);
 	}
 	.featured-event {
-		background-color: red;
 		width: 100%;
-		min-height: calc(100svh - var(--spacing-xs) * 2);
-		aspect-ratio: 0.82;
+		top: calc(70px);
+		height: calc(100svh - var(--spacing-xs) - 70px);
+		/* aspect-ratio: 0.82; */
 	}
 </style>

@@ -2,6 +2,7 @@
 @import './theme.css';
 @import './utilities.css';
 @source inline("grid-cols-{0..12}");
+@source inline("theme-{pink,red,blue,black,brown,gray}-{pink,red,blue,black,brown,gray}");
 
 html {
 	font-size: 10px;
