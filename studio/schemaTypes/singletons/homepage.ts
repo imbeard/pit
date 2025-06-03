@@ -74,6 +74,28 @@ export const homepage = defineType({
       fieldset: 'main',
     }),
     defineField({
+      name: 'featuredArtists',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'people'}],
+        },
+      ],
+      fieldset: 'main',
+    }),
+    defineField({
+      name: 'featuredPartners',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'partner'}],
+        },
+      ],
+      fieldset: 'main',
+    }),
+    defineField({
       name: 'manifesto',
       title: 'Manifesto',
       type: 'object',

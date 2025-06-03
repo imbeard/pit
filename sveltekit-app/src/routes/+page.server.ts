@@ -5,6 +5,7 @@ export const load: PageServerLoad = async (event) => {
 	const page = await loadQuery(homepageQuery);
 	const events = await loadQuery(eventsQuery, { end: 4 });
 	const partners = await loadQuery(partnersQuery, { end: 100 });
+
 	return { 
 		page,
 		events,

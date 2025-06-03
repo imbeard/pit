@@ -4,3 +4,12 @@ export const peopleThumb = /* groq */ `
     name,
     country,
 `;
+
+export const featuredPeopleThumb = /* groq */ ` 
+    _id,
+    "slug": slug.current,
+    name,
+    country,
+    image,
+    summary
+`;

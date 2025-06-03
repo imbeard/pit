@@ -4,3 +4,11 @@ export const partnerThumb = /* groq */ `
     logo,
     title,
 `;
+
+export const featuredPartnerThumb = /* groq */ ` 
+    _id,
+    "slug": slug.current,
+    title,
+    image,
+    description
+`;

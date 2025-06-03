@@ -7,6 +7,8 @@
 	import PerformanceSlider from '$lib/components/PerformanceSlider.svelte';
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
 	import FeaturedEvent from '$lib/components/thumbnails/FeaturedEvent.svelte';
+	import FeaturedArtist from '$lib/components/thumbnails/FeaturedArtist.svelte';
+	import FeaturedPartner from '$lib/components/thumbnails/FeaturedPartner.svelte';
 	import Marquee from '$lib/components/element/Marquee.svelte';
 
 	export let data;
@@ -14,6 +16,9 @@
 	$: document = data?.page?.data;
 	$: events = data?.events?.data;
 	$: partners = data?.partners?.data;
+	$: activeFeaturedArtist = document?.featuredArtists[0];
+	$: activeFeaturedPartner = document?.featuredPartners[0];
+
 	$: console.log(data);
 </script>
 
@@ -54,7 +59,17 @@
 		<div class="flex flex-col gap-1">
 			<h3 class="typo-lg">{document?.partners.heading}</h3>
 			<PortableText data={document?.partners.content} />
-			<Marquee data={partners} />
+			<div class="relative">
+				<Marquee data={partners} />
+			</div>
+		</div>
+		<div class="featured-lists grid-2">
+			<div class="featured-thumb">
+				<FeaturedArtist thumbnail={activeFeaturedArtist} />
+			</div>
+			<div class="featured-thumb">
+				<FeaturedPartner thumbnail={activeFeaturedPartner} />
+			</div>
 		</div>
 	</div>
 </main>
@@ -69,5 +84,8 @@
 		top: calc(70px);
 		height: calc(100svh - var(--spacing-xs) - 70px);
 		/* aspect-ratio: 0.82; */
+	}
+	.featured-thumb {
+		aspect-ratio: 0.89;
 	}
 </style>

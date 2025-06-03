@@ -2,8 +2,6 @@
 	import Image from '$lib/components/element/Image.svelte';
 	import { formatDate } from '$lib/utils';
 	export let thumbnail;
-
-	$: console.log(thumbnail);
 	$: theme = `theme-${thumbnail.theme}`;
 </script>
 

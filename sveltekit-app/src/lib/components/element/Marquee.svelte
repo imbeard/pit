@@ -7,7 +7,7 @@
 	$: console.log(data);
 </script>
 
-<div class="marquee3k overflow-hidden" data-speed="0.25" data-reverse="bool" data-pausable="bool">
+<div class="marquee3k overflow-hidden absolute left-0 transform -translate-x-xs" data-speed="0.25" data-reverse="bool" data-pausable="bool">
 	<div>
 		{#each data as item}
 			<div class="inline-block typo-s h-2.5">
@@ -22,7 +22,10 @@
 </div>
 
 <style>
+    .marquee3k {
+        width: calc(100% + var(--spacing-xs) * 2);
+    }
 	.marquee3k div > div {
-		padding-inline: var(--spacing-xs);
+		padding-inline: 6rem;
 	}
 </style>

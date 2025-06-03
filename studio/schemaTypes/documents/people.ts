@@ -44,6 +44,12 @@ export const people = defineType({
       type: 'string',
       group: 'content',
     }),
+    defineField({
+      name: 'summary',
+      title: 'Summary',
+      type: 'blockContent',
+      group: 'content',
+    }),
     {
       title: 'Country',
       name: 'country',

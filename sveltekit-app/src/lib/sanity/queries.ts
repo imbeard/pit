@@ -1,12 +1,11 @@
 import groq from 'groq';
 import { performanceThumb } from './thumbnails/performance';
 import { eventThumb } from './thumbnails/event';
-import { peopleThumb } from './thumbnails/people';
-import { partnerThumb } from './thumbnails/partner';
+import { peopleThumb, featuredPeopleThumb } from './thumbnails/people';
+import { partnerThumb, featuredPartnerThumb } from './thumbnails/partner';
 import { resourceThumb } from './thumbnails/resource';
 
 import { link } from './fragments/link';
-
 
 // singletons
 export const homepageQuery = groq`*[_type == "homepage"][0] {
@@ -20,9 +19,15 @@ export const homepageQuery = groq`*[_type == "homepage"][0] {
     featuredEvent->{
         ...,
         "institution": institution->,
-        
-    }
+    },
+    featuredArtists[]-> {
+        ${featuredPeopleThumb}
+    },
+    featuredPartners[]-> {
+        ${featuredPartnerThumb}
+    },
 }`;
+
 export const settingsQuery = groq`*[_type == "settings"][0]`;
 
 
@@ -56,6 +61,7 @@ export const categoryQuery = groq`*[
     _type == "category" 
     && defined(slug.current) 
     && slug.current == $slug]| order(_createdAt desc)`;
+
 
 
 
