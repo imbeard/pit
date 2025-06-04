@@ -4,19 +4,13 @@ export const elementVideo = defineType({
   name: 'elementVideo',
   title: 'Video',
   type: 'object',
-  fieldsets: [
-    {
-      name: 'mobileVideo',
-      title: 'Mobile Video',
-      description: 'Does the video have a source on mobile?',
-      options: {
-        collapsible: true,
-        collapsed: true,
-        modal: {type: 'popover'},
-      },
-    },
-  ],
   fields: [
+    {
+      name: 'poster',
+      title: 'Poster',
+      type: 'image',
+      description: 'Optional poster image for the video',
+    },
     {
       name: 'url',
       title: 'Video Url',
@@ -37,35 +31,61 @@ export const elementVideo = defineType({
     {
       title: 'Caption Text',
       name: 'caption',
-      type: 'string',
+      type: 'blockContent',
       description: 'Optional caption for the video',
     },
     // mobileVideo
     {
-      name: 'mobileUrl',
-      title: 'Mobile Video Url',
-      type: 'url',
-      validation: (Rule) => Rule.required(),
-      fieldset: 'mobileVideo',
+      name: 'hasMobile',
+      title: 'Has Mobile Video?',
+      description: 'Does the video have another source for mobile?',
+      type: 'boolean',
     },
     {
-      title: 'Mobile Alternative Text',
-      name: 'mobileAlt',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-      description:
-        'Alt text makes web content accessible to people with visual impairments by providing them with a description of the media on the web page',
-      options: {
-        isHighlighted: true,
-      },
-      fieldset: 'mobileVideo',
-    },
-    {
-      title: 'Mobile Caption Text',
-      name: 'mobileCaption',
-      type: 'string',
-      description: 'Optional caption for the video',
-      fieldset: 'mobileVideo',
+      name: 'mobileVideo',
+      title: 'Mobile Video',
+      type: 'object',
+      hidden: ({parent}) => parent?.hasMobile !== true,
+      fields: [
+        {
+          name: 'poster',
+          title: 'Poster',
+          type: 'image',
+          description: 'Optional poster image for the video',
+        },
+        {
+          name: 'url',
+          title: 'Video Url',
+          type: 'url',
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          title: 'Alternative Text',
+          name: 'alt',
+          type: 'string',
+          description:
+            'Alt text makes web content accessible to people with visual impairments by providing them with a description of the media on the web page',
+          options: {
+            isHighlighted: true,
+          },
+        },
+        {
+          title: 'Caption Text',
+          name: 'caption',
+          type: 'blockContent',
+          description: 'Optional caption for the video',
+        },
+      ],
     },
   ],
+  preview: {
+    select: {
+      media: 'poster',
+    },
+    prepare({media}) {
+      return {
+        media,
+      }
+    },
+  },
 })

@@ -7,18 +7,6 @@ export const elementImage = defineType({
   options: {
     hotspot: true,
   },
-  fieldsets: [
-    {
-      name: 'mobileImage',
-      title: 'Mobile Image',
-      description: 'Does the image have a different format on mobile?',
-      options: {
-        collapsible: true,
-        collapsed: true,
-        modal: {type: 'popover'},
-      },
-    },
-  ],
   fields: [
     {
       title: 'Alternative Text',
@@ -34,36 +22,39 @@ export const elementImage = defineType({
     {
       title: 'Caption Text',
       name: 'caption',
-      type: 'string',
+      type: 'blockContent',
       description: 'Optional caption for the image',
     },
     // mobileImage
     {
-      title: 'Mobile Image',
+      name: 'hasMobile',
+      title: 'Has Mobile Image?',
+      description: 'Does the image have another source for mobile?',
+      type: 'boolean',
+    },
+    {
       name: 'mobileImage',
+      title: 'Mobile Image',
       type: 'image',
-      fieldset: 'mobileImage',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      title: 'Mobile Alternative Text',
-      name: 'mobileAlt',
-      type: 'string',
-      description:
-        'Alt text makes web content accessible to people with visual impairments by providing them with a description of the images on the web page',
-      options: {
-        isHighlighted: true,
-      },
-      fieldset: 'mobileImage',
-    },
-    {
-      title: 'Mobile Caption Text',
-      name: 'mobileCaption',
-      type: 'string',
-      description: 'Optional caption for the image',
-      fieldset: 'mobileImage',
+      hidden: ({parent}) => parent?.hasMobile !== true,
+      fields: [
+        {
+          title: 'Alternative Text',
+          name: 'alt',
+          type: 'string',
+          description:
+            'Alt text makes web content accessible to people with visual impairments by providing them with a description of the images on the web page',
+          options: {
+            isHighlighted: true,
+          },
+        },
+        {
+          title: 'Caption Text',
+          name: 'caption',
+          type: 'blockContent',
+          description: 'Optional caption for the image',
+        },
+      ],
     },
   ],
   preview: {
