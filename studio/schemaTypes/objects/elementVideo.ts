@@ -21,7 +21,6 @@ export const elementVideo = defineType({
       title: 'Alternative Text',
       name: 'alt',
       type: 'string',
-      validation: (Rule) => Rule.required(),
       description:
         'Alt text makes web content accessible to people with visual impairments by providing them with a description of the media on the web page',
       options: {

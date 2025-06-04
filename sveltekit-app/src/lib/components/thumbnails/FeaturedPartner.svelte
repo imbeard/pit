@@ -2,8 +2,6 @@
 	import Image from '$lib/components/element/Image.svelte';
 	import PortableText from '../element/PortableText.svelte';
 	export let thumbnail;
-
-	$: console.log(thumbnail);
 </script>
 
 <a

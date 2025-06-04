@@ -20,6 +20,16 @@ export const resource = defineType({
       },
     }),
     defineField({
+      name: 'typology',
+      title: 'Typology',
+      type: 'string',
+    }),
+    defineField({
+      name: 'thumbnail',
+      title: 'Thumbnail',
+      type: 'elementImage',
+    }),
+    defineField({
       name: 'pageBuilder',
       type: 'pageBuilder',
     }),
@@ -47,4 +57,11 @@ export const resource = defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'typology',
+      media: 'thumbnail',
+    },
+  },
 })

@@ -4,7 +4,6 @@
 	import { onMount } from 'svelte';
 	export let data;
 	onMount(() => Marquee3k.init());
-	$: console.log(data);
 </script>
 
 <div class="marquee3k overflow-hidden absolute left-0 transform -translate-x-xs" data-speed="0.25" data-reverse="bool" data-pausable="bool">
