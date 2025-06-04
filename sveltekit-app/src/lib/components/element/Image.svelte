@@ -9,10 +9,9 @@
 	export let lazy = false;
 	export let preload = false;
 
-	let innerWidth = 1280;
-	let src = innerWidth < 768 && image.mobileImage ? image.mobileImage.asset : image.asset;
-
-	let aspectRatio = getImageDimensions(src).width / getImageDimensions(src).height;
+	$: innerWidth = 1280;
+	$: src = innerWidth < 768 && image.mobileImage ? image.mobileImage.asset : image.asset;
+	$: aspectRatio = getImageDimensions(src).width / getImageDimensions(src).height;
 </script>
 
 <svelte:window bind:innerWidth />

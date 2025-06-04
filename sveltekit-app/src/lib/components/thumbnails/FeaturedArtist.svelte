@@ -5,19 +5,22 @@
 </script>
 
 <a
-	href="/artists/{thumbnail.slug.current}"
-	class="flex flex-col justify-between p-2 bg-white text-red h-full relative overflow-hidden"
+	href="/artists/{thumbnail?.slug}"
+	class="flex flex-col justify-between p-2 bg-white text-red relative h-full overflow-hidden"
 >
-	<div class="absolute top-1/2 left-0 transform -translate-y-1/2 w-full p-2">
-		<Image image={thumbnail.image} fit="contain" />
-	</div>
+	{#if thumbnail.image}
+		<div class="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+			<Image image={thumbnail?.image} fit="cover" />
+		</div>
+	{/if}
+
 	<div class="z-10">
 		<div class="typo-base text-center pt-xs">Artist</div>
-		<h2 class="typo-2xl text-center">{thumbnail.name}</h2>
+		<h2 class="typo-2xl text-center">{thumbnail?.name}</h2>
 	</div>
 	<div class="typo-2xl flex flex-col gap-1 z-10">
 		<div class="typo-base text-center -rotate-4 pb-1">
-            <PortableText data={thumbnail.summary} />
-        </div>
+			<PortableText data={thumbnail?.summary} />
+		</div>
 	</div>
 </a>

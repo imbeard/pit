@@ -18,8 +18,6 @@
 	$: partners = data?.partners?.data;
 	$: activeFeaturedArtist = document?.featuredArtists[0];
 	$: activeFeaturedPartner = document?.featuredPartners[0];
-
-	$: console.log(data);
 </script>
 
 <main>
@@ -64,11 +62,39 @@
 			</div>
 		</div>
 		<div class="featured-lists grid-2">
-			<div class="featured-thumb">
-				<FeaturedArtist thumbnail={activeFeaturedArtist} />
+			<div class="featured-thumb-container">
+				<div class="featured-thumb">
+					<FeaturedArtist thumbnail={activeFeaturedArtist} />
+				</div>
+				<div class="list pt-xs flex gap-xs justify-center">
+					{#each document?.featuredArtists as artist}
+						<button
+							class="artist p-1 cursor-pointer"
+							on:click={() => (activeFeaturedArtist = artist)}
+							class:active={artist === activeFeaturedArtist}>{artist.name}</button
+						>
+					{/each}
+				</div>
+				<div class="w-full flex justify-center mt-xs">
+					<a href="/people" class="p-1 theme-red-pink cursor-pointer button">View People &nearr;</a>
+				</div>
 			</div>
-			<div class="featured-thumb">
-				<FeaturedPartner thumbnail={activeFeaturedPartner} />
+			<div class="featured-thumb-container">
+				<div class="featured-thumb">
+					<FeaturedPartner thumbnail={activeFeaturedPartner} />
+				</div>
+				<div class="list pt-xs flex gap-xs justify-center">
+					{#each document?.featuredPartners as partner}
+						<button
+							class="partner p-1 cursor-pointer"
+							on:click={() => (activeFeaturedPartner = partner)}
+							class:active={partner === activeFeaturedPartner}>{partner.title}</button
+						>
+					{/each}
+				</div>
+				<div class="w-full flex justify-center mt-xs">
+					<a href="/partners" class="p-1 theme-blue-pink cursor-pointer button">View Partners &nearr;</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -85,7 +111,32 @@
 		height: calc(100svh - var(--spacing-xs) - 70px);
 		/* aspect-ratio: 0.82; */
 	}
+
+	.featured-thumb-container {
+		height: 100%;
+	}
+
 	.featured-thumb {
-		aspect-ratio: 0.89;
+		/* aspect-ratio: 0.89; */
+		height: calc(100svh - var(--spacing-xs) - 70px);
+		width: 100%;
+	}
+
+	button.artist,
+	button.partner {
+		background-color: var(--color-gray);
+		transition: all 0.2s ease-in;
+	}
+
+	button.artist.active {
+		background-color: transparent;
+		transition: all 0.2s ease-in;
+		rotate: -3.65deg;
+	}
+
+	button.partner.active {
+		background-color: transparent;
+		transition: all 0.2s ease-in;
+		rotate: 12deg;
 	}
 </style>
