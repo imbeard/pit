@@ -6,7 +6,7 @@
 	export let slides = [];
 	let options = { loop: true, align: 'start' };
 	let delay = 3000;
-	let plugins = [Autoplay({ delay: delay })];
+	let plugins = [];
 </script>
 
 <div class="embla">

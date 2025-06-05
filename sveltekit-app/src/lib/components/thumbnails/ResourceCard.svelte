@@ -4,8 +4,8 @@
 	export let thumbnail;
 </script>
 
-<a href="/resources/{thumbnail.slug}" class="grid-2 border-b border-t border-gray">
-	<div class="cover-image py-xs">
+<a href="/resources/{thumbnail.slug}" class="grid-2 border-b border-t border-gray h-full py-xs">
+	<div class="cover-image">
 		{#if thumbnail.image}
 			<Image image={thumbnail.image} fit="cover" />
 		{:else}
