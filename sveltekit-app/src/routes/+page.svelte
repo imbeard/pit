@@ -5,7 +5,11 @@
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import Link from '$lib/components/element/Link.svelte';
 	import PerformanceSlider from '$lib/components/PerformanceSlider.svelte';
+	import ResourcesSlider from '$lib/components/ResourcesSlider.svelte';
+
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
+	import ResourceCard from '$lib/components/thumbnails/ResourceCard.svelte';
+
 	import FeaturedEvent from '$lib/components/thumbnails/FeaturedEvent.svelte';
 	import FeaturedArtist from '$lib/components/thumbnails/FeaturedArtist.svelte';
 	import FeaturedPartner from '$lib/components/thumbnails/FeaturedPartner.svelte';
@@ -16,29 +20,34 @@
 	$: document = data?.page?.data;
 	$: events = data?.events?.data;
 	$: partners = data?.partners?.data;
+	$: resources = data?.resources?.data;
+
 	$: activeFeaturedArtist = document?.featuredArtists[0];
 	$: activeFeaturedPartner = document?.featuredPartners[0];
 </script>
 
 <main>
-	<div class="hero-home w-full flex items-center justify-center overflow-hidden">
+	<section class="hero-home w-full flex items-center justify-center overflow-hidden">
 		<Image image={document?.image} alt="hero" fit="contain" />
-	</div>
+	</section>
+
 	<div class="page p-xs flex flex-col gap-12">
-		<div class="typo-xl text-center pt-12 w-full">
+		<section class="typo-xl text-center pt-12 w-full">
 			<div class="px-4">
 				<PortableText data={document?.intro} />
 			</div>
 			<div class="pt-1 pt flex justify-between typo-base items-center">
 				<div class="max-w-md text-center">{document?.subtitle}</div>
 				<div class="theme-pink-red button">
-					<Link to={document?.cta.link} />
+					<Link to={document?.cta?.link} />
 				</div>
 			</div>
-		</div>
+		</section>
+
 		<PerformanceSlider slides={document?.performanceSlider} />
+
 		{#if events}
-			<div class="events grid-2">
+			<section class="events grid-2">
 				<div class="featured-event sticky">
 					<FeaturedEvent thumbnail={document?.featuredEvent} />
 				</div>
@@ -49,19 +58,21 @@
 						{/if}
 					{/each}
 				</div>
-				<div class="col-start-2 pt-5 pb-1">
-					<a class="theme-black-pink button" href="/events">View events &nearr;</a>
-				</div>
-			</div>
+				<a class="col-start-2 mt-5 theme-black-pink button w-fit" href="/events"
+					>View events &nearr;</a
+				>
+			</section>
 		{/if}
-		<div class="flex flex-col gap-1">
+
+		<section class="flex flex-col gap-1">
 			<h3 class="typo-lg">{document?.partners.heading}</h3>
 			<PortableText data={document?.partners.content} />
 			<div class="relative">
 				<Marquee data={partners} />
 			</div>
-		</div>
-		<div class="featured-lists grid-2">
+		</section>
+
+		<section class="featured-lists grid-2">
 			<div class="featured-thumb-container">
 				<div class="featured-thumb">
 					<FeaturedArtist thumbnail={activeFeaturedArtist} />
@@ -69,14 +80,14 @@
 				<div class="list pt-xs flex gap-xs justify-center">
 					{#each document?.featuredArtists as artist}
 						<button
-							class="artist p-1 cursor-pointer"
+							class="artist cursor-pointer button"
 							on:click={() => (activeFeaturedArtist = artist)}
 							class:active={artist === activeFeaturedArtist}>{artist.name}</button
 						>
 					{/each}
 				</div>
 				<div class="w-full flex justify-center mt-xs">
-					<a href="/people" class="p-1 theme-red-pink cursor-pointer button">View People &nearr;</a>
+					<a href="/people" class="theme-red-pink cursor-pointer button">View People &nearr;</a>
 				</div>
 			</div>
 			<div class="featured-thumb-container">
@@ -86,17 +97,26 @@
 				<div class="list pt-xs flex gap-xs justify-center">
 					{#each document?.featuredPartners as partner}
 						<button
-							class="partner p-1 cursor-pointer"
+							class="partner button cursor-pointer"
 							on:click={() => (activeFeaturedPartner = partner)}
 							class:active={partner === activeFeaturedPartner}>{partner.title}</button
 						>
 					{/each}
 				</div>
 				<div class="w-full flex justify-center mt-xs">
-					<a href="/partners" class="p-1 theme-blue-pink cursor-pointer button">View Partners &nearr;</a>
+					<a href="/partners" class="theme-blue-pink cursor-pointer button">View Partners &nearr;</a
+					>
 				</div>
 			</div>
-		</div>
+		</section>
+
+		<section>
+			<div class="flex justify-between w-full items-center pb-xs">
+				<h3 class="typo-lg">Resources</h3>
+				<a href="/partners" class="theme-pink-blue cursor-pointer button">View All &nearr;</a>
+			</div>
+			<ResourcesSlider slides={resources} />
+		</section>
 	</div>
 </main>
 

@@ -9,7 +9,7 @@ html {
 }
 
 .button {
-	@apply p-1 cursor-pointer;
+	@apply p-1 cursor-pointer leading-1;
 }
 
 @keyframes sliderDotProgress {

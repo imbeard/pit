@@ -2,16 +2,23 @@
 	export let to;
 	export let target = 'auto';
 
-	let label = to.label;
-	let href = to.url;
-	let category = to.category;
+	let label;
+	let href;
+	let category;
 
-	if (to.source === 'linkEmail') {
-		href = 'mailto:' + to.url;
+	if (to?.source === 'linkEmail') {
+		href = 'mailto:' + to?.linkEmail?.url;
+		label = to?.linkEmail?.label;
 	}
 
-	if (to.source === 'linkInternal') {
-		href = `${category}/` + to.url;
+	if (to?.source === 'linkInternal') {
+		href = `${category}/` + to?.linkInternal?.url;
+		label = to?.linkInternal?.label;
+	}
+
+	if (to?.source === 'linkExternal') {
+		href = to?.linkExternal?.url;
+		label = to?.linkExternal?.label;
 	}
 </script>
 

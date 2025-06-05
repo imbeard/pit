@@ -29,7 +29,6 @@ export const linkExternal = defineField({
       name: 'url',
       title: 'URL',
       type: 'url',
-      validation: (Rule) => Rule.required().uri({scheme: ['http', 'https']}),
     }),
     defineField({
       title: 'Open in a new window?',

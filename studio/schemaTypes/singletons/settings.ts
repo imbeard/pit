@@ -60,21 +60,6 @@ export const settings = defineType({
       group: 'company'
     }),
     defineField({
-      name: 'logo',
-      group: 'company',
-      type: 'image',
-      description: 'Upload the logo in SVG format',
-      fieldset: 'company'
-    }),
-    defineField({
-      name: 'footerLogo',
-      title: 'Footer Logo',
-      group: 'company',
-      type: 'image',
-      description: 'Upload the logo in SVG format',
-      fieldset: 'company'
-    }),
-    defineField({
       name: 'footer',
       type: 'object',
       fields: [

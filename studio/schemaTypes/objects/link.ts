@@ -18,6 +18,7 @@ export const link = defineType({
           {title: 'URL', value: 'linkExternal'},
           {title: 'Email', value: 'linkEmail'},
           {title: 'Download', value: 'download'},
+          {title: 'Phone', value: 'phone'},
         ],
         layout: 'radio',
         direction: 'horizontal',
@@ -48,6 +49,24 @@ export const link = defineType({
       title: 'Download',
       type: 'file',
       hidden: ({parent}) => parent?.source !== 'download',
+    }),
+
+    defineField({
+      name: 'phone',
+      title: 'Phone',
+      type: 'object',
+      hidden: ({parent}) => parent?.source !== 'phone',
+      fields: [
+        defineField({
+          name: 'label',
+          type: 'string',
+        }),
+        defineField({
+          name: 'url',
+          title: 'URL',
+          type: 'string',
+        }),
+      ],
     }),
   ],
 })
