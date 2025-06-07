@@ -7,9 +7,9 @@
 </script>
 
 <nav class="w-full p-xs fixed top-0 left-0 z-99 nav" bind:clientHeight={navHeight}>
-	<div class="logo mt-1">
+	<a href="/" class="logo mt-1">
 		<img src="/images/logo.svg" alt="logo" />
-	</div>
+	</a>
 	<div class="flex">
 		<a
 			class="py-s px-1 hover:theme-pink-red"

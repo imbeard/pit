@@ -33,11 +33,6 @@ export const category = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'link',
-      title: 'Link',
-      type: 'link',
-    }),
-    defineField({
       name: 'featuredEvents',
       title: 'Featured Events',
       type: 'array',

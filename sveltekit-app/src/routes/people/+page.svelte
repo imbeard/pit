@@ -50,7 +50,7 @@
 
 <div class="p-xs">
 	<section class="pt-12 w-full mb-6">
-		<div class="typo-s text-left pl-10">People</div>
+		<div class="typo-s text-left pl-10">{document.title}</div>
 		<p class="px-4 typo-base text-center">
 			{document?.intro}
 		</p>

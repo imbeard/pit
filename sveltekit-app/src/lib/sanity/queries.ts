@@ -56,13 +56,13 @@ export const pageQuery = groq`*[
     && defined(slug.current) 
     && slug.current == $slug]`;
 export const categoryQuery = groq`*[
-    _type == "category" 
-    && defined(slug.current) 
-    && slug.current == $slug]`;
-
-
-
-
+    _type == "category" && defined(slug.current) && slug.current == $slug] {
+    ...,
+    featuredEvents[]->{
+        ...,
+        "institution": institution->
+    },
+    }`;
 
 // document entries
 export const eventsQuery = groq`*[_type == "event"] | order(_createdAt desc) [0...$end] {
