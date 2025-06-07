@@ -20,7 +20,7 @@
 </a>
 
 <style>
-	.cover-image {
+	/* .cover-image {
 		aspect-ratio: 16 / 9;
-	}
+	} */
 </style>

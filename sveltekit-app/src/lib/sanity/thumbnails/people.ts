@@ -3,6 +3,7 @@ export const peopleThumb = /* groq */ `
     "slug": slug.current,
     name,
     country,
+    job
 `;
 
 export const featuredPeopleThumb = /* groq */ ` 
@@ -11,5 +12,6 @@ export const featuredPeopleThumb = /* groq */ `
     name,
     country,
     image,
-    summary
+    summary,
+    job
 `;

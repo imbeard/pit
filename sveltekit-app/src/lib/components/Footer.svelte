@@ -23,7 +23,7 @@
 	<div
 		class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1"
 	>
-		<div class="typo-2xl">Get in touch</div>
+		<div class="typo-2xl text-center whitespace-nowrap">Get in touch</div>
 		<div  class="theme-red-black button w-fit">
             <Link to={data?.footer?.contact} />
              

@@ -30,37 +30,36 @@ export const homepageQuery = groq`*[_type == "homepage"][0] {
 
 export const settingsQuery = groq`*[_type == "settings"][0]`;
 
-
-
 // document entry
 export const eventQuery = groq`*[
     _type == "event" 
     && defined(slug.current) 
-    && slug.current == $slug] | order(_createdAt desc)`;
+    && slug.current == $slug]`;
 export const partnerQuery = groq`*[
     _type == "partner" 
     && defined(slug.current) 
-    && slug.current == $slug]| order(_createdAt desc)`;
+    && slug.current == $slug]`;
 export const peopleQuery = groq`*[
     _type == "people" 
     && defined(slug.current) 
-    && slug.current == $slug]| order(_createdAt desc)`;
+    && slug.current == $slug]`;
 export const resourceQuery = groq`*[
     _type == "resource" 
     && defined(slug.current) 
-    && slug.current == $slug]| order(_createdAt desc)`;
+    && slug.current == $slug]`;
 export const performanceQuery = groq`*[
     _type == "performance" 
     && defined(slug.current) 
-    && slug.current == $slug]| order(_createdAt desc)`;
+    && slug.current == $slug]`;
 export const pageQuery = groq`*[
     _type == "page" 
     && defined(slug.current) 
-    && slug.current == $slug]| order(_createdAt desc)`;
+    && slug.current == $slug]`;
 export const categoryQuery = groq`*[
     _type == "category" 
     && defined(slug.current) 
-    && slug.current == $slug]| order(_createdAt desc)`;
+    && slug.current == $slug]`;
+
 
 
 
@@ -72,9 +71,17 @@ export const eventsQuery = groq`*[_type == "event"] | order(_createdAt desc) [0.
 export const partnersQuery = groq`*[_type == "partner"]| order(_createdAt desc) [0...$end]{
     ${partnerThumb}
 }`;
-export const allPeopleQuery = groq`*[_type == "people"]| order(_createdAt desc) [0...$end]{
+export const filteredPeopleQuery = groq`*[_type == "people" && defined(slug.current) 
+&& job in $jobs 
+|| country in $countries
+]| order(_createdAt desc) [0...$end]{
     ${peopleThumb}
 }`;
+
+export const allPeopleQuery = groq`*[_type == "people" && defined(slug.current) ]| order(_createdAt desc) [0...$end]{
+    ${peopleThumb}
+}`;
+
 export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc) [0...$end]{
     ${resourceThumb}
 }`;
