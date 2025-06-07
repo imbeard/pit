@@ -44,56 +44,65 @@
 	}
 </script>
 
-<aside class="fixed z-99 h-screen right-0 top-0 bg-red text-pink" class:open={$filtersOpen}>
-	<div class="wrapper" class:open={$filtersOpen}>
-		<button
-			on:click={closeFilters}
-			class="cursor-pointer p-s absolute theme-pink-red top-xs right-xs">Close</button
-		>
-		<div class="p-xs pt-10">
-			<Accordion>
-				<div class="cursor-pointer" slot="head">Nationalities</div>
-				<div slot="details">
-					<ul class="flex flex-col gap-y-xs">
-						{#each countries as country}
-							<li>
-								<label class="checkbox cursor-pointer">
-									<input
-										on:click={() => filterCountries(country)}
-										type="checkbox"
-										name="collocazioni"
-										checked={selectedCountries.includes(country)}
-										value={country}
-									/>
-									{country}
-								</label>
-							</li>
-						{/each}
-					</ul>
-				</div>
-			</Accordion>
-			<Accordion>
-				<div class="cursor-pointer" slot="head">Jobs</div>
-				<div slot="details">
-					<ul class="flex flex-col gap-y-xs">
-						{#each jobs as job}
-							<li>
-								<label class="checkbox cursor-pointer">
-									<input
-										on:click={() => filterJobs(job)}
-										type="checkbox"
-										name="jobs"
-										checked={selectedJobs.includes(job)}
-										value={job}
-									/>
-									{job}
-								</label>
-							</li>
-						{/each}
-					</ul>
-				</div>
-			</Accordion>
+<aside
+	class="fixed z-99 h-screen right-0 top-0 bg-red text-pink p-xs"
+	class:open={$filtersOpen}
+>
+	<div class="wrapper flex flex-col justify-between h-full" class:open={$filtersOpen}>
+		<div>
+			<button on:click={closeFilters} class="cursor-pointer p-s absolute theme-pink-red right-xs"
+				>Close</button
+			>
+			<div class="pt-10">
+				<Accordion open={true}>
+					<div class="cursor-pointer" slot="head">Nationalities</div>
+					<div slot="details">
+						<ul class="flex flex-col gap-y-xs">
+							{#each countries as country}
+								<li>
+									<label class="checkbox cursor-pointer">
+										<input
+											on:click={() => filterCountries(country)}
+											type="checkbox"
+											name="collocazioni"
+											checked={selectedCountries.includes(country)}
+											value={country}
+										/>
+										{country}
+									</label>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				</Accordion>
+				<Accordion open={true}>
+					<div class="cursor-pointer" slot="head">Jobs</div>
+					<div slot="details">
+						<ul class="flex flex-col gap-y-xs">
+							{#each jobs as job}
+								<li>
+									<label class="checkbox cursor-pointer">
+										<input
+											on:click={() => filterJobs(job)}
+											type="checkbox"
+											name="jobs"
+											checked={selectedJobs.includes(job)}
+											value={job}
+										/>
+										{job}
+									</label>
+								</li>
+							{/each}
+						</ul>
+					</div>
+				</Accordion>
+			</div>
 		</div>
+		<a
+			href="/people"
+			class="cursor-pointer text-center py-s w-full bg-pink text-red opacity-50 hover:opacity-100 transition-opacity duration-200"
+			>Clear all</a
+		>
 	</div>
 </aside>
 

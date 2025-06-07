@@ -19,7 +19,7 @@
 
 	$: sections = jobs.map((job) => ({
 		title: job,
-		people: filteredPeople
+		people: filteredPeople.length !== 0
 			? filteredPeople.filter((person) => person.job === job)
 			: allPeople.filter((person) => person.job === job)
 	}));
