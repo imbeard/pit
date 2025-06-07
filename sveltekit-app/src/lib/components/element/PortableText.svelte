@@ -16,6 +16,9 @@
 			</li>`,
 
 		block: {
+			normal: ({ children }) => {
+				return html`<p class="rich-text-p">${children}</p>`;
+			},
 			h2: ({ children }) => {
 				return html`<h2 class="text-xl">${children}</h2>`;
 			},
@@ -39,3 +42,9 @@
 </script>
 
 {@html toHTML(data, { components })}
+
+<style>
+	:global(.rich-text-p:not(:last-of-type)) {
+		padding-bottom: 2rem;
+	}
+</style>

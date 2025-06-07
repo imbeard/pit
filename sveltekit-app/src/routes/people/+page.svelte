@@ -19,9 +19,10 @@
 
 	$: sections = jobs.map((job) => ({
 		title: job,
-		people: filteredPeople.length !== 0
-			? filteredPeople.filter((person) => person.job === job)
-			: allPeople.filter((person) => person.job === job)
+		people:
+			filteredPeople.length !== 0
+				? filteredPeople.filter((person) => person.job === job)
+				: allPeople.filter((person) => person.job === job)
 	}));
 
 	const openFilters = () => {
@@ -48,17 +49,19 @@
 	};
 </script>
 
-<div class="p-xs">
-	<section class="pt-12 w-full mb-6">
+<div class="px-xs">
+	<section class="pt-12 pb-6 w-full">
 		<div class="typo-s text-left pl-10">{document.title}</div>
 		<p class="px-4 typo-base text-center">
 			{document?.intro}
 		</p>
-		<div class="grid-2 pt-3 px-xs">
-			<div class="col-start-2 typo-base">
-				<PortableText data={document?.description} />
+		{#if document?.description}
+			<div class="grid-2 pt-3 px-xs">
+				<div class="col-start-2 typo-base">
+					<PortableText data={document?.description} />
+				</div>
 			</div>
-		</div>
+		{/if}
 	</section>
 	<div class="flex w-full justify-end pb-xs">
 		<button class="button theme-pink-red" on:click={() => openFilters()}>Filter</button>
