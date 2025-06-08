@@ -18,6 +18,18 @@
 	--font-sans: 'ABC Monument Grotesk', 'Helvetica Neue', sans-serif;
 
 	--text-*: initial;
+
+	--text-m-s: 1.2rem;
+	--text-m-s--line-height: 1.2rem;
+	--text-m-base: 1.6rem;
+	--text-m-base--line-height: 2rem;
+	--text-m-lg: 2.2rem;
+	--text-m-lg--line-height: 2rem;
+	--text-m-xl: 2.8rem;
+	--text-m-xl--line-height: 2.6rem;
+	--text-m-2xl: 4rem;
+	--text-m-2xl--line-height: 3.5rem;
+
 	--text-s: 1.2rem;
 	--text-s--line-height: 1.3rem;
 	--text-base: 1.8rem;

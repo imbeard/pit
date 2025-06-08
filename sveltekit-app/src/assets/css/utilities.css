@@ -1,3 +1,6 @@
+/* layout */
+
+
 @utility grid-12 {
 	@apply grid grid-cols-12 gap-xs;
 }
@@ -26,25 +29,33 @@
 	@apply grid grid-cols-2 gap-xs;
 }
 
+
+
+/* typography */
+
 @utility typo-s {
-	@apply text-s tracking-tight;
+	@apply text-m-s lg:text-s tracking-tight;
 }
 
 @utility typo-base {
-	@apply text-base tracking-tight;
+	@apply text-m-base lg:text-base tracking-tight;
 }
 
 @utility typo-lg {
-	@apply text-lg tracking-tighter;
+	@apply text-m-lg lg:text-lg tracking-tighter;
 }
 
 @utility typo-xl {
-	@apply text-xl tracking-tighter;
+	@apply text-m-xl lg:text-xl tracking-tighter;
 }
 
 @utility typo-2xl {
-	@apply text-2xl tracking-tighter;
+	@apply text-m-2xl lg:text-2xl tracking-tighter;
 }
+
+
+
+/* themes */
 
 @utility theme-pink-red {
 	@apply bg-pink text-red;

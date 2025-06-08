@@ -76,7 +76,7 @@
 		{#each slides as slide}
 			<div class="embla__slide">
 				{#if slide.image._type === 'elementImage'}
-					<div class="slide-image" bind:clientHeight={slideImageHeight}>
+					<div class="slide-image aspect-[4/5] md:aspect-[2/1]" bind:clientHeight={slideImageHeight}>
 						<Image image={slide.image} fit="cover" />
 					</div>
 				{/if}
@@ -120,7 +120,6 @@
 
 	.embla__slide .slide-image {
 		width: 100%;
-		aspect-ratio: 2 / 1;
 	}
 
 	.embla__dots {

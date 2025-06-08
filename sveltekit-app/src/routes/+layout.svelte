@@ -1,10 +1,11 @@
 <script lang="ts">
+	import '../assets/css/main.css';
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import { page } from '$app/state';
-	import '../assets/css/main.css';
 	import LiveMode from '$lib/components/LiveMode.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import LogoAnimation from '$lib/components/LogoAnimation.svelte';
 
 	export let data;
 	$: settings = data?.settings?.data;
@@ -19,6 +20,7 @@
 
 <div class="typo-base">
 	<Header />
+	<LogoAnimation />
 	<slot />
 	<div class="mt-12">
 		<Footer data={settings} />

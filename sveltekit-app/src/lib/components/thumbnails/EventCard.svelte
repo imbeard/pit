@@ -5,27 +5,63 @@
 	$: theme = thumbnail?.image?.asset ? '' : `theme-${thumbnail.theme}`;
 </script>
 
-<a href="/events/{thumbnail.slug}" class="flex flex-col justify-between event-card pb-1 {theme}">
-	<div>
+<a href="/events/{thumbnail.slug}">
+	<div
+		class="hidden {theme} aspect-[2/1] md:pb-1 md:flex md:flex-col md:justify-between md:aspect-[7/10]"
+	>
+		<div>
+			{#if thumbnail?.image?.asset}
+				<div class="cover-image aspect-auto h-auto">
+					<Image image={thumbnail.image} fit="cover" />
+				</div>
+			{/if}
+			<div class="typo-s text-center pt-xs">{thumbnail.location}</div>
+			<h4 class="typo-lg text-center">{thumbnail.title}</h4>
+		</div>
+		<div class="typo-lg" class:px-xs={!thumbnail?.image?.asset}>
+			<div class="pb-0">
+				<h4>{thumbnail.institution.title}</h4>
+				<div>{formatDate(thumbnail.start)}</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-2 md:hidden {theme} aspect-[2/1]">
 		{#if thumbnail?.image?.asset}
-			<div class="cover-image">
+			<div class="cover-image aspect-auto h-full">
 				<Image image={thumbnail.image} fit="cover" />
 			</div>
+			<div class="typo-lg flex justify-between flex-col md:block">
+				<div class="block">
+					<div class="flex gap-xs justify-center w-full typo-s py-xs">
+						<div>{thumbnail.typology}</div>
+						<div>{thumbnail.location}</div>
+					</div>
+					<h4 class="typo-lg text-center">{thumbnail.title}</h4>
+				</div>
+				<div class="pb-xs">
+					<h4>{thumbnail.institution.title}</h4>
+					<div>{formatDate(thumbnail.start)}</div>
+				</div>
+			</div>
+		{:else}
+			<div class="flex flex-col h-full justify-between"
+			class:px-xs={!thumbnail?.image?.asset}
+			>
+				<div class="flex gap-xs w-full typo-s py-xs justify-center"
+				class:justify-start={!thumbnail?.image?.asset}
+				>
+					<div>{thumbnail.typology}</div>
+					<div>{thumbnail.location}</div>
+				</div>
+				<div class="pb-xs">
+					<h4>{thumbnail.institution.title}</h4>
+					<div>{formatDate(thumbnail.start)}</div>
+				</div>
+			</div>
+			<div class="h-full flex justify-center items-center">
+				<h4 class="typo-lg text-center">{thumbnail.title}</h4>
+			</div>
 		{/if}
-		<div class="typo-s text-center pt-xs">{thumbnail.location}</div>
-		<h4 class="typo-lg text-center">{thumbnail.title}</h4>
-	</div>
-	<div class="typo-lg" class:px-xs={!thumbnail?.image?.asset}>
-		<h4>{thumbnail.institution.title}</h4>
-		<div>{formatDate(thumbnail.start)}</div>
 	</div>
 </a>
-
-<style>
-	.event-card {
-		aspect-ratio: 0.68;
-	}
-	.cover-image {
-		aspect-ratio: 1.44;
-	}
-</style>
