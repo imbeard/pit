@@ -72,7 +72,7 @@
 			</div>
 		</section>
 
-		<section class="featured-lists grid-2">
+		<section class="featured-lists flex flex-col gap-y-12 md:grid-2">
 			<div class="featured-thumb-container">
 				<div class="featured-thumb">
 					<FeaturedArtist thumbnail={activeFeaturedArtist} />
@@ -113,15 +113,24 @@
 		<section>
 			<div class="flex justify-between w-full items-center pb-xs">
 				<h3 class="typo-lg">Resources</h3>
-				<a href="/partners" class="theme-pink-blue cursor-pointer button">View All &nearr;</a>
+				<a href="/partners" class="hidden md:block theme-pink-blue cursor-pointer button">View All &nearr;</a>
 			</div>
-			<ResourcesSlider slides={resources} />
+			<div class="hidden md:block">
+				<ResourcesSlider slides={resources} />
+			</div>
+			<div class="flex flex-col gap-3 md:hidden">
+				<div>
+					{#each resources as resource}
+						<ResourceCard thumbnail={resource} />
+					{/each}
+				</div>
+				<a href="/partners" class="theme-pink-blue cursor-pointer button w-fit">View All &nearr;</a>
+			</div>
 		</section>
 	</div>
 </main>
 
 <style>
-
 	.hero-home {
 		background: linear-gradient(rgba(185, 185, 185, 0) 15%, rgba(185, 185, 185, 1) 70%);
 	}

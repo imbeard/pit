@@ -5,12 +5,12 @@
 </script>
 
 <div class="w-full footer relative flex flex-col justify-between">
-	<div class="p-xs w-full grid-3">
+	<div class="p-xs w-full flex flex-col gap-xs items-center md:grid-3">
 		<div>
 			<LogoFooter />
 		</div>
-		<div class="text-center">{data?.footer?.text}</div>
-		<div class="text-right">
+		<div class="text-center max-w-50">{data?.footer?.text}</div>
+		<div class="text-right hidden md:block">
 			{#if data?.social}
 				<ul>
 					{#each data?.social as link}
@@ -35,9 +35,9 @@
 			<div class="text-center">Eu Funded</div>
 			<div class="text-right">Phone</div>
 		</div>
-		<div class="border-t border-gray w-full grid-3 p-xs">
+		<div class="border-t border-gray w-full grid-2 md:grid-3 p-xs">
 			<div>Imprint</div>
-			<div class="text-center">© PIT 2025</div>
+			<div class="text-center hidden md:block">© PIT 2025</div>
 			<div class="text-right">
 				<ul class="flex gap-xs justify-end">
 					<li>Privacy Policy</li>

@@ -45,11 +45,10 @@
 				</div>
 			</div>
 		{:else}
-			<div class="flex flex-col h-full justify-between"
-			class:px-xs={!thumbnail?.image?.asset}
-			>
-				<div class="flex gap-xs w-full typo-s py-xs justify-center"
-				class:justify-start={!thumbnail?.image?.asset}
+			<div class="flex flex-col h-full justify-between" class:px-xs={!thumbnail?.image?.asset}>
+				<div
+					class="flex gap-xs w-full typo-s py-xs justify-center"
+					class:justify-start={!thumbnail?.image?.asset}
 				>
 					<div>{thumbnail.typology}</div>
 					<div>{thumbnail.location}</div>
