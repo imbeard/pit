@@ -23,9 +23,6 @@ export const elementVideo = defineType({
       type: 'string',
       description:
         'Alt text makes web content accessible to people with visual impairments by providing them with a description of the media on the web page',
-      options: {
-        isHighlighted: true,
-      },
     },
     {
       title: 'Caption Text',
@@ -64,9 +61,6 @@ export const elementVideo = defineType({
           type: 'string',
           description:
             'Alt text makes web content accessible to people with visual impairments by providing them with a description of the media on the web page',
-          options: {
-            isHighlighted: true,
-          },
         },
         {
           title: 'Caption Text',

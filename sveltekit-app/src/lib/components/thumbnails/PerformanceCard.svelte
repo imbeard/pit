@@ -3,7 +3,7 @@
 	export let thumbnail;
 </script>
 
-<a href="/performances/{thumbnail.slug}">
+<a href="/performances/{thumbnail.slug}" class="hover:text-brown">
 	<div>
 		<Image image={thumbnail.image} fit="cover" />
 	</div>
@@ -17,7 +17,7 @@
 		<div class="w-full grid-3 typo-s">
 			{#each thumbnail.artists as artist}<div>{artist.name}</div>{/each}
 			{#each thumbnail.institutions as institution}<div>{institution.title}</div>{/each}
-			<span>{thumbnail.typology}</span>
+			<span>{thumbnail.typology.title}</span>
 		</div>
 	</div>
 </a>

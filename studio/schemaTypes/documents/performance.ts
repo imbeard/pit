@@ -35,8 +35,9 @@ export const performance = defineType({
     defineField({
       name: 'typology',
       title: 'Typology',
-      type: 'string',
       group: 'content',
+      type: 'reference',
+      to: [{type: 'category'}],
     }),
     defineField({
       name: 'artists',
@@ -67,7 +68,7 @@ export const performance = defineType({
   preview: {
     select: {
       title: 'title',
-      subtitle: 'typology',
+      subtitle: 'typology.title',
       media: 'image',
     },
   },

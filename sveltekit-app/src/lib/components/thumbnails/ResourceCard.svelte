@@ -1,11 +1,17 @@
 <script>
+	import { page } from '$app/stores';
 	import Image from '$lib/components/element/Image.svelte';
 	import PlayButton from '$lib/components/svg/PlayButton.svelte';
 	import { formatDate } from '$lib/utils';
 	export let thumbnail;
 </script>
 
-<a href="/resources/{thumbnail.slug}" class="grid-2 border-b border-t border-gray h-full py-xs min-h-20">
+<a
+	href="/resources/{thumbnail.slug}"
+	class="grid-2 border-b border-t border-gray h-full py-xs min-h-20"
+	class:border-b-0={$page.route.id === '/resources'}
+	class:md:border-b={$page.route.id === '/resources'}
+>
 	<div class="cover-image">
 		{#if thumbnail.image}
 			<div class="relative w-full h-full">

@@ -5,7 +5,7 @@
 </script>
 
 <div class="w-full footer relative flex flex-col justify-between">
-	<div class="p-xs w-full flex flex-col gap-xs items-center md:grid-3">
+	<div class="p-xs w-full flex flex-col gap-xs items-top md:grid-3">
 		<div>
 			<LogoFooter />
 		</div>

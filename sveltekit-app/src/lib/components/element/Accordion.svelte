@@ -30,7 +30,7 @@
 </div>
 
 <style>
-    .accordion:nth-child(even) {
+    .accordion:not(:first-child) {
        border-top: none;
     }
 </style>

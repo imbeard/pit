@@ -15,7 +15,7 @@
 	{/if}
 	<div class="z-10">
 		<div class="typo-base text-center pt-xs">
-			<span>{thumbnail?.typology}</span>
+			<span class="mr-1">{thumbnail?.typology.title}</span>
 			<span>{thumbnail?.location}</span>
 		</div>
 		<h2 class="typo-2xl text-center">{thumbnail?.title}</h2>

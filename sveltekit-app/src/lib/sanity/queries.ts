@@ -34,7 +34,14 @@ export const settingsQuery = groq`*[_type == "settings"][0]`;
 export const eventQuery = groq`*[
     _type == "event" 
     && defined(slug.current) 
-    && slug.current == $slug]`;
+    && slug.current == $slug] {
+        ...,
+        "typology": typology->,
+        "institution": institution->,
+        "featuredArtists": featuredArtists[]-> {
+            ${peopleThumb}
+        },
+    }`;
 export const partnerQuery = groq`*[
     _type == "partner" 
     && defined(slug.current) 
@@ -55,17 +62,25 @@ export const pageQuery = groq`*[
     _type == "page" 
     && defined(slug.current) 
     && slug.current == $slug]`;
-export const categoryQuery = groq`*[
-    _type == "category" && defined(slug.current) && slug.current == $slug] {
+export const archiveQuery = groq`*[
+    _type == "archive" && defined(slug.current) && slug.current == $slug] {
     ...,
     featuredEvents[]->{
         ...,
+        "typology": typology->,
         "institution": institution->
     },
     }`;
 
 // document entries
-export const eventsQuery = groq`*[_type == "event"] | order(_createdAt desc) [0...$end] {
+export const eventsQuery = groq`*[_type == "event" && defined(slug.current)] | order(_createdAt desc) [0...$end] {
+    ${eventThumb}
+}`;
+export const filteredEventsQuery = groq`*[_type == "event" && defined(slug.current)
+&& typology->slug.current in $typologies
+|| featuredArtists[]->slug.current in $people
+|| institution->slug.current in $institutions
+] | order(_createdAt desc) [0...$end] {
     ${eventThumb}
 }`;
 export const partnersQuery = groq`*[_type == "partner"]| order(_createdAt desc) [0...$end]{
@@ -88,4 +103,4 @@ export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc
 export const performancesQuery = groq`*[_type == "performance"]| order(_createdAt desc) [0...$end]{
     ${performanceThumb}
 }`;
-export const categoriesQuery = groq`*[_type == "category"]| order(_createdAt desc) [0...$end]`;
+export const archivesQuery = groq`*[_type == "archive"]| order(_createdAt desc) [0...$end]`;

@@ -1,4 +1,4 @@
-import { allPeopleQuery, filteredPeopleQuery, categoryQuery } from '$lib/sanity/queries';
+import { allPeopleQuery, filteredPeopleQuery, archiveQuery } from '$lib/sanity/queries';
 import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async (event) => {
 	const { loadQuery } = event.locals;
@@ -19,7 +19,7 @@ export const load: PageServerLoad = async (event) => {
 		countries: params.countries
 	});
 
-	const page = await loadQuery(categoryQuery, { slug: 'people' });
+	const page = await loadQuery(archiveQuery, { slug: 'people' });
 
 	return {
 		allPeople,

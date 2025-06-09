@@ -4,7 +4,9 @@ import {people} from './documents/people'
 import {partner} from './documents/partner'
 import {event} from './documents/event'
 import {performance} from './documents/performance'
+import {archive} from './documents/archive'
 import {category} from './documents/category'
+
 import {resource} from './documents/resource'
 
 // objects
@@ -43,6 +45,7 @@ export const schemaTypes = [
   event,
   performance,
   partner,
+  archive,
   category,
   resource,
 
@@ -60,7 +63,7 @@ export const schemaTypes = [
   infoSection,
   info,
   pageBuilder,
-  
+
   // singletons
   homepage,
   settings,

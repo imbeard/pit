@@ -145,6 +145,14 @@
 	}
 }
 
+@utility theme-gray-black {
+	@apply bg-gray text-black;
+
+	&.button:hover {
+		@apply bg-black text-gray;
+	}
+}
+
 @utility theme-gray-red {
 	@apply bg-gray text-red;
 

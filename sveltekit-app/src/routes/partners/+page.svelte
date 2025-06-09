@@ -1,5 +1,5 @@
 <script>
-	import PortableText from '$lib/components/element/PortableText.svelte';
+	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
 	import PartnerCard from '$lib/components/thumbnails/PartnerCard.svelte';
 
 	export let data;
@@ -10,21 +10,15 @@
 
 <div class="flex flex-col gap-6">
 	<section class="pt-12 w-full">
-		<div class="typo-s text-left pl-10">{document.title}</div>
+		<div class="typo-s text-center md:text-left md:pl-10">{document.title}</div>
 		<p class="px-4 typo-base text-center">
 			{document?.intro}
 		</p>
-		{#if document?.description}
-			<div class="grid-2 pt-3 px-xs">
-				<div class="col-start-2 typo-base">
-					<PortableText data={document?.description} />
-				</div>
-			</div>
-		{/if}
+		<ArchiveIntro {document} />
 	</section>
 	{#if partners}
 		<section class="p-xs">
-			<ul class="grid-3">
+			<ul class="grid-2 md:grid-3">
 				{#each partners as partner}
 					<li><PartnerCard thumbnail={partner} /></li>
 				{/each}

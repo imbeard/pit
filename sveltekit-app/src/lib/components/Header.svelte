@@ -31,26 +31,26 @@
 			href="/people">People</a
 		>
 		<a
-			class="py-s px-1 hover:theme-blue-pink"
+			class="py-s px-1 hover:theme-pink-blue"
 			class:theme-blue-pink={currentRoute.includes('/partners')}
 			class:bg-gray={!currentRoute.includes('/partners')}
 			href="/partners">Partners</a
 		>
 		<a
-			class="py-s px-1 hover:theme-black-pink"
-			class:theme-black-pink={currentRoute.includes('/events')}
+			class="py-s px-1 hover:theme-brown-gray"
+			class:theme-brown-gray={currentRoute.includes('/events')}
 			class:bg-gray={!currentRoute.includes('/events')}
 			href="/events">Events</a
 		>
 		<a
 			class="py-s px-1 hover:theme-blue-pink"
-			class:theme-brown-gray={currentRoute.includes('/resources')}
+			class:theme-blue-pink={currentRoute.includes('/resources')}
 			class:bg-gray={!currentRoute.includes('/resources')}
 			href="/resources">Resources</a
 		>
 		<a
-			class="py-s px-1 hover:theme-brown-gray"
-			class:theme-brown-gray={currentRoute.includes('/manifesto')}
+			class="py-s px-1 hover:theme-red-black"
+			class:theme-red-black={currentRoute.includes('/manifesto')}
 			class:bg-gray={!currentRoute.includes('/manifesto')}
 			href="/manifesto">Manifesto</a
 		>

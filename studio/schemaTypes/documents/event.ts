@@ -85,9 +85,10 @@ export const event = defineType({
     defineField({
       name: 'typology',
       title: 'Typology',
-      type: 'string',
       group: 'content',
       fieldset: 'details',
+      type: 'reference',
+      to: [{type: 'category'}],
     }),
     defineField({
       name: 'artists',
@@ -148,7 +149,7 @@ export const event = defineType({
   preview: {
     select: {
       title: 'title',
-      subtitle: 'typology',
+      subtitle: 'typology.title',
       media: 'image',
     },
   },

@@ -1,12 +1,30 @@
-import { eventsQuery, categoryQuery } from '$lib/sanity/queries';
+import { eventsQuery, filteredEventsQuery, archiveQuery } from '$lib/sanity/queries';
 import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async (event) => {
-    const { loadQuery } = event.locals;
-    const events = await loadQuery(eventsQuery, {end: 300});
-    const page = await loadQuery(categoryQuery, { slug: 'events' });
+	const { loadQuery } = event.locals;
+	const { searchParams } = event.url;
 
-    return {
-        events,
-        page,
-    };
+	const params = {
+		typologies: searchParams.get('typologies') ? searchParams.get('typologies').split(',') : [],
+		institutions: searchParams.get('institutions')
+			? searchParams.get('institutions').split(',')
+			: [],
+		people: searchParams.get('people') ? searchParams.get('people').split(',') : []
+	};
+
+	const events = await loadQuery(eventsQuery, { end: 300 });
+	const filteredEvents = await loadQuery(filteredEventsQuery, {
+		end: 300,
+		typologies: params.typologies,
+		institutions: params.institutions,
+		people: params.people
+	});
+	const page = await loadQuery(archiveQuery, { slug: 'events' });
+
+	return {
+		events,
+        filteredEvents,
+		page,
+        params
+	};
 };

@@ -33,9 +33,17 @@
 			.join('');
 
 		dotNodes = Array.from(dotsNode.querySelectorAll('.embla__dot'));
+
 		dotNodes.forEach((dotNode, index) => {
-			dotNode.addEventListener('click', () => emblaApi.scrollTo(index, true));
+			dotNode.addEventListener('click', () => {
+				emblaApi.scrollTo(index, true);
+				const autoplayPlugin = emblaApi.plugins().autoplay;
+				if (autoplayPlugin) {
+					autoplayPlugin.reset();
+				}
+			});
 		});
+
 		dotNodes.forEach((dotNode, index) => {
 			let progressBar = dotNode.querySelector('.embla__progress__bar');
 			progressBar.style.width = `0%`;
@@ -53,20 +61,26 @@
 		gridCols = 'grid-cols-' + dotNodes.length;
 	};
 
+	const updateDotAnimations = (targetIndex) => {
+		dotNodes.forEach((dotNode, index) => {
+			let progressBar = dotNode.querySelector('.embla__progress__bar');
+			progressBar.classList.remove('active');
+			progressBar.style.animation = '';
+			if (index === targetIndex) {
+				progressBar.classList.add('active');
+				progressBar.style.animation = `sliderDotProgress ${delay}ms linear`;
+			}
+		});
+	};
+
 	function onInit(event) {
 		emblaApi = event.detail;
 		selectedIndex = emblaApi.selectedScrollSnap();
 		renderDots();
-		emblaApi.on('scroll', () => {
-			dotNodes.forEach((dotNode, index) => {
-				let progressBar = dotNode.querySelector('.embla__progress__bar');
-				progressBar.classList.remove('active');
-				progressBar.style.animation = '';
-				if (index === emblaApi.selectedScrollSnap()) {
-					progressBar.classList.add('active');
-					progressBar.style.animation = `sliderDotProgress ${delay}ms linear`;
-				}
-			});
+
+		emblaApi.on('select', () => {
+			updateDotAnimations(emblaApi.selectedScrollSnap());
+			selectedIndex = emblaApi.selectedScrollSnap();
 		});
 	}
 </script>
@@ -74,9 +88,12 @@
 <div class="embla" use:emblaCarouselSvelte={{ options, plugins }} on:emblaInit={onInit}>
 	<div class="embla__container">
 		{#each slides as slide}
-			<div class="embla__slide">
+			<a class="embla__slide hover:text-brown" href="/performances/{slide.slug}">
 				{#if slide.image._type === 'elementImage'}
-					<div class="slide-image aspect-[4/5] md:aspect-[2/1]" bind:clientHeight={slideImageHeight}>
+					<div
+						class="slide-image aspect-[4/5] md:aspect-[2/1]"
+						bind:clientHeight={slideImageHeight}
+					>
 						<Image image={slide.image} fit="cover" />
 					</div>
 				{/if}
@@ -90,10 +107,10 @@
 					<div class="w-full grid-3 typo-s">
 						{#each slide.artists as artist}<div>{artist.name}</div>{/each}
 						{#each slide.institutions as institution}<div>{institution.title}</div>{/each}
-						<span>{slide.typology}</span>
+						<span>{slide.typology.title}</span>
 					</div>
 				</div>
-			</div>
+			</a>
 		{/each}
 	</div>
 	<div class="embla__controls">

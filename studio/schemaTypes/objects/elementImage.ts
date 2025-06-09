@@ -14,9 +14,6 @@ export const elementImage = defineType({
       type: 'string',
       description:
         'Alt text makes web content accessible to people with visual impairments by providing them with a description of the images on the web page',
-      options: {
-        isHighlighted: true,
-      },
     },
     {
       title: 'Caption Text',
@@ -43,9 +40,6 @@ export const elementImage = defineType({
           type: 'string',
           description:
             'Alt text makes web content accessible to people with visual impairments by providing them with a description of the images on the web page',
-          options: {
-            isHighlighted: true,
-          },
         },
         {
           title: 'Caption Text',

@@ -2,8 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
-	import PortableText from '$lib/components/element/PortableText.svelte';
-	import PeopleFilters from '$lib/components/PeopleFilters.svelte';
+	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
+	import PeopleFilters from '$lib/components/filters/PeopleFilters.svelte';
 	import { filtersOpen } from '$lib/stores/filters';
 
 	export let data;
@@ -11,6 +11,7 @@
 	$: document = data?.page?.data[0];
 	$: allPeople = data?.allPeople?.data;
 	$: filteredPeople = data?.filteredPeople?.data;
+	$: params = data?.params;
 
 	$: jobs = [...new Set(allPeople.map((person) => person.job))];
 	$: countries = [...new Set(allPeople.map((person) => person.country))];
@@ -27,6 +28,18 @@
 
 	const openFilters = () => {
 		filtersOpen.set(true);
+	};
+
+	const removeFilter = (item) => {
+		if (params.countries.includes(item)) {
+			params.countries = params.countries.filter((i) => i !== item);
+		}
+
+		if (params.jobs.includes(item)) {
+			params.jobs = params.jobs.filter((i) => i !== item);
+		}
+
+		handleUpdateFilters({ detail: { countries: params.countries, jobs: params.jobs } });
 	};
 
 	const handleUpdateFilters = (event) => {
@@ -51,31 +64,48 @@
 
 <div class="px-xs">
 	<section class="pt-12 pb-6 w-full">
-		<div class="typo-s text-left pl-10">{document.title}</div>
+		<div class="typo-s text-center md:text-left md:pl-10">{document.title}</div>
 		<p class="px-4 typo-base text-center">
 			{document?.intro}
 		</p>
-		{#if document?.description}
-			<div class="grid-2 pt-3 px-xs">
-				<div class="col-start-2 typo-base">
-					<PortableText data={document?.description} />
-				</div>
-			</div>
-		{/if}
+		<ArchiveIntro {document} />
 	</section>
 	<div class="flex w-full justify-end pb-xs">
-		<button class="button theme-pink-red" on:click={() => openFilters()}>Filter</button>
+		<button class="fixed z-1 button theme-pink-red md:relative" on:click={() => openFilters()}
+			>Filter</button
+		>
 		<PeopleFilters {jobs} {countries} on:updateFilters={handleUpdateFilters} />
 	</div>
+	{#if params.jobs.length > 0 || params.countries.length > 0}
+		<div class="hidden md:flex gap-xs w-full justify-end py-xs border-t border-gray">
+			{#each params.countries as country}
+				<button class="button theme-pink-red" on:click={() => removeFilter(country)}
+					>{country}&nbsp;<span class="align-super typo-s leading-0">x</span></button
+				>
+			{/each}
+			{#each params.jobs as job}
+				<button class="button theme-pink-red" on:click={() => removeFilter(job)}
+					>{job}&nbsp;<span class="align-super typo-s leading-0">x</span></button
+				>
+			{/each}
+		</div>
+	{/if}
 	{#each sections as section}
 		{#if section.people.length > 0}
-			<section class="people-section grid-5 pt-xs gap-x-0 border-t border-gray pb-6">
+			<section
+				class="people-section pt-xs gap-x-0 pb-12 flex flex-col gap-xs md:gap-y-0 md:grid-5 md:pb-6 md:border-t md:border-gray"
+			>
 				<h2 class="typo-base pr-xs">{section.title}</h2>
-				<div class="col-start-2 grid-4 col-end-6 gap-y-6 gap-x-0">
+				<div
+					class="border-t border-gray col-start-2 col-end-6 grid-2 pt-xs gap-y-6 md:pt-0 md:grid-4 md:gap-x-0 md:border-none"
+				>
 					{#each section.people as person}
-						<a href="/people/{person.slug}" class="card col-span-1 min-h-8">
+						<a
+							href="/people/{person.slug}"
+							class="card col-span-1 min-h-8 border-b border-gray transition-opacity duration-200 hover:opacity-50 md:border-none"
+						>
 							<div class="typo-s">{person.country}</div>
-							<div class="typo-lg text-center">{person.name}</div>
+							<div class="typo-lg text-center pt-xs">{person.name}</div>
 						</a>
 					{/each}
 				</div>

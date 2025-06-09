@@ -25,11 +25,12 @@ export const structure = (S, context) =>
       S.documentTypeListItem('people').title('People'),
       S.documentTypeListItem('partner').title('Partners'),
       S.documentTypeListItem('resource').title('Resources'),
+      S.documentTypeListItem('category').title('Categories'),
 
       S.divider(),
 
       S.documentTypeListItem('page').title('Pages'),
-      S.documentTypeListItem('category').title('Categories'),
+      S.documentTypeListItem('archive').title('Archives'),
 
       // S.documentTypeListItem('resource').title('Resources'),
 

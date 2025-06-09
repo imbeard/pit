@@ -1,16 +1,18 @@
+import { peopleThumb } from './people';
+
 export const eventThumb = /* groq */ ` 
     _id,
     "slug": slug.current,
     title,
     image,
     theme,
-    typology,
     summary,
     start,
     end,
     location,
-    "institution": institution-> {
-        "slug": slug.current,
-        title,
-    },
+    "typology": typology->,
+    "institution": institution->,
+    "featuredArtists": featuredArtists[]-> {
+        ${peopleThumb}
+     },
 `;
