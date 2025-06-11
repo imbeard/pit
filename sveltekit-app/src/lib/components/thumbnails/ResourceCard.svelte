@@ -8,7 +8,7 @@
 
 <a
 	href="/resources/{thumbnail.slug}"
-	class="grid-2 border-b border-t border-gray h-full py-xs min-h-20"
+	class="grid-2 border-b border-t border-gray h-full py-xs min-h-20 hover:text-pink transition-all duration-200"
 	class:border-b-0={$page.route.id === '/resources'}
 	class:md:border-b={$page.route.id === '/resources'}
 >
@@ -21,7 +21,7 @@
 				<Image image={thumbnail.image} fit="cover" />
 			</div>
 		{:else}
-			<div class="bg-red w-full h-full flex justify-center items-center">{thumbnail.typology}</div>
+			<div class="bg-red w-full h-full flex justify-center items-center text-black">{thumbnail.typology}</div>
 		{/if}
 	</div>
 	<div class="flex flex-col gap-1">

@@ -16,3 +16,12 @@ export const eventThumb = /* groq */ `
         ${peopleThumb}
      },
 `;
+
+export const featuredEventThumb = /* groq */ ` 
+    ...,
+     "typology": typology->,
+     "institution": institution->,
+     "featuredArtists": featuredArtists[]-> {
+        ${peopleThumb}
+    },
+`;

@@ -1,6 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { filtersOpen } from '$lib/stores/filters';
 	import Accordion from '$lib/components/element/Accordion.svelte';
@@ -8,6 +9,8 @@
 	export let typologies;
 	export let institutions;
 	export let people;
+	export let newUrl;
+	export let queryString;
 
 	const dispatch = createEventDispatcher();
 
@@ -16,6 +19,16 @@
 	$: selectedPeople = $page.url.searchParams.get('people')?.split(',') || [];
 
 	const closeFilters = () => {
+		filtersOpen.set(false);
+	};
+
+	const applyFilters = () => {
+		goto(newUrl, { replaceState: true });
+
+		if ($page.route.id !== '/') {
+			goto(`/events/${queryString}`, { replaceState: true });
+		}
+		
 		filtersOpen.set(false);
 	};
 
@@ -141,11 +154,17 @@
 				</Accordion>
 			</div>
 		</div>
-		<a
-			href="/events"
-			class="cursor-pointer text-center py-s w-full bg-gray text-black opacity-70 hover:opacity-100 transition-opacity duration-200"
-			>Clear all</a
-		>
+		<div class="grid-2">
+			<button
+				class="button cursor-pointer text-center py-s w-full theme-gray-black"
+				on:click={applyFilters}>Apply</button
+			>
+			<a
+				href="/events"
+				class="cursor-pointer text-center py-s w-full bg-gray text-black opacity-50 hover:opacity-100 transition-opacity duration-200"
+				>Clear all</a
+			>
+		</div>
 	</div>
 </aside>
 
@@ -179,7 +198,7 @@
 
 	input[type='checkbox'] {
 		background-color: transparent;
-		border: 1px solid var(--color-pink);
+		border: 1px solid var(--color-gray);
 		width: 13px;
 		height: 13px;
 		margin-right: var(--spacing-xs);
@@ -189,14 +208,14 @@
 	input[type='checkbox']:checked,
 	input[type='checkbox']:checked::before,
 	.input-checkbox.active {
-		background-color: var(--color-pink);
+		background-color: var(--color-gray);
 	}
 
 	input[type='checkbox'] {
 		-webkit-appearance: none;
 		appearance: none;
 		background-color: transparent;
-		border: 1px solid var(--color-pink);
+		border: 1px solid var(--color-gray);
 		width: 13px;
 		height: 13px;
 		border-radius: 0;

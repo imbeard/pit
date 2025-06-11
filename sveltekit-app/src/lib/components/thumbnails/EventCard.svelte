@@ -2,11 +2,20 @@
 	import Image from '$lib/components/element/Image.svelte';
 	import { formatDate } from '$lib/utils';
 	export let thumbnail;
-	$: theme = thumbnail?.image?.asset ? '' : `theme-${thumbnail.theme}`;
+	export let pageColor;
+	$: theme = `theme-${thumbnail.theme}`;
+	$: textTheme = `hover:text-${pageColor}`;
+	$: containerWidth = 0;
 </script>
 
-<a href="/events/{thumbnail.slug}">
-	<div class="card h-full hidden {theme} md:pb-1 md:flex md:flex-col md:justify-between aspect-[5/7]">
+<a href="/events/{thumbnail.slug}" bind:clientWidth={containerWidth}>
+	<div
+		class="h-full hidden md:pb-1 md:flex md:flex-col md:justify-between {theme} theme-events"
+		class:card-empty={!thumbnail?.image?.asset}
+		class:bg-transparent={thumbnail?.image?.asset}
+		class:text-black={thumbnail?.image?.asset}
+		style:min-height={`${1.4 * containerWidth}px`}
+	>
 		<div>
 			{#if thumbnail?.image?.asset}
 				<div class="cover-image h-auto aspect-[7/5]">

@@ -11,10 +11,14 @@
 	import { filtersOpen } from '$lib/stores/filters';
 
 	export let data;
+
+	let pageColor = 'brown';
+
 	$: allEvents = data?.events?.data;
 	$: document = data?.page?.data[0];
 	$: filteredEvents = data?.filteredEvents?.data;
 	$: params = data?.params;
+
 
 	$: typologies = Array.from(
 		allEvents
@@ -40,6 +44,8 @@
 	$: selectedTypologies = [];
 	$: selectedInstitutions = [];
 	$: selectedPeople = [];
+	$: newUrl = '';
+	$: queryString = '';
 
 	const openFilters = () => {
 		filtersOpen.set(true);
@@ -63,6 +69,8 @@
 				people: params.people
 			}
 		});
+
+		goto(newUrl, { replaceState: true });
 	};
 
 	const handleUpdateFilters = (event) => {
@@ -77,16 +85,9 @@
 			queryParams.push(`institutions=${selectedInstitutions.join(',')}`);
 		if (selectedPeople.length) queryParams.push(`people=${selectedPeople.join(',')}`);
 
-		const queryString = queryParams.length > 0 ? '?' + queryParams.join('&') : '';
-		const newUrl = `${window.location.pathname}${queryString}`;
-
-		goto(newUrl, { replaceState: true });
-
-		if ($page.route.id !== '/') {
-			goto(`/events/${queryString}`, { replaceState: true });
-		}
+		queryString = queryParams.length > 0 ? '?' + queryParams.join('&') : '';
+		newUrl = `${window.location.pathname}${queryString}`;
 	};
-
 </script>
 
 <div class="px-xs">
@@ -115,7 +116,14 @@
 		<button class="button theme-pink-black justify-self-end" on:click={() => openFilters()}
 			>Filter</button
 		>
-		<EventsFilters {people} {typologies} {institutions} on:updateFilters={handleUpdateFilters} />
+		<EventsFilters
+			{people}
+			{typologies}
+			{institutions}
+			{newUrl}
+			{queryString}
+			on:updateFilters={handleUpdateFilters}
+		/>
 	</div>
 	{#if params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0}
 		<div class="hidden md:flex gap-xs w-full justify-end py-xs border-y border-gray">
@@ -126,7 +134,8 @@
 			{/each}
 			{#each params.institutions as institution}
 				<button class="button theme-pink-red" on:click={() => removeFilter(institution)}
-					>{slugToTitle(institution)}&nbsp;<span class="align-super typo-s leading-0">x</span></button
+					>{slugToTitle(institution)}&nbsp;<span class="align-super typo-s leading-0">x</span
+					></button
 				>
 			{/each}
 			{#each params.people as person}
@@ -140,13 +149,13 @@
 		{#if filteredEvents.length > 0}
 			<div class="flex flex-col gap-xs md:grid-4">
 				{#each filteredEvents as event}
-					<EventCard thumbnail={event} />
+					<EventCard thumbnail={event} {pageColor} />
 				{/each}
 			</div>
 		{:else}
 			<div class="flex flex-col gap-xs md:grid-4">
 				{#each allEvents as event}
-					<EventCard thumbnail={event} />
+					<EventCard thumbnail={event} {pageColor} />
 				{/each}
 			</div>
 		{/if}

@@ -1,6 +1,5 @@
 /* layout */
 
-
 @utility grid-12 {
 	@apply grid grid-cols-12 gap-xs;
 }
@@ -29,8 +28,6 @@
 	@apply grid grid-cols-2 gap-xs;
 }
 
-
-
 /* typography */
 
 @utility typo-s {
@@ -53,14 +50,15 @@
 	@apply text-m-2xl lg:text-2xl tracking-tighter;
 }
 
-
-
 /* themes */
 
 @utility theme-pink-red {
 	@apply bg-pink text-red;
 
 	&.button:hover {
+		@apply bg-red text-pink;
+	}
+	&.card-empty:hover {
 		@apply bg-red text-pink;
 	}
 }
@@ -71,12 +69,18 @@
 	&.button:hover {
 		@apply bg-blue text-pink;
 	}
+	&.card-empty:hover {
+		@apply bg-blue text-pink;
+	}
 }
 
 @utility theme-pink-brown {
 	@apply bg-pink text-brown;
 
 	&.button:hover {
+		@apply bg-brown text-pink;
+	}
+	&.card-empty:hover {
 		@apply bg-brown text-pink;
 	}
 }
@@ -87,12 +91,18 @@
 	&.button:hover {
 		@apply bg-black text-pink;
 	}
+	&.card-empty:hover {
+		@apply bg-black text-pink;
+	}
 }
 
 @utility theme-black-pink {
 	@apply bg-black text-pink;
 
 	&.button:hover {
+		@apply bg-pink text-black;
+	}
+	&.card-empty:hover {
 		@apply bg-pink text-black;
 	}
 }
@@ -103,12 +113,18 @@
 	&.button:hover {
 		@apply bg-pink text-red;
 	}
+	&.card-empty:hover {
+		@apply bg-pink text-red;
+	}
 }
 
 @utility theme-red-black {
 	@apply bg-red text-black;
 
 	&.button:hover {
+		@apply bg-black text-red;
+	}
+	&.card-empty:hover {
 		@apply bg-black text-red;
 	}
 }
@@ -119,12 +135,18 @@
 	&.button:hover {
 		@apply bg-pink text-brown;
 	}
+	&.card-empty:hover {
+		@apply bg-pink text-brown;
+	}
 }
 
 @utility theme-brown-gray {
 	@apply bg-brown text-gray;
 
 	&.button:hover {
+		@apply bg-gray text-brown;
+	}
+	&.card-empty:hover {
 		@apply bg-gray text-brown;
 	}
 }
@@ -135,12 +157,18 @@
 	&.button:hover {
 		@apply bg-black text-brown;
 	}
+	&.card-empty:hover {
+		@apply bg-black text-brown;
+	}
 }
 
 @utility theme-gray-blue {
 	@apply bg-gray text-blue;
 
 	&.button:hover {
+		@apply bg-blue text-gray;
+	}
+	&.card-empty:hover {
 		@apply bg-blue text-gray;
 	}
 }
@@ -151,12 +179,18 @@
 	&.button:hover {
 		@apply bg-black text-gray;
 	}
+	&.card-empty:hover {
+		@apply bg-black text-gray;
+	}
 }
 
 @utility theme-gray-red {
 	@apply bg-gray text-red;
 
 	&.button:hover {
+		@apply bg-red text-gray;
+	}
+	&.card-empty:hover {
 		@apply bg-red text-gray;
 	}
 }
@@ -167,6 +201,9 @@
 	&.button:hover {
 		@apply bg-pink text-blue;
 	}
+	&.card-empty:hover {
+		@apply bg-pink text-blue;
+	}
 }
 
 @utility theme-blue-gray {
@@ -175,4 +212,32 @@
 	&.button:hover {
 		@apply bg-gray text-blue;
 	}
+	&.card-empty:hover {
+		@apply bg-gray text-blue;
+	}
+}
+
+/* themes of page types */
+
+@utility theme-events {
+	@apply theme-brown-gray;
+	&:hover {
+		@apply text-brown;
+	}
+}
+
+@utility theme-partners {
+	@apply theme-pink-blue;
+}
+
+@utility theme-people {
+	@apply theme-red-pink;
+}
+
+@utility theme-performances {
+	@apply theme-black-pink;
+}
+
+@utility theme-resources {
+	@apply theme-blue-pink;
 }

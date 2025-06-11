@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { performanceThumb } from './thumbnails/performance';
-import { eventThumb } from './thumbnails/event';
+import { eventThumb, featuredEventThumb } from './thumbnails/event';
 import { peopleThumb, featuredPeopleThumb } from './thumbnails/people';
 import { partnerThumb, featuredPartnerThumb } from './thumbnails/partner';
 import { resourceThumb } from './thumbnails/resource';
@@ -8,6 +8,8 @@ import { resourceThumb } from './thumbnails/resource';
 import { link } from './fragments/link';
 
 // singletons
+export const settingsQuery = groq`*[_type == "settings"][0]`;
+
 export const homepageQuery = groq`*[_type == "homepage"][0] {
     ...,
     cta {
@@ -17,8 +19,7 @@ export const homepageQuery = groq`*[_type == "homepage"][0] {
         ${performanceThumb}
     },
     featuredEvent->{
-        ...,
-        "institution": institution->,
+        ${featuredEventThumb}
     },
     featuredArtists[]-> {
         ${featuredPeopleThumb}
@@ -28,20 +29,11 @@ export const homepageQuery = groq`*[_type == "homepage"][0] {
     },
 }`;
 
-export const settingsQuery = groq`*[_type == "settings"][0]`;
-
-// document entry
+// document single entry
 export const eventQuery = groq`*[
     _type == "event" 
     && defined(slug.current) 
-    && slug.current == $slug] {
-        ...,
-        "typology": typology->,
-        "institution": institution->,
-        "featuredArtists": featuredArtists[]-> {
-            ${peopleThumb}
-        },
-    }`;
+    && slug.current == $slug]`;
 export const partnerQuery = groq`*[
     _type == "partner" 
     && defined(slug.current) 
@@ -66,13 +58,12 @@ export const archiveQuery = groq`*[
     _type == "archive" && defined(slug.current) && slug.current == $slug] {
     ...,
     featuredEvents[]->{
-        ...,
-        "typology": typology->,
-        "institution": institution->
+       ${featuredEventThumb}
     },
     }`;
 
-// document entries
+
+// document archive entries
 export const eventsQuery = groq`*[_type == "event" && defined(slug.current)] | order(_createdAt desc) [0...$end] {
     ${eventThumb}
 }`;

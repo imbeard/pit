@@ -5,9 +5,12 @@
 	$: theme = `theme-${thumbnail?.theme}`;
 </script>
 
-<a href="/events/{thumbnail?.slug?.current}" class="flex flex-col justify-between p-2 {theme} h-full">
+<a
+	href="/events/{thumbnail?.slug?.current}"
+	class="card-empty flex flex-col justify-between p-2 {theme} h-full"
+>
 	{#if thumbnail?.image?.asset}
-		<div class="absolute top-1/2 left-0 transform -translate-y-1/2">
+		<div class="absolute top-0 left-0 bottom-0 right-0">
 			<div class="cover-image">
 				<Image image={thumbnail?.image} fit="cover" />
 			</div>
@@ -28,4 +31,12 @@
 </a>
 
 <style>
+	.cover-image {
+		mask-image: url('/masks/featured-event.svg');
+		mask-repeat: no-repeat;
+		mask-size: 90% 90%;
+		mask-position: center;
+		width: 100%;
+		height: 100%;
+	}
 </style>

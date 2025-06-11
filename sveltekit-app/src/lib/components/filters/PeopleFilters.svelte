@@ -1,12 +1,15 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { filtersOpen } from '$lib/stores/filters';
 	import Accordion from '$lib/components/element/Accordion.svelte';
 
 	export let countries;
 	export let jobs;
+	export let newUrl;
+	export let queryString;
 
 	const dispatch = createEventDispatcher();
 
@@ -14,6 +17,16 @@
 	$: selectedJobs = $page.url.searchParams.get('jobs')?.split(',') || [];
 
 	const closeFilters = () => {
+		filtersOpen.set(false);
+	};
+
+	const applyFilters = () => {
+		goto(newUrl, { replaceState: true });
+
+		if ($page.route.id !== '/') {
+			goto(`/people/${queryString}`, { replaceState: true });
+		}
+
 		filtersOpen.set(false);
 	};
 
@@ -95,11 +108,17 @@
 				</Accordion>
 			</div>
 		</div>
-		<a
-			href="/people"
-			class="cursor-pointer text-center py-s w-full bg-pink text-red opacity-70 hover:opacity-100 transition-opacity duration-200"
-			>Clear all</a
-		>
+		<div class="grid-2">
+			<button
+				class="button cursor-pointer text-center py-s w-full theme-pink-red"
+				on:click={applyFilters}>Apply</button
+			>
+			<a
+				href="/people"
+				class="cursor-pointer text-center py-s w-full bg-pink text-red opacity-50 hover:opacity-100 transition-opacity duration-200"
+				>Clear all</a
+			>
+		</div>
 	</div>
 </aside>
 

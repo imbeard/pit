@@ -32,7 +32,7 @@
 		>
 		<a
 			class="py-s px-1 hover:theme-pink-blue"
-			class:theme-blue-pink={currentRoute.includes('/partners')}
+			class:theme-pink-blue={currentRoute.includes('/partners')}
 			class:bg-gray={!currentRoute.includes('/partners')}
 			href="/partners">Partners</a
 		>

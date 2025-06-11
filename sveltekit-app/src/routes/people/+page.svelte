@@ -18,6 +18,9 @@
 	$: selectedCountries = [];
 	$: selectedJobs = [];
 
+	$: newUrl = '';
+	$: queryString = '';
+
 	$: sections = jobs.map((job) => ({
 		title: job,
 		people:
@@ -39,7 +42,14 @@
 			params.jobs = params.jobs.filter((i) => i !== item);
 		}
 
-		handleUpdateFilters({ detail: { countries: params.countries, jobs: params.jobs } });
+		handleUpdateFilters({ 
+			detail: { 
+				countries: params.countries, 
+				jobs: params.jobs 
+			} 
+		});
+
+		goto(newUrl, { replaceState: true });
 	};
 
 	const handleUpdateFilters = (event) => {
@@ -51,14 +61,8 @@
 		if (selectedCountries.length) queryParams.push(`countries=${selectedCountries.join(',')}`);
 		if (selectedJobs.length) queryParams.push(`jobs=${selectedJobs.join(',')}`);
 
-		const queryString = queryParams.length > 0 ? '?' + queryParams.join('&') : '';
-		const newUrl = `${window.location.pathname}${queryString}`;
-
-		goto(newUrl, { replaceState: true });
-
-		if ($page.route.id !== '/') {
-			goto(`/people/${queryString}`, { replaceState: true });
-		}
+		queryString = queryParams.length > 0 ? '?' + queryParams.join('&') : '';
+		newUrl = `${window.location.pathname}${queryString}`;
 	};
 </script>
 
@@ -74,7 +78,7 @@
 		<button class="fixed z-1 button theme-pink-red md:relative" on:click={() => openFilters()}
 			>Filter</button
 		>
-		<PeopleFilters {jobs} {countries} on:updateFilters={handleUpdateFilters} />
+		<PeopleFilters {jobs} {countries} {newUrl} {queryString} on:updateFilters={handleUpdateFilters} />
 	</div>
 	{#if params.jobs.length > 0 || params.countries.length > 0}
 		<div class="hidden md:flex gap-xs w-full justify-end py-xs border-t border-gray">
@@ -102,7 +106,7 @@
 					{#each section.people as person}
 						<a
 							href="/people/{person.slug}"
-							class="card col-span-1 min-h-8 border-b border-gray transition-opacity duration-200 hover:opacity-50 md:border-none"
+							class="card col-span-1 min-h-8 border-b border-gray transition-all duration-200 hover:text-red md:border-none"
 						>
 							<div class="typo-s">{person.country}</div>
 							<div class="typo-lg text-center pt-xs">{person.name}</div>
