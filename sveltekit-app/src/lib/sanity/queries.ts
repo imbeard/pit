@@ -6,6 +6,8 @@ import { partnerThumb, featuredPartnerThumb } from './thumbnails/partner';
 import { resourceThumb } from './thumbnails/resource';
 
 import { link } from './fragments/link';
+import { portableText } from './fragments/portableText';
+import { pageBuilder } from './fragments/pageBuilder';
 
 // singletons
 export const settingsQuery = groq`*[_type == "settings"][0]`;
@@ -49,7 +51,17 @@ export const resourceQuery = groq`*[
 export const performanceQuery = groq`*[
     _type == "performance" 
     && defined(slug.current) 
-    && slug.current == $slug]`;
+    && slug.current == $slug] {
+    ...,
+    artists[]-> {
+        ${peopleThumb}
+    },
+    institutions[]-> {
+        ${partnerThumb}
+    },
+    "typology": typology->,
+   ${pageBuilder}
+    }`;
 export const pageQuery = groq`*[
     _type == "page" 
     && defined(slug.current) 

@@ -2,7 +2,6 @@
 	import Image from '$lib/components/element/Image.svelte';
 	export let thumbnail;
 	$: theme = `theme-${thumbnail.theme}`;
-	$: console.log(theme);
 </script>
 
 <a href="/performances/{thumbnail.slug}" class="performance {theme} text-black">
