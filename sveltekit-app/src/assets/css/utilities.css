@@ -55,165 +55,192 @@
 @utility theme-pink-red {
 	@apply bg-pink text-red;
 
-	&.button:hover {
-		@apply bg-red text-pink;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-red text-pink;
+	}
+	&.performance:hover {
+		@apply text-pink;
 	}
 }
 
 @utility theme-pink-blue {
 	@apply bg-pink text-blue;
 
-	&.button:hover {
-		@apply bg-blue text-pink;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-blue text-pink;
+	}
+	&.performance:hover {
+		@apply text-pink;
 	}
 }
 
 @utility theme-pink-brown {
 	@apply bg-pink text-brown;
 
-	&.button:hover {
-		@apply bg-brown text-pink;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-brown text-pink;
+	}
+	&.performance:hover {
+		@apply text-pink;
 	}
 }
 
 @utility theme-pink-black {
 	@apply bg-pink text-black;
 
-	&.button:hover {
-		@apply bg-black text-pink;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-black text-pink;
+	}
+	&.performance:hover {
+		@apply text-pink;
 	}
 }
 
 @utility theme-black-pink {
 	@apply bg-black text-pink;
 
-	&.button:hover {
-		@apply bg-pink text-black;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-pink text-black;
+	}
+	&.performance:hover {
+		@apply text-black;
 	}
 }
 
 @utility theme-red-pink {
 	@apply bg-red text-pink;
 
-	&.button:hover {
-		@apply bg-pink text-red;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-pink text-red;
+	}
+	&.performance:hover {
+		@apply text-red;
 	}
 }
 
 @utility theme-red-black {
 	@apply bg-red text-black;
 
-	&.button:hover {
-		@apply bg-black text-red;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-black text-red;
+	}
+	&.performance:hover {
+		@apply text-red;
 	}
 }
 
 @utility theme-brown-pink {
 	@apply bg-brown text-pink;
 
-	&.button:hover {
-		@apply bg-pink text-brown;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-pink text-brown;
+	}
+	&.performance:hover {
+		@apply text-brown;
 	}
 }
 
 @utility theme-brown-gray {
 	@apply bg-brown text-gray;
 
-	&.button:hover {
-		@apply bg-gray text-brown;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-gray text-brown;
+	}
+	&.performance:hover {
+		@apply text-brown;
 	}
 }
 
 @utility theme-brown-black {
 	@apply bg-brown text-black;
 
-	&.button:hover {
-		@apply bg-black text-brown;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-black text-brown;
+	}
+	&.performance:hover {
+		@apply text-brown;
 	}
 }
 
 @utility theme-gray-blue {
 	@apply bg-gray text-blue;
 
-	&.button:hover {
-		@apply bg-blue text-gray;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-blue text-gray;
+	}
+	&.performance:hover {
+		@apply text-gray;
 	}
 }
 
 @utility theme-gray-black {
 	@apply bg-gray text-black;
 
-	&.button:hover {
-		@apply bg-black text-gray;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-black text-gray;
+	}
+	&.performance:hover {
+		@apply text-gray;
 	}
 }
 
 @utility theme-gray-red {
 	@apply bg-gray text-red;
 
-	&.button:hover {
-		@apply bg-red text-gray;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-red text-gray;
+	}
+	&.performance:hover {
+		@apply text-gray;
+	}
+}
+
+@utility theme-gray-brown {
+	@apply bg-gray text-brown;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-brown text-gray;
+	}
+	&.performance:hover {
+		@apply text-brown;
 	}
 }
 
 @utility theme-blue-pink {
 	@apply bg-blue text-pink;
 
-	&.button:hover {
-		@apply bg-pink text-blue;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-pink text-blue;
+	}
+	&.performance:hover {
+		@apply text-blue;
 	}
 }
 
 @utility theme-blue-gray {
 	@apply bg-blue text-gray;
 
-	&.button:hover {
-		@apply bg-gray text-blue;
-	}
+	&.button:hover,
 	&.card-empty:hover {
 		@apply bg-gray text-blue;
+	}
+	&.performance:hover {
+		@apply text-blue;
 	}
 }
 

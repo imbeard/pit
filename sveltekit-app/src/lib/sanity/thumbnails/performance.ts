@@ -5,6 +5,7 @@ export const performanceThumb = /* groq */ `
     "slug": slug.current,
     image,
     title,
+    theme,
     "typology": typology->,
     artists[]-> {
         ${peopleThumb}

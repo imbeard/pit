@@ -42,11 +42,11 @@
 			params.jobs = params.jobs.filter((i) => i !== item);
 		}
 
-		handleUpdateFilters({ 
-			detail: { 
-				countries: params.countries, 
-				jobs: params.jobs 
-			} 
+		handleUpdateFilters({
+			detail: {
+				countries: params.countries,
+				jobs: params.jobs
+			}
 		});
 
 		goto(newUrl, { replaceState: true });
@@ -75,13 +75,24 @@
 		<ArchiveIntro {document} />
 	</section>
 	<div class="flex w-full justify-end pb-xs">
-		<button class="fixed z-1 button theme-pink-red md:relative" on:click={() => openFilters()}
-			>Filter</button
-		>
-		<PeopleFilters {jobs} {countries} {newUrl} {queryString} on:updateFilters={handleUpdateFilters} />
+		<button class="button theme-pink-red" on:click={() => openFilters()}>
+			<span>Filters</span>
+			{#if params.jobs.length > 0 || params.countries.length > 0}
+				<span class="align-super typo-s leading-0"
+					>{params.jobs.length + params.countries.length}</span
+				>
+			{/if}
+		</button>
+		<PeopleFilters
+			{jobs}
+			{countries}
+			{newUrl}
+			{queryString}
+			on:updateFilters={handleUpdateFilters}
+		/>
 	</div>
 	{#if params.jobs.length > 0 || params.countries.length > 0}
-		<div class="hidden md:flex gap-xs w-full justify-end py-xs border-t border-gray">
+		<div class="flex flex-wrap gap-xs w-full justify-end py-xs border-t border-gray">
 			{#each params.countries as country}
 				<button class="button theme-pink-red" on:click={() => removeFilter(country)}
 					>{country}&nbsp;<span class="align-super typo-s leading-0">x</span></button

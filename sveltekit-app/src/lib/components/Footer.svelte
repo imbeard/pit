@@ -5,11 +5,11 @@
 </script>
 
 <div class="w-full footer relative flex flex-col justify-between">
-	<div class="p-xs w-full flex flex-col gap-xs items-top md:grid-3">
+	<div class="p-xs w-full flex flex-col gap-xs items-center md:items-start md:grid-3">
 		<div>
 			<LogoFooter />
 		</div>
-		<div class="text-center max-w-50">{data?.footer?.text}</div>
+		<div class="text-center max-w-50 pt-s md:pt-0">{data?.footer?.text}</div>
 		<div class="text-right hidden md:block">
 			{#if data?.social}
 				<ul>
@@ -24,15 +24,14 @@
 		class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1"
 	>
 		<div class="typo-2xl text-center whitespace-nowrap">Get in touch</div>
-		<div  class="theme-red-black button w-fit">
-            <Link to={data?.footer?.contact} />
-             
-        </div>
+		<div class="theme-red-black button w-fit">
+			<Link to={data?.footer?.contact} />
+		</div>
 	</div>
 	<div>
-		<div class="w-full grid-3 p-xs">
+		<div class="w-full grid-3 p-xs items-baseline">
 			<div>Email</div>
-			<div class="text-center">Eu Funded</div>
+			<img class="w-10 justify-self-center" src="/images/eu-funded-logo.svg" alt="" />
 			<div class="text-right">Phone</div>
 		</div>
 		<div class="border-t border-gray w-full grid-2 md:grid-3 p-xs">

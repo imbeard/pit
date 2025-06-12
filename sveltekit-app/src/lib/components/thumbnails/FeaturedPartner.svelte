@@ -20,6 +20,13 @@
 			</div>
 		</div>
 	{/if}
+
+	<button class="button p-xs w-fit h-fit border border-blue text-blue bg-transparent absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+		<span>View Institution</span>
+		<span class="align-super typo-s leading-0">&nearr;</span>
+	</button>
+
+
 	<div class="z-10">
 		<div class="typo-base text-center pt-xs">Institution</div>
 		<h2 class="typo-2xl text-center transition-transform duration-200" 

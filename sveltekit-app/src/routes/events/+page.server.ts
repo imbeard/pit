@@ -12,19 +12,20 @@ export const load: PageServerLoad = async (event) => {
 		people: searchParams.get('people') ? searchParams.get('people').split(',') : []
 	};
 
-	const events = await loadQuery(eventsQuery, { end: 300 });
 	const filteredEvents = await loadQuery(filteredEventsQuery, {
 		end: 300,
 		typologies: params.typologies,
 		institutions: params.institutions,
 		people: params.people
 	});
+	
+	const events = await loadQuery(eventsQuery, { end: 300 });
 	const page = await loadQuery(archiveQuery, { slug: 'events' });
 
 	return {
 		events,
-        filteredEvents,
+		filteredEvents,
 		page,
-        params
+		params
 	};
 };

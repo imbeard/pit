@@ -1,9 +1,11 @@
 <script>
 	import Image from '$lib/components/element/Image.svelte';
 	export let thumbnail;
+	$: theme = `theme-${thumbnail.theme}`;
+	$: console.log(theme);
 </script>
 
-<a href="/performances/{thumbnail.slug}" class="hover:text-brown">
+<a href="/performances/{thumbnail.slug}" class="performance {theme} text-black">
 	<div>
 		<Image image={thumbnail.image} fit="cover" />
 	</div>

@@ -6,15 +6,15 @@
 	import { filtersOpen } from '$lib/stores/filters';
 	import Accordion from '$lib/components/element/Accordion.svelte';
 
-	export let countries;
-	export let jobs;
+	export let typologies;
+	export let media;
 	export let newUrl;
 	export let queryString;
 
 	const dispatch = createEventDispatcher();
 
-	$: selectedCountries = $page.url.searchParams.get('countries')?.split(',') || [];
-	$: selectedJobs = $page.url.searchParams.get('jobs')?.split(',') || [];
+	$: selectedTypologies = $page.url.searchParams.get('typologies')?.split(',') || [];
+	$: selectedMedia = $page.url.searchParams.get('media')?.split(',') || [];
 
 	const closeFilters = () => {
 		filtersOpen.set(false);
@@ -24,28 +24,28 @@
 		goto(newUrl, { replaceState: true });
 
 		if ($page.route.id !== '/') {
-			goto(`/people/${queryString}`, { replaceState: true });
+			goto(`/resources/${queryString}`, { replaceState: true });
 		}
 
 		filtersOpen.set(false);
 	};
 
-	const filterCountries = (input) => {
-		if (selectedCountries.includes(input)) {
-			selectedCountries = selectedCountries.filter((item) => item !== input);
+	const filterTypologies = (input) => {
+		if (selectedTypologies.includes(input)) {
+			selectedTypologies = selectedTypologies.filter((item) => item !== input);
 		} else {
-			selectedCountries = [...selectedCountries, input];
+			selectedTypologies = [...selectedTypologies, input];
 		}
-		dispatch('updateFilters', { countries: selectedCountries, jobs: selectedJobs });
+		dispatch('updateFilters', { typologies: selectedTypologies, media: selectedMedia });
 	};
 
-	const filterJobs = (input) => {
-		if (selectedJobs.includes(input)) {
-			selectedJobs = selectedJobs.filter((item) => item !== input);
+	const filterMedia = (input) => {
+		if (selectedMedia.includes(input)) {
+			selectedMedia = selectedMedia.filter((item) => item !== input);
 		} else {
-			selectedJobs = [...selectedJobs, input];
+			selectedMedia = [...selectedMedia, input];
 		}
-		dispatch('updateFilters', { countries: selectedCountries, jobs: selectedJobs });
+		dispatch('updateFilters', { typologies: selectedTypologies, media: selectedMedia });
 	};
 
 	$: if (browser) {
@@ -57,10 +57,10 @@
 	}
 </script>
 
-<aside class="fixed z-99 h-screen right-0 top-0 bg-red text-pink p-xs" class:open={$filtersOpen}>
+<aside class="fixed z-99 h-screen right-0 top-0 bg-blue text-pink p-xs" class:open={$filtersOpen}>
 	<div class="wrapper flex flex-col justify-between h-full" class:open={$filtersOpen}>
 		<div>
-			<button on:click={closeFilters} class="cursor-pointer p-s absolute theme-pink-red right-xs"
+			<button on:click={closeFilters} class="cursor-pointer p-s absolute theme-pink-blue right-xs"
 				>Close</button
 			>
 			<div class="pt-10">
@@ -68,17 +68,17 @@
 					<div class="cursor-pointer" slot="head">Nationalities</div>
 					<div slot="details">
 						<ul class="flex flex-col gap-y-xs">
-							{#each countries as country}
+							{#each typologies as typology}
 								<li>
 									<label class="checkbox cursor-pointer">
 										<input
-											on:click={() => filterCountries(country)}
+											on:click={() => filterTypologies(typology)}
 											type="checkbox"
-											name="countries"
-											checked={selectedCountries.includes(country)}
-											value={country}
+											name="typologies"
+											checked={selectedTypologies.includes(typology)}
+											value={typology}
 										/>
-										{country}
+										{typology}
 									</label>
 								</li>
 							{/each}
@@ -86,20 +86,20 @@
 					</div>
 				</Accordion>
 				<Accordion open={true} lineColor="border-pink">
-					<div class="cursor-pointer" slot="head">Jobs</div>
+					<div class="cursor-pointer" slot="head">Media</div>
 					<div slot="details">
 						<ul class="flex flex-col gap-y-xs">
-							{#each jobs as job}
+							{#each media as type}
 								<li>
 									<label class="checkbox cursor-pointer">
 										<input
-											on:click={() => filterJobs(job)}
+											on:click={() => filterMedia(type)}
 											type="checkbox"
-											name="jobs"
-											checked={selectedJobs.includes(job)}
-											value={job}
+											name="media"
+											checked={selectedMedia.includes(type)}
+											value={type}
 										/>
-										{job}
+										{type}
 									</label>
 								</li>
 							{/each}
@@ -110,12 +110,12 @@
 		</div>
 		<div class="grid-2">
 			<button
-				class="button cursor-pointer text-center py-s w-full theme-pink-red"
+				class="button cursor-pointer text-center py-s w-full theme-pink-blue"
 				on:click={applyFilters}>Apply</button
 			>
 			<a
 				href="/people"
-				class="cursor-pointer text-center py-s w-full bg-pink text-red opacity-50 hover:opacity-100 transition-opacity duration-200"
+				class="cursor-pointer text-center py-s w-full bg-pink text-blue opacity-50 hover:opacity-100 transition-opacity duration-200"
 				>Clear all</a
 			>
 		</div>

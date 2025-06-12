@@ -59,7 +59,7 @@
 					{/each}
 				</div>
 				<a class="mt-3 col-start-2 theme-black-pink button w-fit md:mt-5" href="/events"
-					>View events &nearr;</a
+					>View events <span class="align-super typo-s leading-0">&nearr;</span></a
 				>
 			</section>
 		{/if}
@@ -87,7 +87,7 @@
 					{/each}
 				</div>
 				<div class="w-full flex justify-center mt-xs">
-					<a href="/people" class="theme-red-pink cursor-pointer button">View People &nearr;</a>
+					<a href="/people" class="theme-red-pink cursor-pointer button">View People <span class="align-super typo-s leading-0">&nearr;</span></a>
 				</div>
 			</div>
 			<div class="featured-thumb-container h-full">
@@ -104,7 +104,7 @@
 					{/each}
 				</div>
 				<div class="w-full flex justify-center mt-xs">
-					<a href="/partners" class="theme-blue-pink cursor-pointer button">View Partners &nearr;</a
+					<a href="/partners" class="theme-blue-pink cursor-pointer button">View Partners <span class="align-super typo-s leading-0">&nearr;</span></a
 					>
 				</div>
 			</div>
@@ -113,7 +113,7 @@
 		<section>
 			<div class="flex justify-between w-full items-center pb-xs">
 				<h3 class="typo-lg">Resources</h3>
-				<a href="/partners" class="hidden md:block theme-pink-blue cursor-pointer button">View All &nearr;</a>
+				<a href="/partners" class="hidden md:block theme-pink-blue cursor-pointer button">View All <span class="align-super typo-s leading-0">&nearr;</span></a>
 			</div>
 			<div class="hidden md:block">
 				<ResourcesSlider slides={resources} />
@@ -124,7 +124,7 @@
 						<ResourceCard thumbnail={resource} />
 					{/each}
 				</div>
-				<a href="/partners" class="theme-pink-blue cursor-pointer button w-fit">View All &nearr;</a>
+				<a href="/partners" class="theme-pink-blue cursor-pointer button w-fit">View All <span class="align-super typo-s leading-0">&nearr;</span></a>
 			</div>
 		</section>
 	</div>

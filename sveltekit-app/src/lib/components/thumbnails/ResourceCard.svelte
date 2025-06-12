@@ -8,9 +8,8 @@
 
 <a
 	href="/resources/{thumbnail.slug}"
-	class="grid-2 border-b border-t border-gray h-full py-xs min-h-20 hover:text-pink transition-all duration-200"
-	class:border-b-0={$page.route.id === '/resources'}
-	class:md:border-b={$page.route.id === '/resources'}
+	class="grid-2 border-y border-gray h-full py-xs min-h-20 hover:text-pink transition-all duration-200"
+	class:border-none={$page.route.id === '/resources'}
 >
 	<div class="cover-image">
 		{#if thumbnail.image}

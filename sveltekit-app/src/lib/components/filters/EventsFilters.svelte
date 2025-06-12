@@ -89,7 +89,7 @@
 				>Close</button
 			>
 			<div class="pt-10">
-				<Accordion open={true}>
+				<Accordion open={true} lineColor="border-gray">
 					<div class="cursor-pointer" slot="head">Category</div>
 					<div slot="details">
 						<ul class="flex flex-col gap-y-xs">
@@ -110,7 +110,7 @@
 						</ul>
 					</div>
 				</Accordion>
-				<Accordion open={true}>
+				<Accordion open={true} lineColor="border-gray">
 					<div class="cursor-pointer" slot="head">Institution</div>
 					<div slot="details">
 						<ul class="flex flex-col gap-y-xs">
@@ -131,7 +131,7 @@
 						</ul>
 					</div>
 				</Accordion>
-				<Accordion open={true}>
+				<Accordion open={true} lineColor="border-gray">
 					<div class="cursor-pointer" slot="head">People</div>
 					<div slot="details">
 						<ul class="flex flex-col gap-y-xs">

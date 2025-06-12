@@ -1,3 +1,5 @@
+import { download } from './download';
+
 export const resourceThumb = /* groq */ ` 
     _id,
     _createdAt,
@@ -5,5 +7,7 @@ export const resourceThumb = /* groq */ `
     "slug": slug.current,
     typology,
     "image": thumbnail,
-    downloads,
+    downloads[] {
+        ${download}
+    },
 `;

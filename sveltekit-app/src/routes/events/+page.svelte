@@ -1,7 +1,5 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
-
 	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
 	import FeaturedEvent from '$lib/components/thumbnails/FeaturedEvent.svelte';
@@ -18,7 +16,6 @@
 	$: document = data?.page?.data[0];
 	$: filteredEvents = data?.filteredEvents?.data;
 	$: params = data?.params;
-
 
 	$: typologies = Array.from(
 		allEvents
@@ -111,11 +108,15 @@
 	{/if}
 
 	<div class="flex w-full grid-3 items-baseline pb-xs">
-		<button class="button bg-pink text-black justify-self-start">{getCurrentDate()}</button>
+		<button class="button bg-gray text-brown justify-self-start">{getCurrentDate()}</button>
 		<h2 class="typo-2xl mx-auto w-fit pt-12 justify-self-center translate-y-xs">All Events</h2>
-		<button class="button theme-pink-black justify-self-end" on:click={() => openFilters()}
-			>Filter</button
-		>
+		<button class="button theme-gray-brown" on:click={() => openFilters()}>
+			<span>Filters</span>
+			{#if params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0}
+				<span class="align-super typo-s leading-0"
+					>{params.typologies.length + params.people.length + params.institutions.length}</span>
+			{/if}
+		</button>
 		<EventsFilters
 			{people}
 			{typologies}
@@ -126,20 +127,20 @@
 		/>
 	</div>
 	{#if params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0}
-		<div class="hidden md:flex gap-xs w-full justify-end py-xs border-y border-gray">
+		<div class="flex flex-wrap gap-xs w-full justify-end py-xs border-y border-gray">
 			{#each params.typologies as typology}
-				<button class="button theme-pink-red" on:click={() => removeFilter(typology)}
+				<button class="button theme-gray-brown" on:click={() => removeFilter(typology)}
 					>{slugToTitle(typology)}&nbsp;<span class="align-super typo-s leading-0">x</span></button
 				>
 			{/each}
 			{#each params.institutions as institution}
-				<button class="button theme-pink-red" on:click={() => removeFilter(institution)}
+				<button class="button theme-gray-brown" on:click={() => removeFilter(institution)}
 					>{slugToTitle(institution)}&nbsp;<span class="align-super typo-s leading-0">x</span
 					></button
 				>
 			{/each}
 			{#each params.people as person}
-				<button class="button theme-pink-red" on:click={() => removeFilter(person)}
+				<button class="button theme-gray-brown" on:click={() => removeFilter(person)}
 					>{slugToTitle(person)}&nbsp;<span class="align-super typo-s leading-0">x</span></button
 				>
 			{/each}

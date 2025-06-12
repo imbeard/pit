@@ -33,7 +33,12 @@
 		</div>
 	</div>
 
-	<div class="grid-2 md:hidden {theme} aspect-[2/1]">
+	<div
+		class="grid-2 md:hidden {theme} aspect-[2/1]"
+		class:card-empty={!thumbnail?.image?.asset}
+		class:bg-transparent={thumbnail?.image?.asset}
+		class:text-black={thumbnail?.image?.asset}
+	>
 		{#if thumbnail?.image?.asset}
 			<div class="cover-image aspect-auto h-full">
 				<Image image={thumbnail.image} fit="cover" />

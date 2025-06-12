@@ -17,6 +17,8 @@
 	$: gridCols = 'grid-cols-' + dotNodes.length;
 	$: slideImageHeight = 0;
 	$: offsetTop = slideImageHeight - 20;
+	$: theme = `theme-${slides[selectedIndex].theme}`;
+
 
 	const renderDots = () => {
 		dotsNode.innerHTML = emblaApi
@@ -88,7 +90,8 @@
 <div class="embla" use:emblaCarouselSvelte={{ options, plugins }} on:emblaInit={onInit}>
 	<div class="embla__container">
 		{#each slides as slide}
-			<a class="embla__slide hover:text-brown" href="/performances/{slide.slug}">
+			<a class="embla__slide performance {theme} text-black bg-white" href="/performances/{slide.slug}"
+			>
 				{#if slide.image._type === 'elementImage'}
 					<div
 						class="slide-image aspect-[4/5] md:aspect-[2/1]"
