@@ -20,6 +20,16 @@
 		href = to?.linkExternal?.url;
 		label = to?.linkExternal?.label;
 	}
+
+	if (to?.source === 'linkPhone') {
+		href = 'tel:' + to?.linkPhone?.url;
+		label = to?.linkPhone?.label;
+	}
+
+	if (to?.source === 'linkDownload') {
+		href = to?.linkDownload?.url;
+		label = to?.linkDownload?.label;
+	}
 </script>
 
 <a {href} {target} rel="noopener noreferrer">{label}</a>

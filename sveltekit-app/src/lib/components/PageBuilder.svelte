@@ -11,16 +11,18 @@
 	};
 
 	$: orderedComponents = sections
-		.filter(section => componentMap[section._type])
-		.map(section => ({
+		.filter((section) => componentMap[section._type])
+		.map((section) => ({
 			section,
 			componentPromise: componentMap[section._type]()
 		}));
 </script>
 
-{#each orderedComponents as { section, componentPromise }}
-	{#await componentPromise then Module}
-		{@const Component = Module.default}
-		<Component {section} />
-	{/await}
-{/each}
+<div class="flex flex-col gap-s py-s">
+	{#each orderedComponents as { section, componentPromise }}
+		{#await componentPromise then Module}
+			{@const Component = Module.default}
+			<Component {section} />
+		{/await}
+	{/each}
+</div>

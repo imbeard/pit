@@ -15,7 +15,6 @@ export const elementVideo = defineType({
       name: 'url',
       title: 'Video Url',
       type: 'url',
-      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Alternative Text',

@@ -27,9 +27,9 @@
 </svelte:head>
 
 <img
-	class="max-h-full max-w-full w-full h-full {fit === 'contain'
+	class="max-h-full max-w-full w-full h-auto {fit === 'contain'
 		? 'object-contain'
-		: 'object-cover'}"
+		: 'object-cover h-full'}"
 	loading={lazy ? 'lazy' : 'eager'}
 	fetchpriority={lazy ? 'low' : 'high'}
 	data-sizes="auto"

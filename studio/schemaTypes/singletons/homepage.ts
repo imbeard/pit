@@ -21,13 +21,7 @@ export const homepage = defineType({
     defineField({
       name: 'clouds',
       title: 'Clouds',
-      type: 'array',
-      of: [
-        defineField({
-          name: 'link',
-          type: 'link',
-        }),
-      ],
+      type: 'cloud',
       fieldset: 'hero',
     }),
 

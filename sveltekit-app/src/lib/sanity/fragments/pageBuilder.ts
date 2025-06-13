@@ -10,6 +10,12 @@ pageBuilder {
             ...,
             ${portableText}
         }
+    },
+    _type == 'infoSection' => {
+        content[] {
+            ...,
+            ${portableText}
+        }
     }
 }
 }

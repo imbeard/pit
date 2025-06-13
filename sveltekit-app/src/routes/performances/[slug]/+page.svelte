@@ -4,7 +4,6 @@
 	export let data;
 	$: performance = data?.performance?.data[0];
 	$: pageBuilder = performance?.pageBuilder;
-	$: console.log(performance);
 </script>
 
 <div class="pt-8 p-xs">

@@ -13,6 +13,7 @@ import {resource} from './documents/resource'
 import {hero} from './objects/hero'
 import {blockContent} from './objects/blockContent'
 import {blockquote} from './objects/blockquote'
+import {cloud} from './objects/cloud'
 import {gallery} from './objects/gallery'
 import {twoImages} from './objects/twoImages'
 import {elementImage} from './objects/elementImage'
@@ -53,6 +54,7 @@ export const schemaTypes = [
   hero,
   blockContent,
   blockquote,
+  cloud,
   gallery,
   twoImages,
   highlightedText,

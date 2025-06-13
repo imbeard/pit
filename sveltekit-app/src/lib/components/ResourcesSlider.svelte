@@ -5,7 +5,7 @@
 	import ResourceCard from '$lib/components/thumbnails/ResourceCard.svelte';
 	export let slides = [];
 	let options = { loop: true, align: 'start' };
-	let delay = 3000;
+	let delay = 6000;
 	let plugins = [Autoplay({ delay: delay })];
 </script>
 
