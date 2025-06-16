@@ -4,6 +4,7 @@ import { eventThumb } from './thumbnails/event';
 import { peopleThumb, featuredPeopleThumb } from './thumbnails/people';
 import { partnerThumb } from './thumbnails/partner';
 import { resourceThumb } from './thumbnails/resource';
+import { download } from './thumbnails/download';
 
 import { link } from './fragments/link';
 import { pageBuilder } from './fragments/pageBuilder';
@@ -11,21 +12,33 @@ import { pageBuilder } from './fragments/pageBuilder';
 // singletons
 export const settingsQuery = groq`*[_type == "settings"][0]`;
 
-export const homepageQuery = groq`*[_type == "homepage"][0] {
-    ...,
-    cta {
-        ${link}
+export const homepageQuery = groq`{
+    "homepage": *[_type == "homepage"][0] {
+        ...,
+        cta {
+            ${link}
+        },
+        performanceSlider[]-> {
+            ${performanceThumb}
+        },
+        featuredEvent->{
+            ${eventThumb}
+        },
+        featuredArtists[]-> {
+            ${featuredPeopleThumb}
+        },
+        featuredPartners[]-> {
+            ${partnerThumb}
+        },
     },
-    performanceSlider[]-> {
-        ${performanceThumb}
-    },
-    featuredEvent->{
+
+    "events": *[_type == "event" && defined(slug.current)] | order(_createdAt desc) [0...3] {
         ${eventThumb}
     },
-    featuredArtists[]-> {
-        ${featuredPeopleThumb}
+    "resources": *[_type == "resource" && defined(slug.current)] | order(_createdAt desc) [0...3] {
+        ${resourceThumb}
     },
-    featuredPartners[]-> {
+    "partners": *[_type == "partner" && defined(slug.current)] | order(_createdAt desc) [0...3] {
         ${partnerThumb}
     },
 }`;
@@ -85,32 +98,38 @@ export const filteredEventsQuery = groq`*[_type == "event" && defined(slug.curre
     ${eventThumb}
 }`;
 
-export const partnersQuery = groq`*[_type == "partner"]| order(_createdAt desc) [0...$end]{
+export const partnersQuery = groq`*[_type == "partner"]| order(_createdAt desc) {
     ${partnerThumb}
 }`;
 export const filteredPeopleQuery = groq`*[_type == "people" && defined(slug.current) 
 && job in $jobs 
 || country in $countries
-]| order(_createdAt desc) [0...$end]{
+]| order(_createdAt desc) {
     ${peopleThumb}
 }`;
 
-export const allPeopleQuery = groq`*[_type == "people" && defined(slug.current) ]| order(_createdAt desc) [0...$end]{
+export const allPeopleQuery = groq`*[_type == "people" && defined(slug.current) ]| order(_createdAt desc) {
     ${peopleThumb}
 }`;
 
 export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc) [0...$end]{
     ${resourceThumb}
+     downloads[] {
+            ${download}
+        },
 }`;
 export const filteredResourcesQuery = groq`*[_type == "resource" && defined(slug.current)
 && typology in $typologies
 || count(downloads[url.asset->extension in $media]) > 0
 ] | order(_createdAt desc) [0...$end] {
     ${resourceThumb}
+     downloads[] {
+            ${download}
+        },
 }`;
 
-export const performancesQuery = groq`*[_type == "performance"]| order(_createdAt desc) [0...$end]{
+export const performancesQuery = groq`*[_type == "performance"]| order(_createdAt desc) {
     ${performanceThumb}
 }`;
 
-export const archivesQuery = groq`*[_type == "archive"]| order(_createdAt desc) [0...$end]`;
+export const archivesQuery = groq`*[_type == "archive"]| order(_createdAt desc)`;

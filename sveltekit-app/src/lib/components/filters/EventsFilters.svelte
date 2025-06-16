@@ -97,11 +97,11 @@
 								<li>
 									<label class="checkbox cursor-pointer">
 										<input
-											on:click={() => filterTypologies(typology.slug.current)}
+											on:click={() => filterTypologies(typology.slug)}
 											type="checkbox"
 											name="typologies"
-											checked={selectedTypologies.includes(typology.slug.current)}
-											value={typology.slug.current}
+											checked={selectedTypologies.includes(typology.slug)}
+											value={typology.slug}
 										/>
 										{typology.title}
 									</label>
@@ -118,11 +118,11 @@
 								<li>
 									<label class="checkbox cursor-pointer">
 										<input
-											on:click={() => filterInstitutions(institution.slug.current)}
+											on:click={() => filterInstitutions(institution.slug)}
 											type="checkbox"
 											name="institution"
-											checked={selectedInstitutions.includes(institution.slug.current)}
-											value={institution.slug.current}
+											checked={selectedInstitutions.includes(institution.slug)}
+											value={institution.slug}
 										/>
 										{institution.title}
 									</label>

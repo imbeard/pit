@@ -17,15 +17,13 @@
 
 	export let data;
 
-	$: document = data?.page?.data;
-	$: events = data?.events?.data;
-	$: partners = data?.partners?.data;
-	$: resources = data?.resources?.data;
+	$: document = data?.page?.data?.homepage;
+	$: events = data?.page?.data?.events;
+	$: partners = data?.page?.data?.partners;
+	$: resources = data?.page?.data?.resources;
 
 	$: activeFeaturedArtist = document?.featuredArtists[0];
 	$: activeFeaturedPartner = document?.featuredPartners[0];
-
-	$: console.log(data)
 </script>
 
 <main>
