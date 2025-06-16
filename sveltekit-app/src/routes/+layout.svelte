@@ -6,6 +6,7 @@
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import LogoAnimation from '$lib/components/LogoAnimation.svelte';
+	import { dev } from '$app/environment';
 
 	export let data;
 	$: settings = data?.settings?.data;
@@ -27,7 +28,7 @@
 	</div>
 </div>
 
-{#if $isPreviewing}
+{#if $isPreviewing && !dev}
 	<VisualEditing />
 	<LiveMode />
 {/if}
