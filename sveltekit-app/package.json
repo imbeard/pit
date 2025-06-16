@@ -52,7 +52,8 @@
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.3",
 		"unlazy": "^0.12.4",
-		"vite": "^5.3.5"
+		"vite": "^5.3.5",
+		"vite-plugin-devtools-json": "^0.2.0"
 	},
 	"type": "module",
 	"engines": {
