@@ -60,20 +60,32 @@ export const resourceQuery = groq`*[
     _type == "resource" 
     && defined(slug.current) 
     && slug.current == $slug]`;
+
+
 export const performanceQuery = groq`*[
     _type == "performance" 
     && defined(slug.current) 
     && slug.current == $slug] {
     ...,
     artists[]-> {
-        ${peopleThumb}
+        ${featuredPeopleThumb}
     },
-    institutions[]-> {
-        ${partnerThumb}
+   institutions[] {
+       role,
+       institution-> {
+           ${partnerThumb}
+       }
     },
-    "typology": typology->,
-   ${pageBuilder}
+    "typology": typology->{
+        _id,
+        "slug": slug.current,
+        title
+    },
+   
     }`;
+
+
+
 export const pageQuery = groq`*[
     _type == "page" 
     && defined(slug.current) 

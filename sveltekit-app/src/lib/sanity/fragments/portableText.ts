@@ -1,8 +1,14 @@
-import { portableTextLink } from './link';
 export const portableText = /* groq */ `
    ...,
     markDefs[]{
         ...,
-        ${portableTextLink}
+       _type == 'linkInternal' => {
+        url->{
+            "category": _type,
+            "slug": slug.current,
+            "typology": typology,
+            "label": label
+        }
+    },
     }
 `;

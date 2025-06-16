@@ -1,13 +1,23 @@
 <script>
 	import Image from '$lib/components/element/Image.svelte';
+	import PortableText from '$lib/components/element/PortableText.svelte';
 	export let section;
-
-	$: console.log(section);
 </script>
 
 <div class="md:grid-2">
 	{#each section.items as image}
-		<Image {image} fit="contain" />
+		<div>
+			<Image {image} fit="contain" />
+			{#if image?.caption}
+				<div class="caption">
+					<PortableText data={image.caption} />
+				</div>
+			{/if}
+		</div>
 	{/each}
-	{#if section?.caption}<div class="caption">{section?.caption}</div>{/if}
 </div>
+{#if section?.caption}
+	<div class="caption typo-s max-w-1/2">
+		<PortableText data={section.caption} />
+	</div>
+{/if}

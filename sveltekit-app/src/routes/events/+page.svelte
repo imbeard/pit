@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
-	import FeaturedEvent from '$lib/components/thumbnails/FeaturedEvent.svelte';
+	import FeaturedEventCard from '$lib/components/thumbnails/FeaturedEventCard.svelte';
 	import EventsFilters from '$lib/components/filters/EventsFilters.svelte';
 
 	import { getCurrentDate, slugToTitle } from '$lib/utils';
@@ -101,7 +101,7 @@
 		<div class="flex flex-col gap-xs md:grid-2 py-xs">
 			{#each document?.featuredEvents as event}
 				<div class="featured-event relative">
-					<FeaturedEvent thumbnail={event} />
+					<FeaturedEventCard thumbnail={event} />
 				</div>
 			{/each}
 		</div>

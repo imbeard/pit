@@ -6,12 +6,34 @@ pageBuilder {
     ...,
     _type == 'blockquote' => {
         text[0] {
-            ${portableText}
+           ...,
+    markDefs[]{
+        ...,
+       _type == 'linkInternal' => {
+        url->{
+            "category": _type,
+            "slug": slug.current,
+            "typology": typology,
+            "label": label
+        }
+    },
+    }
         }
     },
     _type == 'infoSection' => {
         content[] {
-            ${portableText}
+            ...,
+    markDefs[]{
+        ...,
+       _type == 'linkInternal' => {
+        url->{
+            "category": _type,
+            "slug": slug.current,
+            "typology": typology,
+            "label": label
+        }
+    },
+    }
         }
     }
 }

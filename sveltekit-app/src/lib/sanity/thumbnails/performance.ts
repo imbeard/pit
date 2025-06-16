@@ -1,5 +1,4 @@
 import { peopleThumb } from './people';
-import { partnerThumb } from './partner';
 export const performanceThumb = /* groq */ `
     _id,
     "slug": slug.current,
@@ -10,7 +9,12 @@ export const performanceThumb = /* groq */ `
     artists[]-> {
         ${peopleThumb}
     },
-    institutions[]-> {
-        ${partnerThumb}
+    institutions[] {
+       role,
+       institution-> {
+           _id,
+           "slug": slug.current,
+           title,
+       }
     },
 `;

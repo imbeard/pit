@@ -1,6 +1,5 @@
 export const link = /* groq */ `
 "link": {
-    ...,
     source == 'linkInternal' => {
         "category": linkInternal.url->_type,
         "url": linkInternal.url->slug.current,
@@ -26,7 +25,6 @@ export const link = /* groq */ `
 }`;
 
 export const portableTextLink = /* groq */ `
-    ...,
     _type == 'linkInternal' => {
        url->{
           "category": _type,

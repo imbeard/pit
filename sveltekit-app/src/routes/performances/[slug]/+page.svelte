@@ -1,9 +1,13 @@
 <script>
 	import PageBuilder from '$lib/components/PageBuilder.svelte';
 	import Image from '$lib/components/element/Image.svelte';
+	import FeaturedArtists from '$lib/components/FeaturedArtists.svelte';
+	import PartneringInstitutions from '$lib/components/PartneringInstitutions.svelte';
+
 	export let data;
 	$: performance = data?.performance?.data[0];
 	$: pageBuilder = performance?.pageBuilder;
+	$: console.log(performance);
 </script>
 
 <div class="pt-8 p-xs">
@@ -26,7 +30,7 @@
 				{#if performance.institutions.length > 0}
 					{#each performance.institutions as institution}
 						<div>
-							{institution.title}
+							{institution.institution.title}
 						</div>
 					{/each}
 				{/if}
@@ -39,5 +43,26 @@
 			<Image image={performance.image} fit="cover" />
 		</div>
 	</section>
+
 	<PageBuilder sections={pageBuilder.sections} />
+
+	<div class="pt-16">
+		<div class="w-full">
+			<h3 class="uppercase typo-lg pb-xs">Featured Artists</h3>
+			<hr class="text-gray" />
+		</div>
+		{#if performance.artists.length > 0}
+			<FeaturedArtists artists={performance.artists} theme="theme-pink-brown" />
+		{/if}
+	</div>
+
+	<div class="pt-16">
+		<div class="w-full">
+			<h3 class="uppercase typo-lg pb-xs">Partnering Institutions</h3>
+			<hr class="text-gray" />
+		</div>
+		{#if performance.institutions.length > 0}
+			<PartneringInstitutions partners={performance.institutions}/>
+		{/if}
+	</div>
 </div>

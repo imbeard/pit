@@ -9,10 +9,10 @@
 
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
 	import ResourceCard from '$lib/components/thumbnails/ResourceCard.svelte';
+	import FeaturedEventCard from '$lib/components/thumbnails/FeaturedEventCard.svelte';
+	import FeaturedArtistCard from '$lib/components/thumbnails/FeaturedArtistCard.svelte';
+	import FeaturedPartnerCard from '$lib/components/thumbnails/FeaturedPartnerCard.svelte';
 
-	import FeaturedEvent from '$lib/components/thumbnails/FeaturedEvent.svelte';
-	import FeaturedArtist from '$lib/components/thumbnails/FeaturedArtist.svelte';
-	import FeaturedPartner from '$lib/components/thumbnails/FeaturedPartner.svelte';
 	import Marquee from '$lib/components/element/Marquee.svelte';
 
 	export let data;
@@ -49,7 +49,7 @@
 		{#if events}
 			<section class="flex flex-col md:grid-2">
 				<div class="featured-event relative mb-xs aspect-[4/5] md:mb-0 md:aspect-auto md:sticky">
-					<FeaturedEvent thumbnail={document?.featuredEvent} />
+					<FeaturedEventCard thumbnail={document?.featuredEvent} />
 				</div>
 				<div class="flex flex-col gap-y-xs md:grid-2 md:gap-y-6">
 					{#each events as event}
@@ -75,7 +75,7 @@
 		<section class="featured-lists flex flex-col gap-y-12 md:grid-2">
 			<div class="featured-thumb-container">
 				<div class="featured-thumb">
-					<FeaturedArtist thumbnail={activeFeaturedArtist} />
+					<FeaturedArtistCard thumbnail={activeFeaturedArtist} />
 				</div>
 				<div class="list pt-xs flex gap-xs justify-center">
 					{#each document?.featuredArtists as artist}
@@ -92,7 +92,7 @@
 			</div>
 			<div class="featured-thumb-container h-full">
 				<div class="featured-thumb w-full">
-					<FeaturedPartner thumbnail={activeFeaturedPartner} />
+					<FeaturedPartnerCard thumbnail={activeFeaturedPartner} />
 				</div>
 				<div class="list pt-xs flex gap-xs justify-center">
 					{#each document?.featuredPartners as partner}

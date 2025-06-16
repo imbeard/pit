@@ -72,7 +72,24 @@ export const performance = defineType({
       name: 'institutions',
       title: 'Institutions',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'partner'}]}],
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'institution',
+              title: 'Institution',
+              type: 'reference',
+              to: [{type: 'partner'}],
+            }),
+            defineField({
+              name: 'role',
+              title: 'Role',
+              type: 'string',
+            }),
+          ],
+        },
+      ],
       group: 'content',
     }),
     defineField({
