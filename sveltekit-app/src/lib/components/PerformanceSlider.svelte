@@ -112,9 +112,16 @@
 						{#each slide.artists as artist}<div>{artist.name}</div>{/each}
 
 						{#if slide?.institutions?.length > 0}
-							{#each slide?.institutions as institution}
-								<div>{institution.institution.title}</div>
-							{/each}
+							<div>
+								{#each slide?.institutions as institution, index}
+									<div>
+										<span>{institution.institution.title}</span>
+										{#if index < slide?.institutions?.length - 1}
+											<span>,</span>
+										{/if}
+									</div>
+								{/each}
+							</div>
 						{/if}
 
 						<span>{slide.typology.title}</span>

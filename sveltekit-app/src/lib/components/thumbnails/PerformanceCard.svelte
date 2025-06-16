@@ -19,9 +19,16 @@
 		<div class="w-full grid-3 typo-s">
 			{#each thumbnail.artists as artist}<div>{artist.name}</div>{/each}
 			{#if thumbnail?.institutions?.length > 0}
-				{#each thumbnail?.institutions as institution}
-					<div>{institution.institution.title}</div>
-				{/each}
+				<div>
+					{#each thumbnail?.institutions as institution, index}
+						<div>
+							<span>{institution.institution.title}</span>
+							{#if index < thumbnail?.institutions?.length - 1}
+								<span>,</span>
+							{/if}
+						</div>
+					{/each}
+				</div>
 			{/if}
 			<span>{thumbnail.typology.title}</span>
 		</div>

@@ -1,13 +1,20 @@
-import { peopleThumb } from './people';
 export const performanceThumb = /* groq */ `
     _id,
     "slug": slug.current,
     image,
     title,
     theme,
-    "typology": typology->,
+    "typology": typology-> {
+        _id,
+        "slug": slug.current,
+        title
+    },
     artists[]-> {
-        ${peopleThumb}
+         _id,
+        "slug": slug.current,
+        name,
+        country,
+        job
     },
     institutions[] {
        role,
