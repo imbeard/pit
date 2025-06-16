@@ -55,7 +55,14 @@ export const partnerQuery = groq`*[
 export const peopleQuery = groq`*[
     _type == "people" 
     && defined(slug.current) 
-    && slug.current == $slug]`;
+    && slug.current == $slug] {
+        ...,
+        performance-> {
+           _id,
+           "slug": slug.current,
+           title
+        }
+    }`;
 export const resourceQuery = groq`*[
     _type == "resource" 
     && defined(slug.current) 

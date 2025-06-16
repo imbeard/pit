@@ -1,6 +1,5 @@
 <script>
 	import { getImageDimensions } from '@sanity/asset-utils';
-
 	import { urlFor } from '$lib/sanity/image';
 
 	export let image;
@@ -9,20 +8,19 @@
 	export let lazy = false;
 	export let preload = false;
 
-	$: innerWidth = 1280;
+	let innerWidth = 1280;
+
 	$: src = innerWidth < 768 && image.mobileImage ? image.mobileImage.asset : image.asset;
-	$: aspectRatio = getImageDimensions(src).width / getImageDimensions(src).height;
+	$: dimensions = getImageDimensions(src);
+	$: aspectRatio = dimensions.width / dimensions.height;
+	$: imageUrl = urlFor(src).width(dimensions.width).url() + '&auto=format';
 </script>
 
 <svelte:window bind:innerWidth />
 
 <svelte:head>
 	{#if preload}
-		<link
-			rel="preload"
-			as="image"
-			href={urlFor(src).width(getImageDimensions(src).width).url() + '&auto=format'}
-		/>
+		<link rel="preload" as="image" href={imageUrl} />
 	{/if}
 </svelte:head>
 
@@ -33,9 +31,9 @@
 	loading={lazy ? 'lazy' : 'eager'}
 	fetchpriority={lazy ? 'low' : 'high'}
 	data-sizes="auto"
-	width={src.width}
-	height={src.height}
+	width={dimensions.width}
+	height={dimensions.height}
 	style="aspect-ratio: {aspectRatio}"
 	alt={src.alt || alt}
-	src={urlFor(src).width(getImageDimensions(src).width).url() + '&auto=format'}
+	src={imageUrl}
 />

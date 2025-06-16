@@ -66,11 +66,11 @@ export const people = defineType({
       group: 'content',
     },
     defineField({
-      name: "performance",
-      title: "Performance",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "performance" }] }],
-      group: "content",
+      name: 'performance',
+      title: 'Performance',
+      type: 'reference',
+      to: [{type: 'performance'}],
+      group: 'content',
     }),
     defineField({
       name: 'pageBuilder',
