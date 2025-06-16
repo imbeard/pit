@@ -19,7 +19,6 @@
 	$: offsetTop = slideImageHeight - 20;
 	$: theme = `theme-${slides[selectedIndex].theme}`;
 
-
 	const renderDots = () => {
 		dotsNode.innerHTML = emblaApi
 			.scrollSnapList()
@@ -90,7 +89,9 @@
 <div class="embla" use:emblaCarouselSvelte={{ options, plugins }} on:emblaInit={onInit}>
 	<div class="embla__container">
 		{#each slides as slide}
-			<a class="embla__slide performance {theme} text-black bg-white" href="/performances/{slide.slug}"
+			<a
+				class="embla__slide performance {theme} text-black bg-white"
+				href="/performances/{slide.slug}"
 			>
 				{#if slide.image._type === 'elementImage'}
 					<div
@@ -109,7 +110,13 @@
 					<h3 class="typo-2xl text-center">{slide.title}</h3>
 					<div class="w-full grid-3 typo-s">
 						{#each slide.artists as artist}<div>{artist.name}</div>{/each}
-						{#each slide.institutions as institution}<div>{institution.title}</div>{/each}
+
+						{#if slide?.institutions?.length > 0}
+							{#each slide?.institutions as institution}
+								<div>{institution.institution.title}</div>
+							{/each}
+						{/if}
+
 						<span>{slide.typology.title}</span>
 					</div>
 				</div>
