@@ -24,6 +24,8 @@
 
 	$: activeFeaturedArtist = document?.featuredArtists[0];
 	$: activeFeaturedPartner = document?.featuredPartners[0];
+
+	$: console.log(data)
 </script>
 
 <main>

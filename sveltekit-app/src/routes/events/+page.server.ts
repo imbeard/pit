@@ -13,13 +13,13 @@ export const load: PageServerLoad = async (event) => {
 	};
 
 	const filteredEvents = await loadQuery(filteredEventsQuery, {
-		end: 300,
+		end: 5,
 		typologies: params.typologies,
 		institutions: params.institutions,
 		people: params.people
 	});
 	
-	const events = await loadQuery(eventsQuery, { end: 300 });
+	const events = await loadQuery(eventsQuery, { end: 5 });
 	const page = await loadQuery(archiveQuery, { slug: 'events' });
 
 	return {

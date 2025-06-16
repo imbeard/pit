@@ -10,12 +10,12 @@ export const load: PageServerLoad = async (event) => {
 	};
 
 	const filteredResources = await loadQuery(filteredResourcesQuery, {
-		end: 300,
+		end: 5,
 		typologies: params.typologies,
 		media: params.media,
 	});
 
-	const resources = await loadQuery(resourcesQuery, { end: 100 });
+	const resources = await loadQuery(resourcesQuery, { end: 5 });
 	const page = await loadQuery(archiveQuery, { slug: 'resources' });
 
 	return {

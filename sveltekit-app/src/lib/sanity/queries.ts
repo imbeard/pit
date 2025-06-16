@@ -1,12 +1,11 @@
 import groq from 'groq';
 import { performanceThumb } from './thumbnails/performance';
-import { eventThumb, featuredEventThumb } from './thumbnails/event';
+import { eventThumb } from './thumbnails/event';
 import { peopleThumb, featuredPeopleThumb } from './thumbnails/people';
-import { partnerThumb, featuredPartnerThumb } from './thumbnails/partner';
+import { partnerThumb } from './thumbnails/partner';
 import { resourceThumb } from './thumbnails/resource';
 
 import { link } from './fragments/link';
-import { portableText } from './fragments/portableText';
 import { pageBuilder } from './fragments/pageBuilder';
 
 // singletons
@@ -21,13 +20,13 @@ export const homepageQuery = groq`*[_type == "homepage"][0] {
         ${performanceThumb}
     },
     featuredEvent->{
-        ${featuredEventThumb}
+        ${eventThumb}
     },
     featuredArtists[]-> {
         ${featuredPeopleThumb}
     },
     featuredPartners[]-> {
-        ${featuredPartnerThumb}
+        ${partnerThumb}
     },
 }`;
 
@@ -70,7 +69,7 @@ export const archiveQuery = groq`*[
     _type == "archive" && defined(slug.current) && slug.current == $slug] {
     ...,
     featuredEvents[]->{
-       ${featuredEventThumb}
+       ${eventThumb}
     },
     }`;
 

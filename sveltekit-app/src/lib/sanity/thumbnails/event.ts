@@ -1,5 +1,3 @@
-import { peopleThumb } from './people';
-
 export const eventThumb = /* groq */ ` 
     _id,
     "slug": slug.current,
@@ -10,18 +8,19 @@ export const eventThumb = /* groq */ `
     start,
     end,
     location,
-    "typology": typology->,
-    "institution": institution->,
-    "featuredArtists": featuredArtists[]-> {
-        ${peopleThumb}
-     },
-`;
-
-export const featuredEventThumb = /* groq */ ` 
-    ...,
-     "typology": typology->,
-     "institution": institution->,
-     "featuredArtists": featuredArtists[]-> {
-        ${peopleThumb}
+    "typology": typology-> {
+        _id,
+        "slug": slug.current,
+        title
     },
+    "institution": institution->{
+        _id,
+        "slug": slug.current,
+        title
+    },
+    "featuredArtists": featuredArtists[]-> {
+        _id,
+        "slug": slug.current,
+        name,
+     },
 `;

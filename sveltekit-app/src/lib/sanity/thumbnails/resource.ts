@@ -7,7 +7,4 @@ export const resourceThumb = /* groq */ `
     "slug": slug.current,
     typology,
     "image": thumbnail,
-    downloads[] {
-        ${download}
-    },
 `;

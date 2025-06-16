@@ -4,8 +4,8 @@ export const load: PageServerLoad = async (event) => {
 	const { loadQuery } = event.locals;
 	const page = await loadQuery(homepageQuery);
 	const events = await loadQuery(eventsQuery, { end: 4 });
-	const partners = await loadQuery(partnersQuery, { end: 100 });
-	const resources = await loadQuery(resourcesQuery, { end: 10 });
+	const partners = await loadQuery(partnersQuery, { end: 5 });
+	const resources = await loadQuery(resourcesQuery, { end: 5 });
 
 	return { 
 		page,

@@ -10,11 +10,11 @@ export const load: PageServerLoad = async (event) => {
 	};
 
 	const allPeople = await loadQuery(allPeopleQuery, {
-		end: 300
+		end: 5
 	});
 
 	const filteredPeople = await loadQuery(filteredPeopleQuery, {
-		end: 300,
+		end: 5,
 		jobs: params.jobs,
 		countries: params.countries
 	});

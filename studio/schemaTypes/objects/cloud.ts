@@ -11,7 +11,6 @@ export const cloud = defineType({
       name: 'source',
       title: 'Source',
       type: 'string',
-      initialValue: 'url',
       options: {
         list: [
           {title: 'Internal', value: 'linkInternal'},
