@@ -18,12 +18,12 @@ export const homepage = defineType({
       type: 'elementImage',
       fieldset: 'hero',
     }),
-    defineField({
-      name: 'clouds',
-      title: 'Clouds',
-      type: 'cloud',
-      fieldset: 'hero',
-    }),
+    // defineField({
+    //   name: 'clouds',
+    //   title: 'Clouds',
+    //   type: 'cloud',
+    //   fieldset: 'hero',
+    // }),
 
     defineField({
       name: 'intro',
