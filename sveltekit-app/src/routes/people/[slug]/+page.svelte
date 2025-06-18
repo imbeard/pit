@@ -2,12 +2,17 @@
 	import { dateYear } from '$lib/utils';
 	import Image from '$lib/components/element/Image.svelte';
 	import PageBuilder from '$lib/components/PageBuilder.svelte';
+	import CloudShape from '$lib/components/svg/CloudShape-5.svelte';
+	import Cloud from '$lib/components/Cloud.svelte';
 	export let data;
+
 	$: person = data?.person?.data[0];
 	$: pageBuilder = person?.pageBuilder;
+	$: cloudBg = person?.performance?.theme.split('-')[0];
+	$: cloudFg = person?.performance?.theme.split('-')[1];
 </script>
 
-<div class="w-full">
+<div class="px-xs">
 	<section class="w-full flex justify-center pt-10">
 		<div class="pb-6 border-b border-gray w-full relative">
 			<div class="flex flex-col items-center">
@@ -19,25 +24,51 @@
 					<span>{dateYear(person.dateBirth)}</span>
 				</div>
 			</div>
-			<div class="w-full h-[50vh] mx-auto pt-4">
+			<div class="max-h-30 h-30 md:w-full md:h-[50vh] mx-auto pt-4">
 				<Image image={person?.image} fit="contain" />
+			</div>
+
+			<div class="md:hidden w-full flex justify-end px-xs">
+				<Cloud
+					entry={person?.performance}
+					category="performances"
+					link="/performances/{person?.performance?.slug}"
+					{cloudFg}
+					{cloudBg}
+					rotation="-20"
+				>
+					<div slot="shape">
+						<CloudShape {cloudBg} {cloudFg} link="/performances/{person?.performance?.slug}" />
+					</div>
+
+					<div slot="title">Associated Performance</div>
+				</Cloud>
 			</div>
 		</div>
 	</section>
+</div>
 
-	<div class="p-xs">
-		{#if pageBuilder}
-			<PageBuilder sections={pageBuilder.sections} />
-		{/if}
+<div class="p-xs relative">
+	<div class="hidden md:block absolute h-full right-5">
+		<div class="sticky top-32 h-auto flex justify-end -mt-30">
+			<Cloud
+				entry={person?.performance}
+				category="performances"
+				link="/performances/{person?.performance?.slug}"
+				{cloudFg}
+				{cloudBg}
+				rotation="-20"
+			>
+				<div slot="shape">
+					<CloudShape {cloudBg} {cloudFg} link="/performances/{person?.performance?.slug}" />
+				</div>
+
+				<div slot="title">Associated Performance</div>
+			</Cloud>
+		</div>
 	</div>
 
-	<div class="sticky bottom-[10vh] flex justify-end -rotate-20">
-		<div class="relative">
-            <img src="/clouds/blue-cloud-sx.svg" alt="" />
-            <a href="/performances/{person?.performance?.slug}" class="absolute top-0 bottom-0 left-0 right-0 text-center text-pink flex flex-col justify-center items-center h-full w-full -mt-1">
-                <div>Associated Performance</div>
-                <div class="typo-lg">{person?.performance.title}</div>
-            </a>
-        </div>
-	</div>
+	{#if pageBuilder}
+		<PageBuilder sections={pageBuilder.sections} />
+	{/if}
 </div>

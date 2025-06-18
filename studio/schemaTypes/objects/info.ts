@@ -5,7 +5,7 @@ export const info = defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'Title',
+      name: 'title',
       title: 'Title',
       type: 'string',
     }),

@@ -1,0 +1,29 @@
+<script>
+	export let cloudBg = 'black';
+	export let cloudFg = 'white';
+	export let link;
+
+	$: themeColor = `var(--color-${cloudBg})`;
+	$: hoverColor = `var(--color-${cloudFg})`;
+</script>
+
+<a href={link} class="hover-svg cursor-pointer" style="--hover-color: {hoverColor}">
+	<svg
+		width="100%"
+		height="100%"
+		viewBox="0 0 298 152"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<path
+			d="M4.18409 138.5V147.5L24.1747 152L59.507 147.5H258.484H289.632L294.746 121.5L298 117L294.746 97.5V59.5L265.457 31.5V16L216.178 0H168.758C163.954 1.83333 153.324 5.5 149.232 5.5H131.101L111.111 16H99.9532L59.507 31.5L42.3058 49H37.1919L28.3588 59.5L13.947 70.5V85.5V97.5L4.18409 121.5L0 126.5V132.5L4.18409 138.5Z"
+			fill={themeColor}
+		/>
+	</svg>
+</a>
+
+<style>
+	.hover-svg:hover path {
+		fill: var(--hover-color);
+	}
+</style>

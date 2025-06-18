@@ -24,6 +24,12 @@ export const resource = defineType({
       title: 'Typology',
       type: 'string',
     }),
+     defineField({
+      name: 'performance',
+      title: 'Performance',
+      type: 'reference',
+      to: [{type: 'performance'}],
+    }),
     defineField({
       name: 'thumbnail',
       title: 'Thumbnail',

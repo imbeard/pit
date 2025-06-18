@@ -3,17 +3,17 @@
 	export let section;
 </script>
 
-<div class="grid-2 w-full">
+<div class="md:grid-2 w-full">
 	<div>
 		{#if section.heading}<h3 class="heading pb-3 typo-lg">{section.heading}</h3>{/if}
-		<div class="max-w-4xl">
+		<div class="max-w-5xl">
 			<PortableText data={section.content} />
 		</div>
 	</div>
 </div>
 
 <style>
-	.heading {
+	.heading:not(:first-child) {
 		padding-top: calc(5rem - var(--spacing-s));
 	}
 </style>

@@ -8,7 +8,7 @@
 
 <a
 	href="/resources/{thumbnail.slug}"
-	class="grid-2 border-y border-gray h-full py-xs min-h-20 hover:text-pink transition-all duration-200"
+	class="resource-card grid-2 h-full py-xs min-h-20 hover:text-pink transition-all duration-200"
 	class:border-none={$page.route.id === '/resources'}
 >
 	<div class="cover-image">
@@ -20,7 +20,9 @@
 				<Image image={thumbnail.image} fit="cover" />
 			</div>
 		{:else}
-			<div class="bg-red w-full h-full flex justify-center items-center text-black">{thumbnail.typology}</div>
+			<div class="bg-red w-full h-full flex justify-center items-center text-black">
+				{thumbnail.typology}
+			</div>
 		{/if}
 	</div>
 	<div class="flex flex-col gap-1">
@@ -34,4 +36,16 @@
 	/* .cover-image {
 		aspect-ratio: 16 / 9;
 	} */
+	.resource-card {
+		border-top: 1px solid var(--color-gray);
+	}
+	.resource-card:last-of-type {
+		border-bottom: 1px solid var(--color-gray);
+	}
+
+	@media (min-width: 768px) {
+		.resource-card {
+			border-block: 1px solid var(--color-gray);
+		}
+	}
 </style>

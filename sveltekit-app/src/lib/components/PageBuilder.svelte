@@ -18,7 +18,7 @@
 		}));
 </script>
 
-<div class="flex flex-col gap-s py-s">
+<div class="flex flex-col gap-s pb-s">
 	{#each orderedComponents as { section, componentPromise }}
 		{#await componentPromise then Module}
 			{@const Component = Module.default}

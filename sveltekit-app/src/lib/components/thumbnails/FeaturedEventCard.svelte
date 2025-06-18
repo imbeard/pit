@@ -6,7 +6,7 @@
 </script>
 
 <a
-	href="/events/{thumbnail?.slug?.current}"
+	href="/events/{thumbnail?.slug}"
 	class="card-empty flex flex-col justify-between p-2 {theme} h-full"
 >
 	{#if thumbnail?.image?.asset}

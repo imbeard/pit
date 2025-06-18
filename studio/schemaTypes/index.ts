@@ -6,7 +6,6 @@ import {event} from './documents/event'
 import {performance} from './documents/performance'
 import {archive} from './documents/archive'
 import {category} from './documents/category'
-
 import {resource} from './documents/resource'
 
 // objects
@@ -32,6 +31,10 @@ import {highlightedText} from './objects/highlightedText'
 // singletons
 import {homepage} from './singletons/homepage'
 import {settings} from './singletons/settings'
+
+// duration
+import {duration} from './duration/duration'
+import {timeValue} from './duration/timeValue'
 
 export const schemaTypes = [
   // links
@@ -69,4 +72,8 @@ export const schemaTypes = [
   // singletons
   homepage,
   settings,
+
+  //duration
+  duration,
+  timeValue
 ]

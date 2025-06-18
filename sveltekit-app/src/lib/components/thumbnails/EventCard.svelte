@@ -34,7 +34,7 @@
 	</div>
 
 	<div
-		class="grid-2 md:hidden {theme} aspect-[2/1]"
+		class="grid-2 md:hidden {theme} w-full aspect-[2/1]"
 		class:card-empty={!thumbnail?.image?.asset}
 		class:bg-transparent={thumbnail?.image?.asset}
 		class:text-black={thumbnail?.image?.asset}

@@ -7,7 +7,6 @@
 	export let data;
 	$: performance = data?.performance?.data[0];
 	$: pageBuilder = performance?.pageBuilder;
-	$: console.log(performance);
 </script>
 
 <div class="pt-8 p-xs">
@@ -28,11 +27,16 @@
 					{/each}
 				{/if}
 				{#if performance.institutions.length > 0}
-					{#each performance.institutions as institution}
-						<div>
-							{institution.institution.title}
-						</div>
-					{/each}
+					<div>
+						{#each performance.institutions as institution, index}
+							<div>
+								<span>{institution.institution.title}</span>
+								{#if index < performance?.institutions?.length - 1}
+									<span>,</span>
+								{/if}
+							</div>
+						{/each}
+					</div>
 				{/if}
 				{#if performance.typology.title}
 					<span>{performance.typology.title}</span>
@@ -44,25 +48,19 @@
 		</div>
 	</section>
 
-	<PageBuilder sections={pageBuilder.sections} />
+	<div class="pt-s">
+		<PageBuilder sections={pageBuilder.sections} />
+	</div>
 
-	<div class="pt-16">
-		<div class="w-full">
-			<h3 class="uppercase typo-lg pb-xs">Featured Artists</h3>
-			<hr class="text-gray" />
-		</div>
-		{#if performance.artists.length > 0}
+	{#if performance.artists && performance.artists.length > 0}
+		<div class="pt-16">
 			<FeaturedArtists artists={performance.artists} theme="theme-pink-brown" />
-		{/if}
-	</div>
-
-	<div class="pt-16">
-		<div class="w-full">
-			<h3 class="uppercase typo-lg pb-xs">Partnering Institutions</h3>
-			<hr class="text-gray" />
 		</div>
-		{#if performance.institutions.length > 0}
-			<PartneringInstitutions partners={performance.institutions}/>
-		{/if}
-	</div>
+	{/if}
+
+	{#if performance.institutions && performance.institutions.length > 0}
+		<section class="pt-16">
+			<PartneringInstitutions partners={performance.institutions} />
+		</section>
+	{/if}
 </div>

@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineField, defineType, defineArrayMember} from 'sanity'
 import {SearchIcon} from '@sanity/icons'
 
 export const event = defineType({
@@ -91,6 +91,13 @@ export const event = defineType({
       to: [{type: 'category'}],
     }),
     defineField({
+      name: 'performance',
+      title: 'Performance',
+      type: 'reference',
+      to: [{type: 'performance'}],
+      group: 'content',
+    }),
+    defineField({
       name: 'artists',
       title: 'Artists',
       type: 'blockContent',
@@ -100,7 +107,7 @@ export const event = defineType({
     defineField({
       name: 'start',
       title: 'Start date',
-      type: 'datetime',
+      type: 'date',
       fieldset: 'details',
       group: 'content',
       validation: (Rule) => Rule.required(),
@@ -108,10 +115,24 @@ export const event = defineType({
     defineField({
       name: 'end',
       title: 'End date',
-      type: 'datetime',
+      type: 'date',
       fieldset: 'details',
       group: 'content',
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'time',
+      title: 'Time',
+      type: 'duration',
+      fieldset: 'details',
+      group: 'content',
+    }),
+    defineField({
+      name: 'city',
+      title: 'City',
+      type: 'string',
+      group: 'content',
+      fieldset: 'details',
     }),
     defineField({
       name: 'location',
@@ -119,6 +140,18 @@ export const event = defineType({
       type: 'string',
       group: 'content',
       fieldset: 'details',
+    }),
+    defineField({
+      name: 'informations',
+      title: 'Informations',
+      type: 'array',
+      description: 'Addresses, contacts, ...',
+      of: [
+        defineArrayMember({
+          type: 'info',
+        }),
+      ],
+      group: 'content',
     }),
     defineField({
       name: 'institution',
@@ -132,6 +165,13 @@ export const event = defineType({
       title: 'Featured Artists',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'people'}]}],
+      group: 'content',
+    }),
+    defineField({
+      name: 'allPartners',
+      title: 'All Partners',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'partner'}]}],
       group: 'content',
     }),
     defineField({

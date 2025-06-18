@@ -8,6 +8,7 @@ import { download } from './thumbnails/download';
 
 import { link } from './fragments/link';
 import { pageBuilder } from './fragments/pageBuilder';
+import { portableText } from './fragments/portableText';
 
 // singletons
 export const settingsQuery = groq`*[_type == "settings"][0]`;
@@ -47,11 +48,57 @@ export const homepageQuery = groq`{
 export const eventQuery = groq`*[
     _type == "event" 
     && defined(slug.current) 
-    && slug.current == $slug]`;
-export const partnerQuery = groq`*[
+    && slug.current == $slug] {
+    ...,
+
+    typology-> {
+        _id,
+        "slug": slug.current,
+        title
+    },
+
+    performance-> {
+       _id,
+        "slug": slug.current,
+        title,
+        theme
+    },
+
+    institution-> {
+       _id,
+       "slug": slug.current,
+       title
+    },
+
+    featuredArtists[]-> {
+        ${featuredPeopleThumb}
+    },
+
+    allPartners[]-> {
+        ${partnerThumb}
+    },
+       
+    "relatedEvents": *[
+    _type == "event" &&
+    typology._ref == ^.typology._ref &&
+    slug.current != $slug
+    ] {
+        ${eventThumb}
+    }
+
+    }`;
+
+export const partnerQuery = groq`{
+    "partner": *[
     _type == "partner" 
     && defined(slug.current) 
-    && slug.current == $slug]`;
+    && slug.current == $slug],
+    "performances": *[_type == "performance" 
+    && references(*[_type == "partner" && slug.current == $slug][0]._id)] {
+        ${performanceThumb}
+    }
+}`;
+
 export const peopleQuery = groq`*[
     _type == "people" 
     && defined(slug.current) 
@@ -60,14 +107,14 @@ export const peopleQuery = groq`*[
         performance-> {
            _id,
            "slug": slug.current,
-           title
+           title,
+           theme
         }
     }`;
 export const resourceQuery = groq`*[
     _type == "resource" 
     && defined(slug.current) 
     && slug.current == $slug]`;
-
 
 export const performanceQuery = groq`*[
     _type == "performance" 
@@ -90,8 +137,6 @@ export const performanceQuery = groq`*[
     },
    ${pageBuilder},
     }`;
-
-
 
 export const pageQuery = groq`*[
     _type == "page" 

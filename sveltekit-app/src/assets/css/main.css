@@ -25,6 +25,11 @@ button {
 	}
 }
 
+/* a {
+	display: inherit;
+	line-height: inherit;
+} */
+
 /* video-player element */
 
 .player .vds-video-layout {
@@ -38,7 +43,7 @@ button {
 	--video-sm-button-size: 32px;
 	--video-sm-play-button-size: 6rem;
 	--video-sm-play-button-transform: translateY(25%);
-	--video-sm-play-button-bg: var(--color-brown)
+	--video-sm-play-button-bg: var(--color-brown);
 }
 
 .player .vds-settings-menu {
@@ -67,4 +72,17 @@ button {
 	height: 100%;
 	position: absolute;
 	object-fit: cover;
+}
+
+.typo-cloud-s {
+	font-size: clamp(1rem, 1.2vw, 1.2rem);
+}
+
+.typo-cloud-base {
+	font-size: clamp(1.2rem, 2vw, 1.8rem);
+}
+
+.size-cloud {
+	width: clamp(200px, 30vw, 300px);
+	height: auto;
 }

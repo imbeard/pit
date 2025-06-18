@@ -64,13 +64,13 @@ export const partner = defineType({
       ],
       group: 'content',
     }),
-    defineField({
-      name: 'performances',
-      title: 'Performances',
-      type: 'reference',
-      to: [{type: 'performance'}],
-      group: 'content',
-    }),
+    // defineField({
+    //   name: 'performances',
+    //   title: 'Performances',
+    //   type: 'reference',
+    //   to: [{type: 'performance'}],
+    //   group: 'content',
+    // }),
     defineField({
       name: 'pageBuilder',
       type: 'pageBuilder',

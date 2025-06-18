@@ -17,7 +17,7 @@
 	{/each}
 </div>
 {#if section?.caption}
-	<div class="caption typo-s max-w-1/2">
+	<div class="caption typo-s md:max-w-1/2">
 		<PortableText data={section.caption} />
 	</div>
 {/if}

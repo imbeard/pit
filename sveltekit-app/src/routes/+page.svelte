@@ -4,8 +4,8 @@
 	import Image from '$lib/components/element/Image.svelte';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import Link from '$lib/components/element/Link.svelte';
-	import PerformanceSlider from '$lib/components/PerformanceSlider.svelte';
-	import ResourcesSlider from '$lib/components/ResourcesSlider.svelte';
+	import PerformanceSlider from '$lib/components/sliders/PerformanceSlider.svelte';
+	import ResourcesSlider from '$lib/components/sliders/ResourcesSlider.svelte';
 
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
 	import ResourceCard from '$lib/components/thumbnails/ResourceCard.svelte';
@@ -113,7 +113,7 @@
 		<section>
 			<div class="flex justify-between w-full items-center pb-xs">
 				<h3 class="typo-lg">Resources</h3>
-				<a href="/partners" class="hidden md:block theme-pink-blue cursor-pointer button">View All <span class="align-super typo-s leading-0">&nearr;</span></a>
+				<a href="/resources" class="hidden md:block theme-pink-blue cursor-pointer button">View All <span class="align-super typo-s leading-0">&nearr;</span></a>
 			</div>
 			<div class="hidden md:block">
 				<ResourcesSlider slides={resources} />
@@ -124,7 +124,7 @@
 						<ResourceCard thumbnail={resource} />
 					{/each}
 				</div>
-				<a href="/partners" class="theme-pink-blue cursor-pointer button w-fit">View All <span class="align-super typo-s leading-0">&nearr;</span></a>
+				<a href="/resources" class="theme-pink-blue cursor-pointer button w-fit">View All <span class="align-super typo-s leading-0">&nearr;</span></a>
 			</div>
 		</section>
 	</div>

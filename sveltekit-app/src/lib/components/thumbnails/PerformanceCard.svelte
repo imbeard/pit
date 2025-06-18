@@ -17,7 +17,12 @@
 		</div>
 		<h3 class="typo-2xl text-center">{thumbnail.title}</h3>
 		<div class="w-full grid-3 typo-s">
-			{#each thumbnail.artists as artist}<div>{artist.name}</div>{/each}
+			{#each thumbnail.artists as artist, index}
+				<span>{artist.name}</span>
+				{#if index < thumbnail?.artistis?.length - 1}
+					<span>,</span>
+				{/if}
+			{/each}
 			{#if thumbnail?.institutions?.length > 0}
 				<div>
 					{#each thumbnail?.institutions as institution, index}
@@ -30,7 +35,7 @@
 					{/each}
 				</div>
 			{/if}
-			<span>{thumbnail.typology.title}</span>
+			<div>{thumbnail.typology.title}</div>
 		</div>
 	</div>
 </a>
