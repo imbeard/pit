@@ -134,7 +134,7 @@ importers:
         version: 1.12.13
     devDependencies:
       '@portabletext/svelte':
-        specifier: ^2.1.11
+        specifier: ^2.1.12
         version: 2.1.12(svelte@4.2.20)
       '@portabletext/types':
         specifier: ^2.0.13

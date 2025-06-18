@@ -28,7 +28,32 @@
 				<Image image={person?.image} fit="contain" />
 			</div>
 
-			<div class="md:hidden w-full flex justify-end px-xs">
+			{#if person?.performance}
+				<div class="md:hidden w-full flex justify-end px-xs">
+					<Cloud
+						entry={person?.performance}
+						category="performances"
+						link="/performances/{person?.performance?.slug}"
+						{cloudFg}
+						{cloudBg}
+						rotation="-20"
+					>
+						<div slot="shape">
+							<CloudShape {cloudBg} {cloudFg} link="/performances/{person?.performance?.slug}" />
+						</div>
+
+						<div slot="title">Associated Performance</div>
+					</Cloud>
+				</div>
+			{/if}
+		</div>
+	</section>
+</div>
+
+<div class="p-xs relative">
+	{#if person?.performance}
+		<div class="hidden md:block absolute h-full right-5">
+			<div class="sticky top-32 h-auto flex justify-end -mt-30">
 				<Cloud
 					entry={person?.performance}
 					category="performances"
@@ -45,28 +70,7 @@
 				</Cloud>
 			</div>
 		</div>
-	</section>
-</div>
-
-<div class="p-xs relative">
-	<div class="hidden md:block absolute h-full right-5">
-		<div class="sticky top-32 h-auto flex justify-end -mt-30">
-			<Cloud
-				entry={person?.performance}
-				category="performances"
-				link="/performances/{person?.performance?.slug}"
-				{cloudFg}
-				{cloudBg}
-				rotation="-20"
-			>
-				<div slot="shape">
-					<CloudShape {cloudBg} {cloudFg} link="/performances/{person?.performance?.slug}" />
-				</div>
-
-				<div slot="title">Associated Performance</div>
-			</Cloud>
-		</div>
-	</div>
+	{/if}
 
 	{#if pageBuilder}
 		<PageBuilder sections={pageBuilder.sections} />

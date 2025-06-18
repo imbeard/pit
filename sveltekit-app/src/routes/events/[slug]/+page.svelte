@@ -17,8 +17,6 @@
 
 	$: cloudBg = event?.performance?.theme.split('-')[0];
 	$: cloudFg = event?.performance?.theme.split('-')[1];
-
-	$: console.log(event);
 </script>
 
 <div class="px-xs">
@@ -38,22 +36,24 @@
 			</div>
 		</div>
 
-		<div class="md:hidden w-full flex justify-end px-xs">
-			<Cloud
-				entry={event?.performance}
-				category="performances"
-				link="/performances/{event?.performance?.slug}"
-				{cloudFg}
-				{cloudBg}
-				rotation="6"
-			>
-				<div slot="shape">
-					<CloudShape {cloudBg} {cloudFg} link="/performances/{event?.performance?.slug}" />
-				</div>
+		{#if event?.performance}
+			<div class="md:hidden w-full flex justify-end px-xs">
+				<Cloud
+					entry={event?.performance}
+					category="performances"
+					link="/performances/{event?.performance?.slug}"
+					{cloudFg}
+					{cloudBg}
+					rotation="6"
+				>
+					<div slot="shape">
+						<CloudShape {cloudBg} {cloudFg} link="/performances/{event?.performance?.slug}" />
+					</div>
 
-				<div slot="title">Associated Performance</div>
-			</Cloud>
-		</div>
+					<div slot="title">Associated Performance</div>
+				</Cloud>
+			</div>
+		{/if}
 
 		<div class="col-start-3 col-end-12 md:self-end typo-2xl">
 			<div>{event?.institution?.title}</div>
@@ -72,24 +72,27 @@
 	</section>
 
 	<div class="relative">
-		<div class="hidden md:block absolute h-full right-5 z-10">
-			<div class="sticky top-36 h-auto flex justify-end -mt-30">
-				<Cloud
-					entry={event?.performance}
-					category="performances"
-					link="/performances/{event?.performance?.slug}"
-					{cloudFg}
-					{cloudBg}
-					rotation="8"
-				>
-					<div slot="shape">
-						<CloudShape {cloudBg} {cloudFg} link="/performances/{event?.performance?.slug}" />
-					</div>
+		
+		{#if event?.performance}
+			<div class="hidden md:block absolute h-full right-5 z-10">
+				<div class="sticky top-36 h-auto flex justify-end -mt-30">
+					<Cloud
+						entry={event?.performance}
+						category="performances"
+						link="/performances/{event?.performance?.slug}"
+						{cloudFg}
+						{cloudBg}
+						rotation="8"
+					>
+						<div slot="shape">
+							<CloudShape {cloudBg} {cloudFg} link="/performances/{event?.performance?.slug}" />
+						</div>
 
-					<div slot="title">Associated Performance</div>
-				</Cloud>
+						<div slot="title">Associated Performance</div>
+					</Cloud>
+				</div>
 			</div>
-		</div>
+		{/if}
 
 		{#if event?.image}
 			<section class="w-full mx-auto pt-xs">
@@ -141,7 +144,7 @@
 				<EventsSlider slides={event?.relatedEvents} />
 			</div>
 			<div class="flex flex-col gap-xs md:hidden pt-xs">
-				{#each event?.relatedEvents as slide}
+				{#each relatedEvents as slide}
 					<EventCard thumbnail={slide} pageColor="brown" />
 				{/each}
 			</div>

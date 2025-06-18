@@ -40,7 +40,7 @@
 					const slideIndex = parseInt(entry.target.dataset.slideIndex);
 					if (videoStates[slideIndex]) {
 						videoStates[slideIndex].isVisible = entry.isIntersecting;
-						
+
 						if (!entry.isIntersecting && videoStates[slideIndex].isPlaying) {
 							pauseVideo(slideIndex);
 						}
@@ -70,7 +70,7 @@
 		if (videoStates[slideIndex]) {
 			videoStates[slideIndex].hasUserInteracted = true;
 			videoStates[slideIndex].isPlaying = true;
-			
+
 			if (videoStates[slideIndex].isVisible && videoElements[slideIndex]) {
 				const mediaPlayer = videoElements[slideIndex].querySelector('media-player');
 				if (mediaPlayer) {
@@ -106,17 +106,17 @@
 				<div class="embla__slide">
 					{#if slide._type == 'elementImage'}
 						<div class="image-container">
-							<Image image={slide} fit="contain"/>
+							<Image image={slide} fit="contain" />
 						</div>
 					{:else if slide._type == 'elementVideo'}
-						<div 
-							class="image-container" 
+						<div
+							class="image-container"
 							bind:this={videoElements[index]}
 							use:observeVideoSlide={index}
 						>
-							<Video 
-								src={slide.url} 
-								alt={slide.alt} 
+							<Video
+								src={slide.url}
+								alt={slide.alt}
 								poster={slide.poster}
 								on:play={() => handleVideoPlay(index)}
 								on:pause={() => handleVideoPause(index)}
@@ -141,14 +141,13 @@
 	.embla__container {
 		display: flex;
 		touch-action: pan-y pinch-zoom;
-		min-height: 370px;
-		height: 45svh;
+		height: 120px;
 	}
 	.embla__slide {
 		transform: translate3d(0, 0, 0);
 		flex: 0 0 auto;
 		min-width: 0;
-		margin-right: var(--spacing-xs);
+		margin-right: 3px;
 	}
 
 	.image-container {
@@ -157,5 +156,19 @@
 
 	.caption {
 		height: 100%;
+	}
+
+	@media (min-width: 768px) {
+		.embla__container {
+			min-height: 370px;
+			height: 45svh;
+		}
+
+		.embla__slide {
+		transform: translate3d(0, 0, 0);
+		flex: 0 0 auto;
+		min-width: 0;
+		margin-right: var(--spacing-xs);
+	}
 	}
 </style>

@@ -89,14 +89,20 @@ export const eventQuery = groq`*[
     }`;
 
 export const partnerQuery = groq`{
+
     "partner": *[
     _type == "partner" 
     && defined(slug.current) 
-    && slug.current == $slug],
+    && slug.current == $slug] {
+        ...,
+        ${pageBuilder}
+    },
+
     "performances": *[_type == "performance" 
     && references(*[_type == "partner" && slug.current == $slug][0]._id)] {
         ${performanceThumb}
-    }
+    },
+    
 }`;
 
 export const peopleQuery = groq`*[
@@ -109,12 +115,25 @@ export const peopleQuery = groq`*[
            "slug": slug.current,
            title,
            theme
-        }
+        },
+        ${pageBuilder}
     }`;
 export const resourceQuery = groq`*[
     _type == "resource" 
     && defined(slug.current) 
-    && slug.current == $slug]`;
+    && slug.current == $slug] {
+        ...,
+        performance-> {
+            _id,
+            "slug": slug.current,
+            title,
+            theme
+        },
+        ${pageBuilder},
+        downloads[] {
+            ${download}
+        },
+    }`;
 
 export const performanceQuery = groq`*[
     _type == "performance" 
@@ -142,6 +161,7 @@ export const pageQuery = groq`*[
     _type == "page" 
     && defined(slug.current) 
     && slug.current == $slug]`;
+
 export const archiveQuery = groq`*[
     _type == "archive" && defined(slug.current) && slug.current == $slug] {
     ...,

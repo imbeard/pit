@@ -3,6 +3,10 @@
 @import './utilities.css';
 @source inline("grid-cols-{0..12}");
 @source inline("theme-{pink,red,blue,black,brown,gray}-{pink,red,blue,black,brown,gray}");
+@source inline("rotate-{0..90}");
+@source inline("-rotate-{0..90}");
+
+
 
 html {
 	font-size: 10px;

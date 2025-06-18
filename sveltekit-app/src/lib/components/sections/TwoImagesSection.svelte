@@ -4,7 +4,7 @@
 	export let section;
 </script>
 
-<div class="md:grid-2">
+<div class="flex flex-col gap-xs md:grid-2">
 	{#each section.items as image}
 		<div>
 			<Image {image} fit="contain" />

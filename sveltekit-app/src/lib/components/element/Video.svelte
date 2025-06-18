@@ -28,12 +28,12 @@
 			// Disable autoplay and prevent automatic playing
 			player.autoplay = false;
 			player.muted = false;
-			
+
 			// Listen for play/pause events and dispatch them to parent
 			player.addEventListener('play', () => {
 				dispatch('play');
 			});
-			
+
 			player.addEventListener('pause', () => {
 				dispatch('pause');
 			});
@@ -73,8 +73,8 @@
 		{src}
 		poster={posterUrl?.asset?.url}
 		bind:this={player}
-		autoplay={preventAutoplay ? "false" : "false"}
-		muted={preventAutoplay ? "false" : "true"}
+		autoplay={preventAutoplay ? 'false' : 'false'}
+		muted={preventAutoplay ? 'false' : 'true'}
 	>
 		<media-provider>
 			<source {src} />

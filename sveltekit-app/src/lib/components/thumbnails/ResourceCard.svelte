@@ -31,21 +31,3 @@
 		<div class="typo-s text-center pt-xs">{formatDate(thumbnail._createdAt)} &darr;</div>
 	</div>
 </a>
-
-<style>
-	/* .cover-image {
-		aspect-ratio: 16 / 9;
-	} */
-	.resource-card {
-		border-top: 1px solid var(--color-gray);
-	}
-	.resource-card:last-of-type {
-		border-bottom: 1px solid var(--color-gray);
-	}
-
-	@media (min-width: 768px) {
-		.resource-card {
-			border-block: 1px solid var(--color-gray);
-		}
-	}
-</style>

@@ -1,8 +1,10 @@
 export const download = /* groq */ ` 
-    url {
+  title,
+  url {
     asset->{
       url,
-      extension
+      extension,
+      mimeType
     }
     }
 `;

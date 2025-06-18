@@ -73,7 +73,7 @@
 		<ArchiveIntro {document} />
 	</section>
 
-	<div class="flex w-full justify-end pb-xs">
+	<div class="flex w-full justify-end pb-xs border-b border-gray">
 		<button class="button theme-pink-blue" on:click={() => openFilters()}>
 			<span>Filters</span>
 			{#if params.typologies.length > 0 || params.media.length > 0}
@@ -91,7 +91,7 @@
 		/>
 	</div>
 	{#if params.typologies.length > 0 || params.media.length > 0}
-		<div class="flex flex-wrap gap-xs w-full justify-end py-xs border-y border-gray">
+		<div class="flex flex-wrap gap-xs w-full justify-end py-xs border-b border-gray">
 			{#each params.typologies as typology}
 				<button class="button theme-pink-blue" on:click={() => removeFilter(typology)}
 					>{typology}&nbsp;<span class="align-super typo-s leading-0">x</span></button
@@ -110,7 +110,7 @@
 				{#if filteredResources.length > 0}
 					{#each filteredResources as resource}
 						<div
-							class="card border-y border-gray"
+							class="card border-b border-gray md:nth-of-type-[n+3]:border-y"
 							class:filters-open={params.typologies.length > 0 || params.media.length > 0}
 						>
 							<ResourceCard thumbnail={resource} />
@@ -118,7 +118,7 @@
 					{/each}
 				{:else}
 					{#each resources as resource}
-						<div class="card border-y border-gray">
+						<div class="card border-b border-gray md:nth-of-type-[n+3]:border-y">
 							<ResourceCard thumbnail={resource} />
 						</div>
 					{/each}
@@ -127,16 +127,3 @@
 		</section>
 	{/if}
 </div>
-
-<style>
-	.card.filters-open:nth-of-type(1) {
-		border-top: none;
-	}
-
-	@media (min-width: 768px) {
-		.card.filters-open:nth-of-type(1),
-		.card.filters-open:nth-of-type(2) {
-			border-top: none;
-		}
-	}
-</style>

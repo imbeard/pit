@@ -19,14 +19,14 @@
 			</div>
 			<h3 class="typo-2xl text-center">{performance.title}</h3>
 			<div class="w-full grid-3 typo-s">
-				{#if performance.artists.length > 0}
+				{#if performance.artists && performance.artists.length > 0}
 					{#each performance.artists as artist}
 						<div>
 							{artist.name}
 						</div>
 					{/each}
 				{/if}
-				{#if performance.institutions.length > 0}
+				{#if performance.institutions && performance.institutions.length > 0}
 					<div>
 						{#each performance.institutions as institution, index}
 							<div>
@@ -43,14 +43,19 @@
 				{/if}
 			</div>
 		</div>
-		<div>
-			<Image image={performance.image} fit="cover" />
-		</div>
+
+		{#if performance.image}
+			<div>
+				<Image image={performance.image} fit="cover" />
+			</div>
+		{/if}
 	</section>
 
-	<div class="pt-s">
-		<PageBuilder sections={pageBuilder.sections} />
-	</div>
+	{#if pageBuilder?.sections && pageBuilder.sections.length > 0}
+		<div class="pt-s">
+			<PageBuilder sections={pageBuilder.sections} />
+		</div>
+	{/if}
 
 	{#if performance.artists && performance.artists.length > 0}
 		<div class="pt-16">
