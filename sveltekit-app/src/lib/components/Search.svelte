@@ -8,10 +8,13 @@
 	let searchInput = '';
 	let inputElement;
 
-	// Reactive statement to perform search when input changes
 	$: if (searchInput !== undefined) {
 		searchQuery.set(searchInput);
 		performSearch(searchInput);
+	}
+
+	$: if ($searchQuery == '') {
+		searchInput = '';
 	}
 
 	// Focus input when search opens
@@ -45,14 +48,19 @@
 </script>
 
 {#if $searchOpen}
-	<div class="w-full mt-xs fixed top-0 left-0 px-xs z-50" style="margin-top: {$headerHeight}px">
-		<div class="bg-black text-pink p-xs pb-2">
+	<div
+		class="w-full mt-xs fixed top-0 left-0 px-xs z-50"
+		style={`margin-top: ${$searchOpen && window.innerWidth < 768 ? '52' : $headerHeight}px`}
+	>
+		<div class="bg-black text-pink p-xs pb-2 md:h-auto overflow-auto"
+		style={`height: calc(100svh - 62px)`}
+		>
 			<input
 				bind:this={inputElement}
 				bind:value={searchInput}
 				class="typo-xl w-full text-center pb-xs border-b border-pink"
 				type="text"
-				placeholder="Search..."
+				placeholder="Type to search"
 			/>
 
 			{#if $searchLoading}

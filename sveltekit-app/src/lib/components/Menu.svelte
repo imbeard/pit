@@ -57,6 +57,20 @@
 	>
 </div>
 
-<div class="fixed bottom-0 left-0 flex justify-center w-full lg:hidden">
-	<button class="py-xs px-1 m-xs theme-gray-black">Search</button>
+<div
+	class="fixed flex w-full lg:hidden z-20"
+	class:bottom-0={!$searchOpen}
+	class:left-0={!$searchOpen}
+	class:justify-center={!$searchOpen}
+	class:top-0={$searchOpen}
+	class:right-0={$searchOpen}
+	class:justify-end={$searchOpen}
+>
+	<button class="py-xs px-1 m-xs"
+	class:bg-gray={!$searchOpen}
+	class:bg-black={$searchOpen}
+	class:text-pink={$searchOpen}
+	on:click={() => ($searchOpen = !$searchOpen)}>
+		{$searchOpen ? 'Close' : 'Search'}</button
+	>
 </div>
