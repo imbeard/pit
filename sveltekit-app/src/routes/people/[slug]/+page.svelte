@@ -32,7 +32,7 @@
 			</div>
 
 			{#if person?.image}
-				<div class="max-h-30 h-30 md:w-full md:h-[50vh] mx-auto pt-4">
+				<div class="max-h-30 h-30 md:w-full md:h-[50vh] pt-4 flex justify-center">
 					<Image image={person?.image} fit="contain" />
 				</div>
 			{/if}

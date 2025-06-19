@@ -165,10 +165,11 @@
 		}
 
 		.embla__slide {
-		transform: translate3d(0, 0, 0);
-		flex: 0 0 auto;
-		min-width: 0;
-		margin-right: var(--spacing-xs);
-	}
+			transform: translate3d(0, 0, 0);
+			flex: 0 0 auto;
+			min-width: 0;
+			margin-right: var(--spacing-xs);
+			height: 45svh;
+		}
 	}
 </style>

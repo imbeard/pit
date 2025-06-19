@@ -48,7 +48,7 @@
 			<Image image={document?.image} alt="hero" fit="cover" />
 		</div>
 
-		<div class="relative h-full w-full hidden sm:block">
+		<div class="relative h-full w-full hidden sm:flex justify-center items-center">
 			<Image image={document?.image} alt="hero" fit="contain" />
 		</div>
 

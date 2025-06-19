@@ -24,7 +24,7 @@
 			</div>
 			{#if partner?.logo}
 				<div class="mx-auto h-[50vh] aspect-square flex justify-center items-center">
-					<Image image={partner?.logo} fit="contain" />
+					<Image image={partner?.logo} fit="cover" />
 				</div>
 			{/if}
 		</div>
@@ -32,7 +32,7 @@
 
 	{#if partner?.image}
 		<div class="w-full mx-auto pt-xs">
-			<Image image={partner?.image} fit="contain" />
+			<Image image={partner?.image} fit="cover" />
 		</div>
 	{/if}
 
