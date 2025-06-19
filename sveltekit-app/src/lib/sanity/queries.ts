@@ -241,3 +241,63 @@ export const performancesQuery = groq`*[_type == "performance"]| order(_createdA
 }`;
 
 export const archivesQuery = groq`*[_type == "archive"]| order(_createdAt desc)`;
+
+/* SEARCH */
+export const searchQuery = groq`{
+  "performances": *[_type == "performance" && (
+      title match "*" + $query + "*" ||
+      pt::text(description) match "*" + $query + "*" ||
+      count(institutions[title match "*" + $query + "*"]) > 0 ||
+      count(artists[name match "*" + $query + "*"]) > 0 ||
+      count(typology[title match "*" + $query + "*"]) > 0
+    )] {
+    _id,
+    title,
+    "slug": slug.current
+  },
+
+  "people": *[_type == "people" && (
+      name match "*" + $query + "*" ||
+      pt::text(summary) match "*" + $query + "*" ||
+      string(job) match "*" + $query + "*"
+    )] {
+    _id,
+    name,
+    "slug": slug.current
+  },
+
+  "partners": *[_type == "partner" && (
+      title match "*" + $query + "*" ||
+      extendedTitle match "*" + $query + "*" ||
+      pt::text(description) match "*" + $query + "*"
+    )] {
+    _id,
+    title,
+    "slug": slug.current
+  },
+
+  "events": *[_type == "event" && (
+      title match "*" + $query + "*" ||
+      pt::text(summary) match "*" + $query + "*" ||
+      pt::text(description) match "*" + $query + "*" ||
+      location match "*" + $query + "*" ||
+      city match "*" + $query + "*" ||
+      count(institution[title match "*" + $query + "*"]) > 0 ||
+      count(featuredArtists[name match "*" + $query + "*"]) > 0 ||
+      count(typology[title match "*" + $query + "*"]) > 0
+    )] {
+    _id,
+    title,
+    "slug": slug.current
+  },
+
+  "resources": *[_type == "resource" && (
+      title match "*" + $query + "*" ||
+      typology match "*" + $query + "*" ||
+      count(performance[title match "*" + $query + "*"]) > 0
+    )] {
+    _id,
+    title,
+    "slug": slug.current
+  }
+}`;

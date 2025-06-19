@@ -29,3 +29,7 @@ export function dateYear(date: string | null) {
 	const [year] = date.split('-');
 	return year;
 }
+
+export function capitalize(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}

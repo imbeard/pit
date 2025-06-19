@@ -1,13 +1,14 @@
 <script>
 	import { headerHeight, menuOpen } from '$lib/stores/header';
+	import { searchOpen } from '$lib/stores/search';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import Menu from '$lib/components/Menu.svelte';
+	import Search from '$lib/components/Search.svelte';
 	import { lockscroll } from '@svelte-put/lockscroll';
 
 	$: navHeight = 0;
 	$: headerHeight.set(navHeight);
-	$: currentRoute = $page.url.pathname;
 	$: locked = $menuOpen ? true : false;
 
 	afterNavigate(() => {
@@ -24,7 +25,7 @@
 	</a>
 
 	<div
-		class="fixed lg:hidden flex w-full h-full justify-center items-center bg-white overflow-auto"
+		class="fixed top-0 left-0 flex w-full h-full justify-center items-center bg-white overflow-auto lg:hidden"
 		class:hidden={!$menuOpen}
 	>
 		<Menu />
@@ -35,13 +36,19 @@
 	</div>
 
 	<button
-		class="py-xs lg:py-s px-1 theme-gray-black fixed top-0 right-0 lg:hidden m-xs"
+		class="py-xs px-1 theme-gray-black fixed top-0 right-0 m-xs lg:hidden"
 		on:click={() => ($menuOpen = !$menuOpen)}>{$menuOpen ? 'Close' : 'Menu'}</button
 	>
 
 	<button
-		class="hidden py-xs px-1 m-xs theme-gray-black lg:block lg:fixed lg:py-s lg:top-0 lg:right-0"
-		>Search</button>
+		class="hidden py-xs px-1 m-xs lg:block lg:fixed lg:py-s lg:top-0 lg:right-0 text-black hover:text-pink hover:bg-black"
+		class:bg-gray={!$searchOpen}
+		class:bg-black={$searchOpen}
+		class:text-pink={$searchOpen}
+		on:click={() => ($searchOpen = !$searchOpen)}>{$searchOpen ? 'Close' : 'Search'}</button
+	>
+
+	<Search />
 </nav>
 
 <style>

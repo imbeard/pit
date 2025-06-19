@@ -1,5 +1,7 @@
 <script>
 	import { page } from '$app/stores';
+	import { searchOpen } from '$lib/stores/search';
+
 	$: currentRoute = $page.url.pathname;
 </script>
 
