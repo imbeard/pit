@@ -112,7 +112,7 @@
 			>
 				<h2 class="typo-base pr-xs">{section.title}</h2>
 				<div
-					class="border-t border-gray col-start-2 col-end-6 flex flex-col gap-y-xs pt-xs md:gap-y-6 md:pt-0 md:grid-4 md:gap-x-0 md:border-none"
+					class="border-t border-gray col-start-2 col-end-6 grid-2 pt-xs gap-y-6 md:pt-0 md:grid-4 md:gap-x-0 md:border-none"
 				>
 					{#each section.people as person}
 						<a
@@ -120,7 +120,7 @@
 							class="card col-span-1 min-h-8 border-b border-gray transition-all duration-200 hover:text-red md:border-none"
 						>
 							<div class="typo-s">{person.country}</div>
-							<div class="typo-lg text-center pt-xs">{person.name}</div>
+							<div class="typo-lg text-center pt-xs px-2">{person.name}</div>
 						</a>
 					{/each}
 				</div>

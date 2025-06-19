@@ -1,6 +1,7 @@
 <script>
+	// @ts-nocheck
 	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
-	import PartnerCard from '$lib/components/thumbnails/PartnerCard.svelte';
+	import Image from '$lib/components/element/Image.svelte';
 
 	export let data;
 
@@ -20,7 +21,20 @@
 		<section class="p-xs">
 			<ul class="grid-2 md:grid-3">
 				{#each partners as partner}
-					<li><PartnerCard thumbnail={partner} /></li>
+					<li>
+						<a
+							href="/partners/{partner.slug}"
+							class="bg-gray w-full flex justify-center items-center thumbnail colorize p-3 aspect-square"
+						>
+							<div class="cover-image">
+								{#if partner?.logo}
+									<Image image={partner?.logo} fit="contain" />
+								{:else}
+									<div class="w-full h-full typo-2xl">{partner.title}</div>
+								{/if}
+							</div>
+						</a>
+					</li>
 				{/each}
 			</ul>
 		</section>

@@ -55,9 +55,6 @@
 	>
 </div>
 
-<div class="fixed bottom-0  left-0 flex justify-center w-full">
-	<button
-		class="py-xs px-1 m-xs theme-gray-black"
-		>Search</button
-	>
+<div class="fixed bottom-0 left-0 flex justify-center w-full lg:hidden">
+	<button class="py-xs px-1 m-xs theme-gray-black">Search</button>
 </div>

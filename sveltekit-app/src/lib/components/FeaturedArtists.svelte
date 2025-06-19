@@ -13,7 +13,7 @@
 	{#each artists as artist}
 		<div class="pt-xs relative pb-xs border-b border-gray flex flex-col-reverse md:block">
 			<div class="self-center md:absolute top-0 right-0 mt-s">
-				<a class="button {theme}" href="/artists/{artist.slug}">
+				<a class="button {theme}" href="/people/{artist.slug}">
 					<span>Discover</span>
 					<span class="typo-s align-super leading-0">&nearr;</span>
 				</a>

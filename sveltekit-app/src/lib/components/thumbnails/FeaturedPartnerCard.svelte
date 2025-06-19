@@ -6,7 +6,7 @@
 </script>
 
 <a
-	href="/artists/{thumbnail.slug.current}"
+	href="/people/{thumbnail.slug.current}"
 	class="flex flex-col justify-between p-2 bg-black text-blue h-full relative overflow-hidden"
 	on:mouseover={() => (thumbnailFocused = true)}
 	on:focus={() => (thumbnailFocused = true)}

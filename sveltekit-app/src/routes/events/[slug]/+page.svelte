@@ -58,21 +58,25 @@
 		<div class="col-start-3 col-end-12 md:self-end typo-2xl">
 			<div>{event?.institution?.title}</div>
 			<div>
-				<span>{formatDate(event?.start)}</span>
+				{#if event?.start}
+					<span>{formatDate(event?.start)}</span>
+				{/if}
 				{#if event?.end}
 					<span>&mdash; {formatDate(event?.end)}</span>
 				{/if}
 			</div>
 			<div>
-				<span>{event?.time.start}</span>
-				{#if event?.end}<span>&mdash; {event?.time?.end}</span>
+				{#if event?.time?.start}
+					<span>{event?.time.start}</span>
+				{/if}
+				{#if event?.time?.end}
+					<span>&mdash; {event?.time?.end}</span>
 				{/if}
 			</div>
 		</div>
 	</section>
 
 	<div class="relative">
-		
 		{#if event?.performance}
 			<div class="hidden md:block absolute h-full right-5 z-10">
 				<div class="sticky top-36 h-auto flex justify-end -mt-30">

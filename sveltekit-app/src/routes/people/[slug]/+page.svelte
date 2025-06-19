@@ -18,15 +18,24 @@
 			<div class="flex flex-col items-center">
 				<div class="typo-s">People</div>
 				<div class="typo-lg">{person?.name}</div>
-				<div class="typo-lg">{person?.job}</div>
+				{#if person?.job}
+					<div class="typo-lg">{person?.job}</div>
+				{/if}
 				<div class="flex gap-xs typo-s">
-					<span>{person.country}</span>
-					<span>{dateYear(person.dateBirth)}</span>
+					{#if person?.country}
+						<span>{person.country}</span>
+					{/if}
+					{#if person?.dateBirth}
+						<span>{dateYear(person.dateBirth)}</span>
+					{/if}
 				</div>
 			</div>
-			<div class="max-h-30 h-30 md:w-full md:h-[50vh] mx-auto pt-4">
-				<Image image={person?.image} fit="contain" />
-			</div>
+
+			{#if person?.image}
+				<div class="max-h-30 h-30 md:w-full md:h-[50vh] mx-auto pt-4">
+					<Image image={person?.image} fit="contain" />
+				</div>
+			{/if}
 
 			{#if person?.performance}
 				<div class="md:hidden w-full flex justify-end px-xs">
