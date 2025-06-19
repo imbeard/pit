@@ -29,6 +29,7 @@ import {highlightedText} from './objects/highlightedText'
 
 // singletons
 import {homepage} from './singletons/homepage'
+import {contact} from './singletons/contact'
 import {about} from './singletons/about'
 import {settings} from './singletons/settings'
 
@@ -72,6 +73,7 @@ export const schemaTypes = [
   homepage,
   settings,
   about,
+  contact,
 
   //duration
   duration,

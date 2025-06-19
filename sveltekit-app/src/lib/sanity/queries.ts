@@ -13,6 +13,15 @@ import { portableText } from './fragments/portableText';
 // singletons
 export const settingsQuery = groq`*[_type == "settings"][0]`;
 
+export const contactQuery = groq`*[_type == "contact"][0]{
+    contacts[] {
+        ...,
+        content[] {
+            ${portableText}
+        }
+    }
+}`;
+
 export const homepageQuery = groq`{
     "homepage": *[_type == "homepage"][0] {
         ...,

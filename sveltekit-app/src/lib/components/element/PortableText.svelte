@@ -80,7 +80,7 @@
 				if (uriLooksSafe(href)) {
 					const rel = href.startsWith('/') ? undefined : 'noreferrer noopener';
 					return html`<a
-						class="leading-0 cursor-pointer px-[2px] theme-pink-blue hover:theme-blue-pink"
+						class="leading-0 cursor-pointer px-[2px]"
 						href="mailto:${href}"
 						rel="${rel}"
 						>${children}</a

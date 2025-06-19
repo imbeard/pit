@@ -19,6 +19,12 @@ export const structure = (S, context) =>
 
       S.divider(),
 
+       S.documentTypeListItem('contact')
+        .title('Contact')
+        .child(S.document().schemaType('contact').title('Contact').documentId('contact')),
+
+      S.divider(),
+
       S.documentTypeListItem('event').title('Events'),
       S.documentTypeListItem('performance').title('Performances'),
       S.documentTypeListItem('people').title('People'),
