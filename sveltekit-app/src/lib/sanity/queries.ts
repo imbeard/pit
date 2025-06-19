@@ -16,6 +16,30 @@ export const settingsQuery = groq`*[_type == "settings"][0]`;
 export const homepageQuery = groq`{
     "homepage": *[_type == "homepage"][0] {
         ...,
+
+        cloudArtist-> {
+            name,
+            "slug": slug.current,
+            country,
+            dateBirth
+        },
+        cloudEvent-> {
+            title,
+            "slug": slug.current,
+            start,
+            theme
+        },
+        cloudResource-> {
+            title,
+            "slug": slug.current,
+            typology,
+        },
+        cloudPerformance-> {
+            title,
+            "slug": slug.current,
+            theme
+        },
+
         cta {
             ${link}
         },
@@ -33,13 +57,13 @@ export const homepageQuery = groq`{
         },
     },
 
-    "events": *[_type == "event" && defined(slug.current)] | order(_createdAt desc) [0...3] {
+    "events": *[_type == "event" && defined(slug.current)] | order(_createdAt desc) [0...5] {
         ${eventThumb}
     },
-    "resources": *[_type == "resource" && defined(slug.current)] | order(_createdAt desc) [0...3] {
+    "resources": *[_type == "resource" && defined(slug.current)] | order(_createdAt desc) [0...5] {
         ${resourceThumb}
     },
-    "partners": *[_type == "partner" && defined(slug.current)] | order(_createdAt desc) [0...3] {
+    "partners": *[_type == "partner" && defined(slug.current)] | order(_createdAt desc) {
         ${partnerThumb}
     },
 }`;

@@ -13,7 +13,10 @@
 	import FeaturedArtistCard from '$lib/components/thumbnails/FeaturedArtistCard.svelte';
 	import FeaturedPartnerCard from '$lib/components/thumbnails/FeaturedPartnerCard.svelte';
 
+	import CloudsHero from '$lib/components/CloudsHero.svelte';
+
 	import Marquee from '$lib/components/element/Marquee.svelte';
+	import Cloud from '$lib/components/Cloud.svelte';
 
 	export let data;
 
@@ -24,11 +27,43 @@
 
 	$: activeFeaturedArtist = document?.featuredArtists[0];
 	$: activeFeaturedPartner = document?.featuredPartners[0];
+
+	$: cloudPerformance = document?.cloudPerformance;
+	$: cloudEvent = document?.cloudEvent;
+	$: cloudResource = document?.cloudResource;
+	$: cloudArtist = document?.cloudArtist;
+	$: cloudUrl = document?.cloudUrl;
+
+	$: artistTheme = document?.artistTheme;
+	$: resourceTheme = document?.resourceTheme;
+	$: urlTheme = document?.urlTheme;
+
 </script>
 
 <main>
-	<section class="hero-home h-screen w-full flex items-center justify-center overflow-hidden">
-		<Image image={document?.image} alt="hero" fit="contain" />
+	<section
+		class="hero-home h-full sm:h-screen w-full flex items-center justify-center overflow-hidden relative"
+	>
+		<div class="absolute h-full w-auto sm:hidden">
+			<Image image={document?.image} alt="hero" fit="cover" />
+		</div>
+
+		<div class="relative h-full w-full hidden sm:block">
+			<Image image={document?.image} alt="hero" fit="contain" />
+		</div>
+
+		<div class="clouds relative flex flex-col gap-2 justify-center items-center sm:absolute top-0 left-0 w-full h-full py-2">
+			<CloudsHero
+				{cloudPerformance}
+				{cloudEvent}
+				{cloudResource}
+				{cloudArtist}
+				{cloudUrl}
+				{artistTheme}
+				{resourceTheme}
+				{urlTheme}
+			/>
+		</div>
 	</section>
 
 	<div class="page p-xs flex flex-col gap-12">
@@ -87,7 +122,9 @@
 					{/each}
 				</div>
 				<div class="w-full flex justify-center mt-xs">
-					<a href="/people" class="theme-red-pink cursor-pointer button">View People <span class="align-super typo-s leading-0">&nearr;</span></a>
+					<a href="/people" class="theme-red-pink cursor-pointer button"
+						>View People <span class="align-super typo-s leading-0">&nearr;</span></a
+					>
 				</div>
 			</div>
 			<div class="featured-thumb-container h-full">
@@ -104,7 +141,8 @@
 					{/each}
 				</div>
 				<div class="w-full flex justify-center mt-xs">
-					<a href="/partners" class="theme-blue-pink cursor-pointer button">View Partners <span class="align-super typo-s leading-0">&nearr;</span></a
+					<a href="/partners" class="theme-blue-pink cursor-pointer button"
+						>View Partners <span class="align-super typo-s leading-0">&nearr;</span></a
 					>
 				</div>
 			</div>
@@ -113,7 +151,9 @@
 		<section>
 			<div class="flex justify-between w-full items-center pb-xs">
 				<h3 class="typo-lg">Resources</h3>
-				<a href="/resources" class="hidden md:block theme-pink-blue cursor-pointer button">View All <span class="align-super typo-s leading-0">&nearr;</span></a>
+				<a href="/resources" class="hidden md:block theme-pink-blue cursor-pointer button"
+					>View All <span class="align-super typo-s leading-0">&nearr;</span></a
+				>
 			</div>
 			<div class="hidden md:block">
 				<ResourcesSlider slides={resources} />
@@ -124,7 +164,9 @@
 						<ResourceCard thumbnail={resource} />
 					{/each}
 				</div>
-				<a href="/resources" class="theme-pink-blue cursor-pointer button w-fit">View All <span class="align-super typo-s leading-0">&nearr;</span></a>
+				<a href="/resources" class="theme-pink-blue cursor-pointer button w-fit"
+					>View All <span class="align-super typo-s leading-0">&nearr;</span></a
+				>
 			</div>
 		</section>
 	</div>

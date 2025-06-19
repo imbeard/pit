@@ -112,7 +112,7 @@
 			>
 				<h2 class="typo-base pr-xs">{section.title}</h2>
 				<div
-					class="border-t border-gray col-start-2 col-end-6 grid-2 pt-xs gap-y-6 md:pt-0 md:grid-4 md:gap-x-0 md:border-none"
+					class="border-t border-gray col-start-2 col-end-6 flex flex-col gap-y-xs pt-xs md:gap-y-6 md:pt-0 md:grid-4 md:gap-x-0 md:border-none"
 				>
 					{#each section.people as person}
 						<a

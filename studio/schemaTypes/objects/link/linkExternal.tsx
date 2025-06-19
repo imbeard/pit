@@ -34,11 +34,11 @@ export const linkExternal = defineField({
           scheme: ['https', 'mailto', 'tel'],
         }),
     }),
-    defineField({
-      title: 'Open in a new window?',
-      name: 'newWindow',
-      type: 'boolean',
-      initialValue: true,
-    }),
+    // defineField({
+    //   title: 'Open in a new window?',
+    //   name: 'newWindow',
+    //   type: 'boolean',
+    //   initialValue: true,
+    // }),
   ],
 })

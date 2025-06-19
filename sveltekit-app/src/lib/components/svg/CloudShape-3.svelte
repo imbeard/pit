@@ -1,6 +1,6 @@
 <script>
-	export let cloudBg = 'black';
-	export let cloudFg = 'white';
+	export let cloudBg = '';
+	export let cloudFg = '';
 	export let link;
 
 	$: themeColor = `var(--color-${cloudBg})`;
