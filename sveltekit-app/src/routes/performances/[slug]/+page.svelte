@@ -3,10 +3,16 @@
 	import Image from '$lib/components/element/Image.svelte';
 	import FeaturedArtists from '$lib/components/FeaturedArtists.svelte';
 	import PartneringInstitutions from '$lib/components/PartneringInstitutions.svelte';
+	import EventsSlider from '$lib/components/sliders/EventsSlider.svelte';
+	import ResourcesSlider from '$lib/components/sliders/ResourcesSlider.svelte';
+	import ResourceCard from '$lib/components/thumbnails/ResourceCard.svelte';
+	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
 
 	export let data;
-	$: performance = data?.performance?.data[0];
+	$: performance = data?.performance?.data?.performance[0];
 	$: pageBuilder = performance?.pageBuilder;
+	$: relatedEvents = data?.performance?.data?.relatedEvents;
+	$: relatedResources = data?.performance?.data?.relatedResources;
 </script>
 
 <div class="pt-8 p-xs">
@@ -67,5 +73,41 @@
 		<section class="pt-16">
 			<PartneringInstitutions partners={performance.institutions} />
 		</section>
+	{/if}
+
+	{#if relatedEvents && relatedEvents.length > 0}
+		<div class="pt-12 flex flex-col gap-xs">
+			<div class="w-full pb-xs border-b border-gray">
+				<h3 class="typo-lg uppercase">Featured Events</h3>
+			</div>
+			<div class="hidden md:block">
+				<EventsSlider slides={relatedEvents} />
+			</div>
+			<div class="flex flex-col gap-xs md:hidden">
+				{#each relatedEvents as event}
+					<div class="border-y border-gray">
+						<EventCard thumbnail={event} />
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
+
+	{#if relatedResources && relatedResources.length > 0}
+		<div class="pt-12">
+			<div class="w-full pb-xs">
+				<h3 class="typo-lg uppercase">Related Resources</h3>
+			</div>
+			<div class="hidden md:block">
+				<ResourcesSlider slides={relatedResources} />
+			</div>
+			<div class="flex flex-col gap-xs md:hidden">
+				{#each relatedResources as resource}
+					<div class="border-y border-gray">
+						<ResourceCard thumbnail={resource} />
+					</div>
+				{/each}
+			</div>
+		</div>
 	{/if}
 </div>

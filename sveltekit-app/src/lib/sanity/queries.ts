@@ -170,7 +170,8 @@ export const resourceQuery = groq`*[
         },
     }`;
 
-export const performanceQuery = groq`*[
+export const performanceQuery = groq`{
+"performance": *[
     _type == "performance" 
     && defined(slug.current) 
     && slug.current == $slug] {
@@ -190,7 +191,17 @@ export const performanceQuery = groq`*[
         title
     },
    ${pageBuilder},
-    }`;
+    },
+
+     "relatedEvents": *[_type == "event" 
+    && references(*[_type == "performance" && slug.current == $slug][0]._id)] {
+        ${eventThumb}
+    },
+    "relatedResources": *[_type == "resource" 
+    && references(*[_type == "performance" && slug.current == $slug][0]._id)] {
+        ${resourceThumb}
+    },
+}`;
 
 export const pageQuery = groq`*[
     _type == "page" 

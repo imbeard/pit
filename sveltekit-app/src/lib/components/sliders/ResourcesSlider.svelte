@@ -35,7 +35,7 @@
 		grid-auto-flow: column;
 		grid-auto-columns: 50%;
 		grid-column-gap: var(--spacing-xs);
-		padding-left: var(--spacing-xs);
+		/* padding-left: var(--spacing-xs); */
 	}
 
 	.embla__slide {

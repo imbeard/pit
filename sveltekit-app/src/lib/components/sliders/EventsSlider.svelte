@@ -11,7 +11,7 @@
 <div class="embla">
 	<div class="embla__viewport" use:emblaCarouselSvelte={{ options, plugins }}>
 		<div class="embla__container">
-			{#each [...slides, ...slides, ...slides, ...slides, ...slides] as event}
+			{#each slides as event}
 				<div class="embla__slide">
 					<EventCard thumbnail={event} pageColor="black" />
 				</div>
