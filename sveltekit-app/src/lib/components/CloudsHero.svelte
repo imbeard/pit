@@ -69,7 +69,9 @@
 </div>
 
 {#if cloudEvent.slug}
-	<div class="relative sm:absolute flex justify-center items-center rotate-10 right-xs mt-5 mr-3 sm:mr-0 sm:rotate-0 sm:top-1/2 sm:-translate-y-1/2 sm:-mt-4 sm:right-1">
+	<div
+		class="relative sm:absolute flex justify-center items-center rotate-10 right-xs mt-5 mr-3 sm:mr-0 sm:rotate-0 sm:top-1/2 sm:-translate-y-1/2 sm:-mt-4 sm:right-1"
+	>
 		<div
 			class="event-cloud flex justify-center items-center size-cloud"
 			style="--event-hover: {eventHoverColor}"
@@ -84,12 +86,10 @@
 			<div
 				class="texts absolute top-0 bottom-0 left-0 right-0 text-center h-full w-full button {eventTextColor} pointer-events-none"
 			>
-				<div class="typo-cloud-base px-2 leading-[1.3rem] rotate-30 absolute right-[10px] top-3">
+				<div class="typo-cloud-base px-2 rotate-30 absolute right-[10px] top-3">
 					{formatDate(cloudEvent.start)}
 				</div>
-				<div
-					class="typo-cloud-base px-2 leading-[1.3rem] absolute bottom-2 sm:bottom-3 text-center w-full"
-				>
+				<div class="typo-cloud-base px-2 absolute bottom-2 sm:bottom-3 text-center w-full">
 					{cloudEvent.title}
 				</div>
 			</div>
@@ -116,10 +116,10 @@
 				class="texts absolute top-0 bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button {artistTextColor} pointer-events-none"
 			>
 				<div class="typo-cloud-s">Artist profile</div>
-				<div class="typo-cloud-base px-2 leading-[1.3rem]">
+				<div class="typo-cloud-base px-2">
 					{cloudArtist.name}
 				</div>
-				<div class="typo-cloud-s px-2 leading-[1.3rem]">
+				<div class="typo-cloud-s px-2">
 					<span>{dateYear(cloudArtist.dateBirth)}</span>
 					{#if cloudArtist.country}
 						<span>, {cloudArtist.country}</span>
@@ -131,7 +131,9 @@
 {/if}
 
 {#if cloudPerformance.slug}
-	<div class="relative flex px-xs mt-12 -rotate-10 ml-8 sm:ml-0 sm:rotate-0 sm:absolute sm:mt-[12vh] sm:top-0 sm:left-xs">
+	<div
+		class="relative flex px-xs mt-12 -rotate-10 ml-8 sm:ml-0 sm:rotate-0 sm:absolute sm:mt-[12vh] sm:top-0 sm:left-xs"
+	>
 		<div
 			class="performance-cloud flex justify-center items-center size-cloud"
 			style="--performance-hover: {performanceHoverColor}"
@@ -146,7 +148,7 @@
 			<div
 				class="texts absolute top-0 bottom-0 left-0 right-0 text-center flex flex-col gap-[4px] justify-center items-center h-full w-full button {performanceTextColor} pointer-events-none"
 			>
-				<div class="typo-cloud-base px-2 leading-[1.3rem]">
+				<div class="typo-cloud-base px-2">
 					{cloudPerformance.title}
 				</div>
 
@@ -157,7 +159,9 @@
 {/if}
 
 {#if cloudResource}
-	<div class="relative flex px-xs mr-8 rotate-10 sm:mr-0 sm:rotate-0 sm:absolute sm:top-[12vh] sm:right-[10vw]">
+	<div
+		class="relative flex px-xs mr-8 rotate-10 sm:mr-0 sm:rotate-0 sm:absolute sm:top-[12vh] sm:right-[10vw]"
+	>
 		<div
 			class="resource-cloud flex justify-center items-center size-cloud"
 			style="--resource-hover: {resourceHoverColor}"
@@ -174,7 +178,7 @@
 			>
 				<div class="typo-cloud-s absolute right-5 top-2">&DownArrow;</div>
 
-				<div class="typo-cloud-base px-2 leading-[1.3rem]">
+				<div class="typo-cloud-base px-2">
 					{cloudResource.title}
 				</div>
 
@@ -185,7 +189,9 @@
 {/if}
 
 {#if cloudUrl?.url}
-	<div class="relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4 size-cloud">
+	<div
+		class="relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4 size-cloud"
+	>
 		<div class="url-cloud flex justify-center items-center" style="--url-hover: {urlHoverColor}">
 			<div class="w-full h-auto">
 				<CloudShape_6 cloudBg={cloudUrlBg} cloudFg={cloudUrlFg} link={cloudUrl?.url} />
@@ -193,7 +199,7 @@
 			<div
 				class="texts absolute top-0 bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button {urlTextColor} pointer-events-none text-center mt-xs"
 			>
-				<div class="typo-cloud-base px-2 leading-[1.3rem]">
+				<div class="typo-cloud-base px-2">
 					{cloudUrl?.label}
 				</div>
 

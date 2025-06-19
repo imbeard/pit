@@ -68,6 +68,8 @@ export const homepageQuery = groq`{
     },
 }`;
 
+export const aboutQuery = groq`*[_type == "about"][0]`;
+
 // document single entry
 export const eventQuery = groq`*[
     _type == "event" 

@@ -6,8 +6,6 @@
 @source inline("rotate-{0..90}");
 @source inline("-rotate-{0..90}");
 
-
-
 html {
 	font-size: 10px;
 }
@@ -80,10 +78,12 @@ button {
 
 .typo-cloud-s {
 	font-size: clamp(1rem, 1.2vw, 1.2rem);
+	line-height: 120%;
 }
 
 .typo-cloud-base {
 	font-size: clamp(1.2rem, 2vw, 1.8rem);
+	line-height: 120%;
 }
 
 .size-cloud {

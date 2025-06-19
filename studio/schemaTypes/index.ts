@@ -29,6 +29,7 @@ import {highlightedText} from './objects/highlightedText'
 
 // singletons
 import {homepage} from './singletons/homepage'
+import {about} from './singletons/about'
 import {settings} from './singletons/settings'
 
 // duration
@@ -43,7 +44,7 @@ export const schemaTypes = [
   linkEmail,
 
   // documents
-  page,
+  // page,
   people,
   event,
   performance,
@@ -70,8 +71,9 @@ export const schemaTypes = [
   // singletons
   homepage,
   settings,
+  about,
 
   //duration
   duration,
-  timeValue
+  timeValue,
 ]
