@@ -106,7 +106,7 @@
 				<div class="embla__slide">
 					{#if slide._type == 'elementImage'}
 						<div class="image-container">
-							<Image image={slide} fit="contain" />
+							<Image image={slide} fit="cover" />
 						</div>
 					{:else if slide._type == 'elementVideo'}
 						<div
@@ -148,6 +148,7 @@
 		flex: 0 0 auto;
 		min-width: 0;
 		margin-right: var(--spacing-xs);
+		max-width: 75vw;
 		height: 300px;
 	}
 
@@ -170,6 +171,7 @@
 			flex: 0 0 auto;
 			min-width: 0;
 			margin-right: var(--spacing-xs);
+			max-width: none;
 			height: 45svh;
 		}
 	}
