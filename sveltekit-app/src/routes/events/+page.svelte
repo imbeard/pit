@@ -1,5 +1,8 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
+
+	import { onMount, onDestroy } from 'svelte';
 	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
 	import FeaturedEventCard from '$lib/components/thumbnails/FeaturedEventCard.svelte';
@@ -11,11 +14,20 @@
 	export let data;
 
 	let pageColor = 'brown';
+	let eventsContainer;
+	let isLoading = false;
+	let hasMoreEvents = data.hasMoreEvents;
+	let currentStart = 20;
+	const loadSize = 20;
 
-	$: allEvents = data?.events?.data;
+	$: allEvents = data?.events?.data || [];
 	$: document = data?.page?.data[0];
-	$: filteredEvents = data?.filteredEvents?.data;
+	$: filteredEvents = data?.filteredEvents?.data || [];
 	$: params = data?.params;
+
+	$: displayEvents = filteredEvents.length > 0 ? filteredEvents : allEvents;
+	$: hasFilters =
+		params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0;
 
 	$: typologies = Array.from(
 		allEvents
@@ -44,6 +56,60 @@
 	$: newUrl = '';
 	$: queryString = '';
 
+	const loadMoreEvents = async () => {
+		if (isLoading || !hasMoreEvents) return;
+
+		isLoading = true;
+
+		try {
+			const queryParams = new URLSearchParams({
+				start: currentStart.toString(),
+				end: (currentStart + loadSize).toString(),
+				...(params.typologies.length && { typologies: params.typologies.join(',') }),
+				...(params.institutions.length && { institutions: params.institutions.join(',') }),
+				...(params.people.length && { people: params.people.join(',') })
+			});
+
+			const response = await fetch(`/events/load-more?${queryParams}`);
+			const result = await response.json();
+
+			if (result.events && result.events.length > 0) {
+				if (hasFilters) {
+					filteredEvents = [...filteredEvents, ...result.events];
+				} else {
+					allEvents = [...allEvents, ...result.events];
+				}
+				currentStart += loadSize;
+				hasMoreEvents = result.hasMore;
+			} else {
+				hasMoreEvents = false;
+			}
+		} catch (error) {
+			console.error('Error loading more events:', error);
+			hasMoreEvents = false;
+		} finally {
+			isLoading = false;
+		}
+	};
+
+	const handleScroll = () => {
+		if (!eventsContainer) return;
+
+		// Get the position of the events container relative to the viewport
+		const containerRect = eventsContainer.getBoundingClientRect();
+		const containerBottom = containerRect.bottom;
+
+		// Get viewport height
+		const viewportHeight = window.innerHeight;
+
+		// Check if we're near the bottom of the container
+		const threshold = 200; // Load more when container bottom is 200px from viewport bottom
+
+		if (containerBottom <= viewportHeight + threshold) {
+			loadMoreEvents();
+		}
+	};
+
 	const openFilters = () => {
 		filtersOpen.set(true);
 	};
@@ -67,6 +133,8 @@
 			}
 		});
 
+		// Reset pagination when filters change
+		resetPagination();
 		goto(newUrl, { replaceState: true });
 	};
 
@@ -85,6 +153,21 @@
 		queryString = queryParams.length > 0 ? '?' + queryParams.join('&') : '';
 		newUrl = `${window.location.pathname}${queryString}`;
 	};
+
+	const resetPagination = () => {
+		currentStart = 20;
+		hasMoreEvents = true;
+	};
+
+	$: if (browser) {
+		onMount(() => {
+			window.addEventListener('scroll', handleScroll);
+		});
+
+		onDestroy(() => {
+			window.removeEventListener('scroll', handleScroll);
+		});
+	}
 </script>
 
 <div class="px-xs">
@@ -114,7 +197,8 @@
 			<span>Filters</span>
 			{#if params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0}
 				<span class="align-super typo-s leading-0"
-					>{params.typologies.length + params.people.length + params.institutions.length}</span>
+					>{params.typologies.length + params.people.length + params.institutions.length}</span
+				>
 			{/if}
 		</button>
 		<EventsFilters
@@ -126,6 +210,7 @@
 			on:updateFilters={handleUpdateFilters}
 		/>
 	</div>
+
 	{#if params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0}
 		<div class="flex flex-wrap gap-xs w-full justify-end py-xs border-y border-gray">
 			{#each params.typologies as typology}
@@ -146,18 +231,17 @@
 			{/each}
 		</div>
 	{/if}
-	<section class="py-xs">
-		{#if filteredEvents.length > 0}
-			<div class="flex flex-col gap-xs md:grid-4">
-				{#each filteredEvents as event}
-					<EventCard thumbnail={event} {pageColor} />
-				{/each}
-			</div>
-		{:else}
-			<div class="flex flex-col gap-xs md:grid-4">
-				{#each allEvents as event}
-					<EventCard thumbnail={event} {pageColor} />
-				{/each}
+
+	<section class="py-xs" bind:this={eventsContainer}>
+		<div class="flex flex-col gap-xs md:grid-4">
+			{#each displayEvents as event}
+				<EventCard thumbnail={event} {pageColor} />
+			{/each}
+		</div>
+
+		{#if isLoading}
+			<div class="flex justify-center py-2">
+				<div class="typo-s text-gray">Loading more events...</div>
 			</div>
 		{/if}
 	</section>

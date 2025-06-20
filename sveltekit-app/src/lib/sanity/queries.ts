@@ -217,7 +217,7 @@ export const archiveQuery = groq`*[
     }`;
 
 // document archive entries
-export const eventsQuery = groq`*[_type == "event" && defined(slug.current)] | order(_createdAt desc) [0...$end] {
+export const eventsQuery = groq`*[_type == "event" && defined(slug.current)] | order(_createdAt desc) [$start...$end] {
     ${eventThumb}
 }`;
 export const filteredEventsQuery = groq`*[_type == "event" && defined(slug.current)
@@ -242,7 +242,7 @@ export const allPeopleQuery = groq`*[_type == "people" && defined(slug.current) 
     ${peopleThumb}
 }`;
 
-export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc) [0...$end]{
+export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc) [$start...$end]{
     ${resourceThumb}
      downloads[] {
             ${download}
@@ -251,7 +251,7 @@ export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc
 export const filteredResourcesQuery = groq`*[_type == "resource" && defined(slug.current)
 && typology in $typologies
 || count(downloads[url.asset->extension in $media]) > 0
-] | order(_createdAt desc) [0...$end] {
+] | order(_createdAt desc) [$start...$end] {
     ${resourceThumb}
      downloads[] {
             ${download}

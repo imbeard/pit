@@ -2,7 +2,6 @@
     import PortableText from '$lib/components/element/PortableText.svelte';
 	export let data;
 	$: contacts = data?.page?.data?.contacts;
-	$: console.log(data);
 </script>
 
 <div class="flex flex-col justify-start pt-6 items-center md:justify-center min-h-screen">

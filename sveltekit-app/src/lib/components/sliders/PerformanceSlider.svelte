@@ -41,6 +41,7 @@
 				const autoplayPlugin = emblaApi.plugins().autoplay;
 				if (autoplayPlugin) {
 					autoplayPlugin.reset();
+					autoplayPlugin.play();
 				}
 			});
 		});

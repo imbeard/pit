@@ -14,8 +14,6 @@
 	$: coreValue5 = document?.coreValue_5;
 
 	$: coreValues = [coreValue1, coreValue2, coreValue3, coreValue4, coreValue5];
-
-	$: console.log(data);
 </script>
 
 <div>
@@ -28,8 +26,8 @@
 
 		{#if document?.texts && document?.texts.length > 0}
 			{#each document?.texts as text}
-				<div class="grid-2 pt-3">
-					<h4 class="typo-s mx-auto">{text.heading}</h4>
+				<div class="md:grid-2 pt-3">
+					<h4 class="typo-s mx-auto text-center pb-xs md:pb-0">{text.heading}</h4>
 					<div class="typo-base">
 						<PortableText data={text.content} />
 					</div>
@@ -52,10 +50,10 @@
 			{#each document?.keyActivities as activity}
 				<div class="px-xs">
 					<Accordion open={false} lineColor="border-gray" aboutPage>
-						<div class="cursor-pointer typo-lg text-center mx-auto" slot="head">
+						<div class="cursor-pointer typo-lg text-center mx-auto px-xs" slot="head">
 							{activity.heading}
 						</div>
-						<div slot="details" class="grid-2">
+						<div slot="details" class="md:grid-2">
 							<div class="col-start-2"><PortableText data={activity.content} /></div>
 						</div>
 					</Accordion>
@@ -72,8 +70,8 @@
 			{#each document?.impactGoals as goal}
 				<div class="px-xs">
 					<Accordion open={false} lineColor="border-gray" aboutPage>
-						<div class="cursor-pointer typo-lg text-center mx-auto" slot="head">{goal.heading}</div>
-						<div slot="details" class="grid-2">
+						<div class="cursor-pointer typo-lg text-center mx-auto px-xs" slot="head">{goal.heading}</div>
+						<div slot="details" class="md:grid-2">
 							<div class="col-start-2"><PortableText data={goal.content} /></div>
 						</div>
 					</Accordion>
@@ -83,10 +81,10 @@
 	{/if}
 
 	{#if document?.euProgramme}
-		<section class="pt-12 px-xs">
+		<section class="pt-12 px-xs flex flex-col items-center">
 			<h2 class="typo-xl mx-auto w-fit pb-xs">{document?.euProgramme?.heading}</h2>
 			<PortableText data={document?.euProgramme?.content} />
-			<img class="w-10 justify-self-center pt-s" src="/images/eu-funded-logo.svg" alt="" />
+			<img class="w-10 pt-s" src="/images/eu-funded-logo.svg" alt="" />
 		</section>
 	{/if}
 

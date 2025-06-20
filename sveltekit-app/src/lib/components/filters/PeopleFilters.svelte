@@ -57,7 +57,7 @@
 	}
 </script>
 
-<aside class="fixed z-99 h-screen right-0 top-0 bg-red text-pink p-xs" class:open={$filtersOpen}>
+<aside class="fixed z-99 h-[100dvh] right-0 top-0 bg-red text-pink p-xs" class:open={$filtersOpen}>
 	<div class="wrapper flex flex-col justify-between h-full" class:open={$filtersOpen}>
 		<div>
 			<button on:click={closeFilters} class="cursor-pointer p-s absolute theme-pink-red right-xs"

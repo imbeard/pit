@@ -1,5 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
+	import { onMount, onDestroy } from 'svelte';
 	import { filtersOpen } from '$lib/stores/filters';
 
 	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
@@ -7,11 +9,21 @@
 	import ResourcesFilters from '$lib/components/filters/ResourcesFilters.svelte';
 
 	export let data;
-	$: resources = data?.resources?.data;
-	$: document = data?.page?.data[0];
 
+	let resourcesContainer;
+	let isLoading = false;
+	let hasMoreResources = data.hasMoreResources;
+	let currentStart = 20; // Start from 20 since we already loaded 0-20
+	const loadSize = 20;
+
+	$: resources = data?.resources?.data || [];
+	$: document = data?.page?.data[0];
 	$: filteredResources = data?.filteredResources?.data || [];
 	$: params = data?.params;
+
+	// Combine initial data with loaded data
+	$: displayResources = filteredResources.length > 0 ? filteredResources : resources;
+	$: hasFilters = params.typologies.length > 0 || params.media.length > 0;
 
 	$: typologies = Array.from(new Set(resources.flatMap((resource) => resource.typology)));
 
@@ -27,6 +39,59 @@
 	$: selectedMedia = [];
 	$: newUrl = '';
 	$: queryString = '';
+
+	const loadMoreResources = async () => {
+		if (isLoading || !hasMoreResources) return;
+
+		isLoading = true;
+
+		try {
+			const queryParams = new URLSearchParams({
+				start: currentStart.toString(),
+				end: (currentStart + loadSize).toString(),
+				...(params.typologies.length && { typologies: params.typologies.join(',') }),
+				...(params.media.length && { media: params.media.join(',') })
+			});
+
+			const response = await fetch(`/resources/load-more?${queryParams}`);
+			const result = await response.json();
+
+			if (result.resources && result.resources.length > 0) {
+				if (hasFilters) {
+					filteredResources = [...filteredResources, ...result.resources];
+				} else {
+					resources = [...resources, ...result.resources];
+				}
+				currentStart += loadSize;
+				hasMoreResources = result.hasMore;
+			} else {
+				hasMoreResources = false;
+			}
+		} catch (error) {
+			console.error('Error loading more resources:', error);
+			hasMoreResources = false;
+		} finally {
+			isLoading = false;
+		}
+	};
+
+	const handleScroll = () => {
+		if (!resourcesContainer) return;
+
+		// Get the position of the resources container relative to the viewport
+		const containerRect = resourcesContainer.getBoundingClientRect();
+		const containerBottom = containerRect.bottom;
+
+		// Get viewport height
+		const viewportHeight = window.innerHeight;
+
+		// Check if we're near the bottom of the container
+		const threshold = 200; // Load more when container bottom is 200px from viewport bottom
+
+		if (containerBottom <= viewportHeight + threshold) {
+			loadMoreResources();
+		}
+	};
 
 	const openFilters = () => {
 		filtersOpen.set(true);
@@ -47,6 +112,8 @@
 			}
 		});
 
+		// Reset pagination when filters change
+		resetPagination();
 		goto(newUrl, { replaceState: true });
 	};
 
@@ -62,6 +129,21 @@
 		queryString = queryParams.length > 0 ? '?' + queryParams.join('&') : '';
 		newUrl = `${window.location.pathname}${queryString}`;
 	};
+
+	const resetPagination = () => {
+		currentStart = 20;
+		hasMoreResources = true;
+	};
+
+	$: if (browser) {
+		onMount(() => {
+			window.addEventListener('scroll', handleScroll);
+		});
+
+		onDestroy(() => {
+			window.removeEventListener('scroll', handleScroll);
+		});
+	}
 </script>
 
 <div class="px-xs">
@@ -90,6 +172,7 @@
 			on:updateFilters={handleUpdateFilters}
 		/>
 	</div>
+
 	{#if params.typologies.length > 0 || params.media.length > 0}
 		<div class="flex flex-wrap gap-xs w-full justify-end py-xs border-b border-gray">
 			{#each params.typologies as typology}
@@ -97,33 +180,32 @@
 					>{typology}&nbsp;<span class="align-super typo-s leading-0">x</span></button
 				>
 			{/each}
-			{#each params.media as media}
-				<button class="button theme-pink-blue" on:click={() => removeFilter(media)}
-					>{media}&nbsp;<span class="align-super typo-s leading-0">x</span></button
+			{#each params.media as mediaItem}
+				<button class="button theme-pink-blue" on:click={() => removeFilter(mediaItem)}
+					>{mediaItem}&nbsp;<span class="align-super typo-s leading-0">x</span></button
 				>
 			{/each}
 		</div>
 	{/if}
+
 	{#if resources}
-		<section>
+		<section bind:this={resourcesContainer}>
 			<div class="gap-y-6 md:grid-2 md:gap-y-6">
-				{#if filteredResources.length > 0}
-					{#each filteredResources as resource}
-						<div
-							class="card border-b border-gray md:nth-of-type-[n+3]:border-y"
-							class:filters-open={params.typologies.length > 0 || params.media.length > 0}
-						>
-							<ResourceCard thumbnail={resource} />
-						</div>
-					{/each}
-				{:else}
-					{#each resources as resource}
-						<div class="card border-b border-gray md:nth-of-type-[n+3]:border-y">
-							<ResourceCard thumbnail={resource} />
-						</div>
-					{/each}
-				{/if}
+				{#each displayResources as resource}
+					<div
+						class="card border-b border-gray md:nth-of-type-[n+3]:border-y"
+						class:filters-open={params.typologies.length > 0 || params.media.length > 0}
+					>
+						<ResourceCard thumbnail={resource} />
+					</div>
+				{/each}
 			</div>
+
+			{#if isLoading}
+				<div class="flex justify-center py-4">
+					<div class="loading-spinner">Loading more resources...</div>
+				</div>
+			{/if}
 		</section>
 	{/if}
 </div>
