@@ -52,8 +52,7 @@
 		class="w-full mt-xs fixed top-0 left-0 px-xs z-50"
 		style={`margin-top: ${$searchOpen && window.innerWidth < 768 ? '52' : $headerHeight}px`}
 	>
-		<div class="bg-black text-pink p-xs pb-2 md:h-auto overflow-auto"
-		style={`height: calc(100svh - 62px)`}
+		<div class="search bg-black text-pink p-xs pb-2 md:h-auto overflow-auto"
 		>
 			<input
 				bind:this={inputElement}
@@ -104,5 +103,15 @@
 
 	input:focus {
 		outline: none;
+	}
+
+	.search {
+		height: calc(100dvh - 62px);
+	}
+
+	@media screen and (min-width: 768px) {
+		.search {
+			height: 100%;
+		}
 	}
 </style>

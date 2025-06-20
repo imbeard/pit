@@ -49,7 +49,13 @@
 
 <style>
 	.footer {
-		height: calc(100svh - 12rem);
+		height: 100svh;
 		background: linear-gradient(rgba(185, 185, 185, 1) 15%, rgba(185, 185, 185, 0) 70%);
+	}
+
+	@media screen and (min-width: 768px) {
+		.footer {
+			height: calc(100svh - 12rem);
+		}
 	}
 </style>

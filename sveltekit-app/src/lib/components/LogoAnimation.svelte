@@ -18,7 +18,7 @@
 	}
 </script>
 
-<div class="fixed overflow-hidden z-10 top-0 left-0 w-full h-screen pointer-events-none">
+<div class="fixed overflow-hidden z-10 top-0 left-0 w-full h-[100dvh] pointer-events-none">
 	<div
 		class="logo-p absolute right-xs top-[28%] transition-all duration-400"
 		class:moveout={moveElements}

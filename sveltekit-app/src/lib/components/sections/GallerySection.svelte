@@ -141,13 +141,14 @@
 	.embla__container {
 		display: flex;
 		touch-action: pan-y pinch-zoom;
-		height: 120px;
+		height: 300px;
 	}
 	.embla__slide {
 		transform: translate3d(0, 0, 0);
 		flex: 0 0 auto;
 		min-width: 0;
-		margin-right: 3px;
+		margin-right: var(--spacing-xs);
+		height: 300px;
 	}
 
 	.image-container {
