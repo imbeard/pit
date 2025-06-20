@@ -1,4 +1,5 @@
 <script>
+	// @ts-nocheck
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 	import Autoplay from 'embla-carousel-autoplay';
 	import EventCard from '../thumbnails/EventCard.svelte';

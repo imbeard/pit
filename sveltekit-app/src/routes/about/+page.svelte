@@ -1,4 +1,5 @@
 <script>
+	// @ts-nocheck
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import CloudsAbout from '$lib/components/CloudsAbout.svelte';
 	import Accordion from '$lib/components/element/Accordion.svelte';

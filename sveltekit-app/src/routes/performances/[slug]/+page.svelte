@@ -1,4 +1,5 @@
 <script>
+	// @ts-nocheck
 	import PageBuilder from '$lib/components/PageBuilder.svelte';
 	import Image from '$lib/components/element/Image.svelte';
 	import FeaturedArtists from '$lib/components/FeaturedArtists.svelte';

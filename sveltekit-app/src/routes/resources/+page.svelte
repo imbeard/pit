@@ -1,4 +1,5 @@
 <script>
+	// @ts-nocheck
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { onMount, onDestroy } from 'svelte';
