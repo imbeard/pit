@@ -77,16 +77,33 @@ button {
 }
 
 .typo-cloud-s {
-	font-size: clamp(1rem, 1.2vw, 1.2rem);
+	font-size: clamp(1.3rem, 1.4vw, 1.6rem);
 	line-height: 120%;
 }
 
 .typo-cloud-base {
-	font-size: clamp(1.2rem, 2vw, 1.8rem);
+	font-size: clamp(1.6rem, 2.2vw, 2.4rem);
 	line-height: 120%;
 }
 
 .size-cloud {
-	width: clamp(200px, 30vw, 300px);
+	width: clamp(240px, 30vw, 400px);
 	height: auto;
+}
+
+
+@media (min-width: 640px) {
+	.typo-cloud-s {
+		font-size: clamp(1rem, 1.2vw, 1.2rem);
+		line-height: 120%;
+	}
+
+	.typo-cloud-base {
+		font-size: clamp(1.2rem, 2vw, 1.8rem);
+		line-height: 120%;
+	}
+	.size-cloud {
+		width: clamp(200px, 30vw, 300px);
+		height: auto;
+	}
 }

@@ -99,7 +99,7 @@
 
 {#if cloudArtist.slug}
 	<div
-		class="relative flex justify-center items-center max-w-300 w-[16vw] min-w-14 ml-10 mt-10 sm:mt-0 sm:ml-0 sm:absolute sm:right-[16vw] sm:bottom-[20vh] sm:top-auto sm:min-w-16"
+		class="relative flex justify-center items-center w-[40vw] min-w-14 ml-20 sm:ml-0 sm:absolute sm:right-[16vw] sm:bottom-[20vh] sm:top-auto sm:min-w-16 sm:w-[16vw] max-w-300"
 	>
 		<div
 			class="artist-cloud flex justify-center items-center"
@@ -132,7 +132,7 @@
 
 {#if cloudPerformance.slug}
 	<div
-		class="relative flex px-xs mt-20 -rotate-10 ml-8 sm:ml-0 sm:rotate-0 sm:absolute sm:mt-[12vh] sm:top-0 sm:left-xs"
+		class="relative flex px-xs mt-35 -rotate-10 ml-8 sm:ml-0 sm:rotate-0 sm:absolute sm:mt-[12vh] sm:top-0 sm:left-xs"
 	>
 		<div
 			class="performance-cloud flex justify-center items-center size-cloud"
@@ -160,7 +160,7 @@
 
 {#if cloudResource}
 	<div
-		class="relative flex px-xs mr-8 rotate-10 mt-20 sm:mt-0 sm:mr-0 sm:rotate-0 sm:absolute sm:top-[12vh] sm:right-[10vw]"
+		class="relative flex px-xs mr-8 rotate-10 sm:mr-0 sm:rotate-0 sm:absolute sm:top-[12vh] sm:right-[10vw]"
 	>
 		<div
 			class="resource-cloud flex justify-center items-center size-cloud"
@@ -190,7 +190,7 @@
 
 {#if cloudUrl?.url}
 	<div
-		class="relative sm:absolute flex justify-center items-center mt-10 sm:mt-0 sm:left-4 sm:bottom-4 size-cloud"
+		class="relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4 size-cloud"
 	>
 		<div class="url-cloud flex justify-center items-center" style="--url-hover: {urlHoverColor}">
 			<div class="w-full h-auto">

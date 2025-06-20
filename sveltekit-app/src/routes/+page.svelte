@@ -45,7 +45,9 @@
 		class="hero-home h-full sm:h-screen w-full flex items-center justify-center overflow-hidden relative"
 	>
 		<div class="absolute h-full w-auto sm:hidden">
-			<Image image={document?.image} alt="hero" fit="cover" />
+			<div class="scale-180 py-48 translate-x-4 -translate-y-8">
+				<Image image={document?.image} alt="hero" fit="cover" />
+			</div>
 		</div>
 
 		<div class="relative h-full w-full hidden sm:flex justify-center items-center">
