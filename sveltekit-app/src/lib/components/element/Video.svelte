@@ -28,6 +28,7 @@
 		{src}
 		poster={posterUrl?.asset?.url}
 		bind:this={player}
+		playsInline
 	>
 		<media-provider>
 			<source {src} />
