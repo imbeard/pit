@@ -1,4 +1,5 @@
 <script>
+	import { text } from '@sveltejs/kit';
 	import { slide } from 'svelte/transition';
 
 	export let open = false;
@@ -10,19 +11,22 @@
 	const handleClick = () => (open = !open);
 </script>
 
-<div class="accordion py-2 border-y {lineColor}" 
-class:py-xs={aboutPage}
-class:border-t-0={aboutPage}
+<div
+	class="accordion py-2 border-y {lineColor}"
+	class:py-xs={aboutPage}
+	class:border-t-0={aboutPage}
 >
 	<button class="w-full flex items-center" class:sticky class:top-0={sticky} on:click={handleClick}>
 		<div class="flex justify-between w-full">
 			<slot name="head"></slot>
 		</div>
 		<button
-			class:bg-red={aboutPage}
+			class:button={aboutPage}
+			class:theme-red-pink={aboutPage}
 			class:w-3={aboutPage}
-			class:text-pink={aboutPage}
 			class:aspect-square={aboutPage}
+			class:text-red={aboutPage && open}
+			class:bg-pink={aboutPage && open}
 		>
 			{#if !open}
 				+

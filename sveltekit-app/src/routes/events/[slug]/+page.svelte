@@ -21,7 +21,7 @@
 
 <div class="px-xs">
 	<section
-		class="w-full pt-10 flex flex-col justify-between gap-6 min-h-screen md:grid-12 border-b border-gray pb-6 md:min-h-[90vh]"
+		class="w-full pt-10 flex flex-col justify-between md:grid-12 border-b border-gray pb-6 md:min-h-[90vh]"
 	>
 		<div class="w-full relative col-start-1 col-end-13">
 			<div class="flex flex-col items-center">
@@ -36,8 +36,8 @@
 			</div>
 		</div>
 
-		{#if event?.performance}
-			<div class="md:hidden w-full flex justify-end px-xs">
+		<div class="md:hidden w-full flex justify-end px-xs h-30 pointer-events-none">
+			<div class="pointer-events-auto h-full flex justify-center items-center">
 				<Cloud
 					entry={event?.performance}
 					category="performances"
@@ -49,13 +49,12 @@
 					<div slot="shape">
 						<CloudShape {cloudBg} {cloudFg} link="/performances/{event?.performance?.slug}" />
 					</div>
-
 					<div slot="title">Associated Performance</div>
 				</Cloud>
 			</div>
-		{/if}
+		</div>
 
-		<div class="col-start-3 col-end-12 md:self-end typo-2xl">
+		<div class="col-start-3 col-end-12 typo-2xl md:self-end md:pt-16">
 			<div>{event?.institution?.title}</div>
 			<div>
 				{#if event?.start}
@@ -79,7 +78,7 @@
 	<div class="relative">
 		{#if event?.performance}
 			<div class="hidden md:block absolute h-full right-5 z-10">
-				<div class="sticky top-36 h-auto flex justify-end -mt-30">
+				<div class="sticky top-7 h-auto flex justify-end -mt-30">
 					<Cloud
 						entry={event?.performance}
 						category="performances"

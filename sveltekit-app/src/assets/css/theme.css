@@ -19,10 +19,12 @@
 
 	--text-*: initial;
 
-	--text-m-s: 1.2rem;
-	--text-m-s--line-height: 1.2rem;
+	--text-m-xs: 1.2rem;
+	--text-m-xs--line-height: 1.2rem;
+	--text-m-s: 1.4rem;
+	--text-m-s--line-height: 1.4rem;
 	--text-m-base: 1.6rem;
-	--text-m-base--line-height: 2rem;
+	--text-m-base--line-height: 1.65rem;
 	--text-m-lg: 2.2rem;
 	--text-m-lg--line-height: 2rem;
 	--text-m-xl: 2.8rem;

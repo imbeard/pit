@@ -19,13 +19,13 @@
 <div class="pt-8 p-xs">
 	<section class="hero">
 		<div class="pt-1 flex flex-col gap-1 pb-xs">
-			<div class="w-full grid-3 typo-s">
+			<div class="w-full grid-2 md:grid-3 typo-s lg:typo-xs">
 				<span>Artist</span>
 				<span>Institutions</span>
-				<span>Typology</span>
+				<span class="hidden md:block">Typology</span>
 			</div>
 			<h3 class="typo-2xl text-center">{performance.title}</h3>
-			<div class="w-full grid-3 typo-s">
+			<div class="w-full grid-2 md:grid-3 typo-s lg:typo-base">
 				{#if performance.artists && performance.artists.length > 0}
 					{#each performance.artists as artist}
 						<div>
@@ -46,14 +46,23 @@
 					</div>
 				{/if}
 				{#if performance.typology.title}
-					<span>{performance.typology.title}</span>
+					<span class="hidden md:block">{performance.typology.title}</span>
 				{/if}
 			</div>
 		</div>
 
 		{#if performance.image}
-			<div>
+			<div class="aspect-4/5 md:aspect-16/9">
 				<Image image={performance.image} fit="cover" />
+			</div>
+		{/if}
+
+		{#if performance.typology.title}
+			<div class="md:hidden typo-s pt-xs grid-2">
+				<div class="col-start-2 flex flex-col gap-xs">
+					<div>Typology</div>
+					<div>{performance.typology.title}</div>
+				</div>
 			</div>
 		{/if}
 	</section>
@@ -86,9 +95,7 @@
 			</div>
 			<div class="flex flex-col gap-xs md:hidden">
 				{#each relatedEvents as event}
-					<div class="border-y border-gray">
-						<EventCard thumbnail={event} />
-					</div>
+					<EventCard thumbnail={event} />
 				{/each}
 			</div>
 		</div>
@@ -104,9 +111,7 @@
 			</div>
 			<div class="flex flex-col gap-xs md:hidden">
 				{#each relatedResources as resource}
-					<div class="border-y border-gray">
-						<ResourceCard thumbnail={resource} />
-					</div>
+					<ResourceCard thumbnail={resource} />
 				{/each}
 			</div>
 		</div>

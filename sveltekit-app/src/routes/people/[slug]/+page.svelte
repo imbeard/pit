@@ -32,8 +32,8 @@
 			</div>
 
 			{#if person?.image}
-				<div class="max-h-30 h-30 md:w-full md:h-[50vh] pt-4 flex justify-center">
-					<Image image={person?.image} fit="contain" />
+				<div class="h-[50vh] w-full pt-4 flex justify-center items-center">
+					<Image image={person?.image} fit="contain" height="full" />
 				</div>
 			{/if}
 
@@ -62,7 +62,7 @@
 <div class="p-xs relative">
 	{#if person?.performance}
 		<div class="hidden md:block absolute h-full right-5">
-			<div class="sticky top-32 h-auto flex justify-end -mt-30">
+			<div class="sticky top-7 h-auto flex justify-end -mt-30">
 				<Cloud
 					entry={person?.performance}
 					category="performances"

@@ -1,0 +1,221 @@
+/* Plain CSS version of your Pikaday styles */
+.pika-single {
+	user-select: none;
+	font-size: var(--text-base);
+	z-index: 10;
+	display: inline-block;
+	position: relative;
+	color: var(--color-brown);
+	border-radius: 0;
+	border: none;
+	outline: none;
+}
+
+.pika-single:before,
+.pika-single:after {
+	content: '';
+	display: table;
+}
+
+.pika-single:after {
+	clear: both;
+}
+
+.pika-single.is-hidden {
+	display: none;
+}
+
+.pika-single.is-bound {
+	position: absolute;
+}
+
+.pika-single .pika-lendar {
+	float: left;
+	padding: 1.6rem;
+    background-color: var(--color-brown);
+    color: var(--color-gray);
+}
+
+.pika-single .pika-title {
+	position: relative;
+	text-align: center;
+}
+
+.pika-single .pika-title select {
+	cursor: pointer;
+	position: absolute;
+	z-index: 10;
+	margin: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.pika-single .pika-label {
+	display: inline-block;
+	position: relative;
+	z-index: 999;
+	overflow: hidden;
+	margin: 0;
+	padding: 5px 3px;
+    width: auto;
+	background-color: var(--color-brown);
+}
+
+.pika-single .pika-prev,
+.pika-single .pika-next {
+	display: block;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	outline: none;
+	border: 0;
+	width: 2.25rem;
+	height: 2.25rem;
+	color: transparent;
+	font-size: 1.2em;
+	border-radius: 0;
+}
+
+.pika-single .pika-prev:hover,
+.pika-single .pika-next:hover {
+	opacity: 0.5;
+}
+
+.pika-single .pika-prev.is-disabled,
+.pika-single .pika-next.is-disabled {
+	cursor: default;
+	opacity: 0.2;
+}
+
+.pika-single .pika-prev:before,
+.pika-single .pika-next:before {
+	display: inline-block;
+	width: 2.25rem;
+	height: 2.25rem;
+	line-height: 2.25;
+	color: var(--color-gray);
+}
+
+.pika-single .pika-prev {
+	left: 0;
+}
+
+.pika-single .pika-prev:before {
+	content: '‹';
+}
+
+.pika-single .pika-next {
+	right: 0;
+}
+
+.pika-single .pika-next:before {
+	content: '›';
+}
+
+.pika-single .pika-select {
+	display: inline-block;
+}
+
+.pika-single .pika-table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 0;
+}
+
+.pika-single .pika-table th,
+.pika-single .pika-table td {
+	padding: 0;
+}
+
+.pika-single .pika-table th {
+	opacity: 0.6;
+	text-align: center;
+	width: 2.25rem;
+	height: 2.25rem;
+}
+
+.pika-single .pika-button {
+	cursor: pointer;
+	display: block;
+	outline: none;
+	border: 0;
+	margin: 0;
+	padding: 5px;
+	width: 4rem;
+	height: 4rem;
+	text-align: center;
+}
+
+.pika-single .pika-week {
+	color: var(--color-gray);
+}
+
+.pika-single .is-today .pika-button {
+	background: var(--color-brown);
+	color: var(--color-gray);
+}
+
+.pika-single .is-selected .pika-button,
+.pika-single .has-event .pika-button {
+	color: var(--color-brown);
+	background-color: var(--color-gray);
+	border-radius: 0;
+}
+
+.pika-single .is-selected .pika-button:hover,
+.pika-single .has-event .pika-button:hover {
+	color: var(--color-brown);
+	background-color: rgba(239, 239, 239, 0.5);
+	border-radius: 0;
+}
+
+.pika-single .has-event .pika-button {
+	background: var(--color-brown);
+}
+
+.pika-single .is-disabled .pika-button,
+.pika-single .is-inrange .pika-button {
+	background: var(--color-brown);
+}
+
+.pika-single .is-startrange .pika-button {
+	color: var(--color-gray);
+	background: var(--color-brown);
+	border-radius: 0;
+}
+
+.pika-single .is-endrange .pika-button {
+	color: var(--color-gray);
+	background: var(--color-brown);
+	border-radius: 0;
+}
+
+.pika-single .is-disabled .pika-button {
+	pointer-events: none;
+	cursor: default;
+	color: var(--color-brown);
+	opacity: 0.3;
+}
+
+.pika-single .is-outside-current-month .pika-button {
+	color: var(--color-brown);
+	opacity: 0.3;
+}
+
+.pika-single .is-selection-disabled {
+	pointer-events: none;
+	cursor: default;
+}
+
+.pika-single .pika-button:hover,
+.pika-single .pika-row.pick-whole-week:hover .pika-button {
+	color: var(--color-gray);
+	opacity: 0.5;
+	border-radius: 0;
+}
+
+.pika-single .pika-table abbr {
+	text-decoration: none;
+	font-weight: normal;
+}

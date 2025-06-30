@@ -16,7 +16,6 @@
 	let delay = 6000;
 	let plugins = [Autoplay({ delay: delay })];
 	let selectedIndex = 0;
-	
 </script>
 
 {#if section}
@@ -29,14 +28,8 @@
 							<Image image={slide} fit="cover" />
 						</div>
 					{:else if slide._type == 'elementVideo'}
-						<div
-							class="image-container"
-						>
-							<Video
-								src={slide.url}
-								alt={slide.alt}
-								poster={slide.poster}
-							/>
+						<div class="image-container">
+							<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
 						</div>
 					{/if}
 					{#if slide.caption}
@@ -56,7 +49,8 @@
 	.embla__container {
 		display: flex;
 		touch-action: pan-y pinch-zoom;
-		height: 300px;
+		min-height: 205px;
+		height: 25svh;
 	}
 	.embla__slide {
 		transform: translate3d(0, 0, 0);
@@ -64,7 +58,8 @@
 		min-width: 0;
 		margin-right: var(--spacing-xs);
 		max-width: 75vw;
-		height: 300px;
+		min-height: 205px;
+		height: 25svh;
 	}
 
 	.image-container {
@@ -87,6 +82,7 @@
 			min-width: 0;
 			margin-right: var(--spacing-xs);
 			max-width: none;
+			min-height: 370px;
 			height: 45svh;
 		}
 	}

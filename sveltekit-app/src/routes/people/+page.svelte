@@ -75,7 +75,9 @@
 		<ArchiveIntro {document} />
 	</section>
 	<div class="flex w-full justify-end pb-xs">
-		<button class="button theme-pink-red" on:click={() => openFilters()}>
+		<button class="button theme-pink-red"
+		class:filter-button-aligned={params.jobs.length == 0 && params.countries.length == 0}
+		 on:click={() => openFilters()}>
 			<span>Filters</span>
 			{#if params.jobs.length > 0 || params.countries.length > 0}
 				<span class="align-super typo-s leading-0"
@@ -117,9 +119,9 @@
 					{#each section.people as person}
 						<a
 							href="/people/{person.slug}"
-							class="card col-span-1 min-h-8 border-b border-gray transition-all duration-200 hover:text-red md:border-none"
+							class="card col-span-1 min-h-8 border-b border-gray transition-all duration-200 hover:text-red md:border-none aspect-4/3 md:aspect-auto"
 						>
-							<div class="typo-s">{person.country}</div>
+							<div class="typo-xs">{person.country}</div>
 							<div class="typo-lg text-center pt-xs px-2">{person.name}</div>
 						</a>
 					{/each}
@@ -136,5 +138,14 @@
 	}
 	.people-section:last-of-type {
 		padding-bottom: 0;
+	}
+	.filter-button-aligned {
+		transform: translateY(100%);
+	}
+
+	@media (min-width: 768px) {
+		.filter-button-aligned {
+			transform: translateY(0);
+		}
 	}
 </style>

@@ -5,6 +5,7 @@
 	import { toHTML, uriLooksSafe } from '@portabletext/to-html';
 
 	export let data;
+	export let theme = '';
 
 	$: html = htm.bind(vhtml);
 	$: components = {
@@ -52,7 +53,7 @@
 
 				if (slug) {
 					return html`<a
-						class="leading-0 cursor-pointer px-[2px] theme-pink-blue hover:theme-blue-pink"
+						class="leading-0 cursor-pointer px-[2px] theme-pink-blue hover:theme-blue-pink ${theme}"
 						href="/${category}/${slug}"
 						>${children}</a
 					>`;
@@ -65,7 +66,7 @@
 				if (uriLooksSafe(href)) {
 					const rel = href.startsWith('/') ? undefined : 'noreferrer noopener';
 					return html`<a
-						class="leading-0 cursor-pointer px-[2px] theme-pink-blue hover:theme-blue-pink"
+						class="leading-0 cursor-pointer px-[2px] theme-pink-blue hover:theme-blue-pink ${theme}"
 						href="${href}"
 						rel="${rel}"
 						target="_blank"
@@ -80,7 +81,7 @@
 				if (uriLooksSafe(href)) {
 					const rel = href.startsWith('/') ? undefined : 'noreferrer noopener';
 					return html`<a
-						class="leading-0 cursor-pointer px-[2px]"
+						class="leading-0 cursor-pointer px-[2px] ${theme}"
 						href="mailto:${href}"
 						rel="${rel}"
 						>${children}</a
@@ -88,7 +89,7 @@
 				}
 				return children;
 			},
-			em: ({ children }) => html`<em>${children}</em>`,
+			// em: ({ children }) => html`<em>${children}</em>`,
 			
 		}
 	};

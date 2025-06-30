@@ -1,17 +1,15 @@
 <script>
-	import Marquee3k from 'marquee3000';
 	import Image from '$lib/components/element/Image.svelte';
-	import { onMount } from 'svelte';
 	export let data;
-	onMount(() => Marquee3k.init());
+	import Marqueeck from '@arisbh/marqueeck';
+
+	const options = {
+		direction: 'left',
+		speed: 20
+	};
 </script>
 
-<div
-	class="marquee3k overflow-hidden absolute left-0 transform -translate-x-xs"
-	data-speed="0.25"
-	data-reverse="bool"
-	data-pausable="bool"
->
+<Marqueeck {options}>
 	<div>
 		{#each data as item}
 			<div class="inline-block h-3 typo-lg px-4 md:h-2.5 md:px-7">
@@ -23,10 +21,4 @@
 			</div>
 		{/each}
 	</div>
-</div>
-
-<style>
-	.marquee3k {
-		width: calc(100% + var(--spacing-xs) * 2);
-	}
-</style>
+</Marqueeck>

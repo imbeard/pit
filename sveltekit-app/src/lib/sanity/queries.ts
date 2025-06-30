@@ -81,8 +81,8 @@ export const aboutQuery = groq`*[_type == "about"][0]`;
 
 // document single entry
 export const eventQuery = groq`*[
-    _type == "event" 
-    && defined(slug.current) 
+    _type == "event"
+    && defined(slug.current)
     && slug.current == $slug] {
     ...,
 
@@ -112,7 +112,7 @@ export const eventQuery = groq`*[
     allPartners[]-> {
         ${partnerThumb}
     },
-       
+
     "relatedEvents": *[
     _type == "event" &&
     typology._ref == ^.typology._ref &&
@@ -126,23 +126,23 @@ export const eventQuery = groq`*[
 export const partnerQuery = groq`{
 
     "partner": *[
-    _type == "partner" 
-    && defined(slug.current) 
+    _type == "partner"
+    && defined(slug.current)
     && slug.current == $slug] {
         ...,
         ${pageBuilder}
     },
 
-    "performances": *[_type == "performance" 
+    "performances": *[_type == "performance"
     && references(*[_type == "partner" && slug.current == $slug][0]._id)] {
         ${performanceThumb}
     },
-    
+
 }`;
 
 export const peopleQuery = groq`*[
-    _type == "people" 
-    && defined(slug.current) 
+    _type == "people"
+    && defined(slug.current)
     && slug.current == $slug] {
         ...,
         performance-> {
@@ -154,8 +154,8 @@ export const peopleQuery = groq`*[
         ${pageBuilder}
     }`;
 export const resourceQuery = groq`*[
-    _type == "resource" 
-    && defined(slug.current) 
+    _type == "resource"
+    && defined(slug.current)
     && slug.current == $slug] {
         ...,
         performance-> {
@@ -172,8 +172,8 @@ export const resourceQuery = groq`*[
 
 export const performanceQuery = groq`{
 "performance": *[
-    _type == "performance" 
-    && defined(slug.current) 
+    _type == "performance"
+    && defined(slug.current)
     && slug.current == $slug] {
     ...,
     artists[]-> {
@@ -193,19 +193,19 @@ export const performanceQuery = groq`{
    ${pageBuilder},
     },
 
-     "relatedEvents": *[_type == "event" 
+     "relatedEvents": *[_type == "event"
     && references(*[_type == "performance" && slug.current == $slug][0]._id)] {
         ${eventThumb}
     },
-    "relatedResources": *[_type == "resource" 
+    "relatedResources": *[_type == "resource"
     && references(*[_type == "performance" && slug.current == $slug][0]._id)] {
         ${resourceThumb}
     },
 }`;
 
 export const pageQuery = groq`*[
-    _type == "page" 
-    && defined(slug.current) 
+    _type == "page"
+    && defined(slug.current)
     && slug.current == $slug]`;
 
 export const archiveQuery = groq`*[
@@ -220,19 +220,19 @@ export const archiveQuery = groq`*[
 export const eventsQuery = groq`*[_type == "event" && defined(slug.current)] | order(_createdAt desc) [$start...$end] {
     ${eventThumb}
 }`;
-export const filteredEventsQuery = groq`*[_type == "event" && defined(slug.current)
-&& typology->slug.current in $typologies
-|| featuredArtists[]->slug.current in $people
-|| institution->slug.current in $institutions
-] | order(_createdAt desc) [0...$end] {
+export const filteredEventsQuery = groq`*[_type == "event" && defined(slug.current) && (
+  typology->slug.current in $typologies
+  || featuredArtists[]->slug.current in $people
+  || institution->slug.current in $institutions
+)] | order(_createdAt desc) [$start...$end] {
     ${eventThumb}
 }`;
 
 export const partnersQuery = groq`*[_type == "partner"]| order(_createdAt desc) {
     ${partnerThumb}
 }`;
-export const filteredPeopleQuery = groq`*[_type == "people" && defined(slug.current) 
-&& job in $jobs 
+export const filteredPeopleQuery = groq`*[_type == "people" && defined(slug.current)
+&& job in $jobs
 || country in $countries
 ]| order(_createdAt desc) {
     ${peopleThumb}
@@ -242,7 +242,7 @@ export const allPeopleQuery = groq`*[_type == "people" && defined(slug.current) 
     ${peopleThumb}
 }`;
 
-export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc) [$start...$end]{
+export const resourcesQuery = groq`*[_type == "resource"]| order(_createdAt desc) [$start...$end] {
     ${resourceThumb}
      downloads[] {
             ${download}
@@ -263,6 +263,46 @@ export const performancesQuery = groq`*[_type == "performance"]| order(_createdA
 }`;
 
 export const archivesQuery = groq`*[_type == "archive"]| order(_createdAt desc)`;
+
+// Filter options queries - lightweight queries for getting all available filter options
+export const eventTypologiesQuery = groq`*[_type == "event" && defined(slug.current) && defined(typology)] {
+    "typology": typology-> {
+        _id,
+        "slug": slug.current,
+        title
+    }
+} | order(typology.title asc)`;
+
+export const eventInstitutionsQuery = groq`*[_type == "event" && defined(slug.current) && defined(institution)] {
+    "institution": institution-> {
+        _id,
+        "slug": slug.current,
+        title
+    }
+} | order(institution.title asc)`;
+
+export const eventPeopleQuery = groq`*[_type == "event" && defined(slug.current) && count(featuredArtists) > 0] {
+    "featuredArtists": featuredArtists[]-> {
+        _id,
+        "slug": slug.current,
+        name
+    }
+} | order(featuredArtists[0].name asc)`;
+
+// Resource filter queries
+export const resourceTypologiesQuery = groq`*[_type == "resource" && defined(slug.current) && defined(typology)] {
+    typology
+} | order(typology asc)`;
+
+export const resourceMediaQuery = groq`*[_type == "resource" && defined(slug.current) && count(downloads) > 0] {
+    downloads[] {
+        url {
+            asset->{
+                extension
+            }
+        }
+    }
+}`;
 
 /* SEARCH */
 export const searchQuery = groq`{

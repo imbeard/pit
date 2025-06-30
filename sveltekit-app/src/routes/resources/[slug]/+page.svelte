@@ -2,6 +2,7 @@
 	import PageBuilder from '$lib/components/PageBuilder.svelte';
 	import CloudShape from '$lib/components/svg/CloudShape-6.svelte';
 	import Cloud from '$lib/components/Cloud.svelte';
+	import Download from '$lib/components/svg/Download.svelte';
 	import { formatDate } from '$lib/utils';
 
 	export let data;
@@ -52,7 +53,7 @@
 			
 			{#if resource?.performance}
 				<div class="hidden md:block absolute h-full right-5">
-					<div class="sticky top-16 h-auto flex justify-end -mt-30 z-20">
+					<div class="sticky top-7 h-auto flex justify-end -mt-30 z-20">
 						<Cloud
 							entry={resource?.performance}
 							category="performances"
@@ -80,17 +81,19 @@
 	{/if}
 
 	{#if resource?.downloads && resource?.downloads.length > 0}
-		<div class="pt-s">
+		<div class="pt-12">
 			<h3 class="typo-lg w-full border-b border-gray pb-xs">Downloads</h3>
 			<div class="flex flex-col pt-xs md:grid-6">
 				{#each resource?.downloads as download}
 					<a
 						href={download?.url?.asset?.url}
-						class="cursor-pointer button w-fit grid-8 items-top pb-xs md:flex md:flex-col"
+						class="cursor-pointer w-fit grid-8 items-top pb-xs md:flex md:flex-col"
 						target="_blank"
 						download
 					>
-						<img class="col-start-1 col-end-4" src="/icons/download.svg" alt="" />
+						<div class="col-start-1 col-end-4">
+							<Download />
+						</div>
 						<div class="col-start-4 col-end-9">
 							<div class="pt-xs text-center typo-s">{download?.url?.asset?.mimeType}</div>
 							<div class="pt-xs typo-lg">{download?.title}</div>

@@ -7,6 +7,7 @@
 	export let alt = 'Image';
 	export let lazy = false;
 	export let preload = false;
+	export let height = 'auto';
 
 	let innerWidth = 1280;
 
@@ -25,9 +26,10 @@
 </svelte:head>
 
 <img
-	class="max-h-full max-w-full w-auto h-auto {fit === 'contain'
-		? 'object-contain'
-		: 'object-cover h-full w-full'}"
+	class="max-h-full max-w-full w-full
+	{fit === 'contain' ? 'object-contain' : 'object-cover h-full w-full'}
+	{height === 'full' ? 'h-full' : 'h-auto'}"
+	
 	loading={lazy ? 'lazy' : 'eager'}
 	fetchpriority={lazy ? 'low' : 'high'}
 	data-sizes="auto"

@@ -1,5 +1,6 @@
 <script>
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 
 	let moveElements = false;
 
@@ -9,7 +10,14 @@
 		document.addEventListener('scroll', (event) => {
 			scrollPosition = window.scrollY;
 
-			if (scrollPosition > 0) {
+			if (
+				scrollPosition > 0 &&
+				($page.route.id == '/performances/[slug]' ||
+					$page.route.id == '/events/[slug]' ||
+					$page.route.id == '/resources/[slug]' ||
+					$page.route.id == '/people/[slug]' ||
+					$page.route.id == '/partners/[slug]')
+			) {
 				moveElements = true;
 			} else {
 				moveElements = false;

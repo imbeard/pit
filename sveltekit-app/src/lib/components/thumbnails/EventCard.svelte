@@ -65,7 +65,7 @@
 					<div>{thumbnail.typology.title}</div>
 					<div>{thumbnail.location}</div>
 				</div>
-				<div class="pb-xs">
+				<div class="pb-xs typo-lg">
 					<h4>{thumbnail.institution.title}</h4>
 					<div>{formatDate(thumbnail.start)}</div>
 				</div>

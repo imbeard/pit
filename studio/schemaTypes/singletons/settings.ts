@@ -14,8 +14,8 @@ export const settings = defineType({
     },
     {
       default: true,
-      name: 'navigation',
-      title: 'Navigation',
+      name: 'footer',
+      title: 'Footer',
       icon: MenuIcon,
     },
     {
@@ -27,6 +27,12 @@ export const settings = defineType({
   fieldsets: [
     {
       name: 'company',
+      options: {
+        columns: 2
+      }
+    },
+    {
+      name: 'contacts',
       options: {
         columns: 2
       }
@@ -48,10 +54,16 @@ export const settings = defineType({
       fieldset: 'company'
     }),
     defineField({
-      name: 'contacts',
-      type: 'array',
-      of: [{type: 'link'}],
-      group: 'company'
+      name: 'email',
+      type: 'email',
+      group: 'company',
+      fieldset: 'contacts'
+    }),
+     defineField({
+      name: 'phone',
+      type: 'string',
+      group: 'company',
+      fieldset: 'contacts'
     }),
     defineField({
       name: 'social',
@@ -68,13 +80,8 @@ export const settings = defineType({
           title: 'Text',
           type: 'text'
         }),
-        defineField({
-          name: 'contact',
-          title: 'Contact',
-          type: 'link'
-        })
       ],
-      group: 'navigation'
+      group: 'footer'
     }),
     defineField({
       name: 'seo',

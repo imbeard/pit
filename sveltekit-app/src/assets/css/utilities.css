@@ -30,6 +30,10 @@
 
 /* typography */
 
+@utility typo-xs {
+	@apply text-m-xs tracking-normal lg:typo-s;
+}
+
 @utility typo-s {
 	@apply text-m-s lg:text-s tracking-tight;
 }

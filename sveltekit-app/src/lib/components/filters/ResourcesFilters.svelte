@@ -58,14 +58,14 @@
 </script>
 
 <aside class="fixed z-99 h-[100dvh] right-0 top-0 bg-blue text-pink p-xs" class:open={$filtersOpen}>
-	<div class="wrapper flex flex-col justify-between h-full overflow-auto pb-8" class:open={$filtersOpen}>
-		<div>
+	<div class="wrapper flex flex-col justify-between h-full overflow-auto" class:open={$filtersOpen}>
+		<div class="pb-8">
 			<button on:click={closeFilters} class="cursor-pointer p-s absolute theme-pink-blue right-xs"
 				>Close</button
 			>
 			<div class="pt-10">
 				<Accordion open={true} lineColor="border-pink">
-					<div class="cursor-pointer" slot="head">Nationalities</div>
+					<div class="cursor-pointer" slot="head">Typologies</div>
 					<div slot="details">
 						<ul class="flex flex-col gap-y-xs">
 							{#each typologies as typology}
@@ -108,16 +108,18 @@
 				</Accordion>
 			</div>
 		</div>
-		<div class="grid-2 absolute bottom-1 md:bottom-xs">
-			<button
-				class="button cursor-pointer text-center py-s w-full theme-pink-blue"
-				on:click={applyFilters}>Apply</button
-			>
-			<a
-				href="/people"
-				class="cursor-pointer text-center py-s w-full bg-[#a6a1f7] hover:bg-pink text-blue transition-bg duration-200 px-xs"
-				>Clear all</a
-			>
+		<div class="sticky bottom-0 h-full">
+			<div class="grid-2 w-full absolute bottom-1 md:bottom-0">
+				<button
+					class="button cursor-pointer text-center py-s w-full theme-pink-blue"
+					on:click={applyFilters}>Apply</button
+				>
+				<a
+					href="/resources"
+					class="cursor-pointer text-center py-s w-full bg-[#a6a1f7] hover:bg-pink text-blue transition-bg duration-200 px-xs"
+					>Clear all</a
+				>
+			</div>
 		</div>
 	</div>
 </aside>

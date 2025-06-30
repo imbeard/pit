@@ -14,7 +14,7 @@
 	let resourcesContainer;
 	let isLoading = false;
 	let hasMoreResources = data.hasMoreResources;
-	let currentStart = 20; // Start from 20 since we already loaded 0-20
+	let currentStart = 20;
 	const loadSize = 20;
 
 	$: resources = data?.resources?.data || [];
@@ -26,15 +26,8 @@
 	$: displayResources = filteredResources.length > 0 ? filteredResources : resources;
 	$: hasFilters = params.typologies.length > 0 || params.media.length > 0;
 
-	$: typologies = Array.from(new Set(resources.flatMap((resource) => resource.typology)));
-
-	$: media = Array.from(
-		new Set(
-			resources.flatMap((resource) =>
-				resource.downloads.map((download) => download.url.asset.extension)
-			)
-		)
-	);
+	// Get filter options from server data instead of deriving from paginated resources
+	$: ({ typologies, media } = data.filterOptions || { typologies: [], media: [] });
 
 	$: selectedTypologies = [];
 	$: selectedMedia = [];

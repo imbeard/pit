@@ -75,6 +75,9 @@ importers:
 
   sveltekit-app:
     dependencies:
+      '@arisbh/marqueeck':
+        specifier: ^0.5.1
+        version: 0.5.1(svelte@4.2.20)
       '@portabletext/to-html':
         specifier: ^2.0.14
         version: 2.0.14
@@ -99,6 +102,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.6
         version: 4.1.7(vite@5.4.19(@types/node@22.15.21)(lightningcss@1.30.1))
+      cally:
+        specifier: ^0.8.0
+        version: 0.8.0
       embla-carousel-autoplay:
         specifier: ^8.6.0
         version: 8.6.0(embla-carousel@8.6.0)
@@ -114,12 +120,12 @@ importers:
       htm:
         specifier: ^3.1.1
         version: 3.1.1
-      marquee3000:
-        specifier: ^1.1.1
-        version: 1.1.1
       media-icons:
         specifier: ^1.1.5
         version: 1.1.5
+      pikaday:
+        specifier: ^1.8.2
+        version: 1.8.2
       slugify:
         specifier: ^1.6.6
         version: 1.6.6
@@ -166,6 +172,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.21(postcss@8.5.3)
+      daisyui:
+        specifier: ^5.0.43
+        version: 5.0.43
       eslint:
         specifier: ^8.57.0
         version: 8.57.1
@@ -223,6 +232,11 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@arisbh/marqueeck@0.5.1':
+    resolution: {integrity: sha512-7sjBwIRvm+UdQgb8fOK44ssy+oMC5A/33/CC+E62OzMtW2i5OotE3xw0YY+tjqOI7y9LV1d44rHixhni0IEGOw==}
+    peerDependencies:
+      svelte: ^5.0.0
 
   '@asamuzakjp/css-color@3.2.0':
     resolution: {integrity: sha512-K1A6z8tS3XsmCMM86xoWdn7Fkdn9m6RSVtocUrJYIwZnFVkng/PvkEoWtOWmP+Scc6saYWHWZYbndEEXxl24jw==}
@@ -2552,6 +2566,9 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
+  atomico@1.79.2:
+    resolution: {integrity: sha512-mshhLRMeIltNYbnQnqgnrvJ/uDa8XDfTQcjw3ymOygQqwHIQ4Sp0LcNYMCbACkV3DtV+eDXb9szwU4qMUuGwYQ==}
+
   autoprefixer@10.4.21:
     resolution: {integrity: sha512-O+A6LWV5LDHSJD3LjHYoNi4VLsj/Whi7k6zG12xTYaU4cQ8oxQGckXNX8cRHK5yOZ/ppVHe0ZBXGzSV9jXdVbQ==}
     engines: {node: ^10 || ^12 || >=14}
@@ -2678,6 +2695,9 @@ packages:
   callsites@3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
+
+  cally@0.8.0:
+    resolution: {integrity: sha512-jvQ2QMrsZM/ZPG/LWTkJEUPrp/ew1uS2KjKA/E6ru7mVvTMY2JgSagci9IghLmuamFh1pDajrxXAX4Qgo4FHbw==}
 
   camelcase-keys@6.2.2:
     resolution: {integrity: sha512-YrwaA0vEKazPBkn0ipTiMpSajYDSe+KjQfrjhcBMxJt/znbvlHd8Pw/Vamaz5EB4Wfhs3SUR3Z9mwRu/P3s3Yg==}
@@ -2896,6 +2916,9 @@ packages:
 
   cyclist@1.0.2:
     resolution: {integrity: sha512-0sVXIohTfLqVIW3kb/0n6IiWF3Ifj5nm2XaSrLq2DI6fKIGa2fYAZdk917rUneaeLVpYfFcyXE2ft0fe3remsA==}
+
+  daisyui@5.0.43:
+    resolution: {integrity: sha512-2pshHJ73vetSpsbAyaOncGnNYL0mwvgseS1EWy1I9Qpw8D11OuBoDNIWrPIME4UFcq2xuff3A9x+eXbuFR9fUQ==}
 
   damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -4337,9 +4360,6 @@ packages:
     resolution: {integrity: sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==}
     engines: {node: '>=8'}
 
-  marquee3000@1.1.1:
-    resolution: {integrity: sha512-XAZdVIdunQT2EdHdMmkbXh5i728KxwGmvY1w60WZdYmF3WgyBr4dcdyufTGfFPR1Rogr35Y9zST0vUsNN3WKPg==}
-
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
@@ -4756,6 +4776,9 @@ packages:
   pify@4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
+
+  pikaday@1.8.2:
+    resolution: {integrity: sha512-TNtsE+34BIax3WtkB/qqu5uepV1McKYEgvL3kWzU7aqPCpMEN6rBF3AOwu4WCwAealWlBGobXny/9kJb49C1ew==}
 
   pinkie-promise@2.0.1:
     resolution: {integrity: sha512-0Gni6D4UcLTbv9c57DfxDGdr41XfgUjqWZu492f0cIGr16zDU06BWP/RAEvOuo7CQ0CNjHaLlM59YJJFm3NWlw==}
@@ -6216,6 +6239,10 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
+
+  '@arisbh/marqueeck@0.5.1(svelte@4.2.20)':
+    dependencies:
+      svelte: 4.2.20
 
   '@asamuzakjp/css-color@3.2.0':
     dependencies:
@@ -9037,6 +9064,8 @@ snapshots:
 
   asynckit@0.4.0: {}
 
+  atomico@1.79.2: {}
+
   autoprefixer@10.4.21(postcss@8.5.3):
     dependencies:
       browserslist: 4.24.5
@@ -9178,6 +9207,10 @@ snapshots:
       get-intrinsic: 1.3.0
 
   callsites@3.1.0: {}
+
+  cally@0.8.0:
+    dependencies:
+      atomico: 1.79.2
 
   camelcase-keys@6.2.2:
     dependencies:
@@ -9410,6 +9443,8 @@ snapshots:
   csstype@3.1.3: {}
 
   cyclist@1.0.2: {}
+
+  daisyui@5.0.43: {}
 
   damerau-levenshtein@1.0.8: {}
 
@@ -11043,8 +11078,6 @@ snapshots:
 
   map-obj@4.3.0: {}
 
-  marquee3000@1.1.1: {}
-
   math-intrinsics@1.1.0: {}
 
   md5-o-matic@0.1.1: {}
@@ -11447,6 +11480,8 @@ snapshots:
   pify@3.0.0: {}
 
   pify@4.0.1: {}
+
+  pikaday@1.8.2: {}
 
   pinkie-promise@2.0.1:
     dependencies:

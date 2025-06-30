@@ -25,7 +25,7 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 			<div
-				class="relative flex justify-center items-center size-cloud max-w-24"
+				class="relative flex justify-center items-center size-cloud max-w-32"
 				on:mouseover={() => showPopup(0)}
 				on:mouseleave={hidePopup}
 			>
@@ -36,7 +36,7 @@
 					<div
 						class="texts absolute top-0 bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button pointer-events-none text-pink"
 					>
-						<div class="typo-cloud-base text-center p-1">{coreValues[0]?.heading}</div>
+						<div class="typo-lg text-center p-1">{coreValues[0]?.heading}</div>
 					</div>
 				</div>
 			</div>
@@ -56,18 +56,18 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 			<div
-				class="relative flex justify-center items-center size-cloud max-w-22"
+				class="relative flex justify-center items-center size-cloud max-w-42"
 				on:mouseover={() => showPopup(1)}
 				on:mouseleave={hidePopup}
 			>
 				<div class="artist-cloud flex justify-center items-center">
-					<div class="w-full h-auto">
+					<div class="size-cloud-pink h-auto">
 						<CloudShape_3 cloudBg="pink" cloudFg="pink" />
 					</div>
 					<div
 						class="texts absolute top-0 bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button pointer-events-none text-black"
 					>
-						<div class="typo-cloud-base text-center p-1">{coreValues[1]?.heading}</div>
+						<div class="typo-lg text-center p-1">{coreValues[1]?.heading}</div>
 					</div>
 				</div>
 			</div>
@@ -98,7 +98,7 @@
 					<div
 						class="texts absolute top-0 bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button pointer-events-none text-pink"
 					>
-						<div class="typo-cloud-base text-center p-1">{coreValues[2]?.heading}</div>
+						<div class="typo-lg text-center p-1">{coreValues[2]?.heading}</div>
 					</div>
 				</div>
 			</div>
@@ -129,7 +129,7 @@
 					<div
 						class="texts absolute top-0 bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button pointer-events-none text-blue"
 					>
-						<div class="typo-cloud-base text-center p-1">{coreValues[3]?.heading}</div>
+						<div class="typo-lg text-center p-1">{coreValues[3]?.heading}</div>
 					</div>
 				</div>
 			</div>
@@ -145,22 +145,22 @@
 	{/if}
 
 	{#if coreValues[4]}
-		<div class="relative ml-[20%] md:ml-0 md:absolute md:bottom-0 md:right-[8%]" >
+		<div class="relative ml-[20%] md:ml-0 md:absolute md:right-[8%] md:mt-30">
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 			<div
-				class="relative flex flex-col justify-center items-center size-cloud"
+				class="relative flex flex-col justify-center items-center"
 				on:mouseover={() => showPopup(4)}
 				on:mouseleave={hidePopup}
 			>
 				<div class="artist-cloud flex justify-center items-center">
-					<div class="w-full h-auto">
+					<div class="w-full h-auto size-cloud-red">
 						<CloudShape_6 cloudBg="red" cloudFg="red" />
 					</div>
 					<div
-						class="texts absolute top-0 bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button pointer-events-none"
+						class="texts absolute top-xs bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button pointer-events-none"
 					>
-						<div class="typo-cloud-base text-center p-1">{coreValues[4]?.heading}</div>
+						<div class="typo-lg text-center p-1">{coreValues[4]?.heading}</div>
 					</div>
 				</div>
 			</div>
@@ -175,3 +175,15 @@
 		</div>
 	{/if}
 {/if}
+
+<style>
+	.size-cloud-pink {
+		width: clamp(240px, 36vw, 600px);
+		height: auto;
+	}
+
+	.size-cloud-red {
+		width: clamp(300px, 36vw, 600px);
+		height: auto;
+	}
+</style>

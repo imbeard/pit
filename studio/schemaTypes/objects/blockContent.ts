@@ -14,9 +14,7 @@ export const blockContent = defineType({
         {title: 'Bullet', value: 'bullet'},
       ],
       marks: {
-        decorators: [
-          {title: 'Emphasis', value: 'em'},
-        ],
+        decorators: [],
         annotations: [
           {
             name: 'linkEmail',

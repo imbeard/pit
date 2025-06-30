@@ -38,7 +38,7 @@
 	</section>
 	<section class="pt-12 px-xs">
 		<h2 class="typo-xl mx-auto w-fit">Core Values</h2>
-		<div class="relative flex justify-center flex-col items-center pt-2 h-full min-h-40">
+		<div class="relative flex justify-center flex-col items-center pt-2 h-full min-h-40 mb-6">
 			<CloudsAbout {coreValues} />
 		</div>
 	</section>
@@ -94,7 +94,7 @@
 			<h2 class="typo-xl mx-auto w-fit">{document?.partners?.heading}</h2>
 			<PortableText data={document?.partners?.content} />
 
-			<div class="relative">
+			<div class="relative overflow-x-hidden">
 				<Marquee data={partners} />
 			</div>
 

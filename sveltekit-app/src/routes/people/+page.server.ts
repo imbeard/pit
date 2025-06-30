@@ -9,12 +9,9 @@ export const load: PageServerLoad = async (event) => {
 		countries: searchParams.get('countries') ? searchParams.get('countries').split(',') : []
 	};
 
-	const allPeople = await loadQuery(allPeopleQuery, {
-		end: 5
-	});
+	const allPeople = await loadQuery(allPeopleQuery);
 
 	const filteredPeople = await loadQuery(filteredPeopleQuery, {
-		end: 5,
 		jobs: params.jobs,
 		countries: params.countries
 	});

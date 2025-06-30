@@ -2,6 +2,7 @@
 	import LogoFooter from '$lib/components/svg/LogoFooter.svelte';
 	import Link from '$lib/components/element/Link.svelte';
 	export let data;
+	$: currentYear = new Date().getFullYear();
 </script>
 
 <div class="w-full footer relative flex flex-col justify-between">
@@ -24,32 +25,56 @@
 		class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1"
 	>
 		<div class="typo-lg md:typo-2xl text-center whitespace-nowrap">Get in touch</div>
-		<div class="theme-red-black button w-fit">
-			<Link to={data?.footer?.contact} />
-		</div>
+		<a
+			href="/contact"
+			class="text-black bg-red hover:text-red hover:bg-black w-fit text-[40px] p-s leading-2 whitespace-nowrap md:typo-base md:p-xs"
+		>
+			Contact Us <span class="align-super typo-lg leading-0 md:typo-s">&nearr;</span>
+		</a>
 	</div>
+
 	<div>
-		<div class="w-full grid-3 p-xs items-baseline">
-			<div>Email</div>
-			<img class="w-10 justify-self-center" src="/images/eu-funded-logo.svg" alt="" />
-			<div class="text-right">Phone</div>
+		<div class="flex flex-col text-center md:hidden">
+			<a href="mailto:{data?.email}">{data?.email}</a>
+			<a href="tel:{data?.phone}">{data?.phone}</a>
+			<div>Design by Parco Studio</div>
+			{#if data?.social}
+				<ul class="flex gap-xs text-center justify-center">
+					{#each data?.social as link}
+						<li><Link to={link} target="_blank" /></li>
+					{/each}
+				</ul>
+			{/if}
+			<div>© PIT {currentYear}</div>
 		</div>
-		<div class="border-t border-gray w-full grid-2 md:grid-3 p-xs">
+
+		<div class="w-full md:grid-3 p-xs items-baseline">
+			<div class="hidden md:block">
+				<a href="mailto:{data?.email}">{data?.email}</a>
+			</div>
+			<img class="w-10 justify-self-center mx-auto" src="/images/eu-funded-logo.svg" alt="" />
+			<div class="hidden md:block text-right">
+				<a href="tel:{data?.phone}">{data?.phone}</a>
+			</div>
+		</div>
+		<div class="border-t border-gray w-full grid-3 p-xs">
 			<div>Imprint</div>
 			<div class="text-center hidden md:block">© PIT 2025</div>
-			<div class="text-right">
+			<div class="hidden md:block text-right">
 				<ul class="flex gap-xs justify-end">
 					<li>Privacy Policy</li>
 					<li>Cookies</li>
 				</ul>
 			</div>
+			<div class="justify-self-center md:hidden">Privacy Policy</div>
+			<div class="justify-self-end md:hidden">Cookies</div>
 		</div>
 	</div>
 </div>
 
 <style>
 	.footer {
-		height: 100svh;
+		height: calc(100svh - 5.2rem);
 		background: linear-gradient(rgba(185, 185, 185, 1) 15%, rgba(185, 185, 185, 0) 70%);
 	}
 

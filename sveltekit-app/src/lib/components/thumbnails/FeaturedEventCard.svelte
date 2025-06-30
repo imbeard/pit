@@ -7,7 +7,7 @@
 
 <a
 	href="/events/{thumbnail?.slug}"
-	class="card-empty flex flex-col justify-between p-2 {theme} h-full"
+	class="card-empty flex flex-col justify-between p-[1.6rem] {theme} h-auto aspect-3/4 w-full md:aspect-auto md:h-full"
 >
 	{#if thumbnail?.image?.asset}
 		<div class="absolute top-0 left-0 bottom-0 right-0">
@@ -25,7 +25,7 @@
 	</div>
 	<div class="typo-2xl flex flex-col gap-1 z-10">
 		<h4>{thumbnail?.institution?.title}</h4>
-		<div class="typo-base">{thumbnail?.summary}</div>
+		<div class="typo-xs tracking-tight leading-tight md:typo-base">{thumbnail?.summary}</div>
 		<div class="text-center">{formatDate(thumbnail.start)}</div>
 	</div>
 </a>

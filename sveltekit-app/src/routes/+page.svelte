@@ -73,9 +73,9 @@
 			<div class="md:px-4">
 				<PortableText data={document?.intro} />
 			</div>
-			<div class="pt-1 pt flex justify-between typo-base items-center">
+			<div class="pt-1 pt flex gap-xs justify-between typo-base items-center">
 				<div class="max-w-[18rem] md:max-w-md text-center">{document?.subtitle}</div>
-				<div class="theme-pink-red button">
+				<div class="theme-pink-red button whitespace-nowrap">
 					<Link to={document?.cta?.link} />
 				</div>
 			</div>
@@ -102,9 +102,9 @@
 		{/if}
 
 		<section class="flex flex-col gap-1">
-			<h3 class="typo-lg">{document?.partners.heading}</h3>
+			<h3 class="text-[30px] tracking-tight">{document?.partners.heading}</h3>
 			<PortableText data={document?.partners.content} />
-			<div class="relative">
+			<div class="relative overflow-x-hidden">
 				<Marquee data={partners} />
 			</div>
 		</section>
@@ -152,7 +152,7 @@
 
 		<section>
 			<div class="flex justify-between w-full items-center pb-xs">
-				<h3 class="typo-lg">Resources</h3>
+				<h3 class="text-[30px] tracking-tight">Resources</h3>
 				<a href="/resources" class="hidden md:block theme-pink-blue cursor-pointer button"
 					>View All <span class="align-super typo-s leading-0">&nearr;</span></a
 				>
@@ -161,9 +161,11 @@
 				<ResourcesSlider slides={resources} />
 			</div>
 			<div class="flex flex-col gap-3 md:hidden">
-				<div>
+				<div class="flex flex-col border-t border-gray mt-xs">
 					{#each resources as resource}
-						<ResourceCard thumbnail={resource} />
+						<div class="border-b border-gray">
+							<ResourceCard thumbnail={resource} />
+						</div>
 					{/each}
 				</div>
 				<a href="/resources" class="theme-pink-blue cursor-pointer button w-fit"

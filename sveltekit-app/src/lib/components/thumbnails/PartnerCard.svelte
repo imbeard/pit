@@ -1,11 +1,13 @@
 <script>
 	import Image from '$lib/components/element/Image.svelte';
 	export let thumbnail;
+	export let ratio = '';
 </script>
 
 <a
 	href="/partners/{thumbnail.slug}"
 	class="bg-gray w-full aspect-3/1 flex justify-center items-center thumbnail colorize p-3 md:aspect-square"
+	class:aspect-square={ratio === '1'}
 >
 	<div class="cover-image">
 		{#if thumbnail?.logo}

@@ -49,12 +49,12 @@
 </script>
 
 <div
-	class="hidden sm:flex absolute justify-center items-center w-[15vw] top-[35vh] max-w-16 left-4"
+	class="hidden sm:flex absolute justify-center items-center w-[13vw] min-w-12 top-[35vh] left-4"
 >
 	<CloudShapeP />
 </div>
 
-<div class="hidden sm:flex absolute justify-center items-center w-[5vw] top-3 left-[30vw]">
+<div class="hidden sm:flex absolute justify-center items-center w-[5vw] min-w-6 top-3 left-[30vw]">
 	<CloudShapeI />
 </div>
 
@@ -64,7 +64,7 @@
 	<CloudShapeT color="red" />
 </div>
 
-<div class="hidden sm:flex absolute w-[15vw] bottom-s max-w-16 right-1">
+<div class="hidden sm:flex absolute w-[12vw] min-w-12 bottom-s right-1">
 	<CloudShape_1 cloudBg="blue" />
 </div>
 
@@ -73,10 +73,10 @@
 		class="relative sm:absolute flex justify-center items-center rotate-10 right-xs mt-5 mr-3 sm:mr-0 sm:rotate-0 sm:top-1/2 sm:-translate-y-1/2 sm:-mt-4 sm:right-1"
 	>
 		<div
-			class="event-cloud flex justify-center items-center size-cloud"
+			class="event-cloud flex justify-center items-center"
 			style="--event-hover: {eventHoverColor}"
 		>
-			<div class="w-full h-auto">
+			<div class="w-full h-auto size-cloud">
 				<CloudShape_2
 					cloudBg={cloudEventBg}
 					cloudFg={cloudEventFg}
@@ -99,10 +99,10 @@
 
 {#if cloudArtist.slug}
 	<div
-		class="relative flex justify-center items-center w-[40vw] min-w-14 ml-20 sm:ml-0 sm:absolute sm:right-[16vw] sm:bottom-[20vh] sm:top-auto sm:min-w-16 sm:w-[16vw] max-w-300"
+		class="relative flex justify-center items-center ml-28 sm:ml-0 sm:absolute sm:right-[16vw] sm:bottom-[20vh] sm:top-auto"
 	>
 		<div
-			class="artist-cloud flex justify-center items-center"
+			class="artist-cloud min-w-20 w-[20vw] flex justify-center items-center md:max-w-[250px]"
 			style="--artist-hover: {artistHoverColor}"
 		>
 			<div class="w-full h-auto">
@@ -135,10 +135,10 @@
 		class="relative flex px-xs mt-35 -rotate-10 ml-8 sm:ml-0 sm:rotate-0 sm:absolute sm:mt-[12vh] sm:top-0 sm:left-xs"
 	>
 		<div
-			class="performance-cloud flex justify-center items-center size-cloud"
+			class="performance-cloud flex justify-center items-center"
 			style="--performance-hover: {performanceHoverColor}"
 		>
-			<div class="w-full max-w-lg h-auto">
+			<div class="w-full max-w-lg h-auto size-cloud">
 				<CloudShape_5
 					cloudBg={cloudPerformanceBg}
 					cloudFg={cloudPerformanceFg}
@@ -163,10 +163,10 @@
 		class="relative flex px-xs mr-8 rotate-10 sm:mr-0 sm:rotate-0 sm:absolute sm:top-[12vh] sm:right-[10vw]"
 	>
 		<div
-			class="resource-cloud flex justify-center items-center size-cloud"
+			class="resource-cloud flex justify-center items-center"
 			style="--resource-hover: {resourceHoverColor}"
 		>
-			<div class="w-full max-w-lg h-auto">
+			<div class="w-full max-w-lg h-auto size-cloud">
 				<CloudShape_4
 					cloudBg={cloudResourceBg}
 					cloudFg={cloudResourceFg}
@@ -176,7 +176,7 @@
 			<div
 				class="texts absolute top-0 bottom-0 left-0 right-0 text-center flex flex-col gap-[4px] justify-center items-center h-full w-full button {resourceTextColor} pointer-events-none"
 			>
-				<div class="typo-cloud-s absolute right-5 top-2">&DownArrow;</div>
+				<div class="typo-cloud-s">&DownArrow;</div>
 
 				<div class="typo-cloud-base px-2">
 					{cloudResource.title}
@@ -190,10 +190,10 @@
 
 {#if cloudUrl?.url}
 	<div
-		class="relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4 size-cloud"
+		class="relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4"
 	>
 		<div class="url-cloud flex justify-center items-center" style="--url-hover: {urlHoverColor}">
-			<div class="w-full h-auto">
+			<div class="w-full h-auto size-cloud">
 				<CloudShape_6 cloudBg={cloudUrlBg} cloudFg={cloudUrlFg} link={cloudUrl?.url} />
 			</div>
 			<div

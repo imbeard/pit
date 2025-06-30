@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 
 	import { onMount, onDestroy } from 'svelte';
 	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
@@ -8,47 +9,50 @@
 	import FeaturedEventCard from '$lib/components/thumbnails/FeaturedEventCard.svelte';
 	import EventsFilters from '$lib/components/filters/EventsFilters.svelte';
 
-	import { getCurrentDate, slugToTitle } from '$lib/utils';
+	import { slugToTitle } from '$lib/utils';
 	import { filtersOpen } from '$lib/stores/filters';
+	import { createPikaday, getCurrentDate } from '$lib/utils/calendar';
 
 	export let data;
 
+	let selectedDate = getCurrentDate();
 	let pageColor = 'brown';
 	let eventsContainer;
 	let isLoading = false;
 	let hasMoreEvents = data.hasMoreEvents;
 	let currentStart = 20;
+	let datePicker;
+	let pikadayInstance;
+
 	const loadSize = 20;
 
-	$: allEvents = data?.events?.data || [];
 	$: document = data?.page?.data[0];
-	$: filteredEvents = data?.filteredEvents?.data || [];
+	$: allEvents = data?.events?.data || [];
+	$: filteredEvents = data?.filteredEvents?.data;
+
+	// $: console.log(selectedDate);
+
+	// $: allSelectedDateEvents =
+	// 	data?.events?.data.filter((event) => {
+	// 		let eventDate = new Date(event.start.slice(0, 10));
+	// 		let selectedFormattedDate = new Date(selectedDate);
+	// 		return eventDate >= selectedFormattedDate;
+	// 	}) || [];
+
+	// $: filteredEvents =
+	// 	data?.filteredEvents?.data.filter((event) => {
+	// 		let eventDate = new Date(event.start.slice(0, 10));
+	// 		let selectedFormattedDate = new Date(selectedDate);
+	// 		return eventDate >= selectedFormattedDate;
+	// 	}) || [];
+
 	$: params = data?.params;
 
 	$: displayEvents = filteredEvents.length > 0 ? filteredEvents : allEvents;
 	$: hasFilters =
 		params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0;
 
-	$: typologies = Array.from(
-		allEvents
-			.flatMap((event) => event.typology)
-			.reduce((map, typology) => map.set(typology._id, typology), new Map())
-			.values()
-	);
-
-	$: institutions = Array.from(
-		allEvents
-			.flatMap((event) => event.institution)
-			.reduce((map, institution) => map.set(institution._id, institution), new Map())
-			.values()
-	);
-
-	$: people = Array.from(
-		allEvents
-			.flatMap((event) => event.featuredArtists)
-			.reduce((map, person) => map.set(person._id, person), new Map())
-			.values()
-	);
+	const { typologies, institutions, people } = data.filterOptions;
 
 	$: selectedTypologies = [];
 	$: selectedInstitutions = [];
@@ -159,15 +163,31 @@
 		hasMoreEvents = true;
 	};
 
-	$: if (browser) {
-		onMount(() => {
-			window.addEventListener('scroll', handleScroll);
-		});
+	onMount(async () => {
+		if (browser && datePicker) {
+			try {
+				pikadayInstance = await createPikaday(datePicker, (formattedDate) => {
+					selectedDate = formattedDate;
+				});
+			} catch (error) {
+				console.error('Failed to load Pikaday:', error);
+			}
+		}
 
-		onDestroy(() => {
+		if (browser) {
+			window.addEventListener('scroll', handleScroll);
+		}
+	});
+
+	onDestroy(() => {
+		if (pikadayInstance) {
+			pikadayInstance.destroy();
+		}
+
+		if (browser) {
 			window.removeEventListener('scroll', handleScroll);
-		});
-	}
+		}
+	});
 </script>
 
 <div class="px-xs">
@@ -179,7 +199,7 @@
 		<ArchiveIntro {document} />
 	</section>
 
-	{#if document?.featuredEvents}
+	{#if document?.featuredEvents && $page.url.search === ''}
 		<h2 class="typo-2xl mx-auto w-fit pt-6">Featured Events</h2>
 		<div class="flex flex-col gap-xs md:grid-2 py-xs">
 			{#each document?.featuredEvents as event}
@@ -190,10 +210,24 @@
 		</div>
 	{/if}
 
-	<div class="flex w-full grid-3 items-baseline pb-xs">
-		<button class="button bg-gray text-brown justify-self-start">{getCurrentDate()}</button>
+	<div class="events-grid flex w-full items-baseline pb-xs">
+		<div class="w-fit">
+			<!-- <input
+				class="bg-gray text-brown justify-self-start"
+				type="date"
+				id="event"
+				name="date-picker"
+				bind:value={selectedDate}
+			/> -->
+			<input
+				type="text"
+				class="input pika-single p-xs py-[4px] bg-gray text-brown justify-self-start"
+				bind:this={datePicker}
+				bind:value={selectedDate}
+			/>
+		</div>
 		<h2 class="typo-2xl mx-auto w-fit pt-12 justify-self-center translate-y-xs">All Events</h2>
-		<button class="button theme-gray-brown" on:click={() => openFilters()}>
+		<button class="button theme-gray-brown w-fit justify-self-end" on:click={() => openFilters()}>
 			<span>Filters</span>
 			{#if params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0}
 				<span class="align-super typo-s leading-0"
@@ -248,7 +282,25 @@
 </div>
 
 <style>
-	.featured-event {
-		height: calc(100svh - var(--spacing-xs) - 70px);
+	:global(.pika-single) {
+		outline: none;
+	}
+
+	:global(.pika-single .pika-button) {
+		width: 4rem;
+		height: 4rem;
+		text-align: center;
+	}
+
+	.events-grid {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		gap: var(--spacing-xs);
+	}
+
+	@media screen and (min-width: 768px) {
+		.featured-event {
+			height: calc(100svh - var(--spacing-xs) - 70px);
+		}
 	}
 </style>

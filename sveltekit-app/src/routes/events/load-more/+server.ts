@@ -13,7 +13,7 @@ export const GET: RequestHandler = async ({ locals, url }) => {
 			: [],
 		people: searchParams.get('people') ? searchParams.get('people').split(',') : [],
 		start: parseInt(searchParams.get('start') || '0'),
-		end: parseInt(searchParams.get('end') || '20')
+		end: parseInt(searchParams.get('end') || '2')
 	};
 
 	const hasFilters =

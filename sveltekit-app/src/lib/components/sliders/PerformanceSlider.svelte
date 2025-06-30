@@ -104,15 +104,15 @@
 				{/if}
 				<div class="pt-1 flex flex-col gap-1">
 					<div class="w-full grid-3 typo-s">
-						<span>Artist</span>
-						<span>Institutions</span>
-						<span>Typology</span>
+						{#if slide.artists}<span>Artist</span>{/if}
+						{#if slide.institutions}<span>Institutions</span>{/if}
+						{#if slide.typology}<span class="hidden md:block">Typology</span>{/if}
 					</div>
 					<h3 class="typo-2xl text-center">{slide.title}</h3>
 					<div class="w-full grid-3 typo-s">
 						{#each slide.artists as artist}<div>{artist.name}</div>{/each}
 
-						{#if slide?.institutions?.length > 0}
+						{#if slide?.institutions && slide?.institutions?.length > 0}
 							<div>
 								{#each slide?.institutions as institution, index}
 									<div>
@@ -125,7 +125,7 @@
 							</div>
 						{/if}
 
-						<span>{slide.typology.title}</span>
+						<span class="hidden md:block">{slide.typology.title}</span>
 					</div>
 				</div>
 			</a>

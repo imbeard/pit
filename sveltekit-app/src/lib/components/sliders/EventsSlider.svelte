@@ -22,6 +22,9 @@
 </div>
 
 <style>
+	:root {
+		--slideWidth: calc(25vw - var(--spacing-xs));
+	}
 	.embla {
 		overflow: hidden;
 		position: relative;
@@ -30,7 +33,7 @@
 		touch-action: pan-y pinch-zoom;
 		display: grid;
 		grid-auto-flow: column;
-		grid-auto-columns: 25%;
+		grid-auto-columns: calc(25vw - var(--spacing-xs));
 		grid-column-gap: var(--spacing-xs);
 	}
 
@@ -38,5 +41,7 @@
 		transform: translate3d(0, 0, 0);
 		flex: 0 0 auto;
 		min-width: 0;
+		width: var(--slideWidth);
+		min-height: calc(var(--slideWidth) * 1.4);
 	}
 </style>
