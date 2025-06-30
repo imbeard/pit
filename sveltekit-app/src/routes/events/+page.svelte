@@ -30,27 +30,32 @@
 	$: allEvents = data?.events?.data || [];
 	$: filteredEvents = data?.filteredEvents?.data;
 
-	// $: console.log(selectedDate);
+	// Watch for date changes and update URL
+	$: if (browser && selectedDate) {
+		handleDateChange(selectedDate);
+	}
 
-	// $: allSelectedDateEvents =
-	// 	data?.events?.data.filter((event) => {
-	// 		let eventDate = new Date(event.start.slice(0, 10));
-	// 		let selectedFormattedDate = new Date(selectedDate);
-	// 		return eventDate >= selectedFormattedDate;
-	// 	}) || [];
+	const handleDateChange = (newDate) => {
+		const currentUrl = new URL(window.location);
+		if (newDate && newDate !== getCurrentDate()) {
+			currentUrl.searchParams.set('date', newDate);
+		} else {
+			currentUrl.searchParams.delete('date');
+		}
 
-	// $: filteredEvents =
-	// 	data?.filteredEvents?.data.filter((event) => {
-	// 		let eventDate = new Date(event.start.slice(0, 10));
-	// 		let selectedFormattedDate = new Date(selectedDate);
-	// 		return eventDate >= selectedFormattedDate;
-	// 	}) || [];
+		// Reset pagination when date changes
+		resetPagination();
+		goto(currentUrl.toString(), { replaceState: true });
+	};
 
 	$: params = data?.params;
 
 	$: displayEvents = filteredEvents.length > 0 ? filteredEvents : allEvents;
 	$: hasFilters =
-		params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0;
+		params.typologies.length > 0 ||
+		params.people.length > 0 ||
+		params.institutions.length > 0 ||
+		(selectedDate && selectedDate !== getCurrentDate());
 
 	const { typologies, institutions, people } = data.filterOptions;
 
@@ -71,7 +76,8 @@
 				end: (currentStart + loadSize).toString(),
 				...(params.typologies.length && { typologies: params.typologies.join(',') }),
 				...(params.institutions.length && { institutions: params.institutions.join(',') }),
-				...(params.people.length && { people: params.people.join(',') })
+				...(params.people.length && { people: params.people.join(',') }),
+				...(selectedDate && selectedDate !== getCurrentDate() && { date: selectedDate })
 			});
 
 			const response = await fetch(`/events/load-more?${queryParams}`);
@@ -153,6 +159,7 @@
 		if (selectedInstitutions.length)
 			queryParams.push(`institutions=${selectedInstitutions.join(',')}`);
 		if (selectedPeople.length) queryParams.push(`people=${selectedPeople.join(',')}`);
+		if (selectedDate && selectedDate !== getCurrentDate()) queryParams.push(`date=${selectedDate}`);
 
 		queryString = queryParams.length > 0 ? '?' + queryParams.join('&') : '';
 		newUrl = `${window.location.pathname}${queryString}`;
@@ -164,11 +171,25 @@
 	};
 
 	onMount(async () => {
+		// Set initial date from URL params if present
+		if (browser) {
+			const urlParams = new URLSearchParams(window.location.search);
+			const dateParam = urlParams.get('date');
+			if (dateParam) {
+				selectedDate = dateParam;
+			}
+		}
+
 		if (browser && datePicker) {
 			try {
 				pikadayInstance = await createPikaday(datePicker, (formattedDate) => {
 					selectedDate = formattedDate;
 				});
+
+				// Set initial date in picker if we have one from URL
+				if (selectedDate && selectedDate !== getCurrentDate()) {
+					pikadayInstance.setDate(new Date(selectedDate));
+				}
 			} catch (error) {
 				console.error('Failed to load Pikaday:', error);
 			}
@@ -212,15 +233,9 @@
 
 	<div class="events-grid flex w-full items-baseline pb-xs">
 		<div class="w-fit">
-			<!-- <input
-				class="bg-gray text-brown justify-self-start"
-				type="date"
-				id="event"
-				name="date-picker"
-				bind:value={selectedDate}
-			/> -->
 			<input
 				type="text"
+				id="date-picker"
 				class="input pika-single p-xs py-[4px] bg-gray text-brown justify-self-start"
 				bind:this={datePicker}
 				bind:value={selectedDate}
@@ -290,6 +305,16 @@
 		width: 4rem;
 		height: 4rem;
 		text-align: center;
+	}
+
+	:global(.pika-single .pika-button) {
+		width: 4rem;
+		height: 4rem;
+		text-align: center;
+	}
+
+	:global(.pika-single .pika-lendar) {
+		margin-top: 1.6rem;
 	}
 
 	.events-grid {

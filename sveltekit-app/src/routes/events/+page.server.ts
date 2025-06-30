@@ -18,12 +18,16 @@ export const load: PageServerLoad = async (event) => {
 			? searchParams.get('institutions').split(',')
 			: [],
 		people: searchParams.get('people') ? searchParams.get('people').split(',') : [],
+		date: searchParams.get('date') || null,
 		start: parseInt(searchParams.get('start') || '0'),
 		end: parseInt(searchParams.get('end') || '20')
 	};
 
 	const hasFilters =
-		params.typologies.length > 0 || params.institutions.length > 0 || params.people.length > 0;
+		params.typologies.length > 0 ||
+		params.institutions.length > 0 ||
+		params.people.length > 0 ||
+		params.date !== null;
 
 	const filteredEvents = hasFilters
 		? await loadQuery(filteredEventsQuery, {
@@ -31,13 +35,15 @@ export const load: PageServerLoad = async (event) => {
 				end: params.end,
 				typologies: params.typologies,
 				institutions: params.institutions,
-				people: params.people
+				people: params.people,
+				date: params.date
 			})
 		: { data: [] };
 
 	const events = await loadQuery(eventsQuery, {
 		start: params.start,
-		end: params.end
+		end: params.end,
+		date: params.date
 	});
 
 	const page = await loadQuery(archiveQuery, { slug: 'events' });

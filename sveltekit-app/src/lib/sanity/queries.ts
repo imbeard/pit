@@ -217,14 +217,18 @@ export const archiveQuery = groq`*[
     }`;
 
 // document archive entries
-export const eventsQuery = groq`*[_type == "event" && defined(slug.current)] | order(_createdAt desc) [$start...$end] {
+export const eventsQuery = groq`*[_type == "event" && defined(slug.current) && (
+  !defined($date) || start >= $date
+)] | order(start asc) [$start...$end] {
     ${eventThumb}
 }`;
 export const filteredEventsQuery = groq`*[_type == "event" && defined(slug.current) && (
   typology->slug.current in $typologies
   || featuredArtists[]->slug.current in $people
   || institution->slug.current in $institutions
-)] | order(_createdAt desc) [$start...$end] {
+) && (
+  !defined($date) || start >= $date
+)] | order(start asc) [$start...$end] {
     ${eventThumb}
 }`;
 

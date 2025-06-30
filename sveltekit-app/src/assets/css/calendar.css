@@ -1,7 +1,7 @@
 /* Plain CSS version of your Pikaday styles */
 .pika-single {
 	user-select: none;
-	font-size: var(--text-base);
+	font-size: var(--text-sm);
 	z-index: 10;
 	display: inline-block;
 	position: relative;
@@ -32,8 +32,9 @@
 .pika-single .pika-lendar {
 	float: left;
 	padding: 1.6rem;
-    background-color: var(--color-brown);
-    color: var(--color-gray);
+	background-color: var(--color-brown);
+	color: var(--color-gray);
+	font-size: var(--text-base);
 }
 
 .pika-single .pika-title {
@@ -57,7 +58,7 @@
 	overflow: hidden;
 	margin: 0;
 	padding: 5px 3px;
-    width: auto;
+	width: auto;
 	background-color: var(--color-brown);
 }
 
@@ -160,14 +161,14 @@
 .pika-single .has-event .pika-button {
 	color: var(--color-brown);
 	background-color: var(--color-gray);
-	border-radius: 0;
+	border-radius: 50%;
 }
 
 .pika-single .is-selected .pika-button:hover,
 .pika-single .has-event .pika-button:hover {
 	color: var(--color-brown);
 	background-color: rgba(239, 239, 239, 0.5);
-	border-radius: 0;
+	border-radius: 50%;
 }
 
 .pika-single .has-event .pika-button {
@@ -218,4 +219,8 @@
 .pika-single .pika-table abbr {
 	text-decoration: none;
 	font-weight: normal;
+}
+
+#date-picker {
+	max-width: 110px;
 }
