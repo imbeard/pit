@@ -25,7 +25,7 @@
 	</div>
 	<div class="typo-2xl flex flex-col gap-1 z-10">
 		<h4>{thumbnail?.institution?.title}</h4>
-		<div class="typo-xs tracking-tight leading-tight md:typo-base">{thumbnail?.summary}</div>
+		<div class="typo-s tracking-tight leading-tight md:typo-base">{thumbnail?.summary}</div>
 		<div class="text-center">{formatDate(thumbnail.start)}</div>
 	</div>
 </a>

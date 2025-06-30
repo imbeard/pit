@@ -103,7 +103,7 @@
 
 	{#if relatedResources && relatedResources.length > 0}
 		<div class="pt-12">
-			<div class="w-full pb-xs">
+			<div class="w-full pb-xs  border-b border-gray md:border-none">
 				<h3 class="typo-lg uppercase">Related Resources</h3>
 			</div>
 			<div class="hidden md:block">

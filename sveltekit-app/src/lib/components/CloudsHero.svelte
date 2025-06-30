@@ -99,7 +99,7 @@
 
 {#if cloudArtist.slug}
 	<div
-		class="relative flex justify-center items-center ml-28 sm:ml-0 sm:absolute sm:right-[16vw] sm:bottom-[20vh] sm:top-auto"
+		class="relative flex justify-center items-center ml-14 sm:ml-0 sm:absolute sm:right-[16vw] sm:bottom-[20vh] sm:top-auto"
 	>
 		<div
 			class="artist-cloud min-w-20 w-[20vw] flex justify-center items-center md:max-w-[250px]"
