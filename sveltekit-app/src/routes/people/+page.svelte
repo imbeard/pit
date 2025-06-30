@@ -68,7 +68,7 @@
 
 <div class="px-xs">
 	<section class="pt-12 pb-6 w-full">
-		<div class="typo-s text-center md:text-left md:pl-10">{document.title}</div>
+		<div class="typo-base text-center md:text-left md:pl-10">{document.title}</div>
 		<p class="px-4 typo-base text-center">
 			{document?.intro}
 		</p>

@@ -10,7 +10,7 @@
 
 <div>
 	<section class="typo-xl text-center pt-12 w-full">
-		<div class="typo-s text-center md:pl-10 md:text-left">{document.title}</div>
+		<div class="typo-base text-center md:pl-10 md:text-left">{document.title}</div>
 		{#if document?.intro}
 			<p class="px-4">
 				{document?.intro}

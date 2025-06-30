@@ -12,7 +12,7 @@
 
 <div class="flex flex-col gap-6">
 	<section class="pt-12 w-full">
-		<div class="typo-s text-center md:text-left md:pl-10">{document.title}</div>
+		<div class="typo-base text-center md:text-left md:pl-10">{document.title}</div>
 		<p class="px-4 typo-base text-center">
 			{document?.intro}
 		</p>
