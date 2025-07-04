@@ -19,7 +19,9 @@
 		</div>
 	{/if}
 
-	<button class="button p-xs w-fit h-fit border border-red text-red bg-transparent absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+	<button
+		class="button p-xs w-fit h-fit border border-red text-red bg-transparent absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+	>
 		<span>View Artist</span>
 		<span class="align-super typo-s leading-0">&nearr;</span>
 	</button>

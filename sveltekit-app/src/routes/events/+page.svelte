@@ -242,7 +242,10 @@
 			/>
 		</div>
 		<h2 class="typo-2xl mx-auto w-fit pt-12 justify-self-center translate-y-xs">All Events</h2>
-		<button class="button theme-gray-brown w-fit justify-self-end" on:click={() => openFilters()}>
+		<button
+			class="button btn-animate theme-gray-brown w-fit justify-self-end"
+			on:click={() => openFilters()}
+		>
 			<span>Filters</span>
 			{#if params.typologies.length > 0 || params.people.length > 0 || params.institutions.length > 0}
 				<span class="align-super typo-s leading-0"

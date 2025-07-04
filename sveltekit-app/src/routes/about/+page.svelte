@@ -71,7 +71,9 @@
 			{#each document?.impactGoals as goal}
 				<div class="px-xs">
 					<Accordion open={false} lineColor="border-gray" aboutPage>
-						<div class="cursor-pointer typo-lg text-center mx-auto px-xs" slot="head">{goal.heading}</div>
+						<div class="cursor-pointer typo-lg text-center mx-auto px-xs" slot="head">
+							{goal.heading}
+						</div>
 						<div slot="details" class="md:grid-2">
 							<div class="col-start-2"><PortableText data={goal.content} /></div>
 						</div>
@@ -99,7 +101,7 @@
 			</div>
 
 			<div class="relative w-full flex justify-center">
-				<a class="button theme-blue-pink w-fit mx-auto mt-4" href="/partners">
+				<a class="button btn-animate theme-blue-pink w-fit mx-auto mt-4" href="/partners">
 					<span>View Partners</span>
 					<span class="align-super typo-s leading-0">&nearr;</span>
 				</a>

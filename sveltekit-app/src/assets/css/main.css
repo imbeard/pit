@@ -33,6 +33,50 @@ button {
 	}
 }
 
+.btn-animate {
+	position: relative;
+	transition:
+		color 0.2s ease-in,
+		background-color 0.4s ease-in-out;
+	transition-delay: 0.1s;
+	overflow: hidden;
+	span {
+		position: relative;
+		z-index: 10;
+	}
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background-color: #000;
+		opacity: 1;
+		transform: translateY(100%);
+		transition: transform 0.4s ease-in;
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		transform: translateY(200%);
+		transition: transform 0.5s ease;
+		z-index: -1;
+	}
+	&:hover {
+		&::before {
+			transform: translateY(-100%);
+		}
+		&::after {
+			transform: translateY(0);
+		}
+	}
+}
+
 /* a {
 	display: inherit;
 	line-height: inherit;
@@ -129,5 +173,3 @@ button {
 		line-height: 120%;
 	}
 }
-
-

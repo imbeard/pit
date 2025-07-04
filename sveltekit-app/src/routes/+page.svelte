@@ -37,7 +37,6 @@
 	$: artistTheme = document?.artistTheme;
 	$: resourceTheme = document?.resourceTheme;
 	$: urlTheme = document?.urlTheme;
-
 </script>
 
 <main>
@@ -54,7 +53,9 @@
 			<Image image={document?.image} alt="hero" fit="contain" />
 		</div>
 
-		<div class="clouds relative flex flex-col gap-2 justify-center items-center sm:absolute top-0 left-0 w-full h-full py-2">
+		<div
+			class="clouds relative flex flex-col gap-2 justify-center items-center sm:absolute top-0 left-0 w-full h-full py-2"
+		>
 			<CloudsHero
 				{cloudPerformance}
 				{cloudEvent}
@@ -75,7 +76,7 @@
 			</div>
 			<div class="pt-1 pt flex gap-xs justify-between typo-base items-center">
 				<div class="max-w-[18rem] md:max-w-md text-center">{document?.subtitle}</div>
-				<div class="theme-pink-red button whitespace-nowrap">
+				<div class="theme-pink-red button btn-animate whitespace-nowrap">
 					<Link to={document?.cta?.link} />
 				</div>
 			</div>
@@ -95,8 +96,11 @@
 						{/if}
 					{/each}
 				</div>
-				<a class="mt-3 col-start-2 theme-black-pink button w-fit md:mt-5" href="/events"
-					>View events <span class="align-super typo-s leading-0">&nearr;</span></a
+				<a
+					class="mt-3 col-start-2 theme-black-pink button btn-animate w-fit md:mt-5"
+					href="/events"
+				>
+					<span> View events <span class="align-super typo-s leading-0">&nearr;</span></span></a
 				>
 			</section>
 		{/if}
@@ -124,9 +128,9 @@
 					{/each}
 				</div>
 				<div class="w-full flex justify-center mt-xs">
-					<a href="/people" class="theme-red-pink cursor-pointer button"
-						>View People <span class="align-super typo-s leading-0">&nearr;</span></a
-					>
+					<a href="/people" class="theme-red-pink cursor-pointer button btn-animate">
+						<span>View People <span class="align-super typo-s leading-0">&nearr;</span></span>
+					</a>
 				</div>
 			</div>
 			<div class="featured-thumb-container h-full">
@@ -143,8 +147,8 @@
 					{/each}
 				</div>
 				<div class="w-full flex justify-center mt-xs">
-					<a href="/partners" class="theme-blue-pink cursor-pointer button"
-						>View Partners <span class="align-super typo-s leading-0">&nearr;</span></a
+					<a href="/partners" class="theme-blue-pink cursor-pointer button btn-animate"
+						><span>View Partners <span class="align-super typo-s leading-0">&nearr;</span></span></a
 					>
 				</div>
 			</div>
@@ -153,8 +157,11 @@
 		<section>
 			<div class="flex justify-between w-full items-center pb-xs">
 				<h3 class="text-[30px] tracking-tight">Resources</h3>
-				<a href="/resources" class="hidden md:block theme-pink-blue cursor-pointer button"
-					>View All <span class="align-super typo-s leading-0">&nearr;</span></a
+				<a
+					href="/resources"
+					class="hidden md:block theme-pink-blue cursor-pointer button btn-animate"
+				>
+					<span>View All <span class="align-super typo-s leading-0">&nearr;</span></span></a
 				>
 			</div>
 			<div class="hidden md:block">

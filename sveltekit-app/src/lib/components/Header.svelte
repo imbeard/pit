@@ -40,7 +40,7 @@
 		<Menu />
 	</div>
 
-	<div class="lg:block" class:hidden={!$menuOpen}>
+	<div class="hidden lg:block">
 		<Menu />
 	</div>
 
@@ -50,14 +50,18 @@
 		on:click={() => resetInput()}>{$menuOpen ? 'Close' : 'Menu'}</button
 	>
 
-	<button
-		class="hidden py-xs px-1 m-xs lg:block lg:fixed lg:py-s lg:top-0 lg:right-0 text-black hover:text-pink hover:bg-black"
-		class:bg-gray={!$searchOpen}
-		class:bg-black={$searchOpen}
-		class:text-pink={$searchOpen}
-		on:click={() => ($searchOpen = !$searchOpen)}
-		on:click={() => resetInput()}>{$searchOpen ? 'Close' : 'Search'}</button
-	>
+	<div class="hidden lg:block lg:fixed lg:top-0 lg:right-0">
+		<button
+			class="btn-animate py-xs px-1 m-xs text-black hover:text-pink hover:bg-black lg:py-s"
+			class:bg-gray={!$searchOpen}
+			class:bg-black={$searchOpen}
+			class:text-pink={$searchOpen}
+			on:click={() => ($searchOpen = !$searchOpen)}
+			on:click={() => resetInput()}
+		>
+			<span>{$searchOpen ? 'Close' : 'Search'}</span></button
+		>
+	</div>
 
 	<Search />
 </nav>

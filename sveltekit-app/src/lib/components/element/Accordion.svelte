@@ -21,6 +21,7 @@
 			<slot name="head"></slot>
 		</div>
 		<button
+			class="btn-animate"
 			class:button={aboutPage}
 			class:theme-red-pink={aboutPage}
 			class:w-3={aboutPage}
@@ -28,11 +29,13 @@
 			class:text-red={aboutPage && open}
 			class:bg-pink={aboutPage && open}
 		>
-			{#if !open}
-				+
-			{:else}
-				-
-			{/if}
+			<span>
+				{#if !open}
+					+
+				{:else}
+					-
+				{/if}
+			</span>
 		</button>
 	</button>
 

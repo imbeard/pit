@@ -150,7 +150,7 @@
 	</section>
 
 	<div class="flex w-full justify-end pb-xs border-b border-gray">
-		<button class="button theme-pink-blue" on:click={() => openFilters()}>
+		<button class="button btn-animate theme-pink-blue" on:click={() => openFilters()}>
 			<span>Filters</span>
 			{#if params.typologies.length > 0 || params.media.length > 0}
 				<span class="align-super typo-s leading-0"

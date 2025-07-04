@@ -75,9 +75,11 @@
 		<ArchiveIntro {document} />
 	</section>
 	<div class="flex w-full justify-end pb-xs">
-		<button class="button theme-pink-red"
-		class:filter-button-aligned={params.jobs.length == 0 && params.countries.length == 0}
-		 on:click={() => openFilters()}>
+		<button
+			class="button btn-animate theme-pink-red"
+			class:filter-button-aligned={params.jobs.length == 0 && params.countries.length == 0}
+			on:click={() => openFilters()}
+		>
 			<span>Filters</span>
 			{#if params.jobs.length > 0 || params.countries.length > 0}
 				<span class="align-super typo-s leading-0"

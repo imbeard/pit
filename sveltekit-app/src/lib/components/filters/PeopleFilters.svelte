@@ -60,9 +60,11 @@
 <aside class="fixed z-99 h-[100dvh] right-0 top-0 bg-red text-pink p-xs" class:open={$filtersOpen}>
 	<div class="wrapper flex flex-col justify-between h-full overflow-auto" class:open={$filtersOpen}>
 		<div class="pb-8">
-			<button on:click={closeFilters} class="cursor-pointer p-s absolute theme-pink-red right-xs"
-				>Close</button
-			>
+			<div class="absolute right-xs">
+				<button on:click={closeFilters} class="btn-animate cursor-pointer p-s theme-pink-red">
+					<span>Close</span>
+				</button>
+			</div>
 			<div class="pt-10">
 				<Accordion open={true} lineColor="border-pink">
 					<div class="cursor-pointer" slot="head">Nationalities</div>
@@ -111,14 +113,17 @@
 		<div class="sticky bottom-0 h-full">
 			<div class="grid-2 w-full absolute bottom-1 md:bottom-0">
 				<button
-					class="button cursor-pointer text-center py-s w-full theme-pink-red"
-					on:click={applyFilters}>Apply</button
+					class="btn-animate button cursor-pointer text-center py-s w-full theme-pink-red"
+					on:click={applyFilters}
 				>
+					<span>Apply</span>
+				</button>
 				<a
 					href="/people"
-					class="cursor-pointer text-center py-s w-full bg-[#eda6b4] hover:bg-pink text-red transition-bg duration-200 px-xs"
-					>Clear all</a
+					class="btn-animate cursor-pointer text-center py-s w-full bg-[#eda6b4] hover:bg-pink text-red transition-bg duration-200 px-xs"
 				>
+					<span>Clear all</span>
+				</a>
 			</div>
 		</div>
 	</div>
