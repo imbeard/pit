@@ -29,6 +29,7 @@
 	$: document = data?.page?.data[0];
 	$: allEvents = data?.events?.data || [];
 	$: filteredEvents = data?.filteredEvents?.data;
+	$: calendarLabelWidth = 0;
 
 	// Watch for date changes and update URL
 	$: if (browser && selectedDate) {
@@ -231,8 +232,11 @@
 		</div>
 	{/if}
 
-	<div class="events-grid flex w-full items-baseline pb-xs">
+	<div class="events-grid flex w-full items-end pb-xs">
 		<div class="w-fit">
+			<label bind:clientWidth={calendarLabelWidth} class="hidden md:block text-brown" for="calendar"
+				>Show events from</label
+			>
 			<input
 				type="text"
 				id="date-picker"

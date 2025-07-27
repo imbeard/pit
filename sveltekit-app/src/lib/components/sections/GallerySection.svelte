@@ -6,7 +6,6 @@
 
 	import Image from '$lib/components/element/Image.svelte';
 	import Video from '$lib/components/element/Video.svelte';
-	import { slide } from 'svelte/transition';
 
 	export let section;
 	$: gallery = section?.items;

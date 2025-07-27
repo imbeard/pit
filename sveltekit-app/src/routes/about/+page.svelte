@@ -71,7 +71,9 @@
 			{#each document?.impactGoals as goal}
 				<div class="px-xs">
 					<Accordion open={false} lineColor="border-gray" aboutPage>
-						<div class="cursor-pointer typo-lg text-center mx-auto px-xs" slot="head">{goal.heading}</div>
+						<div class="cursor-pointer typo-lg text-center mx-auto px-xs" slot="head">
+							{goal.heading}
+						</div>
 						<div slot="details" class="md:grid-2">
 							<div class="col-start-2"><PortableText data={goal.content} /></div>
 						</div>

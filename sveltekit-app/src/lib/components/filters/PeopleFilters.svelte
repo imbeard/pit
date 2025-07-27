@@ -60,7 +60,9 @@
 <aside class="fixed z-99 h-[100dvh] right-0 top-0 bg-red text-pink p-xs" class:open={$filtersOpen}>
 	<div class="wrapper flex flex-col justify-between h-full overflow-auto" class:open={$filtersOpen}>
 		<div class="pb-8">
-			<button on:click={closeFilters} class="cursor-pointer p-s absolute theme-pink-red right-xs"
+			<button
+				on:click={closeFilters}
+				class="cursor-pointer p-s absolute theme-pink-red right-xs hover:text-pink hover:bg-red"
 				>Close</button
 			>
 			<div class="pt-10">
@@ -116,7 +118,7 @@
 				>
 				<a
 					href="/people"
-					class="cursor-pointer text-center py-s w-full bg-[#eda6b4] hover:bg-pink text-red transition-bg duration-200 px-xs"
+					class="cursor-pointer text-center py-s w-full bg-[#eda6b4] hover:bg-pink text-red px-xs"
 					>Clear all</a
 				>
 			</div>
@@ -128,7 +130,6 @@
 	aside {
 		width: 100%;
 		transform: translateX(100%);
-		transition: transform 200ms 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 	}
 
 	aside > div::-webkit-scrollbar {
@@ -143,17 +144,14 @@
 
 	aside.open {
 		transform: translateX(0);
-		transition: transform 200ms 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 	}
 
 	.wrapper {
 		opacity: 0;
-		transition: opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 	}
 
 	.wrapper.open {
 		opacity: 1;
-		transition: opacity 200ms 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 	}
 
 	input[type='checkbox'] {

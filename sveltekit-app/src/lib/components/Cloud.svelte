@@ -13,7 +13,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class="relative flex justify-center items-center size-cloud {rotate}"
+	class="relative flex justify-center items-center size-cloud {rotate} hover:-rotate-8 transition-rotation duration-150"
 	style="--hover-color: {hoverColor}"
 >
 	<div class="w-full max-w-lg h-auto">

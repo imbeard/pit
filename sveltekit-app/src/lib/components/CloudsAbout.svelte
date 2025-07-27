@@ -29,7 +29,9 @@
 				on:mouseover={() => showPopup(0)}
 				on:mouseleave={hidePopup}
 			>
-				<div class="artist-cloud flex justify-center items-center">
+				<div
+					class="artist-cloud flex justify-center items-center hover:rotate-4 transition-rotation duration-150"
+				>
 					<div class="w-full h-auto">
 						<CloudShape_2 cloudBg="blue" cloudFg="blue" />
 					</div>
@@ -56,7 +58,7 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 			<div
-				class="relative flex justify-center items-center size-cloud max-w-42"
+				class="relative flex justify-center items-center size-cloud max-w-42 hover:-rotate-6 transition-rotation duration-150"
 				on:mouseover={() => showPopup(1)}
 				on:mouseleave={hidePopup}
 			>
@@ -87,7 +89,7 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 			<div
-				class="relative flex justify-center items-center size-cloud"
+				class="relative flex justify-center items-center size-cloud hover:rotate-8 transition-rotation duration-150"
 				on:mouseover={() => showPopup(2)}
 				on:mouseleave={hidePopup}
 			>
@@ -115,7 +117,9 @@
 
 	{#if coreValues[3]}
 		<div class="relative mr-[20%] md:mr-0 md:absolute md:top-0 md:right-[5%]">
-			<div class="relative flex justify-center items-center size-cloud max-w-24">
+			<div
+				class="relative flex justify-center items-center size-cloud max-w-24 hover:-rotate-4 transition-rotation duration-150"
+			>
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 				<div
@@ -149,7 +153,7 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 			<div
-				class="relative flex flex-col justify-center items-center"
+				class="relative flex flex-col justify-center items-center hover:rotate-6 transition-rotation duration-150"
 				on:mouseover={() => showPopup(4)}
 				on:mouseleave={hidePopup}
 			>

@@ -8,7 +8,7 @@
 
 <a
 	href="/resources/{thumbnail.slug}"
-	class="resource-card grid-8 h-full py-xs min-h-20 hover:text-pink transition-all duration-200"
+	class="resource-card grid-8 h-full py-xs min-h-20 hover:text-pink"
 	class:border-none={$page.route.id === '/resources'}
 >
 	<div class="cover-image col-start-1 col-end-4">
@@ -20,7 +20,9 @@
 				<Image image={thumbnail.image} fit="cover" />
 			</div>
 		{:else}
-			<div class="bg-red w-full h-full flex justify-center items-center text-black px-s text-center">
+			<div
+				class="bg-red w-full h-full flex justify-center items-center text-black px-s text-center"
+			>
 				{thumbnail.typology}
 			</div>
 		{/if}

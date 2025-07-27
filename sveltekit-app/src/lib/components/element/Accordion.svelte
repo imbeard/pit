@@ -7,20 +7,23 @@
 	export let arrow = true;
 	export let lineColor = '';
 	export let aboutPage = false;
+	let identifier = Math.random().toString();
 
 	const handleClick = () => (open = !open);
 </script>
 
 <div
-	class="accordion py-2 border-y {lineColor}"
+	class="group accordion py-2 border-y {lineColor}"
 	class:py-xs={aboutPage}
 	class:border-t-0={aboutPage}
+	data-id={identifier}
 >
 	<button class="w-full flex items-center" class:sticky class:top-0={sticky} on:click={handleClick}>
 		<div class="flex justify-between w-full">
 			<slot name="head"></slot>
 		</div>
 		<button
+			class="group-hover:bg-pink group-hover:text-red"
 			class:button={aboutPage}
 			class:theme-red-pink={aboutPage}
 			class:w-3={aboutPage}
@@ -37,7 +40,7 @@
 	</button>
 
 	{#if open}
-		<div class="details pt-2" transition:slide>
+		<div class="details pt-2">
 			<slot name="details"></slot>
 		</div>
 	{/if}

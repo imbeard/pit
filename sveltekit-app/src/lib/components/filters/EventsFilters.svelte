@@ -28,7 +28,7 @@
 		if ($page.route.id !== '/') {
 			goto(`/events/${queryString}`, { replaceState: true });
 		}
-		
+
 		filtersOpen.set(false);
 	};
 
@@ -80,7 +80,10 @@
 	}
 </script>
 
-<aside class="fixed z-99 h-[100dvh] right-0 top-0 bg-brown text-gray p-xs" class:open={$filtersOpen}>
+<aside
+	class="fixed z-99 h-[100dvh] right-0 top-0 bg-brown text-gray p-xs"
+	class:open={$filtersOpen}
+>
 	<div class="wrapper flex flex-col justify-between h-full overflow-auto" class:open={$filtersOpen}>
 		<div class="pb-8">
 			<button
@@ -162,7 +165,7 @@
 				>
 				<a
 					href="/events"
-					class="cursor-pointer text-center py-s w-full bg-[#b0a39b] hover:bg-gray text-black transition-bg duration-200 px-xs"
+					class="cursor-pointer text-center py-s w-full bg-[#b0a39b] hover:bg-gray text-black px-xs"
 					>Clear all</a
 				>
 			</div>
@@ -174,7 +177,6 @@
 	aside {
 		width: 100%;
 		transform: translateX(100%);
-		transition: transform 200ms 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 	}
 
 	aside > div::-webkit-scrollbar {
@@ -189,17 +191,14 @@
 
 	aside.open {
 		transform: translateX(0);
-		transition: transform 200ms 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 	}
 
 	.wrapper {
 		opacity: 0;
-		transition: opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 	}
 
 	.wrapper.open {
 		opacity: 1;
-		transition: opacity 200ms 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 	}
 
 	input[type='checkbox'] {

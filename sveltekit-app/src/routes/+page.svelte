@@ -37,7 +37,6 @@
 	$: artistTheme = document?.artistTheme;
 	$: resourceTheme = document?.resourceTheme;
 	$: urlTheme = document?.urlTheme;
-
 </script>
 
 <main>
@@ -54,7 +53,9 @@
 			<Image image={document?.image} alt="hero" fit="contain" />
 		</div>
 
-		<div class="clouds relative flex flex-col gap-2 justify-center items-center sm:absolute top-0 left-0 w-full h-full py-2">
+		<div
+			class="clouds relative flex flex-col gap-2 justify-center items-center sm:absolute top-0 left-0 w-full h-full py-2"
+		>
 			<CloudsHero
 				{cloudPerformance}
 				{cloudEvent}
@@ -84,21 +85,24 @@
 		<PerformanceSlider slides={document?.performanceSlider} />
 
 		{#if events}
-			<section class="flex flex-col md:grid-2">
-				<div class="featured-event relative mb-xs aspect-[4/5] md:mb-0 md:aspect-auto md:sticky">
-					<FeaturedEventCard thumbnail={document?.featuredEvent} />
-				</div>
-				<div class="flex flex-col gap-y-xs md:grid-2 md:gap-y-6">
-					{#each events as event}
-						{#if event !== document?.featuredEvent}
-							<EventCard thumbnail={event} />
-						{/if}
-					{/each}
-				</div>
-				<a class="mt-3 col-start-2 theme-black-pink button w-fit md:mt-5" href="/events"
-					>View events <span class="align-super typo-s leading-0">&nearr;</span></a
-				>
-			</section>
+			<div>
+				<h3 class="text-[30px] tracking-tight pb-1">Events</h3>
+				<section class="flex flex-col md:grid-2">
+					<div class="featured-event relative mb-xs aspect-[4/5] md:mb-0 md:aspect-auto md:sticky">
+						<FeaturedEventCard thumbnail={document?.featuredEvent} />
+					</div>
+					<div class="flex flex-col gap-y-xs md:grid-2 md:gap-y-6">
+						{#each events as event}
+							{#if event !== document?.featuredEvent}
+								<EventCard thumbnail={event} />
+							{/if}
+						{/each}
+					</div>
+					<a class="mt-3 col-start-2 theme-black-pink button w-fit md:mt-5" href="/events"
+						>View events <span class="align-super typo-s leading-0">&nearr;</span></a
+					>
+				</section>
+			</div>
 		{/if}
 
 		<section class="flex flex-col gap-1">
@@ -117,7 +121,7 @@
 				<div class="list pt-xs flex gap-xs justify-center">
 					{#each document?.featuredArtists as artist}
 						<button
-							class="artist cursor-pointer button"
+							class="artist cursor-pointer button hover:text-red"
 							on:click={() => (activeFeaturedArtist = artist)}
 							class:active={artist === activeFeaturedArtist}>{artist.name}</button
 						>
@@ -136,7 +140,7 @@
 				<div class="list pt-xs flex gap-xs justify-center">
 					{#each document?.featuredPartners as partner}
 						<button
-							class="partner button cursor-pointer"
+							class="partner button cursor-pointer hover:text-red"
 							on:click={() => (activeFeaturedPartner = partner)}
 							class:active={partner === activeFeaturedPartner}>{partner.title}</button
 						>
@@ -199,18 +203,18 @@
 	button.artist,
 	button.partner {
 		background-color: var(--color-gray);
-		transition: all 0.2s ease-in;
+		transition: rotation 0.2s ease-in;
 	}
 
 	button.artist.active {
 		background-color: transparent;
-		transition: all 0.2s ease-in;
+		transition: rotation 0.2s ease-in;
 		rotate: -3.65deg;
 	}
 
 	button.partner.active {
 		background-color: transparent;
-		transition: all 0.2s ease-in;
+		transition: rotation 0.2s ease-in;
 		rotate: 12deg;
 	}
 </style>

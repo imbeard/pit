@@ -13,9 +13,9 @@
 		<div class="typo-s md:typo-base text-center max-w-50 pt-xs md:pt-0">{data?.footer?.text}</div>
 		<div class="text-right hidden md:block">
 			{#if data?.social}
-				<ul>
+				<ul class="flex items-end flex-col">
 					{#each data?.social as link}
-						<li><Link to={link} target="_blank" /></li>
+						<li class="hover:text-red w-fit h-fit"><Link to={link} target="_blank" /></li>
 					{/each}
 				</ul>
 			{/if}
@@ -34,7 +34,7 @@
 	</div>
 
 	<div>
-		<div class="flex flex-col text-center md:hidden">
+		<div class="flex flex-col text-center md:hidden hover:text-red">
 			<a href="mailto:{data?.email}">{data?.email}</a>
 			<a href="tel:{data?.phone}">{data?.phone}</a>
 			<div>Design by Parco Studio</div>
@@ -50,24 +50,24 @@
 
 		<div class="w-full md:grid-3 p-xs items-baseline">
 			<div class="hidden md:block">
-				<a href="mailto:{data?.email}">{data?.email}</a>
+				<a class="hover:text-red w-fit h-fit" href="mailto:{data?.email}">{data?.email}</a>
 			</div>
 			<img class="w-10 justify-self-center mx-auto" src="/images/eu-funded-logo.svg" alt="" />
-			<div class="hidden md:block text-right">
-				<a href="tel:{data?.phone}">{data?.phone}</a>
+			<div class="hidden md:block text-right hover:text-red">
+				<a class="hover:text-red w-fit h-fit" href="tel:{data?.phone}">{data?.phone}</a>
 			</div>
 		</div>
 		<div class="border-t border-gray w-full grid-3 p-xs">
-			<div>Imprint</div>
+			<div class="hover:text-red">Imprint</div>
 			<div class="text-center hidden md:block">© PIT 2025</div>
 			<div class="hidden md:block text-right">
 				<ul class="flex gap-xs justify-end">
-					<li>Privacy Policy</li>
-					<li>Cookies</li>
+					<li class="hover:text-red w-fit h-fit">Privacy Policy</li>
+					<li class="hover:text-red w-fit h-fit">Cookies</li>
 				</ul>
 			</div>
-			<div class="justify-self-center md:hidden">Privacy Policy</div>
-			<div class="justify-self-end md:hidden">Cookies</div>
+			<div class="justify-self-center md:hidden hover:text-red">Privacy Policy</div>
+			<div class="justify-self-end md:hidden hover:text-red">Cookies</div>
 		</div>
 	</div>
 </div>

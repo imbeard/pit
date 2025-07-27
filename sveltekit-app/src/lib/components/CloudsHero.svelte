@@ -73,7 +73,7 @@
 		class="relative sm:absolute flex justify-center items-center rotate-10 right-xs mt-5 mr-3 sm:mr-0 sm:rotate-0 sm:top-1/2 sm:-translate-y-1/2 sm:-mt-4 sm:right-1"
 	>
 		<div
-			class="event-cloud flex justify-center items-center"
+			class="event-cloud flex justify-center items-center hover:rotate-4 transition-rotation duration-150"
 			style="--event-hover: {eventHoverColor}"
 		>
 			<div class="w-full h-auto size-cloud">
@@ -102,7 +102,7 @@
 		class="relative flex justify-center items-center ml-14 sm:ml-0 sm:absolute sm:right-[16vw] sm:bottom-[20vh] sm:top-auto"
 	>
 		<div
-			class="artist-cloud min-w-20 w-[20vw] flex justify-center items-center md:max-w-[250px]"
+			class="artist-cloud min-w-20 w-[20vw] flex justify-center items-center md:max-w-[250px] hover:-rotate-4 transition-rotation duration-150"
 			style="--artist-hover: {artistHoverColor}"
 		>
 			<div class="w-full h-auto">
@@ -135,7 +135,7 @@
 		class="relative flex px-xs mt-35 -rotate-10 ml-8 sm:ml-0 sm:rotate-0 sm:absolute sm:mt-[12vh] sm:top-0 sm:left-xs"
 	>
 		<div
-			class="performance-cloud flex justify-center items-center"
+			class="performance-cloud flex justify-center items-center hover:rotate-10 transition-rotation duration-150"
 			style="--performance-hover: {performanceHoverColor}"
 		>
 			<div class="w-full max-w-lg h-auto size-cloud">
@@ -160,7 +160,7 @@
 
 {#if cloudResource}
 	<div
-		class="relative flex px-xs mr-8 rotate-10 sm:mr-0 sm:rotate-0 sm:absolute sm:top-[12vh] sm:right-[10vw]"
+		class="relative flex px-xs mr-8 rotate-10 sm:mr-0 sm:rotate-0 sm:absolute sm:top-[12vh] sm:right-[10vw] hover:-rotate-8 transition-rotation duration-150"
 	>
 		<div
 			class="resource-cloud flex justify-center items-center"
@@ -189,10 +189,11 @@
 {/if}
 
 {#if cloudUrl?.url}
-	<div
-		class="relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4"
-	>
-		<div class="url-cloud flex justify-center items-center" style="--url-hover: {urlHoverColor}">
+	<div class="relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4">
+		<div
+			class="url-cloud flex justify-center items-center hover:rotate-4 transition-rotation duration-150"
+			style="--url-hover: {urlHoverColor}"
+		>
 			<div class="w-full h-auto size-cloud">
 				<CloudShape_6 cloudBg={cloudUrlBg} cloudFg={cloudUrlFg} link={cloudUrl?.url} />
 			</div>
