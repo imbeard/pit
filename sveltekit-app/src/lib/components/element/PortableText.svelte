@@ -10,17 +10,17 @@
 	$: html = htm.bind(vhtml);
 	$: components = {
 		listItem: ({ children }) =>
-			html`<li class="list-checkbox">
+			`<li class="list-checkbox">
 				<div class="tick"></div>
 				<span>${children}</span>
 			</li>`,
 
 		block: {
 			h2: ({ children }) => {
-				return html`<h2 class="text-xl">${children}</h2>`;
+				return `<h2 class="text-xl">${children}</h2>`;
 			},
 			h3: ({ children }) => {
-				return html`<h2 class="text-xl">${children}</h2>`;
+				return `<h2 class="text-xl">${children}</h2>`;
 			}
 		},
 
@@ -29,7 +29,6 @@
 				const slug = value.url.slug || '';
 
 				let category = '';
-
 
 				if (value.url.category === 'performance') {
 					category = 'performances';
@@ -52,7 +51,7 @@
 				}
 
 				if (slug) {
-					return html`<a
+					return `<a
 						class="leading-0 cursor-pointer px-[2px] theme-pink-blue hover:theme-blue-pink ${theme}"
 						href="/${category}/${slug}"
 						>${children}</a
@@ -65,7 +64,7 @@
 
 				if (uriLooksSafe(href)) {
 					const rel = href.startsWith('/') ? undefined : 'noreferrer noopener';
-					return html`<a
+					return `<a
 						class="leading-0 cursor-pointer px-[2px] theme-pink-blue hover:theme-blue-pink ${theme}"
 						href="${href}"
 						rel="${rel}"
@@ -80,7 +79,7 @@
 
 				if (uriLooksSafe(href)) {
 					const rel = href.startsWith('/') ? undefined : 'noreferrer noopener';
-					return html`<a
+					return `<a
 						class="leading-0 cursor-pointer px-[2px] ${theme}"
 						href="mailto:${href}"
 						rel="${rel}"
@@ -88,9 +87,8 @@
 					>`;
 				}
 				return children;
-			},
-			// em: ({ children }) => html`<em>${children}</em>`,
-			
+			}
+			// em: ({ children }) => `<em>${children}</em>`,
 		}
 	};
 </script>
@@ -100,7 +98,7 @@
 </div>
 
 <style>
-:global(.rich-text p:not(:last-child)) {
-	padding-bottom: var(--spacing-s);
-}
+	:global(.rich-text p:not(:last-child)) {
+		padding-bottom: var(--spacing-s);
+	}
 </style>
