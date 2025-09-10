@@ -27,7 +27,7 @@
 			<div class="flex flex-col items-center">
 				<div class="flex justify-center typo-s gap-xs">
 					<span>Event</span>
-					{#if event?.typology?.title}<span>{event?.typology.title}</span>{/if}
+					{#if event?.typology?.title}<a href="/events?typologies={event?.typology.slug}">{event?.typology.title}</a>{/if}
 					{#if event?.location}<span>{event?.city}</span>{/if}
 				</div>
 				{#if event?.title}

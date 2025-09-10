@@ -19,7 +19,7 @@
 	data-id={identifier}
 >
 	<button class="w-full flex items-center" class:sticky class:top-0={sticky} on:click={handleClick}>
-		<div class="flex justify-between w-full">
+		<div class="flex justify-between w-full {aboutPage ? 'pl-3' : 'pl-0'}">
 			<slot name="head"></slot>
 		</div>
 		<button

@@ -38,7 +38,7 @@
 					<div
 						class="texts absolute top-0 bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button pointer-events-none text-pink"
 					>
-						<div class="typo-lg text-center p-1">{coreValues[0]?.heading}</div>
+						<div class="typo-lg text-center p-1 max-w-md">{coreValues[0]?.heading}</div>
 					</div>
 				</div>
 			</div>

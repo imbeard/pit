@@ -214,7 +214,7 @@
 
 <div class="px-xs">
 	<section class="pt-12 w-full">
-		<div class="typo-s text-center md:text-left md:pl-10">{document.title}</div>
+		<div class="typo-base text-center md:text-left md:pl-10">{document.title}</div>
 		<p class="px-4 typo-base text-center">
 			{document?.intro}
 		</p>
@@ -233,14 +233,14 @@
 	{/if}
 
 	<div class="events-grid flex w-full items-end pb-xs">
-		<div class="w-fit">
+		<div class="w-fit flex gap-1 items-center">
 			<label bind:clientWidth={calendarLabelWidth} class="hidden md:block text-brown" for="calendar"
 				>Show events from</label
 			>
 			<input
 				type="text"
 				id="date-picker"
-				class="input pika-single p-xs py-[4px] bg-gray text-brown justify-self-start"
+				class="input pika-single p-xs bg-gray text-brown justify-self-start"
 				bind:this={datePicker}
 				bind:value={selectedDate}
 			/>
@@ -300,7 +300,7 @@
 	</section>
 </div>
 
-<style>
+<style lang="postcss">
 	:global(.pika-single) {
 		outline: none;
 	}
@@ -321,6 +321,14 @@
 		margin-top: 1.6rem;
 	}
 
+	.input {
+		width: 7rem;
+		&:hover {
+			background-color: var(--color-brown);
+			color: var(--color-gray);
+		}
+	}
+
 	.events-grid {
 		display: grid;
 		grid-template-columns: 1fr auto 1fr;
@@ -328,6 +336,9 @@
 	}
 
 	@media screen and (min-width: 768px) {
+		.input {
+			width: 7.2rem;
+		}
 		.featured-event {
 			height: calc(100svh - var(--spacing-xs) - 70px);
 		}
