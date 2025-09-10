@@ -11,7 +11,7 @@
 
 	import { slugToTitle } from '$lib/utils';
 	import { filtersOpen } from '$lib/stores/filters';
-	import { createPikaday, getCurrentDate } from '$lib/utils/calendar';
+	import { createPikaday, getCurrentDate, formatToDisplay } from '$lib/utils/calendar';
 
 	export let data;
 
@@ -188,8 +188,10 @@
 				});
 
 				// Set initial date in picker if we have one from URL
-				if (selectedDate && selectedDate !== getCurrentDate()) {
-					pikadayInstance.setDate(new Date(selectedDate));
+				if (selectedDate) {
+					const parts = selectedDate.split('-');
+					const date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+					pikadayInstance.setDate(date, true);
 				}
 			} catch (error) {
 				console.error('Failed to load Pikaday:', error);
@@ -242,7 +244,7 @@
 				id="date-picker"
 				class="input pika-single p-xs bg-gray text-brown justify-self-start"
 				bind:this={datePicker}
-				bind:value={selectedDate}
+				value={formatToDisplay(selectedDate)}
 			/>
 		</div>
 		<h2 class="typo-2xl mx-auto w-fit pt-12 justify-self-center translate-y-xs">All Events</h2>
