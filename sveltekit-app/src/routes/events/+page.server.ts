@@ -12,6 +12,8 @@ export const load: PageServerLoad = async (event) => {
 	const { loadQuery } = event.locals;
 	const { searchParams } = event.url;
 
+	const today = new Date().toISOString().slice(0, 10);
+
 	const params = {
 		typologies: searchParams.get('typologies') ? searchParams.get('typologies').split(',') : [],
 		institutions: searchParams.get('institutions')
@@ -22,6 +24,8 @@ export const load: PageServerLoad = async (event) => {
 		start: parseInt(searchParams.get('start') || '0'),
 		end: parseInt(searchParams.get('end') || '20')
 	};
+
+	const dateForQuery = params.date || today;
 
 	const hasFilters =
 		params.typologies.length > 0 ||
@@ -36,14 +40,14 @@ export const load: PageServerLoad = async (event) => {
 				typologies: params.typologies,
 				institutions: params.institutions,
 				people: params.people,
-				date: params.date
+				date: dateForQuery
 			})
 		: { data: [] };
 
 	const events = await loadQuery(eventsQuery, {
 		start: params.start,
 		end: params.end,
-		date: params.date
+		date: dateForQuery
 	});
 
 	const page = await loadQuery(archiveQuery, { slug: 'events' });
