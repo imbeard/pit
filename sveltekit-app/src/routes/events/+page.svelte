@@ -337,7 +337,7 @@
 
 	@media screen and (min-width: 768px) {
 		.input {
-			width: 7.2rem;
+			width: 7.7rem;
 		}
 		.featured-event {
 			height: calc(100svh - var(--spacing-xs) - 70px);
