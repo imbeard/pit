@@ -93,7 +93,7 @@
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="event-cloud flex justify-center items-center hover:rotate-4 transition-rotation duration-150"
-			class:hidden={hoveredArtist || hoveredPerformance || hoveredUrl || hoveredResource}
+			class:md:hidden={hoveredArtist || hoveredPerformance || hoveredUrl || hoveredResource}
 			style="--event-hover: {eventHoverColor}"
 			on:mouseenter={() => (hoveredEvent = true)}
 			on:mouseleave={() => (hoveredEvent = false)}
@@ -127,7 +127,7 @@
 
 		<div
 			class="artist-cloud min-w-20 w-[20vw] flex justify-center items-center md:max-w-[250px] hover:-rotate-4 transition-rotation duration-150 hover:z-[999]"
-			class:hidden={hoveredEvent || hoveredPerformance || hoveredUrl || hoveredResource}
+			class:md:hidden={hoveredEvent || hoveredPerformance || hoveredUrl || hoveredResource}
 			style="--artist-hover: {artistHoverColor}"
 			on:mouseenter={() => (hoveredArtist = true)}
 			on:mouseleave={() => (hoveredArtist = false)}
@@ -165,7 +165,7 @@
 
 		<div
 			class="performance-cloud flex justify-center items-center hover:rotate-10 transition-rotation duration-150"
-			class:hidden={hoveredEvent || hoveredArtist || hoveredUrl || hoveredResource}
+			class:md:hidden={hoveredEvent || hoveredArtist || hoveredUrl || hoveredResource}
 			style="--performance-hover: {performanceHoverColor}"
 			on:mouseenter={() => (hoveredPerformance = true)}
 			on:mouseleave={() => (hoveredPerformance = false)}
@@ -198,7 +198,7 @@
 
 		<div
 			class="resource-cloud flex justify-center items-center"
-			class:hidden={hoveredEvent || hoveredPerformance || hoveredUrl || hoveredArtist}
+			class:md:hidden={hoveredEvent || hoveredPerformance || hoveredUrl || hoveredArtist}
 			style="--resource-hover: {resourceHoverColor}"
 			on:mouseenter={() => (hoveredResource = true)}
 			on:mouseleave={() => (hoveredResource = false)}
@@ -231,7 +231,7 @@
 
 		<div
 			class="url-cloud flex justify-center items-center hover:rotate-4 transition-rotation duration-150"
-			class:hidden={hoveredEvent || hoveredPerformance || hoveredArtist || hoveredResource}
+			class:md:hidden={hoveredEvent || hoveredPerformance || hoveredArtist || hoveredResource}
 			style="--url-hover: {urlHoverColor}"
 			on:mouseenter={() => (hoveredUrl = true)}
 			on:mouseleave={() => (hoveredUrl = false)}
