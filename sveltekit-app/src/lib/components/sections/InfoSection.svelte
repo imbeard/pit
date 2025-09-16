@@ -5,7 +5,7 @@
 
 <div class="md:grid-2 w-full">
 	<div>
-		{#if section.heading}<h3 class="heading pb-3 typo-lg">{section.heading}</h3>{/if}
+		{#if section.heading}<h3 class="heading py-2 typo-lg">{section.heading}</h3>{/if}
 		<div class="max-w-5xl">
 			<PortableText data={section.content} />
 		</div>

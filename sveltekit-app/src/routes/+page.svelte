@@ -37,12 +37,54 @@
 	$: artistTheme = document?.artistTheme;
 	$: resourceTheme = document?.resourceTheme;
 	$: urlTheme = document?.urlTheme;
+
+	let hoveredPerformance = false;
+	let hoveredEvent = false;
+	let hoveredResource = false;
+	let hoveredArtist = false;
+	let hoveredUrl = false;
+
+	$: hoveredAsset = null;
+	$: hoveredType = '';
+
+	$: if (hoveredPerformance) {
+		hoveredAsset = document?.performanceHover;
+	} else if (hoveredEvent) {
+		hoveredAsset = document?.eventHover;
+	} else if (hoveredResource) {
+		hoveredAsset = document?.resourceHover;
+	} else if (hoveredArtist) {
+		hoveredAsset = document?.artistHover;
+	} else if (hoveredUrl) {
+		hoveredAsset = document?.urlHover;
+	} else {
+		hoveredAsset = null;
+	}
 </script>
 
 <main>
 	<section
 		class="hero-home h-full sm:h-screen w-full flex items-center justify-center overflow-hidden relative"
 	>
+		{#if hoveredAsset}
+			<div class="absolute top-0 left-0 z-[98] pointer-events-none h-screen w-full hidden sm:block">
+				<div class="w-full h-full">
+					{#if hoveredAsset?.videoUrl}
+						<video
+							src={hoveredAsset?.videoUrl}
+							autoplay
+							muted
+							loop
+							playsinline
+							class="w-full h-full object-cover"
+						/>
+					{:else if hoveredAsset?.image}
+						<Image image={hoveredAsset.image} alt="hero" fit="cover" />
+					{/if}
+				</div>
+			</div>
+		{/if}
+
 		<div class="absolute h-full w-auto sm:hidden">
 			<div class="scale-180 py-48 translate-x-4 -translate-y-8">
 				<Image image={document?.image} alt="hero" fit="cover" />
@@ -54,7 +96,7 @@
 		</div>
 
 		<div
-			class="clouds relative flex flex-col gap-2 justify-center items-center sm:absolute top-0 left-0 w-full h-full py-2"
+			class="clouds relative flex flex-col gap-2 justify-center items-center sm:absolute z-[99] top-0 left-0 w-full h-full py-2"
 		>
 			<CloudsHero
 				{cloudPerformance}
@@ -65,6 +107,11 @@
 				{artistTheme}
 				{resourceTheme}
 				{urlTheme}
+				bind:hoveredArtist
+				bind:hoveredEvent
+				bind:hoveredPerformance
+				bind:hoveredResource
+				bind:hoveredUrl
 			/>
 		</div>
 	</section>

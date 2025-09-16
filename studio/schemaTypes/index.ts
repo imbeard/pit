@@ -10,6 +10,7 @@ import {resource} from './documents/resource'
 
 // objects
 import {hero} from './objects/hero'
+import {cloudHover} from './objects/cloudHover'
 import {blockContent} from './objects/blockContent'
 import {blockquote} from './objects/blockquote'
 import {gallery} from './objects/gallery'
@@ -56,6 +57,7 @@ export const schemaTypes = [
 
   // objects
   hero,
+  cloudHover,
   blockContent,
   blockquote,
   gallery,

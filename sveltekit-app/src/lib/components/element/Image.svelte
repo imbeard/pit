@@ -11,10 +11,10 @@
 
 	let innerWidth = 1280;
 
-	$: src = innerWidth < 768 && image.mobileImage ? image.mobileImage.asset : image.asset;
-	$: dimensions = getImageDimensions(src);
+	$: src = image && (innerWidth < 768 && image.mobileImage ? image.mobileImage.asset : image.asset);
+	$: dimensions = src ? getImageDimensions(src) : { width: 1, height: 1 };
 	$: aspectRatio = dimensions.width / dimensions.height;
-	$: imageUrl = urlFor(src).width(dimensions.width).url() + '&auto=format';
+	$: imageUrl = src ? urlFor(src).width(dimensions.width).url() + '&auto=format' : '';
 </script>
 
 <svelte:window bind:innerWidth />
@@ -25,17 +25,18 @@
 	{/if}
 </svelte:head>
 
-<img
-	class="max-h-full max-w-full w-full
-	{fit === 'contain' ? 'object-contain' : 'object-cover h-full w-full'}
-	{height === 'full' ? 'h-full' : 'h-auto'}"
-	
-	loading={lazy ? 'lazy' : 'eager'}
-	fetchpriority={lazy ? 'low' : 'high'}
-	data-sizes="auto"
-	width={dimensions.width}
-	height={dimensions.height}
-	style="aspect-ratio: {aspectRatio}"
-	alt={src.alt || alt}
-	src={imageUrl}
-/>
+{#if src && imageUrl}
+	<img
+		class="max-h-full max-w-full w-full
+		{fit === 'contain' ? 'object-contain' : 'object-cover h-full w-full'}
+		{height === 'full' ? 'h-full' : 'h-auto'}"
+		loading={lazy ? 'lazy' : 'eager'}
+		fetchpriority={lazy ? 'low' : 'high'}
+		data-sizes="auto"
+		width={dimensions.width}
+		height={dimensions.height}
+		style="aspect-ratio: {aspectRatio}"
+		alt={src.alt || alt}
+		src={imageUrl}
+	/>
+{/if}

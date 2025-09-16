@@ -11,6 +11,19 @@ export const homepage = defineType({
     {name: 'hero', title: 'Hero', options: {collapsed: false, collapsible: true}},
     {name: 'main', title: 'Main', options: {collapsed: false, collapsible: true}},
     {name: 'clouds', title: 'Clouds', options: {collapsed: false, collapsible: true}},
+    {
+      name: 'cloudResource',
+      title: 'Cloud Resource',
+      options: {collapsed: false, collapsible: true},
+    },
+    {name: 'cloudArtist', title: 'Cloud Artist', options: {collapsed: false, collapsible: true}},
+    {
+      name: 'cloudPerformance',
+      title: 'Cloud Performance',
+      options: {collapsed: false, collapsible: true},
+    },
+    {name: 'cloudEvent', title: 'Cloud Event', options: {collapsed: false, collapsible: true}},
+    {name: 'cloudUrl', title: 'Cloud Url', options: {collapsed: false, collapsible: true}},
   ],
   fields: [
     defineField({
@@ -24,13 +37,13 @@ export const homepage = defineType({
       title: 'Cloud Resource',
       type: 'reference',
       to: [{type: 'resource'}],
-      fieldset: 'clouds',
+      fieldset: 'cloudResource',
     }),
     defineField({
       title: 'Resource Theme',
       name: 'resourceTheme',
       type: 'string',
-      fieldset: 'clouds',
+      fieldset: 'cloudResource',
       options: {
         list: [
           {title: 'Pink / Red', value: 'pink-red'},
@@ -49,31 +62,59 @@ export const homepage = defineType({
       },
     }),
     defineField({
+      name: 'resourceHover',
+      title: 'Media Hover',
+      description: 'Add a short, muted video on hover of the resource, or an image',
+      type: 'cloudHover',
+      fieldset: 'cloudResource',
+    }),
+    defineField({
       name: 'cloudPerformance',
       title: 'Cloud Performance',
       type: 'reference',
       to: [{type: 'performance'}],
-      fieldset: 'clouds',
+      fieldset: 'cloudPerformance',
+    }),
+    defineField({
+      name: 'performanceHover',
+      title: 'Media Hover',
+      description: 'Add a short, muted video on hover of the resource',
+      type: 'cloudHover',
+      fieldset: 'cloudPerformance',
     }),
     defineField({
       name: 'cloudEvent',
       title: 'Cloud Event',
       type: 'reference',
       to: [{type: 'event'}],
-      fieldset: 'clouds',
+      fieldset: 'cloudEvent',
+    }),
+    defineField({
+      name: 'eventHover',
+      title: 'Media Hover',
+      description: 'Add a short, muted video on hover of the resource',
+      type: 'cloudHover',
+      fieldset: 'cloudEvent',
     }),
     defineField({
       name: 'cloudArtist',
       title: 'Cloud Artist',
       type: 'reference',
       to: [{type: 'people'}],
-      fieldset: 'clouds',
+      fieldset: 'cloudArtist',
+    }),
+    defineField({
+      name: 'artistHover',
+      title: 'Media Hover',
+      description: 'Add a short, muted video on hover of the resource',
+      type: 'cloudHover',
+      fieldset: 'cloudArtist',
     }),
     defineField({
       title: 'Artist Theme',
       name: 'artistTheme',
       type: 'string',
-      fieldset: 'clouds',
+      fieldset: 'cloudArtist',
       options: {
         list: [
           {title: 'Pink / Red', value: 'pink-red'},
@@ -95,7 +136,14 @@ export const homepage = defineType({
       name: 'cloudUrl',
       title: 'Cloud Url',
       type: 'linkExternal',
-      fieldset: 'clouds',
+      fieldset: 'cloudUrl',
+    }),
+    defineField({
+      name: 'urlHover',
+      title: 'Media Hover',
+      description: 'Add a short, muted video on hover of the resource',
+      type: 'cloudHover',
+      fieldset: 'cloudUrl',
     }),
     defineField({
       title: 'Url Theme',

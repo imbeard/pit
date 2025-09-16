@@ -26,6 +26,32 @@ export const homepageQuery = groq`{
     "homepage": *[_type == "homepage"][0] {
         ...,
 
+        artistHover {
+        "videoUrl": video.asset->url,
+
+            ...
+        },
+        eventHover {
+        "videoUrl": video.asset->url,
+
+            ...
+        },
+        resourceHover {
+        "videoUrl": video.asset->url,
+
+            ...
+        },
+        performanceHover {
+        "videoUrl": video.asset->url,
+
+            ...
+        },
+        urlHover {
+        "videoUrl": video.asset->url,
+
+            ...
+        },
+
         cloudArtist-> {
             name,
             "slug": slug.current,

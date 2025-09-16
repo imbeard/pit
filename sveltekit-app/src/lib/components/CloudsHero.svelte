@@ -12,14 +12,21 @@
 	import { dateYear, formatDate } from '$lib/utils';
 
 	export let cloudPerformance;
+	export let hoveredPerformance;
+
 	export let cloudEvent;
+	export let hoveredEvent;
+
 	export let cloudResource;
+	export let hoveredResource;
 	export let resourceTheme;
 
 	export let cloudArtist;
+	export let hoveredArtist;
 	export let artistTheme;
 
 	export let cloudUrl;
+	export let hoveredUrl;
 	export let urlTheme;
 
 	$: cloudPerformanceBg = cloudPerformance?.theme?.split('-')[0];
@@ -46,25 +53,36 @@
 	$: cloudUrlFg = urlTheme?.split('-')[1];
 	$: urlTextColor = 'text-' + cloudUrlFg;
 	$: urlHoverColor = `var(--color-${cloudUrlBg})`;
+
+	$: anyCloudHovered =
+		hoveredArtist || hoveredPerformance || hoveredUrl || hoveredResource || hoveredEvent;
 </script>
 
 <div
 	class="hidden sm:flex absolute justify-center items-center w-[13vw] min-w-12 top-[35vh] left-4"
+	class:md:hidden={anyCloudHovered}
 >
 	<CloudShapeP />
 </div>
 
-<div class="hidden sm:flex absolute justify-center items-center w-[5vw] min-w-6 top-3 left-[30vw]">
+<div
+	class="hidden sm:flex absolute justify-center items-center w-[5vw] min-w-6 top-3 left-[30vw]"
+	class:md:hidden={anyCloudHovered}
+>
 	<CloudShapeI />
 </div>
 
 <div
 	class="hidden sm:flex absolute justify-center items-center w-[20vw] min-w-16 max-w-300 top-0 -mt-8 -mr-7 right-0"
+	class:md:hidden={anyCloudHovered}
 >
 	<CloudShapeT color="red" />
 </div>
 
-<div class="hidden sm:flex absolute w-[12vw] min-w-12 bottom-s right-1">
+<div
+	class="hidden sm:flex absolute w-[12vw] min-w-12 bottom-s right-1"
+	class:md:hidden={anyCloudHovered}
+>
 	<CloudShape_1 cloudBg="blue" />
 </div>
 
@@ -72,9 +90,13 @@
 	<div
 		class="relative sm:absolute flex justify-center items-center rotate-10 right-xs mt-5 mr-3 sm:mr-0 sm:rotate-0 sm:top-1/2 sm:-translate-y-1/2 sm:-mt-4 sm:right-1"
 	>
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="event-cloud flex justify-center items-center hover:rotate-4 transition-rotation duration-150"
+			class:hidden={hoveredArtist || hoveredPerformance || hoveredUrl || hoveredResource}
 			style="--event-hover: {eventHoverColor}"
+			on:mouseenter={() => (hoveredEvent = true)}
+			on:mouseleave={() => (hoveredEvent = false)}
 		>
 			<div class="w-full h-auto size-cloud">
 				<CloudShape_2
@@ -101,9 +123,14 @@
 	<div
 		class="relative flex justify-center items-center ml-14 sm:ml-0 sm:absolute sm:right-[16vw] sm:bottom-[20vh] sm:top-auto"
 	>
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
+
 		<div
-			class="artist-cloud min-w-20 w-[20vw] flex justify-center items-center md:max-w-[250px] hover:-rotate-4 transition-rotation duration-150"
+			class="artist-cloud min-w-20 w-[20vw] flex justify-center items-center md:max-w-[250px] hover:-rotate-4 transition-rotation duration-150 hover:z-[999]"
+			class:hidden={hoveredEvent || hoveredPerformance || hoveredUrl || hoveredResource}
 			style="--artist-hover: {artistHoverColor}"
+			on:mouseenter={() => (hoveredArtist = true)}
+			on:mouseleave={() => (hoveredArtist = false)}
 		>
 			<div class="w-full h-auto">
 				<CloudShape_3
@@ -134,9 +161,14 @@
 	<div
 		class="relative flex px-xs mt-35 -rotate-10 ml-8 sm:ml-0 sm:rotate-0 sm:absolute sm:mt-[12vh] sm:top-0 sm:left-xs"
 	>
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
+
 		<div
 			class="performance-cloud flex justify-center items-center hover:rotate-10 transition-rotation duration-150"
+			class:hidden={hoveredEvent || hoveredArtist || hoveredUrl || hoveredResource}
 			style="--performance-hover: {performanceHoverColor}"
+			on:mouseenter={() => (hoveredPerformance = true)}
+			on:mouseleave={() => (hoveredPerformance = false)}
 		>
 			<div class="w-full max-w-lg h-auto size-cloud">
 				<CloudShape_5
@@ -162,9 +194,14 @@
 	<div
 		class="relative flex px-xs mr-8 rotate-10 sm:mr-0 sm:rotate-0 sm:absolute sm:top-[12vh] sm:right-[10vw] hover:-rotate-8 transition-rotation duration-150"
 	>
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
+
 		<div
 			class="resource-cloud flex justify-center items-center"
+			class:hidden={hoveredEvent || hoveredPerformance || hoveredUrl || hoveredArtist}
 			style="--resource-hover: {resourceHoverColor}"
+			on:mouseenter={() => (hoveredResource = true)}
+			on:mouseleave={() => (hoveredResource = false)}
 		>
 			<div class="w-full max-w-lg h-auto size-cloud">
 				<CloudShape_4
@@ -190,9 +227,14 @@
 
 {#if cloudUrl?.url}
 	<div class="relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4">
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
+
 		<div
 			class="url-cloud flex justify-center items-center hover:rotate-4 transition-rotation duration-150"
+			class:hidden={hoveredEvent || hoveredPerformance || hoveredArtist || hoveredResource}
 			style="--url-hover: {urlHoverColor}"
+			on:mouseenter={() => (hoveredUrl = true)}
+			on:mouseleave={() => (hoveredUrl = false)}
 		>
 			<div class="w-full h-auto size-cloud">
 				<CloudShape_6 cloudBg={cloudUrlBg} cloudFg={cloudUrlFg} link={cloudUrl?.url} />
@@ -211,23 +253,59 @@
 {/if}
 
 <style>
+	.performance-cloud {
+		animation: shaking 0.45s infinite;
+	}
 	.performance-cloud:hover .texts {
 		color: var(--performance-hover);
 	}
 
+	.event-cloud {
+		animation: shaking 0.5s infinite;
+	}
 	.event-cloud:hover .texts {
 		color: var(--event-hover);
 	}
 
+	.artist-cloud {
+		animation: shaking 0.55s infinite;
+	}
 	.artist-cloud:hover .texts {
 		color: var(--artist-hover);
 	}
 
+	.resource-cloud {
+		animation: shaking 0.6s infinite;
+	}
 	.resource-cloud:hover .texts {
 		color: var(--resource-hover);
 	}
 
+	.url-cloud {
+		animation: shaking 0.65s infinite;
+	}
 	.url-cloud:hover .texts {
 		color: var(--url-hover);
+	}
+
+	@keyframes shaking {
+		0% {
+			transform: rotate(0deg);
+		}
+		15% {
+			transform: rotate(5deg);
+		}
+		30% {
+			transform: rotate(0eg);
+		}
+		45% {
+			transform: rotate(-5deg);
+		}
+		60% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(0deg);
+		}
 	}
 </style>
