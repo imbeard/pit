@@ -310,14 +310,16 @@
 		color: var(--url-hover);
 	}
 
-	.clouds-container {
-		perspective: 800px;
-		transform-style: preserve-3d;
-		width: 92svw;
-		height: 100%;
-	}
+	@media (min-width: 768px) {
+		.clouds-container {
+			perspective: 800px;
+			transform-style: preserve-3d;
+			width: 92svw;
+			height: 100%;
+		}
 
-	.cloud-container {
-		transform: translateZ(200px);
+		.cloud-container {
+			transform: translateZ(200px);
+		}
 	}
 </style>
