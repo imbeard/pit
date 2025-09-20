@@ -20,6 +20,9 @@
 
 	export let data;
 
+	$: viewportHeight = 0;
+	$: viewportWidth = 0;
+
 	$: document = data?.page?.data?.homepage;
 	$: events = data?.page?.data?.events;
 	$: partners = data?.page?.data?.partners;
@@ -61,6 +64,8 @@
 		hoveredAsset = null;
 	}
 </script>
+
+<svelte:window bind:innerWidth={viewportWidth} bind:innerHeight={viewportHeight} />
 
 <main>
 	<section
