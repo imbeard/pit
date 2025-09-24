@@ -8,6 +8,7 @@
 	import CloudShape_4 from '$lib/components/svg/CloudShape-4.svelte';
 	import CloudShape_5 from '$lib/components/svg/CloudShape-5.svelte';
 	import CloudShape_6 from '$lib/components/svg/CloudShape-6.svelte';
+	import { onMount } from 'svelte';
 
 	import { dateYear, formatDate } from '$lib/utils';
 
@@ -31,6 +32,11 @@
 
 	$: viewportWidth = 0;
 	$: viewportHeight = 0;
+	$: isMounted = false;
+
+	$: initialXDegrees = -0.5 * (0.5 * 10 - 0.5 * 10); // Based on maxDegrees = 10
+	$: initialYDegrees = 0.5 * 10 - 0.5 * 10;
+	$: cloudTransformStyle = `translateZ(50px) rotateY(${initialYDegrees}deg) rotateX(${initialXDegrees}deg)`;
 
 	$: cloudPerformanceBg = cloudPerformance?.theme?.split('-')[0];
 	$: cloudPerformanceFg = cloudPerformance?.theme?.split('-')[1];
@@ -75,6 +81,10 @@
 			element.style.transform = `translateZ(50px) rotateY(${yDegrees}deg) rotateX(${xDegrees}deg)`;
 		});
 	};
+
+	onMount(() => {
+		isMounted = true;
+	});
 </script>
 
 <svelte:window
@@ -87,6 +97,7 @@
 	<div
 		class="cloud-container hidden sm:flex absolute justify-center items-center w-[13vw] min-w-12 top-[35vh] left-4"
 		class:md:hidden={anyCloudHovered}
+		style="transform: {cloudTransformStyle}"
 	>
 		<CloudShapeP />
 	</div>
@@ -94,6 +105,7 @@
 	<div
 		class="cloud-container hidden sm:flex absolute justify-center items-center w-[5vw] min-w-6 top-3 left-[30vw]"
 		class:md:hidden={anyCloudHovered}
+		style="transform: {cloudTransformStyle}"
 	>
 		<CloudShapeI />
 	</div>
@@ -101,6 +113,7 @@
 	<div
 		class="cloud-container hidden sm:flex absolute justify-center items-center w-[20vw] min-w-16 max-w-300 top-0 -mt-8 -mr-7 right-0"
 		class:md:hidden={anyCloudHovered}
+		style="transform: {cloudTransformStyle}"
 	>
 		<CloudShapeT color="red" />
 	</div>
@@ -108,6 +121,7 @@
 	<div
 		class="cloud-container hidden sm:flex absolute w-[12vw] min-w-12 bottom-s right-1"
 		class:md:hidden={anyCloudHovered}
+		style="transform: {cloudTransformStyle}"
 	>
 		<CloudShape_1 cloudBg="blue" />
 	</div>
@@ -119,6 +133,7 @@
 			class="cloud-container relative sm:absolute flex justify-center items-center rotate-10 right-xs mt-5 mr-3 sm:mr-0 sm:rotate-0 sm:top-1/2 sm:-translate-y-1/2 sm:-mt-4 sm:right-1"
 			on:mouseenter={() => (hoveredEvent = true)}
 			on:mouseleave={() => (hoveredEvent = false)}
+			style="transform: {cloudTransformStyle}"
 		>
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div
@@ -154,6 +169,7 @@
 			class="cloud-container relative sm:absolute flex justify-center items-center ml-14 sm:ml-0 sm:right-[16vw] sm:bottom-[20vh] sm:top-auto"
 			on:mouseenter={() => (hoveredArtist = true)}
 			on:mouseleave={() => (hoveredArtist = false)}
+			style="transform: {cloudTransformStyle}"
 		>
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 
@@ -194,6 +210,7 @@
 			class="cloud-container relative sm:absolute flex px-xs mt-35 -rotate-10 ml-8 sm:ml-0 sm:rotate-0 sm:mt-[12vh] sm:top-0 sm:left-xs"
 			on:mouseenter={() => (hoveredPerformance = true)}
 			on:mouseleave={() => (hoveredPerformance = false)}
+			style="transform: {cloudTransformStyle}"
 		>
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 
@@ -229,6 +246,7 @@
 			class="cloud-container relative sm:absolute flex px-xs mr-8 rotate-10 sm:mr-0 sm:rotate-0 sm:top-[12vh] sm:right-[10vw] hover:-rotate-8 transition-rotation duration-150"
 			on:mouseenter={() => (hoveredResource = true)}
 			on:mouseleave={() => (hoveredResource = false)}
+			style="transform: {cloudTransformStyle}"
 		>
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 
@@ -265,6 +283,7 @@
 			class="cloud-container relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4"
 			on:mouseenter={() => (hoveredUrl = true)}
 			on:mouseleave={() => (hoveredUrl = false)}
+			style="transform: {cloudTransformStyle}"
 		>
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div
@@ -289,7 +308,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="postcss">
 	.performance-cloud:hover .texts {
 		color: var(--performance-hover);
 	}
@@ -312,8 +331,7 @@
 
 	@media (min-width: 768px) {
 		.clouds-container {
-			perspective: 800px;
-			transform-style: preserve-3d;
+			perspective: 1000px;
 			width: 92svw;
 			height: 100%;
 		}

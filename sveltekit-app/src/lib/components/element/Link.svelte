@@ -1,6 +1,6 @@
 <script>
 	export let to;
-	export let target = 'auto';
+	export let target;
 
 	let label;
 	let href;
@@ -14,11 +14,32 @@
 	if (to?.source === 'linkInternal') {
 		href = `${category}/` + to?.linkInternal?.url;
 		label = to?.linkInternal?.label;
+		target = '_self';
+
+		if (to?.category === 'about' || to?.category === 'homepage' || to?.category === 'contact') {
+			href = `/${to?.category}`;
+		}
+
+		if (to?.category === 'archive') {
+			if(to?.url == 'performances') {
+				href = '/performances';
+			}
+			if(to?.url == 'events') {
+				href = '/events';
+			}
+			if(to?.url == 'people') {
+				href = '/people';
+			}
+			if(to?.url == 'partners') {
+				href = '/partners';
+			}
+		}
 	}
 
 	if (to?.source === 'linkExternal') {
 		href = to?.linkExternal?.url;
 		label = to?.linkExternal?.label;
+		target = '_blank';
 	}
 
 	if (to?.source === 'linkPhone') {

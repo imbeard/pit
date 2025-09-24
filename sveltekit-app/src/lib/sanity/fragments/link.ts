@@ -3,7 +3,7 @@ export const link = /* groq */ `
     source == 'linkInternal' => {
         "category": linkInternal.url->_type,
         "url": linkInternal.url->slug.current,
-        "typology": linkInternal.url->typology,
+        "typology": linkInternal.url->,
         "label": linkInternal.label,
         ...,
     },

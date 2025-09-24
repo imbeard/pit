@@ -8,6 +8,20 @@ export const contact = defineType({
   icon: InboxIcon,
   fields: [
     defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    }),
+    defineField({
       name: 'contacts',
       title: 'Contacts',
       type: 'array',
@@ -38,7 +52,7 @@ export const contact = defineType({
   preview: {
     prepare() {
       return {
-        title: 'Homepage',
+        title: 'Contact',
       }
     },
   },

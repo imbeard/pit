@@ -127,7 +127,11 @@
 				<PortableText data={document?.intro} />
 			</div>
 			<div class="pt-1 pt flex gap-xs justify-between typo-base items-center">
-				<div class="max-w-[18rem] md:max-w-md text-center">{document?.subtitle}</div>
+				{#if document?.subtitle}
+					<div class="max-w-[18rem] md:max-w-md text-center">{document?.subtitle}</div>
+				{:else}
+					<div></div>
+				{/if}
 				<div class="theme-pink-red button whitespace-nowrap">
 					<Link to={document?.cta?.link} />
 				</div>

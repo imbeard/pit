@@ -2,7 +2,7 @@
 	font-family: 'ABC Monument Grotesk';
 	src: url('/fonts/ABCMonumentGrotesk-Medium-Trial.woff') format('woff');
 	font-weight: 500;
-	font-display: swap;
+	font-display: block;
 	font-style: normal;
 }
 
@@ -10,7 +10,7 @@
 	font-family: 'ABC Monument Grotesk';
 	src: url('/fonts/ABCMonumentGrotesk-MediumItalic-Trial.woff') format('woff');
 	font-weight: 500;
-	font-display: swap;
+	font-display: block;
 	font-style: italic;
 }
 

@@ -7,4 +7,7 @@ export const PAGE_REFERENCES = [
   {type: 'performance'},
   {type: 'resource'},
   {type: 'homepage'},
+  {type: 'about'},
+  {type: 'contact'},
+  {type: 'archive'},
 ]
