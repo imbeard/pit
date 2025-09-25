@@ -12,13 +12,15 @@
 	const handleClick = () => (open = !open);
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
 	class="group accordion py-2 border-y {lineColor}"
 	class:py-xs={aboutPage}
 	class:border-t-0={aboutPage}
 	data-id={identifier}
 >
-	<button class="w-full flex items-center" class:sticky class:top-0={sticky} on:click={handleClick}>
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<div class="w-full flex items-center" class:sticky class:top-0={sticky} on:click={handleClick}>
 		<div class="flex justify-between w-full {aboutPage ? 'pl-3' : 'pl-0'}">
 			<slot name="head"></slot>
 		</div>
@@ -37,7 +39,7 @@
 				-
 			{/if}
 		</button>
-	</button>
+	</div>
 
 	{#if open}
 		<div class="details pt-2">
