@@ -22,12 +22,12 @@
 		</div>
 	</div>
 	<div
-		class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1"
+		class="py-2 flex flex-col items-center gap-1 md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2"
 	>
 		<div class="typo-lg md:typo-2xl text-center whitespace-nowrap">Get in touch</div>
 		<a
 			href="/contact"
-			class="text-black bg-red hover:text-red hover:bg-black w-fit text-[40px] p-s leading-2 whitespace-nowrap md:typo-base md:p-xs"
+			class="text-black bg-red hover:text-red hover:bg-black w-fit text-[10vw] leading-[6vw] p-s whitespace-nowrap md:leading-none md:typo-base md:p-xs"
 		>
 			Contact Us <span class="align-super typo-lg leading-0 md:typo-s">&nearr;</span>
 		</a>
@@ -57,17 +57,17 @@
 				<a class="hover:text-red w-fit h-fit" href="tel:{data?.phone}">{data?.phone}</a>
 			</div>
 		</div>
-		<div class="border-t border-gray w-full grid-3 p-xs">
-			<a class="hover:text-red w-fit h-fit" href="https://parco.studio/" target="_blank">Design by Parco</a>
+		<div class="border-t border-gray w-full grid-2 md:grid-3 p-xs">
+			<a class="hidden md:block hover:text-red w-fit h-fit" href="https://parco.studio/" target="_blank">Design by Parco</a>
 			<div class="text-center hidden md:block">© PIT 2025</div>
 			<div class="hidden md:block text-right">
 				<ul class="flex gap-xs justify-end">
-					<li class="hover:text-red w-fit h-fit">Privacy Policy</li>
-					<li class="hover:text-red w-fit h-fit">Cookies</li>
+					<li class="hover:text-red w-fit h-fit"><a href="/privacy-policy">Privacy Policy</a></li>
+					<li class="hover:text-red w-fit h-fit"><a href="/cookie-policy">Cookies</a></li>
 				</ul>
 			</div>
-			<div class="justify-self-center md:hidden hover:text-red">Privacy Policy</div>
-			<div class="justify-self-end md:hidden hover:text-red">Cookies</div>
+			<div class="justify-self-start md:hidden hover:text-red"><a href="/privacy-policy">Privacy Policy</a></div>
+			<div class="justify-self-end md:hidden hover:text-red"><a href="/cookie-policy">Cookies</a></div>
 		</div>
 	</div>
 </div>
