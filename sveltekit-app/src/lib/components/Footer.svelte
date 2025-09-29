@@ -37,7 +37,7 @@
 		<div class="flex flex-col text-center md:hidden hover:text-red">
 			<a href="mailto:{data?.email}">{data?.email}</a>
 			<a href="tel:{data?.phone}">{data?.phone}</a>
-			<div>Design by Parco Studio</div>
+			<a class="h-fit" href="https://parco.studio/" target="_blank">Design by Parco</a>
 			{#if data?.social}
 				<ul class="flex gap-xs text-center justify-center">
 					{#each data?.social as link}
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		<div class="border-t border-gray w-full grid-3 p-xs">
-			<div class="hover:text-red">Imprint</div>
+			<a class="hover:text-red w-fit h-fit" href="https://parco.studio/" target="_blank">Design by Parco</a>
 			<div class="text-center hidden md:block">© PIT 2025</div>
 			<div class="hidden md:block text-right">
 				<ul class="flex gap-xs justify-end">

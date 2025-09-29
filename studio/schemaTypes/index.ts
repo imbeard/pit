@@ -33,6 +33,7 @@ import {homepage} from './singletons/homepage'
 import {contact} from './singletons/contact'
 import {about} from './singletons/about'
 import {settings} from './singletons/settings'
+import { policies } from './singletons/policies'
 
 // duration
 import {duration} from './duration/duration'
@@ -76,6 +77,7 @@ export const schemaTypes = [
   settings,
   about,
   contact,
+  policies,
 
   //duration
   duration,

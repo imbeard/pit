@@ -12,14 +12,13 @@ export const structure = (S, context) =>
 
       S.divider(),
 
-
       S.documentTypeListItem('about')
         .title('About')
         .child(S.document().schemaType('about').title('About').documentId('about')),
 
       S.divider(),
 
-       S.documentTypeListItem('contact')
+      S.documentTypeListItem('contact')
         .title('Contact')
         .child(S.document().schemaType('contact').title('Contact').documentId('contact')),
 
@@ -41,4 +40,8 @@ export const structure = (S, context) =>
       S.documentTypeListItem('settings')
         .title('Settings')
         .child(S.document().schemaType('settings').title('Settings').documentId('settings')),
+
+      S.documentTypeListItem('policies')
+        .title('Policies')
+        .child(S.document().schemaType('policies').title('Policies').documentId('policies')),
     ])

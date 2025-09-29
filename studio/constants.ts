@@ -10,4 +10,5 @@ export const PAGE_REFERENCES = [
   {type: 'about'},
   {type: 'contact'},
   {type: 'archive'},
+  {type: 'policies'},
 ]

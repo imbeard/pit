@@ -12,6 +12,8 @@ import { portableText } from './fragments/portableText';
 
 // singletons
 export const settingsQuery = groq`*[_type == "settings"][0]`;
+export const policiesQuery = groq`*[_type == "policies"][0]`;
+
 
 export const contactQuery = groq`*[_type == "contact"][0]{
     contacts[] {
