@@ -11,7 +11,7 @@
 	$: document = data?.page?.data[0];
 </script>
 
-<SEO data={document?.seo} />
+<SEO data={document?.seo} pageTitle={document?.title} />
 
 <div class="flex flex-col gap-6">
 	<section class="pt-12 w-full">

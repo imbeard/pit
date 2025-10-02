@@ -6,7 +6,7 @@
 	$: theme = 'hover:theme-pink-brown';
 </script>
 
-<SEO data={document?.seo} />
+<SEO data={document?.seo} pageTitle="Contacts" />
 
 <div class="flex flex-col justify-start pt-6 items-center md:justify-center min-h-screen">
 	<h1 class="typo-base">Contacts</h1>

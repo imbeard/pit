@@ -216,7 +216,7 @@
 	});
 </script>
 
-<SEO data={document?.seo} />
+<SEO data={document?.seo} pageTitle={document?.title} />
 
 <div class="px-xs">
 	<section class="pt-12 w-full">

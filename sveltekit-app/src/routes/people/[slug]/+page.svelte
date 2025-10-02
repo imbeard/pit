@@ -13,7 +13,7 @@
 	$: cloudFg = person?.performance?.theme.split('-')[1];
 </script>
 
-<SEO data={person?.seo} />
+<SEO data={person?.seo} pageTitle={person?.name} />
 
 <div class="px-xs">
 	<section class="w-full flex justify-center pt-10">

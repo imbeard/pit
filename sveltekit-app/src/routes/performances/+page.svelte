@@ -3,14 +3,13 @@
 	import PerformanceCard from '$lib/components/thumbnails/PerformanceCard.svelte';
 	import SEO from '$lib/components/seo/SEO.svelte';
 
-	
 	export let data;
 
 	$: performances = data?.performances?.data;
 	$: document = data?.page?.data[0];
 </script>
 
-<SEO data={document?.seo} />
+<SEO data={document?.seo} pageTitle={document?.title} />
 
 <div>
 	<section class="typo-xl text-center pt-12 w-full">

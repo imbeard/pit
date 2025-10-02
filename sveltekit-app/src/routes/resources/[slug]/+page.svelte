@@ -14,7 +14,7 @@
 	$: cloudFg = resource?.performance?.theme.split('-')[1];
 </script>
 
-<SEO data={resource?.seo} />
+<SEO data={resource?.seo} pageTitle={resource?.title} />
 
 <div class="pt-8 p-xs">
 	<section class="hero">
@@ -53,7 +53,6 @@
 
 	{#if pageBuilder.sections && pageBuilder.sections.length > 0}
 		<div class="pt-s">
-			
 			{#if resource?.performance}
 				<div class="hidden md:block absolute h-full right-5">
 					<div class="sticky top-7 h-auto flex justify-end -mt-30 z-20">

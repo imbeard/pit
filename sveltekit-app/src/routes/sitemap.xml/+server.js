@@ -1,9 +1,8 @@
 import { client } from '$lib/sanity/client';
-import { page } from '$app/state';
 import groq from 'groq';
 
 // Configuration
-const BASE_URL = page?.url?.origin; // Update this with your actual domain
+const BASE_URL = 'https://pit.com'; // Update this with your actual domain
 const STATIC_ROUTES = [
 	'/',
 	'/about',

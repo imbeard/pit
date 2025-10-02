@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 
 	export let data;
+	export let pageTitle;
 
 	// Default values
 	const defaults = {
@@ -12,11 +13,15 @@
 		locale: 'en_US'
 	};
 
+	$: console.log(data, pageTitle);
+
 	// Computed values
 	const title =
 		data?.title && page?.route?.id !== '/'
 			? `${defaults.siteName} | ${data?.title}`
-			: defaults.siteName;
+			: !data?.title && page?.route?.id !== '/'
+				? `${defaults.siteName} | ${pageTitle}`
+				: defaults.siteName;
 	const description = data?.description || defaults.siteDescription;
 	const ogImage = data?.ogImage || '/images/ogImage.png';
 	const ogType = data?.ogType || defaults.ogType;
@@ -24,7 +29,6 @@
 	const siteName = data?.siteName || defaults.siteName;
 	const locale = data?.locale || defaults.locale;
 	const canonical = data?.canonical || page?.url?.href;
-
 </script>
 
 <svelte:head>

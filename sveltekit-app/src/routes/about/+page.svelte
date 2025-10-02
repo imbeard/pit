@@ -18,7 +18,7 @@
 	$: coreValues = [coreValue1, coreValue2, coreValue3, coreValue4, coreValue5];
 </script>
 
-<SEO data={document?.seo} />
+<SEO data={document?.seo} pageTitle="About" />
 
 <div>
 	<section class="pt-12 w-full px-xs">

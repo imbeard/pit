@@ -17,7 +17,7 @@
 	$: relatedResources = data?.performance?.data?.relatedResources;
 </script>
 
-<SEO data={performance?.seo} />
+<SEO data={performance?.seo} pageTitle={performance?.title} />
 
 <div class="pt-8 p-xs">
 	<section class="hero">
@@ -106,7 +106,7 @@
 
 	{#if relatedResources && relatedResources.length > 0}
 		<div class="pt-12">
-			<div class="w-full pb-xs  border-b border-gray md:border-none">
+			<div class="w-full pb-xs border-b border-gray md:border-none">
 				<h3 class="typo-lg uppercase">Related Resources</h3>
 			</div>
 			<div class="hidden md:block">

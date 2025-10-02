@@ -11,7 +11,6 @@
 	import SEO from '$lib/components/seo/SEO.svelte';
 	import { formatDate } from '$lib/utils';
 
-
 	export let data;
 	$: event = data?.document?.data[0];
 	$: relatedEvents = event?.relatedEvents;
@@ -21,7 +20,7 @@
 	$: cloudFg = event?.performance?.theme.split('-')[1];
 </script>
 
-<SEO data={event?.seo} />
+<SEO data={event?.seo} pageTitle={event?.title} />
 
 <div class="px-xs">
 	<section
@@ -31,7 +30,9 @@
 			<div class="flex flex-col items-center">
 				<div class="flex justify-center typo-s gap-xs">
 					<span>Event</span>
-					{#if event?.typology?.title}<a href="/events?typologies={event?.typology.slug}">{event?.typology.title}</a>{/if}
+					{#if event?.typology?.title}<a href="/events?typologies={event?.typology.slug}"
+							>{event?.typology.title}</a
+						>{/if}
 					{#if event?.location}<span>{event?.city}</span>{/if}
 				</div>
 				{#if event?.title}
