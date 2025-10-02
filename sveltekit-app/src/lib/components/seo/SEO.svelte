@@ -17,7 +17,7 @@
 	const title =
 		data?.title && page?.route?.id !== '/'
 			? `${defaults.siteName} | ${data?.title}`
-			: !data?.title && page?.route?.id !== '/'
+			: !data?.title && page?.route?.id !== '/' && pageTitle
 				? `${defaults.siteName} | ${pageTitle}`
 				: defaults.siteName;
 	const description = data?.description || defaults.siteDescription;
