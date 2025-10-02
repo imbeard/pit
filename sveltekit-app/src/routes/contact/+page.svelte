@@ -1,9 +1,12 @@
 <script>
 	import PortableText from '$lib/components/element/PortableText.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 	export let data;
 	$: contacts = data?.page?.data?.contacts;
 	$: theme = 'hover:theme-pink-brown';
 </script>
+
+<SEO data={document?.seo} />
 
 <div class="flex flex-col justify-start pt-6 items-center md:justify-center min-h-screen">
 	<h1 class="typo-base">Contacts</h1>

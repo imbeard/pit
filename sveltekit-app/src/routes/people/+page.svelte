@@ -1,10 +1,11 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
 
 	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
 	import PeopleFilters from '$lib/components/filters/PeopleFilters.svelte';
 	import { filtersOpen } from '$lib/stores/filters';
+
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	export let data;
 
@@ -65,6 +66,8 @@
 		newUrl = `${window.location.pathname}${queryString}`;
 	};
 </script>
+
+<SEO data={document?.seo} />
 
 <div class="px-xs">
 	<section class="pt-12 pb-6 w-full">

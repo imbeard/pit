@@ -8,6 +8,7 @@
 	import ResourcesSlider from '$lib/components/sliders/ResourcesSlider.svelte';
 	import ResourceCard from '$lib/components/thumbnails/ResourceCard.svelte';
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	export let data;
 	$: performance = data?.performance?.data?.performance[0];
@@ -15,6 +16,8 @@
 	$: relatedEvents = data?.performance?.data?.relatedEvents;
 	$: relatedResources = data?.performance?.data?.relatedResources;
 </script>
+
+<SEO data={performance?.seo} />
 
 <div class="pt-8 p-xs">
 	<section class="hero">

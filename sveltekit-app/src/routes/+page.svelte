@@ -17,6 +17,7 @@
 
 	import Marquee from '$lib/components/element/Marquee.svelte';
 	import Cloud from '$lib/components/Cloud.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	export let data;
 
@@ -66,6 +67,8 @@
 </script>
 
 <svelte:window bind:innerWidth={viewportWidth} bind:innerHeight={viewportHeight} />
+
+<SEO data={document?.seo} />
 
 <main>
 	<section
@@ -138,7 +141,9 @@
 			</div>
 		</section>
 
-		<PerformanceSlider slides={document?.performanceSlider} />
+		{#if document?.performanceSlider}
+			<PerformanceSlider slides={document?.performanceSlider} />
+		{/if}
 
 		{#if events}
 			<div>

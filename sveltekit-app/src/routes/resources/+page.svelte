@@ -8,6 +8,7 @@
 	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
 	import ResourceCard from '$lib/components/thumbnails/ResourceCard.svelte';
 	import ResourcesFilters from '$lib/components/filters/ResourcesFilters.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	export let data;
 
@@ -139,6 +140,8 @@
 		});
 	}
 </script>
+
+<SEO data={document?.seo} />
 
 <div class="px-xs">
 	<section class="pt-12 w-full">

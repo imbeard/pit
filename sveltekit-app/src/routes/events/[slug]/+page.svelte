@@ -8,8 +8,10 @@
 	import Cloud from '$lib/components/Cloud.svelte';
 	import EventsSlider from '$lib/components/sliders/EventsSlider.svelte';
 	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
-
+	import SEO from '$lib/components/seo/SEO.svelte';
 	import { formatDate } from '$lib/utils';
+
+
 	export let data;
 	$: event = data?.document?.data[0];
 	$: relatedEvents = event?.relatedEvents;
@@ -18,6 +20,8 @@
 	$: cloudBg = event?.performance?.theme.split('-')[0];
 	$: cloudFg = event?.performance?.theme.split('-')[1];
 </script>
+
+<SEO data={event?.seo} />
 
 <div class="px-xs">
 	<section

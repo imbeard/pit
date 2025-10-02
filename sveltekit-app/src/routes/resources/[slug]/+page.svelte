@@ -4,6 +4,7 @@
 	import Cloud from '$lib/components/Cloud.svelte';
 	import Download from '$lib/components/svg/Download.svelte';
 	import { formatDate } from '$lib/utils';
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	export let data;
 	$: resource = data?.resource?.data[0];
@@ -12,6 +13,8 @@
 	$: cloudBg = resource?.performance?.theme.split('-')[0];
 	$: cloudFg = resource?.performance?.theme.split('-')[1];
 </script>
+
+<SEO data={resource?.seo} />
 
 <div class="pt-8 p-xs">
 	<section class="hero">

@@ -3,12 +3,15 @@
 	import ArchiveIntro from '$lib/components/ArchiveIntro.svelte';
 	import Image from '$lib/components/element/Image.svelte';
 	import PartnerCard from '$lib/components/thumbnails/PartnerCard.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	export let data;
 
 	$: partners = data?.partners?.data;
 	$: document = data?.page?.data[0];
 </script>
+
+<SEO data={document?.seo} />
 
 <div class="flex flex-col gap-6">
 	<section class="pt-12 w-full">

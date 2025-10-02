@@ -4,6 +4,7 @@
 	import PageBuilder from '$lib/components/PageBuilder.svelte';
 	import CloudShape from '$lib/components/svg/CloudShape-5.svelte';
 	import Cloud from '$lib/components/Cloud.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 	export let data;
 
 	$: person = data?.person?.data[0];
@@ -11,6 +12,8 @@
 	$: cloudBg = person?.performance?.theme.split('-')[0];
 	$: cloudFg = person?.performance?.theme.split('-')[1];
 </script>
+
+<SEO data={person?.seo} />
 
 <div class="px-xs">
 	<section class="w-full flex justify-center pt-10">

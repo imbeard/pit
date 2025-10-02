@@ -43,12 +43,12 @@
 		class:bg-gray={!currentRoute.includes('/resources')}
 		href="/resources">Resources</a
 	>
-	<a
+	<!-- <a
 		class="py-xs lg:py-s px-1 hover:theme-red-black"
 		class:theme-red-black={currentRoute.includes('/manifesto')}
 		class:bg-gray={!currentRoute.includes('/manifesto')}
 		href="/manifesto">Manifesto</a
-	>
+	> -->
 	<a
 		class="py-xs lg:py-s px-1 hover:theme-pink-brown"
 		class:theme-pink-brown={currentRoute.includes('/contact')}

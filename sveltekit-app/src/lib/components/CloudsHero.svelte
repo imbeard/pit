@@ -126,7 +126,7 @@
 		<CloudShape_1 cloudBg="blue" />
 	</div>
 
-	{#if cloudEvent.slug}
+	{#if cloudEvent && cloudEvent.slug}
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 
 		<div
@@ -162,7 +162,7 @@
 		</div>
 	{/if}
 
-	{#if cloudArtist.slug}
+	{#if cloudArtist && cloudArtist.slug}
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 
 		<div
@@ -203,7 +203,7 @@
 		</div>
 	{/if}
 
-	{#if cloudPerformance.slug}
+	{#if cloudPerformance && cloudPerformance.slug}
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 
 		<div
@@ -239,7 +239,7 @@
 		</div>
 	{/if}
 
-	{#if cloudResource}
+	{#if cloudResource && cloudResource.slug}
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 
 		<div
@@ -277,7 +277,7 @@
 		</div>
 	{/if}
 
-	{#if cloudUrl?.url}
+	{#if cloudUrl && cloudUrl?.url}
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="cloud-container relative sm:absolute flex justify-center items-center sm:left-4 sm:bottom-4"

@@ -3,12 +3,15 @@
 	import PageBuilder from '$lib/components/PageBuilder.svelte';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import PerformanceCard from '$lib/components/thumbnails/PerformanceCard.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	export let data;
 	$: partner = data?.document?.data?.partner[0];
 	$: performances = data?.document?.data?.performances;
 	$: pageBuilder = partner?.pageBuilder;
 </script>
+
+<SEO data={partner?.seo} />
 
 <div class="px-xs">
 	<section class="w-full flex justify-center pt-10">

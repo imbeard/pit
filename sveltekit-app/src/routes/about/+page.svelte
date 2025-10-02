@@ -4,6 +4,7 @@
 	import CloudsAbout from '$lib/components/CloudsAbout.svelte';
 	import Accordion from '$lib/components/element/Accordion.svelte';
 	import Marquee from '$lib/components/element/Marquee.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	export let data;
 	$: document = data?.page?.data;
@@ -16,6 +17,8 @@
 
 	$: coreValues = [coreValue1, coreValue2, coreValue3, coreValue4, coreValue5];
 </script>
+
+<SEO data={document?.seo} />
 
 <div>
 	<section class="pt-12 w-full px-xs">

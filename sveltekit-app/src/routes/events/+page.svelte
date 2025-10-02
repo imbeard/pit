@@ -13,6 +13,8 @@
 	import { filtersOpen } from '$lib/stores/filters';
 	import { createPikaday, getCurrentDate, formatToDisplay } from '$lib/utils/calendar';
 
+	import SEO from '$lib/components/seo/SEO.svelte';
+
 	export let data;
 
 	let selectedDate = getCurrentDate();
@@ -213,6 +215,8 @@
 		}
 	});
 </script>
+
+<SEO data={document?.seo} />
 
 <div class="px-xs">
 	<section class="pt-12 w-full">
