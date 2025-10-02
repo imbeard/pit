@@ -13,8 +13,6 @@
 		locale: 'en_US'
 	};
 
-	$: console.log(data, pageTitle);
-
 	// Computed values
 	const title =
 		data?.title && page?.route?.id !== '/'
