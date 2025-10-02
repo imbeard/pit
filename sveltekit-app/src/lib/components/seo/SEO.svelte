@@ -24,6 +24,7 @@
 	const siteName = data?.siteName || defaults.siteName;
 	const locale = data?.locale || defaults.locale;
 	const canonical = data?.canonical || page?.url?.href;
+
 </script>
 
 <svelte:head>
