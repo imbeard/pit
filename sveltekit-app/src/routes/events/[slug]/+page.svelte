@@ -65,7 +65,7 @@
 				{#if event?.start}
 					<span>{formatDate(event?.start)}</span>
 				{/if}
-				{#if event?.end}
+				{#if event?.end && event?.end !== event?.start}
 					<span>&mdash; {formatDate(event?.end)}</span>
 				{/if}
 			</div>
@@ -73,7 +73,7 @@
 				{#if event?.time?.start}
 					<span>{event?.time.start}</span>
 				{/if}
-				{#if event?.time?.end}
+				{#if event?.time?.end && event?.time?.end !== event?.time?.start}
 					<span>&mdash; {event?.time?.end}</span>
 				{/if}
 			</div>

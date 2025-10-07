@@ -64,6 +64,8 @@
 	} else {
 		hoveredAsset = null;
 	}
+
+	$: console.log(events, document?.featuredEvent)
 </script>
 
 <svelte:window bind:innerWidth={viewportWidth} bind:innerHeight={viewportHeight} />
@@ -93,14 +95,8 @@
 			</div>
 		{/if}
 
-		<div class="absolute h-full w-auto sm:hidden">
-			<div class="scale-180 py-48 translate-x-4 -translate-y-8">
-				<Image image={document?.image} alt="hero" fit="cover" />
-			</div>
-		</div>
-
-		<div class="relative h-full w-full hidden sm:flex justify-center items-center">
-			<Image image={document?.image} alt="hero" fit="contain" />
+		<div class="absolute h-full sm:relative sm:flex sm:justify-center sm:items-center sm:w-full">
+			<Image image={document?.image} alt="hero" fit="cover" />
 		</div>
 
 		<div
@@ -154,7 +150,7 @@
 					</div>
 					<div class="flex flex-col gap-y-xs md:grid-2 md:gap-y-6">
 						{#each events as event}
-							{#if event !== document?.featuredEvent}
+							{#if event?.slug !== document?.featuredEvent?.slug}
 								<EventCard thumbnail={event} />
 							{/if}
 						{/each}
