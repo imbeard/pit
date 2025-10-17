@@ -231,7 +231,7 @@
 		<h2 class="typo-2xl mx-auto w-fit pt-6">Featured Events</h2>
 		<div class="flex flex-col gap-xs md:grid-2 py-xs">
 			{#each document?.featuredEvents as event}
-				<div class="featured-event relative">
+				<div class="featured-event relative overflow-hidden">
 					<FeaturedEventCard thumbnail={event} />
 				</div>
 			{/each}
