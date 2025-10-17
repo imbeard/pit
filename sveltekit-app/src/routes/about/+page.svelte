@@ -69,7 +69,7 @@
 	{#if document?.impactGoals && document?.impactGoals.length > 0}
 		<section class="pt-12">
 			<div class="w-full flex justify-center border-b border-gray p-xs">
-				<h5 class="typo-s">Key Activities</h5>
+				<h5 class="typo-s">Impact Goals</h5>
 			</div>
 			{#each document?.impactGoals as goal}
 				<div class="px-xs">

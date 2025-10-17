@@ -140,7 +140,9 @@
 	{/if}
 
 	{#if pageBuilder}
-		<PageBuilder sections={pageBuilder.sections} />
+		<div class="pt-16">
+			<PageBuilder sections={pageBuilder.sections} />
+		</div>
 	{/if}
 
 	{#if event?.relatedEvents && event?.relatedEvents.length > 0}

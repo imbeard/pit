@@ -166,6 +166,11 @@ export const partnerQuery = groq`{
         ${performanceThumb}
     },
 
+    "events": *[_type == "event"
+    && references(*[_type == "partner" && slug.current == $slug][0]._id)] {
+        ${eventThumb}
+    },
+
 }`;
 
 export const peopleQuery = groq`*[

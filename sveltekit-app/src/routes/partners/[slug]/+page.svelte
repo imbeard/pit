@@ -3,12 +3,16 @@
 	import PageBuilder from '$lib/components/PageBuilder.svelte';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import PerformanceCard from '$lib/components/thumbnails/PerformanceCard.svelte';
+	import EventCard from '$lib/components/thumbnails/EventCard.svelte';
 	import SEO from '$lib/components/seo/SEO.svelte';
 
 	export let data;
 	$: partner = data?.document?.data?.partner[0];
 	$: performances = data?.document?.data?.performances;
+	$: events = data?.document?.data?.events;
 	$: pageBuilder = partner?.pageBuilder;
+
+	$: console.log(events);
 </script>
 
 <SEO data={partner?.seo} pageTitle={partner?.title} />
@@ -59,7 +63,7 @@
 		<PageBuilder sections={pageBuilder.sections} />
 	{/if}
 
-	{#if performances}
+	{#if performances && performances.length > 0}
 		<div>
 			<h2 class="uppercase typo-lg w-full border-b border-gray pb-xs">Partner's Performances</h2>
 			<div class="flex flex-col gap-6 mt-xs">
@@ -67,6 +71,17 @@
 					<div>
 						<PerformanceCard thumbnail={performance} />
 					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
+
+	{#if events && events.length > 0}
+		<div>
+			<h2 class="uppercase typo-lg w-full border-b border-gray pb-xs">Partner's Events</h2>
+			<div class="flex flex-col gap-xs md:grid-4 mt-xs">
+				{#each events as event}
+					<EventCard pageColor="blue" thumbnail={event} />
 				{/each}
 			</div>
 		</div>

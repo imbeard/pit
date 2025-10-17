@@ -35,8 +35,8 @@
 
 	<div>
 		<div class="flex flex-col text-center md:hidden hover:text-red">
-			<a href="mailto:{data?.email}">{data?.email}</a>
-			<a href="tel:{data?.phone}">{data?.phone}</a>
+			{#if data?.email}<a href="mailto:{data?.email}">{data?.email}</a>{/if}
+			{#if data?.phone}<a href="tel:{data?.phone}">{data?.phone}</a>{/if}
 			<a class="h-fit" href="https://parco.studio/" target="_blank">Design by Parco</a>
 			{#if data?.social}
 				<ul class="flex gap-xs text-center justify-center">
@@ -50,15 +50,23 @@
 
 		<div class="w-full md:grid-3 p-xs items-baseline">
 			<div class="hidden md:block">
-				<a class="hover:text-red w-fit h-fit" href="mailto:{data?.email}">{data?.email}</a>
+				{#if data?.email}
+					<a class="hover:text-red w-fit h-fit" href="mailto:{data?.email}">{data?.email}</a>
+				{/if}
 			</div>
 			<img class="w-10 justify-self-center mx-auto" src="/images/eu-funded-logo.svg" alt="" />
 			<div class="hidden md:block text-right hover:text-red">
-				<a class="hover:text-red w-fit h-fit" href="tel:{data?.phone}">{data?.phone}</a>
+				{#if data?.phone}
+					<a class="hover:text-red w-fit h-fit" href="tel:{data?.phone}">{data?.phone}</a>
+				{/if}
 			</div>
 		</div>
 		<div class="border-t border-gray w-full grid-2 md:grid-3 p-xs">
-			<a class="hidden md:block hover:text-red w-fit h-fit" href="https://parco.studio/" target="_blank">Design by Parco</a>
+			<a
+				class="hidden md:block hover:text-red w-fit h-fit"
+				href="https://parco.studio/"
+				target="_blank">Design by Parco</a
+			>
 			<div class="text-center hidden md:block">© PIT 2025</div>
 			<div class="hidden md:block text-right">
 				<ul class="flex gap-xs justify-end">
@@ -66,8 +74,12 @@
 					<li class="hover:text-red w-fit h-fit"><a href="/cookie-policy">Cookies</a></li>
 				</ul>
 			</div>
-			<div class="justify-self-start md:hidden hover:text-red"><a href="/privacy-policy">Privacy Policy</a></div>
-			<div class="justify-self-end md:hidden hover:text-red"><a href="/cookie-policy">Cookies</a></div>
+			<div class="justify-self-start md:hidden hover:text-red">
+				<a href="/privacy-policy">Privacy Policy</a>
+			</div>
+			<div class="justify-self-end md:hidden hover:text-red">
+				<a href="/cookie-policy">Cookies</a>
+			</div>
 		</div>
 	</div>
 </div>
