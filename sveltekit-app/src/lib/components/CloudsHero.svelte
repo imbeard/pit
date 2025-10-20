@@ -151,12 +151,14 @@
 				<div
 					class="texts absolute top-0 bottom-0 left-0 right-0 text-center h-full w-full button {eventTextColor} pointer-events-none"
 				>
-					<div class="typo-cloud-base px-2 rotate-30 absolute right-[10px] top-3">
-						{formatDate(cloudEvent.start)}
-					</div>
-					<div class="typo-cloud-base px-2 absolute bottom-2 sm:bottom-3 text-center w-full">
-						{cloudEvent.title}
-					</div>
+					{#if cloudEvent?.start && cloudEvent?.title}
+						<div class="typo-cloud-base px-2 rotate-30 absolute right-[10px] top-3">
+							{formatDate(cloudEvent.start)}
+						</div>
+						<div class="typo-cloud-base px-2 absolute bottom-2 sm:bottom-3 text-center w-full">
+							{cloudEvent.title}
+						</div>
+					{/if}
 				</div>
 			</div>
 		</div>
@@ -193,9 +195,15 @@
 						{cloudArtist.name}
 					</div>
 					<div class="typo-cloud-s px-2">
-						<span>{dateYear(cloudArtist.dateBirth)}</span>
+						{#if cloudArtist.dateBirth}
+							<span>{dateYear(cloudArtist.dateBirth)}</span>
+						{/if}
 						{#if cloudArtist.country}
-							<span>, {cloudArtist.country}</span>
+							<span
+								>{#if cloudArtist?.dateBirth},
+								{/if}
+								{cloudArtist.country}</span
+							>
 						{/if}
 					</div>
 				</div>
@@ -229,10 +237,11 @@
 				<div
 					class="texts absolute top-0 bottom-0 left-0 right-0 text-center flex flex-col gap-[4px] justify-center items-center h-full w-full button {performanceTextColor} pointer-events-none"
 				>
-					<div class="typo-cloud-base px-2">
-						{cloudPerformance.title}
-					</div>
-
+					{#if cloudPerformance.title}
+						<div class="typo-cloud-base px-2">
+							{cloudPerformance.title}
+						</div>
+					{/if}
 					<div class="typo-cloud-s">Associated Performance</div>
 				</div>
 			</div>
@@ -267,9 +276,11 @@
 				>
 					<div class="typo-cloud-s">&DownArrow;</div>
 
-					<div class="typo-cloud-base px-2">
-						{cloudResource.title}
-					</div>
+					{#if cloudResource.title}
+						<div class="typo-cloud-base px-2">
+							{cloudResource.title}
+						</div>
+					{/if}
 
 					<div class="typo-cloud-s">Download</div>
 				</div>
@@ -297,9 +308,11 @@
 				<div
 					class="texts absolute top-0 bottom-0 left-0 flex flex-col justify-center items-center gap-[4px] h-full w-full button {urlTextColor} pointer-events-none text-center mt-xs"
 				>
-					<div class="typo-cloud-base px-2">
-						{cloudUrl?.label}
-					</div>
+					{#if cloudUrl?.label}
+						<div class="typo-cloud-base px-2">
+							{cloudUrl?.label}
+						</div>
+					{/if}
 
 					<div class="typo-cloud-s">Feature</div>
 				</div>
