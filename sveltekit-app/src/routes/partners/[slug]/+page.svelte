@@ -11,8 +11,6 @@
 	$: performances = data?.document?.data?.performances;
 	$: events = data?.document?.data?.events;
 	$: pageBuilder = partner?.pageBuilder;
-
-	$: console.log(events);
 </script>
 
 <SEO data={partner?.seo} pageTitle={partner?.title} />

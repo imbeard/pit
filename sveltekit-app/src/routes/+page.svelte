@@ -64,8 +64,6 @@
 	} else {
 		hoveredAsset = null;
 	}
-
-	$: console.log(events, document?.featuredEvent)
 </script>
 
 <svelte:window bind:innerWidth={viewportWidth} bind:innerHeight={viewportHeight} />
