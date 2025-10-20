@@ -2,7 +2,7 @@ import { client } from '$lib/sanity/client';
 import groq from 'groq';
 
 // Configuration
-const BASE_URL = 'https://pit.com'; // Update this with your actual domain
+const BASE_URL = 'https://pitperform.eu'; // Update this with your actual domain
 const STATIC_ROUTES = [
 	'/',
 	'/about',
