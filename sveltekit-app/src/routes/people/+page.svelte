@@ -126,8 +126,12 @@
 							href="/people/{person.slug}"
 							class="card col-span-1 min-h-8 border-b border-gray hover:text-red md:border-none aspect-4/3 md:aspect-auto"
 						>
-							<div class="typo-xs">{person.country}</div>
-							<div class="typo-lg text-center pt-xs px-2">{person.name}</div>
+							{#if person.country}
+								<div class="typo-xs">{person.country}</div>
+							{/if}
+							{#if person.name}
+								<div class="typo-lg text-center pt-xs px-2">{person.name}</div>
+							{/if}
 						</a>
 					{/each}
 				</div>
