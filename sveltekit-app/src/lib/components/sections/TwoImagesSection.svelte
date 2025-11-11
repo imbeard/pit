@@ -7,12 +7,7 @@
 <div class="flex flex-col gap-xs md:grid-2">
 	{#each section.items as image}
 		<div>
-			<Image {image} fit="contain" />
-			{#if image?.caption}
-				<div class="caption">
-					<PortableText data={image.caption} />
-				</div>
-			{/if}
+			<Image {image} fit="contain" showCaption={true} />
 		</div>
 	{/each}
 </div>

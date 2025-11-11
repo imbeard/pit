@@ -28,7 +28,7 @@
 	}}
 />
 
-<nav class="w-full p-xs fixed top-0 left-0 z-999 nav" bind:clientHeight={navHeight}>
+<nav class="w-full p-xs fixed top-0 left-0 z-[100] nav" bind:clientHeight={navHeight}>
 	<a href="/" class="logo fixed z-10 top-0 left-0 m-1 lg:ml-0 lg:relative">
 		<img src="/images/logo.svg" alt="logo" />
 	</a>

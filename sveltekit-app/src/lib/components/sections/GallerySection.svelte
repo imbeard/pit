@@ -6,6 +6,7 @@
 
 	import Image from '$lib/components/element/Image.svelte';
 	import Video from '$lib/components/element/Video.svelte';
+	import PortableText from '$lib/components/element/PortableText.svelte';
 
 	export let section;
 	$: gallery = section?.items;
@@ -24,15 +25,15 @@
 				<div class="embla__slide">
 					{#if slide._type == 'elementImage'}
 						<div class="image-container">
-							<Image image={slide} fit="cover" />
+							<Image image={slide} fit="cover" showCaption="false" />
 						</div>
 					{:else if slide._type == 'elementVideo'}
 						<div class="image-container">
 							<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
 						</div>
 					{/if}
-					{#if slide.caption}
-						<div class="caption">{slide?.caption}</div>
+					{#if slide?.caption}
+						<div class="caption typo-s mt-xs"><PortableText data={slide?.caption} /></div>
 					{/if}
 				</div>
 			{/each}
@@ -62,11 +63,7 @@
 	}
 
 	.image-container {
-		height: 100%;
-	}
-
-	.caption {
-		height: 100%;
+		height: calc(100% - 3rem);
 	}
 
 	@media (min-width: 768px) {

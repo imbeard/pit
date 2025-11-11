@@ -8,7 +8,7 @@
 		<h3 class="uppercase typo-lg pb-xs">Partnering Institutions</h3>
 		<hr class="text-gray" />
 	</div>
-	<ul class="md:grid-3 pt-xs">
+	<ul class="flex flex-col gap-1 md:grid-3 pt-xs">
 		{#each partners as partner}
 			<li>
 				<PartnerCard thumbnail={partner?.institution || partner} />

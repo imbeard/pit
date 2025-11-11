@@ -2,7 +2,7 @@
 	import Image from '../element/Image.svelte';
 	import Video from '../element/Video.svelte';
 	import PortableText from '../element/PortableText.svelte';
-	
+
 	export let section;
 	$: video = section?.video;
 	$: image = section?.image;
@@ -17,11 +17,6 @@
 			</div>
 		{/if}
 	{:else if image}
-		<Image {image} alt={image.alt} />
-		{#if image.caption}
-			<div class="typo-s pt-xs">
-				<PortableText data={image.caption} />
-			</div>
-		{/if}
+		<Image {image} alt={image.alt} showCaption={true} />
 	{/if}
 </div>

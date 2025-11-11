@@ -37,7 +37,7 @@
 
 	{#if partner?.image}
 		<div class="w-full mx-auto pt-xs">
-			<Image image={partner?.image} fit="cover" />
+			<Image image={partner?.image} fit="cover" showCaption={true} />
 		</div>
 	{/if}
 

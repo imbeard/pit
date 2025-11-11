@@ -57,7 +57,10 @@
 	}
 </script>
 
-<aside class="fixed z-99 h-[100dvh] right-0 top-0 bg-blue text-pink p-xs" class:open={$filtersOpen}>
+<aside
+	class="fixed z-[100] h-[100dvh] right-0 top-0 bg-blue text-pink p-xs"
+	class:open={$filtersOpen}
+>
 	<div class="wrapper flex flex-col justify-between h-full overflow-auto" class:open={$filtersOpen}>
 		<div class="pb-8">
 			<button

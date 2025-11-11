@@ -1,6 +1,10 @@
 <script>
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
+	import { fill } from '$lib/stores/logoAnimation';
+	import LogoP from '$lib/components/svg/LogoP.svelte';
+	import LogoI from '$lib/components/svg/LogoI.svelte';
+	import LogoT from '$lib/components/svg/LogoT.svelte';
 
 	let moveElements = false;
 
@@ -10,15 +14,7 @@
 		document.addEventListener('scroll', (event) => {
 			scrollPosition = window.scrollY;
 
-			if (
-				scrollPosition > 0 
-				// &&
-				// ($page.route.id == '/performances/[slug]' ||
-				// 	$page.route.id == '/events/[slug]' ||
-				// 	$page.route.id == '/resources/[slug]' ||
-				// 	$page.route.id == '/people/[slug]' ||
-				// 	$page.route.id == '/partners/[slug]')
-			) {
+			if (scrollPosition > 0) {
 				moveElements = true;
 			} else {
 				moveElements = false;
@@ -27,18 +23,19 @@
 	}
 </script>
 
-<div class="fixed overflow-hidden z-10 top-0 left-0 w-full h-[100dvh] pointer-events-none">
+<div class="fixed overflow-hidden z-[99] top-0 left-0 w-full h-[100dvh] pointer-events-none">
 	<div
 		class="logo-p absolute right-xs top-[28%] transition-all duration-400"
 		class:moveout={moveElements}
 	>
-		<img src="/images/logo-p.svg" alt="" />
+		<!-- <img src="/images/logo-p.svg" alt="" /> -->
+		<LogoP fill={$fill} />
 	</div>
 	<div class="logo-i absolute bottom-xs right-[15%]" class:moveout={moveElements}>
-		<img src="/images/logo-i.svg" alt="" />
+		<LogoI fill={$fill} />
 	</div>
 	<div class="logo-t absolute bottom-[35%] left-xs" class:moveout={moveElements}>
-		<img src="/images/logo-t.svg" alt="" />
+		<LogoT fill={$fill} />
 	</div>
 </div>
 

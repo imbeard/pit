@@ -9,7 +9,7 @@
 	class="bg-gray w-full aspect-3/1 flex justify-center items-center thumbnail colorize p-3 md:aspect-square"
 	class:aspect-square={ratio === '1'}
 >
-	<div class="cover-image">
+	<div class="cover-image max-w-1/2">
 		{#if thumbnail?.logo}
 			<Image image={thumbnail?.logo} fit="contain" />
 		{:else}

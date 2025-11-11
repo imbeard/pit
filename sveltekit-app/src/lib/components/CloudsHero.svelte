@@ -8,6 +8,7 @@
 	import CloudShape_4 from '$lib/components/svg/CloudShape-4.svelte';
 	import CloudShape_5 from '$lib/components/svg/CloudShape-5.svelte';
 	import CloudShape_6 from '$lib/components/svg/CloudShape-6.svelte';
+	import { fill } from '$lib/stores/logoAnimation';
 	import { onMount } from 'svelte';
 
 	import { dateYear, formatDate } from '$lib/utils';
@@ -82,9 +83,25 @@
 		});
 	};
 
+	$: if (hoveredEvent) {
+		fill.set(`var(--color-${cloudEventFg})`);
+	} else if (hoveredResource) {
+		fill.set(`var(--color-${cloudResourceFg})`);
+	} else if (hoveredUrl) {
+		fill.set(`var(--color-${cloudUrlFg})`);
+	} else if (hoveredPerformance) {
+		fill.set(`var(--color-${cloudPerformanceFg})`);
+	} else if (hoveredArtist) {
+		fill.set(`var(--color-${cloudArtistFg})`);
+	} else {
+		fill.set('var(--color-black)');
+	}
+
 	onMount(() => {
 		isMounted = true;
 	});
+
+	$: console.log(cloudEventBg);
 </script>
 
 <svelte:window

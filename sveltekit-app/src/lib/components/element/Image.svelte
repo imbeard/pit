@@ -1,8 +1,10 @@
 <script>
 	import { getImageDimensions } from '@sanity/asset-utils';
+	import PortableText from '$lib/components/element/PortableText.svelte';
 	import { urlFor } from '$lib/sanity/image';
 
 	export let image;
+	export let showCaption = false;
 	export let fit = 'cover';
 	export let alt = 'Image';
 	export let lazy = false;
@@ -39,4 +41,7 @@
 		alt={src.alt || alt}
 		src={imageUrl}
 	/>
+	{#if image?.caption && showCaption == true}
+		<div class="typo-s mt-xs"><PortableText data={image.caption} /></div>
+	{/if}
 {/if}

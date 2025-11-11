@@ -104,7 +104,7 @@
 
 		{#if event?.image}
 			<section class="w-full mx-auto pt-xs">
-				<Image image={event?.image} fit="contain" />
+				<Image image={event?.image} fit="contain" showCaption={true} />
 			</section>
 		{/if}
 

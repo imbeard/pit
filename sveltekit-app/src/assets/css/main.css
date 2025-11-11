@@ -90,7 +90,7 @@ button {
 }
 
 .typo-cloud-base {
-	font-size: clamp(1.6rem, 4vw, 2.4rem);
+	font-size: clamp(1.3rem, 4vw, 2.2rem);
 	line-height: 120%;
 }
 
@@ -107,7 +107,7 @@ button {
 	}
 
 	.typo-cloud-base {
-		font-size: clamp(1.2rem, 2.2vw, 2rem);
+		font-size: 1.5rem;
 		line-height: 120%;
 	}
 	.size-cloud {
@@ -123,11 +123,11 @@ button {
 		height: auto;
 	}
 	.typo-cloud-base {
-		font-size: clamp(1.2rem, 2.2vw, 2.8rem);
+		font-size: clamp(1.5rem, 3.2vw, 1.8rem);
 		line-height: 120%;
 	}
 	.typo-cloud-s {
-		font-size: clamp(1rem, 3vw, 1.8rem);
+		font-size: 1.2rem;
 		line-height: 120%;
 	}
 }

@@ -19,7 +19,7 @@ export const elementImage = defineType({
       title: 'Caption Text',
       name: 'caption',
       type: 'blockContent',
-      description: 'Optional caption for the image',
+      description: 'Optional caption or credits for the image',
     },
     // mobileImage
     {

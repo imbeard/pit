@@ -239,14 +239,14 @@
 	{/if}
 
 	<div class="events-grid flex w-full items-end pb-xs">
-		<div class="w-fit flex gap-1 items-center">
+		<div class="w-fit flex gap-1 items-center input-date">
 			<label bind:clientWidth={calendarLabelWidth} class="hidden md:block text-brown" for="calendar"
 				>Show events from</label
 			>
 			<input
 				type="text"
 				id="date-picker"
-				class="input pika-single p-xs bg-gray text-brown justify-self-start"
+				class="input pika-single bg-gray text-brown justify-self-start"
 				bind:this={datePicker}
 				value={formatToDisplay(selectedDate)}
 			/>
@@ -327,8 +327,14 @@
 		margin-top: 1.6rem;
 	}
 
+	.input-date {
+		text-box-edge: cap alphabetic;
+	}
+
 	.input {
 		width: 7rem;
+		text-box-trim: trim-both;
+		padding: 0.5rem;
 		&:hover {
 			background-color: var(--color-brown);
 			color: var(--color-gray);

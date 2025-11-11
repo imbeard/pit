@@ -56,7 +56,7 @@
 
 		{#if performance.image}
 			<div class="aspect-4/5 md:aspect-16/9">
-				<Image image={performance.image} fit="cover" />
+				<Image image={performance.image} fit="cover" showCaption={true} />
 			</div>
 		{/if}
 
