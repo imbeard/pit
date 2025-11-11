@@ -1,4 +1,5 @@
 import {defineField, defineType, defineArrayMember} from 'sanity'
+import {CloudShapes} from '../components/CloudShapes'
 import {SearchIcon} from '@sanity/icons'
 
 export const event = defineType({
@@ -31,6 +32,23 @@ export const event = defineType({
         source: 'title',
         maxLength: 96,
       },
+    }),
+    defineField({
+      name: 'featuredMask',
+      title: 'Featured Mask',
+      description: 'Shape used when event is featured',
+      type: 'string',
+      group: 'content',
+      options: {
+        list: [
+          {title: 'CloudShape 1', value: 'CloudShape-1'},
+          {title: 'CloudShape 2', value: 'CloudShape-2'},
+          {title: 'CloudShape 3', value: 'CloudShape-3'},
+          {title: 'CloudShape 4', value: 'CloudShape-4'},
+          {title: 'CloudShape 5', value: 'CloudShape-5'},
+        ],
+      },
+      components: {input: CloudShapes},
     }),
     defineField({
       name: 'link',

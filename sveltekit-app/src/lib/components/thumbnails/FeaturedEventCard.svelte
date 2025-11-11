@@ -11,7 +11,12 @@
 >
 	{#if thumbnail?.image?.asset}
 		<div class="absolute top-0 left-0 bottom-0 right-0">
-			<div class="cover-image">
+			<div
+				class="cover-image"
+				style={thumbnail?.featuredMask
+					? `mask-image: url('/masks/${thumbnail?.featuredMask}.svg')`
+					: "mask-image: url('/masks/CloudShape-1.svg')"}
+			>
 				<Image image={thumbnail?.image} fit="cover" />
 			</div>
 		</div>
@@ -32,7 +37,6 @@
 
 <style>
 	.cover-image {
-		mask-image: url('/masks/featured-event.svg');
 		mask-repeat: no-repeat;
 		mask-size: 90% 90%;
 		mask-position: center;

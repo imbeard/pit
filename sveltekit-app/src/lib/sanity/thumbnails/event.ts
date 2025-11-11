@@ -1,4 +1,4 @@
-export const eventThumb = /* groq */ ` 
+export const eventThumb = /* groq */ `
     _id,
     "slug": slug.current,
     title,
@@ -8,6 +8,7 @@ export const eventThumb = /* groq */ `
     start,
     end,
     location,
+    featuredMask,
     "typology": typology-> {
         _id,
         "slug": slug.current,
