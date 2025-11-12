@@ -9,9 +9,9 @@
 	class="bg-gray w-full aspect-3/1 flex justify-center items-center thumbnail colorize p-3 md:aspect-square"
 	class:aspect-square={ratio === '1'}
 >
-	<div class="cover-image max-w-1/2 mx-auto">
+	<div class="cover-image">
 		{#if thumbnail?.logo}
-			<Image image={thumbnail?.logo} fit="contain" />
+			<div class="max-w-3/4 mx-auto"><Image image={thumbnail?.logo} fit="cover" /></div>
 		{:else}
 			<div class="w-full h-full typo-2xl">{thumbnail.title}</div>
 		{/if}

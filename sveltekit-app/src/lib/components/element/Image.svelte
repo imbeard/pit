@@ -29,8 +29,8 @@
 
 {#if src && imageUrl}
 	<img
-		class="max-h-full max-w-full w-full
-		{fit === 'contain' ? 'object-contain' : 'object-cover h-full w-full'}
+		class="max-h-full max-w-full
+		{fit === 'contain' ? 'object-contain w-auto' : 'object-cover h-full w-full'}
 		{height === 'full' ? 'h-full' : 'h-auto'}"
 		loading={lazy ? 'lazy' : 'eager'}
 		fetchpriority={lazy ? 'low' : 'high'}

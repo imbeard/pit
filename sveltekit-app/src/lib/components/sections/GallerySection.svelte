@@ -25,7 +25,7 @@
 				<div class="embla__slide">
 					{#if slide._type == 'elementImage'}
 						<div class="image-container">
-							<Image image={slide} fit="cover" showCaption="false" />
+							<Image image={slide} fit="contain" showCaption="false" />
 						</div>
 					{:else if slide._type == 'elementVideo'}
 						<div class="image-container">
