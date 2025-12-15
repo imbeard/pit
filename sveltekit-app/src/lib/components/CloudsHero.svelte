@@ -100,8 +100,6 @@
 	onMount(() => {
 		isMounted = true;
 	});
-
-	$: console.log(cloudEventBg);
 </script>
 
 <svelte:window

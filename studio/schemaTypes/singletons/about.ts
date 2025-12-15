@@ -76,6 +76,11 @@ export const about = defineType({
       title: 'Partners',
       type: 'infoSection',
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
   preview: {
     prepare() {

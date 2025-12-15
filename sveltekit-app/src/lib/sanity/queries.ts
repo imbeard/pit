@@ -9,11 +9,14 @@ import { download } from './thumbnails/download';
 import { link } from './fragments/link';
 import { pageBuilder } from './fragments/pageBuilder';
 import { portableText } from './fragments/portableText';
+import { seo } from './fragments/seo';
 
 // singletons
-export const settingsQuery = groq`*[_type == "settings"][0]`;
+export const settingsQuery = groq`*[_type == "settings"][0] {
+...,
+${seo}
+  }`;
 export const policiesQuery = groq`*[_type == "policies"][0]`;
-
 
 export const contactQuery = groq`*[_type == "contact"][0]{
     contacts[] {
@@ -21,7 +24,8 @@ export const contactQuery = groq`*[_type == "contact"][0]{
         content[] {
             ${portableText}
         }
-    }
+    },
+    ${seo}
 }`;
 
 export const homepageQuery = groq`{
@@ -105,7 +109,10 @@ export const homepageQuery = groq`{
     },
 }`;
 
-export const aboutQuery = groq`*[_type == "about"][0]`;
+export const aboutQuery = groq`*[_type == "about"][0] {
+  ...,
+  ${seo}
+  }`;
 
 // document single entry
 export const eventQuery = groq`*[
@@ -147,7 +154,8 @@ export const eventQuery = groq`*[
     slug.current != $slug
     ] {
         ${eventThumb}
-    }
+    },
+    ${seo}
 
     }`;
 
@@ -170,7 +178,7 @@ export const partnerQuery = groq`{
     && references(*[_type == "partner" && slug.current == $slug][0]._id)] {
         ${eventThumb}
     },
-
+    ${seo}
 }`;
 
 export const peopleQuery = groq`*[
@@ -184,7 +192,8 @@ export const peopleQuery = groq`*[
            title,
            theme
         },
-        ${pageBuilder}
+        ${pageBuilder},
+        ${seo}
     }`;
 export const resourceQuery = groq`*[
     _type == "resource"
@@ -201,6 +210,7 @@ export const resourceQuery = groq`*[
         downloads[] {
             ${download}
         },
+        ${seo}
     }`;
 
 export const performanceQuery = groq`{
@@ -234,6 +244,7 @@ export const performanceQuery = groq`{
     && references(*[_type == "performance" && slug.current == $slug][0]._id)] {
         ${resourceThumb}
     },
+    ${seo}
 }`;
 
 export const pageQuery = groq`*[
@@ -247,6 +258,7 @@ export const archiveQuery = groq`*[
     featuredEvents[]->{
        ${eventThumb}
     },
+     ${seo}
     }`;
 
 // document archive entries

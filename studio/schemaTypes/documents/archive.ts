@@ -44,5 +44,10 @@ export const archive = defineType({
       of: [{type: 'reference', to: [{type: 'event'}]}],
       hidden: ({document}) => document?.title?.toLowerCase() !== 'events',
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
 })
