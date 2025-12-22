@@ -28,15 +28,15 @@ export const settings = defineType({
     {
       name: 'company',
       options: {
-        columns: 2
-      }
+        columns: 2,
+      },
     },
     {
       name: 'contacts',
       options: {
-        columns: 2
-      }
-    }
+        columns: 2,
+      },
+    },
   ],
   fields: [
     defineField({
@@ -44,32 +44,32 @@ export const settings = defineType({
       title: 'Company Name',
       group: 'company',
       type: 'string',
-      fieldset: 'company'
+      fieldset: 'company',
     }),
     defineField({
       name: 'companyAddress',
       title: 'Company Address',
       group: 'company',
       type: 'string',
-      fieldset: 'company'
+      fieldset: 'company',
     }),
     defineField({
       name: 'email',
       type: 'email',
       group: 'company',
-      fieldset: 'contacts'
+      fieldset: 'contacts',
     }),
-     defineField({
+    defineField({
       name: 'phone',
       type: 'string',
       group: 'company',
-      fieldset: 'contacts'
+      fieldset: 'contacts',
     }),
     defineField({
       name: 'social',
       type: 'array',
       of: [{type: 'link'}],
-      group: 'company'
+      group: 'company',
     }),
     defineField({
       name: 'footer',
@@ -78,16 +78,29 @@ export const settings = defineType({
         defineField({
           name: 'text',
           title: 'Text',
-          type: 'text'
+          type: 'text',
         }),
       ],
-      group: 'footer'
+      group: 'footer',
     }),
     defineField({
       name: 'seo',
       title: 'SEO',
-      type: 'seo',
-      group: 'seo'
-    })
-  ]
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'description',
+          title: 'Description',
+          type: 'text',
+        }),
+        defineField({
+          name: 'image',
+          title: 'Image',
+          description: 'Dimensions: 1200 x 630',
+          type: 'image',
+        }),
+      ],
+      group: 'seo',
+    }),
+  ],
 })
