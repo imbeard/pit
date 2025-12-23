@@ -1,5 +1,5 @@
 <script>
-	import { headerHeight, menuOpen } from '$lib/stores/header';
+	import { headerHeight, menuOpen, anyCloudHovered } from '$lib/stores/header';
 	import { searchOpen, searchQuery } from '$lib/stores/search';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -28,7 +28,11 @@
 	}}
 />
 
-<nav class="w-full p-xs fixed top-0 left-0 z-[100] nav" bind:clientHeight={navHeight}>
+<nav
+	class="w-full p-xs fixed top-0 left-0 z-[100] nav"
+	class:md:!hidden={$anyCloudHovered}
+	bind:clientHeight={navHeight}
+>
 	<a href="/" class="logo fixed z-10 top-0 left-0 m-1 lg:ml-0 lg:relative">
 		<img src="/images/logo.svg" alt="logo" />
 	</a>

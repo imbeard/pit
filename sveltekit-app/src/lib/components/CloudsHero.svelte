@@ -9,6 +9,7 @@
 	import CloudShape_5 from '$lib/components/svg/CloudShape-5.svelte';
 	import CloudShape_6 from '$lib/components/svg/CloudShape-6.svelte';
 	import { fill } from '$lib/stores/logoAnimation';
+	import { anyCloudHovered as anyCloudHoveredStore } from '$lib/stores/header';
 	import { onMount } from 'svelte';
 
 	import { dateYear, formatDate } from '$lib/utils';
@@ -66,6 +67,8 @@
 
 	$: anyCloudHovered =
 		hoveredArtist || hoveredPerformance || hoveredUrl || hoveredResource || hoveredEvent;
+
+	$: anyCloudHoveredStore.set(anyCloudHovered);
 
 	const animateClouds = (event) => {
 		const maxDegrees = 10;
