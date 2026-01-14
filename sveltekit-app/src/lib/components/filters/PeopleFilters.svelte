@@ -70,27 +70,6 @@
 			>
 			<div class="pt-10">
 				<Accordion open={true} lineColor="border-pink">
-					<div class="cursor-pointer" slot="head">Nationalities</div>
-					<div slot="details">
-						<ul class="flex flex-col gap-y-xs">
-							{#each countries as country}
-								<li>
-									<label class="checkbox cursor-pointer">
-										<input
-											on:click={() => filterCountries(country)}
-											type="checkbox"
-											name="countries"
-											checked={selectedCountries.includes(country)}
-											value={country}
-										/>
-										{country}
-									</label>
-								</li>
-							{/each}
-						</ul>
-					</div>
-				</Accordion>
-				<Accordion open={true} lineColor="border-pink">
 					<div class="cursor-pointer" slot="head">Jobs</div>
 					<div slot="details">
 						<ul class="flex flex-col gap-y-xs">
