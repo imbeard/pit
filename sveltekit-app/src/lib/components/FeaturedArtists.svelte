@@ -21,7 +21,6 @@
 			<div>
 				<div class="w-20 aspect-[4/5] mx-auto">
 					<Image image={artist.image} fit="cover" />
-					<div class="typo-s text-center pt-xs">{artist.country}</div>
 					<div>{artist.name}</div>
 					<div class="text-center">{artist.job}</div>
 				</div>
