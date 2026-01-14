@@ -14,9 +14,9 @@
 	<div class="cover-image col-start-1 col-end-4">
 		{#if thumbnail.image}
 			<div class="relative w-full h-full">
-				<div class="absolute w-full h-full flex justify-center items-center">
+				<!-- <div class="absolute w-full h-full flex justify-center items-center">
 					<PlayButton />
-				</div>
+				</div> -->
 				<Image image={thumbnail.image} fit="cover" />
 			</div>
 		{:else}
