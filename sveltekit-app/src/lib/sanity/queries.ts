@@ -104,7 +104,7 @@ export const homepageQuery = groq`{
     "resources": *[_type == "resource" && defined(slug.current)] | order(_createdAt desc) [0...5] {
         ${resourceThumb}
     },
-    "partners": *[_type == "partner" && defined(slug.current)] | order(_createdAt desc) {
+    "partners": *[_type == "partner" && defined(slug.current)] | order(order asc) {
         ${partnerThumb}
     },
 }`;
