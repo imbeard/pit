@@ -277,7 +277,7 @@ export const filteredEventsQuery = groq`*[_type == "event" && defined(slug.curre
     ${eventThumb}
 }`;
 
-export const partnersQuery = groq`*[_type == "partner"]| order(_createdAt desc) {
+export const partnersQuery = groq`*[_type == "partner"]| order(order asc) {
     ${partnerThumb}
 }`;
 export const filteredPeopleQuery = groq`*[_type == "people" && defined(slug.current)
