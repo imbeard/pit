@@ -77,11 +77,25 @@ export const partner = defineType({
       group: 'content',
     }),
     defineField({
+      name: 'order',
+      type: 'number',
+      title: 'Order',
+      description: 'Used for manual sorting (lower numbers appear first)',
+      validation: Rule => Rule.integer()
+    }),
+    defineField({
       name: 'seo',
       title: 'SEO',
       type: 'seo',
       group: 'seo',
     }),
+  ],
+  orderings: [
+    {
+      title: 'Manual Order',
+      name: 'manualOrder',
+      by: [{field: 'order', direction: 'asc'}]
+    }
   ],
   preview: {
     select: {
