@@ -14,7 +14,7 @@
 	$: cloudFg = resource?.performance?.theme.split('-')[1];
 </script>
 
-<SEO data={resource?.seo} pageTitle={resource?.title} />
+<SEO data={resource?.seo} pageTitle={resource?.seo?.title || resource?.title} />
 
 <div class="pt-8 p-xs">
 	<section class="hero">

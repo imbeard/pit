@@ -1,23 +1,31 @@
 <script>
 	export let data;
 	export let pageTitle;
+	export let pageDescription;
 	export let noindex = false;
+	export let isHomepage = false;
 
 	// Default values
 	const defaults = {
 		ogType: 'website',
-		ogImage: '/images/ogImage.png',
 		siteName: 'PIT',
-		locale: 'en_US'
+		image: '/images/ogImage.png'
 	};
 
 	// Computed values - all must be available during SSR
-	const title = data?.title
-		? `${data?.title} | ${defaults.siteName}`
-		: pageTitle
-			? `${pageTitle} | ${defaults.siteName}`
-			: defaults.siteName;
-	const description = data?.description;
+	const title =
+		isHomepage && data?.title
+			? `${defaults.siteName} | ${data.title}`
+			: data?.title
+				? `${data?.title} | ${defaults.siteName}`
+				: pageTitle
+					? `${pageTitle} | ${defaults.siteName}`
+					: defaults.siteName;
+	const description = pageDescription
+		? pageDescription
+		: data?.description
+			? data?.description
+			: null;
 	const image = data?.image || defaults.image;
 	const ogType = data?.ogType || defaults.ogType;
 	const twitterCard = image ? 'summary_large_image' : 'summary';

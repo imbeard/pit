@@ -17,7 +17,7 @@
 	$: relatedResources = data?.performance?.data?.relatedResources;
 </script>
 
-<SEO data={performance?.seo} pageTitle={performance?.title} />
+<SEO data={performance?.seo} pageTitle={performance?.seo?.title || performance?.title} />
 
 <div class="pt-8 p-xs">
 	<section class="hero">

@@ -5,22 +5,17 @@ export const partner = defineType({
   name: 'partner',
   title: 'Partner',
   type: 'document',
-  groups: [
-    {name: 'content', title: 'Content', default: true},
-    {name: 'seo', title: 'SEO', icon: SearchIcon},
-  ],
+  groups: [{name: 'seo', title: 'SEO', icon: SearchIcon}],
   fields: [
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      group: 'content',
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      group: 'content',
 
       options: {
         source: 'title',
@@ -31,26 +26,22 @@ export const partner = defineType({
       name: 'logo',
       title: 'Logo',
       type: 'image',
-      group: 'content',
     }),
     defineField({
       name: 'extendedTitle',
       title: 'Extended Title',
       type: 'string',
       description: 'i.e. "Centre for Fine Arts"',
-      group: 'content',
     }),
     defineField({
       name: 'image',
       title: 'Image',
       type: 'elementImage',
-      group: 'content',
     }),
     defineField({
       name: 'description',
       title: 'Description',
       type: 'blockContent',
-      group: 'content',
     }),
     defineField({
       name: 'informations',
@@ -62,26 +53,24 @@ export const partner = defineType({
           type: 'info',
         }),
       ],
-      group: 'content',
     }),
     // defineField({
     //   name: 'performances',
     //   title: 'Performances',
     //   type: 'reference',
     //   to: [{type: 'performance'}],
-    //   group: 'content',
+    //
     // }),
     defineField({
       name: 'pageBuilder',
       type: 'pageBuilder',
-      group: 'content',
     }),
     defineField({
       name: 'order',
       type: 'number',
       title: 'Order',
       description: 'Used for manual sorting (lower numbers appear first)',
-      validation: Rule => Rule.integer()
+      validation: (Rule) => Rule.integer(),
     }),
     defineField({
       name: 'seo',
@@ -94,8 +83,8 @@ export const partner = defineType({
     {
       title: 'Manual Order',
       name: 'manualOrder',
-      by: [{field: 'order', direction: 'asc'}]
-    }
+      by: [{field: 'order', direction: 'asc'}],
+    },
   ],
   preview: {
     select: {

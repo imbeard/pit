@@ -1,6 +1,6 @@
 export const seo = /* groq */ `
   seo {
   ...,
-  "imageUrl": image.asset->url,
+  "image": image.asset->url,
   }
 `;

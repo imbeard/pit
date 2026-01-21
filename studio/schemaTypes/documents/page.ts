@@ -5,22 +5,17 @@ export const page = defineType({
   name: 'page',
   title: 'Page',
   type: 'document',
-  groups: [
-    {name: 'content', title: 'Content', default: true},
-    {name: 'seo', title: 'SEO', icon: SearchIcon},
-  ],
+  groups: [{name: 'seo', title: 'SEO', icon: SearchIcon}],
   fields: [
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      group: 'content',
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      group: 'content',
       options: {
         source: 'title',
         maxLength: 96,
@@ -29,13 +24,11 @@ export const page = defineType({
     defineField({
       name: 'pageBuilder',
       type: 'pageBuilder',
-      group: 'content',
     }),
     defineField({
       name: 'downloads',
       title: 'Downloads',
       type: 'array',
-      group: 'content',
       of: [
         {
           name: 'download',

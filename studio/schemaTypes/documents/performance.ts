@@ -5,22 +5,17 @@ export const performance = defineType({
   name: 'performance',
   title: 'Performance',
   type: 'document',
-  groups: [
-    {name: 'content', title: 'Content', default: true},
-    {name: 'seo', title: 'SEO', icon: SearchIcon},
-  ],
+  groups: [{name: 'seo', title: 'SEO', icon: SearchIcon}],
   fields: [
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      group: 'content',
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      group: 'content',
       options: {
         source: 'title',
         maxLength: 96,
@@ -30,7 +25,6 @@ export const performance = defineType({
       title: 'Theme',
       name: 'theme',
       type: 'string',
-      group: 'content',
       options: {
         list: [
           {title: 'Pink / Red', value: 'pink-red'},
@@ -52,12 +46,10 @@ export const performance = defineType({
       name: 'image',
       title: 'Image',
       type: 'elementImage',
-      group: 'content',
     }),
     defineField({
       name: 'typology',
       title: 'Typology',
-      group: 'content',
       type: 'reference',
       to: [{type: 'category'}],
     }),
@@ -66,7 +58,6 @@ export const performance = defineType({
       title: 'Artists',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'people'}]}],
-      group: 'content',
     }),
     defineField({
       name: 'institutions',
@@ -90,12 +81,10 @@ export const performance = defineType({
           ],
         },
       ],
-      group: 'content',
     }),
     defineField({
       name: 'pageBuilder',
       type: 'pageBuilder',
-      group: 'content',
     }),
     defineField({
       name: 'seo',

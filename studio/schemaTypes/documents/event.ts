@@ -6,10 +6,7 @@ export const event = defineType({
   name: 'event',
   title: 'Event',
   type: 'document',
-  groups: [
-    {name: 'content', title: 'Content', default: true},
-    {name: 'seo', title: 'SEO', icon: SearchIcon},
-  ],
+  groups: [{name: 'seo', title: 'SEO', icon: SearchIcon}],
   fieldsets: [
     {
       name: 'details',
@@ -21,13 +18,11 @@ export const event = defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      group: 'content',
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      group: 'content',
       options: {
         source: 'title',
         maxLength: 96,
@@ -38,7 +33,6 @@ export const event = defineType({
       title: 'Featured Mask',
       description: 'Shape used when event is featured',
       type: 'string',
-      group: 'content',
       options: {
         list: [
           {title: 'CloudShape 1', value: 'CloudShape-1'},
@@ -55,13 +49,11 @@ export const event = defineType({
       title: 'Link',
       type: 'url',
       placeholder: 'Link to participate',
-      group: 'content',
     }),
     defineField({
       title: 'Theme',
       name: 'theme',
       type: 'string',
-      group: 'content',
       options: {
         list: [
           {title: 'Pink / Red', value: 'pink-red'},
@@ -85,25 +77,21 @@ export const event = defineType({
       name: 'image',
       title: 'Image',
       type: 'elementImage',
-      group: 'content',
     }),
     defineField({
       name: 'summary',
       title: 'Summary',
       description: 'A short summary of the event, for thumbnails',
       type: 'text',
-      group: 'content',
     }),
     defineField({
       name: 'description',
       title: 'Description',
       type: 'blockContent',
-      group: 'content',
     }),
     defineField({
       name: 'typology',
       title: 'Typology',
-      group: 'content',
       fieldset: 'details',
       type: 'reference',
       to: [{type: 'category'}],
@@ -113,13 +101,11 @@ export const event = defineType({
       title: 'Performance',
       type: 'reference',
       to: [{type: 'performance'}],
-      group: 'content',
     }),
     defineField({
       name: 'artists',
       title: 'Artists',
       type: 'blockContent',
-      group: 'content',
       fieldset: 'details',
     }),
     defineField({
@@ -127,7 +113,6 @@ export const event = defineType({
       title: 'Start date',
       type: 'date',
       fieldset: 'details',
-      group: 'content',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -135,7 +120,6 @@ export const event = defineType({
       title: 'End date',
       type: 'date',
       fieldset: 'details',
-      group: 'content',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -143,20 +127,17 @@ export const event = defineType({
       title: 'Time',
       type: 'duration',
       fieldset: 'details',
-      group: 'content',
     }),
     defineField({
       name: 'city',
       title: 'City',
       type: 'string',
-      group: 'content',
       fieldset: 'details',
     }),
     defineField({
       name: 'location',
       title: 'Location',
       type: 'string',
-      group: 'content',
       fieldset: 'details',
     }),
     defineField({
@@ -169,33 +150,28 @@ export const event = defineType({
           type: 'info',
         }),
       ],
-      group: 'content',
     }),
     defineField({
       name: 'institution',
       title: 'Institution',
       type: 'reference',
       to: [{type: 'partner'}],
-      group: 'content',
     }),
     defineField({
       name: 'featuredArtists',
       title: 'Featured Artists',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'people'}]}],
-      group: 'content',
     }),
     defineField({
       name: 'allPartners',
       title: 'All Partners',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'partner'}]}],
-      group: 'content',
     }),
     defineField({
       name: 'pageBuilder',
       type: 'pageBuilder',
-      group: 'content',
     }),
     defineField({
       name: 'seo',

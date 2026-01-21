@@ -20,7 +20,7 @@
 	$: cloudFg = event?.performance?.theme.split('-')[1];
 </script>
 
-<SEO data={event?.seo} pageTitle={event?.title} />
+<SEO data={event?.seo} pageTitle={event?.seo?.title || event?.title} />
 
 <div class="px-xs">
 	<section

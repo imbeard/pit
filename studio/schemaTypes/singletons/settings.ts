@@ -18,11 +18,6 @@ export const settings = defineType({
       title: 'Footer',
       icon: MenuIcon,
     },
-    {
-      name: 'seo',
-      title: 'SEO',
-      icon: SearchIcon,
-    },
   ],
   fieldsets: [
     {
@@ -82,25 +77,6 @@ export const settings = defineType({
         }),
       ],
       group: 'footer',
-    }),
-    defineField({
-      name: 'seo',
-      title: 'SEO',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'description',
-          title: 'Description',
-          type: 'text',
-        }),
-        defineField({
-          name: 'image',
-          title: 'Image',
-          description: 'Dimensions: 1200 x 630',
-          type: 'image',
-        }),
-      ],
-      group: 'seo',
     }),
   ],
 })

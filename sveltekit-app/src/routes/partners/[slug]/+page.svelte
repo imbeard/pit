@@ -13,7 +13,7 @@
 	$: pageBuilder = partner?.pageBuilder;
 </script>
 
-<SEO data={partner?.seo} pageTitle={partner?.title} />
+<SEO data={partner?.seo} pageTitle={partner?.seo?.title || partner?.title} />
 
 <div class="px-xs">
 	<section class="w-full flex justify-center pt-10">

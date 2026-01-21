@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {SearchIcon} from '@sanity/icons'
 
 export const resource = defineType({
   name: 'resource',
   title: 'Resource',
   type: 'document',
+  groups: [{name: 'seo', title: 'SEO', icon: SearchIcon}],
   fields: [
     defineField({
       name: 'title',
@@ -24,7 +26,7 @@ export const resource = defineType({
       title: 'Typology',
       type: 'string',
     }),
-     defineField({
+    defineField({
       name: 'performance',
       title: 'Performance',
       type: 'reference',
@@ -61,6 +63,12 @@ export const resource = defineType({
           ],
         },
       ],
+    }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+      group: 'seo',
     }),
   ],
   preview: {

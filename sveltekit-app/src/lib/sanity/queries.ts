@@ -12,10 +12,7 @@ import { portableText } from './fragments/portableText';
 import { seo } from './fragments/seo';
 
 // singletons
-export const settingsQuery = groq`*[_type == "settings"][0] {
-...,
-${seo}
-  }`;
+export const settingsQuery = groq`*[_type == "settings"][0]`;
 export const policiesQuery = groq`*[_type == "policies"][0]`;
 
 export const contactQuery = groq`*[_type == "contact"][0]{
@@ -96,6 +93,7 @@ export const homepageQuery = groq`{
         featuredPartners[]-> {
             ${partnerThumb}
         },
+        ${seo}
     },
 
     "events": *[_type == "event" && defined(slug.current)] | order(_createdAt desc) [0...5] {

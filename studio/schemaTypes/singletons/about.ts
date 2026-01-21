@@ -1,11 +1,12 @@
 import {defineField, defineType} from 'sanity'
-import {CropIcon} from '@sanity/icons'
+import {CropIcon, SearchIcon} from '@sanity/icons'
 
 export const about = defineType({
   name: 'about',
   title: 'About',
   type: 'document',
   icon: CropIcon,
+  groups: [{name: 'seo', title: 'SEO', icon: SearchIcon}],
   fieldsets: [
     {name: 'intro', title: 'Intro', options: {collapsed: false, collapsible: true}},
     {name: 'clouds', title: 'Clouds', options: {collapsed: false, collapsible: true}},
@@ -80,6 +81,7 @@ export const about = defineType({
       name: 'seo',
       title: 'SEO',
       type: 'seo',
+      group: 'seo',
     }),
   ],
   preview: {

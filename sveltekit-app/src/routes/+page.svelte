@@ -68,7 +68,7 @@
 
 <svelte:window bind:innerWidth={viewportWidth} bind:innerHeight={viewportHeight} />
 
-<SEO data={data?.settings?.data?.seo} />
+<SEO data={document?.seo} isHomepage={true} />
 
 <main>
 	<section
