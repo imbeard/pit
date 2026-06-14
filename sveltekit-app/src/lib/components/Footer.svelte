@@ -54,7 +54,7 @@
 					<a class="hover:text-red w-fit h-fit" href="mailto:{data?.email}">{data?.email}</a>
 				{/if}
 			</div>
-			<img class="w-10 justify-self-center mx-auto" src="/images/eu-funded-logo.svg" alt="" />
+			<img class="w-20 justify-self-center mx-auto" src="/images/eu-funded-logo.svg" alt="" />
 			<div class="hidden md:block text-right hover:text-red">
 				{#if data?.phone}
 					<a class="hover:text-red w-fit h-fit" href="tel:{data?.phone}">{data?.phone}</a>
